@@ -47,7 +47,7 @@ public class HelloAndroid extends Activity {
 
     }
     
-	//when app is on pause reset the text
+	/** when application enters pause mode reset the text */
     public void onPause(Bundle savedInstanceState) {
     	retrievedText.setText("");
     }

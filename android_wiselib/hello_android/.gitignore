@@ -3,5 +3,6 @@
 
 #ignore /bin directory
 bin/
-#ignore
+#ignore /gen directory
+gen/
 
