@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">This is a "Hello World" program!Just press
-    the ShowTime and a "Hello World" will appear.\nYou
-    can always change the content that appears by pressing menu -> Enter
-     new Text.</string>
+    the button and a hello world message will appear.\nTo
+    print a message from C+ native code using android NDK go to 
+    menu and change to android NDK.</string>
     <string name="app_name">CEID-DS2</string>
 </resources>
