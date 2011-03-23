@@ -12,8 +12,7 @@ extern "C" {
  * Method:    stringFromJNI
  * Signature: ()Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_ceid_1ds2_cbox_helloandroid_NativeConnection_stringFromJNI
-  (JNIEnv *, jobject);
+JNIEXPORT jstring JNICALL Java_ceid_1ds2_cbox_helloandroid_NativeConnection_stringFromJNI(JNIEnv *, jobject);
 
 #ifdef __cplusplus
 }

@@ -4,11 +4,11 @@
 
 #include <string.h>
 #include <jni.h>
+#include <iostream>
+#include "helloFromJNI.h"
 
 
-jstring
-Java_ceid_1ds2_cbox_helloandroid_NativeConnection_stringFromJNI( JNIEnv* env,
-                                                  jobject thiz )
+JNIEXPORT jstring JNICALL Java_ceid_1ds2_cbox_helloandroid_NativeConnection_stringFromJNI(JNIEnv *env, jobject thiz)
 {
-    return (*env)->NewStringUTF(env, "Hello from native C++ code using NJI :-D");
+    return env->NewStringUTF("Hello from native C++ code using NJI :-D");
 }
