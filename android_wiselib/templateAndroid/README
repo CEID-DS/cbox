@@ -1,0 +1,9 @@
+You should have installed android SDK and NDK to run this app. More info: http://developer.android.com/sdk/ndk/index.html
+Assuming that these are installed, it is higly recommended to create a soft link between <yourPathToSDK>/tools/android
+and /usr/bin/android.
+After loading the project into Eclipse (using the option "Create project from existing source") change from command line
+to the directory where the project is and run the command "android update project -p . -s" to build the build.xml file.
+To compile the native code you have to run the ndk-build script located to <yourPathToNDK>/ndk-build from the directory
+in which the(your) project is (<..>/cbox/android_wiselib/hello_android). After that you can build the project using Eclipse.
+Please note that if you edit the native code YOU HAVE TO run again the ndk-build script("ndk-build clean all"), clean the
+project files and at last rebuild it from the scratch.

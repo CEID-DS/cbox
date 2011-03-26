@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">This program has 2 features.\n1.It can run a (mathematical)
+    benchmark using either SDK code (running in delvik VM) or in native code.
+    If you test it you will notice that native code(and native libraries) is much faster
+    than SDK.\n2.
+    You can test native code C++ templates.\n\nPress the menu button to select. </string>
+    <string name="app_name">CEID-DS2</string>
+</resources>
