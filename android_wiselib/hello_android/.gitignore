@@ -5,4 +5,12 @@
 bin/
 #ignore /gen directory
 gen/
+#ignore local.properties file which shows the path to android NDK
+local.properties
+#ignore object files
+obj/
+#ignore the libs directory which include the native library (read README about how to generate it)
+libs/
+#ignore the build.xml file ( read README about how to generate it )
+build.xml
 

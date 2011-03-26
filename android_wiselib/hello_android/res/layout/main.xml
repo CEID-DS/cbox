@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dip"
             android:layout_gravity="right"
-            android:text="ShowTime"/>
+            android:text="Say hello using SDK"/>
     <TextView android:id="@+id/RetrievedText"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content" />
