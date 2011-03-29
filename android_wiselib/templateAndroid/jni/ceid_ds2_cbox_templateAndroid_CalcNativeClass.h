@@ -23,6 +23,14 @@ JNIEXPORT jdouble JNICALL Java_ceid_1ds2_cbox_templateAndroid_CalcNativeClass_ca
 JNIEXPORT jdouble JNICALL Java_ceid_1ds2_cbox_templateAndroid_CalcNativeClass_playWithTemplateJNI
   (JNIEnv *, jobject, jint, jint, jdouble, jdouble);
 
+/*
+ * Class:     ceid_ds2_cbox_templateAndroid_CalcNativeClass
+ * Method:    nativeVMPlay
+ * Signature: (Ljava/lang/Object;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_ceid_1ds2_cbox_templateAndroid_CalcNativeClass_nativeVMPlay
+  (JNIEnv *, jobject, jobject);
+
 #ifdef __cplusplus
 }
 #endif

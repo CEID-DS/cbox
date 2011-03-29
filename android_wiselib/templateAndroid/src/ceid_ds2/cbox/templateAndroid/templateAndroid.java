@@ -31,6 +31,8 @@ public class templateAndroid extends Activity {
 	TextView retrievedText;	//the dynamic text which is retrieved by C++
 	String FLAG = "SDK";	//flag that is used in button's listener
 	long time;	//used to measure the elapsed time of the benchmark
+	int test;
+	Object passing = this;
 
 
     /* Called when the activity is first created. */
@@ -39,7 +41,7 @@ public class templateAndroid extends Activity {
         super.onCreate(savedInstanceState);
         //sets the layout according to res/layout/main.xml file
         setContentView(R.layout.main);
-
+        test=36;
         //retrieving the values from menu.xml layout
         showTimeButton = (Button) findViewById(R.id.ShowTime);	
         defaultText = (TextView) findViewById(R.id.DefaultText);
@@ -48,6 +50,7 @@ public class templateAndroid extends Activity {
         //registering an event listener
         showTimeButton.setOnClickListener( new OnClickListener() {
 			public void onClick(View v) {
+				//checking what user had previously selected through menu
 				if(FLAG.equals("SDK"))
 				{
 					retrievedText.setText("\nCalculation by SDK\n");
@@ -68,6 +71,12 @@ public class templateAndroid extends Activity {
 				{
 					double templateRes=nc.playWithTemplateJNI(1, 2, 3, 4); //calling native method
 					retrievedText.setText("\nResult from NDK: " + templateRes + "\n"); //printing the result
+				}
+				else if(FLAG.equals("NATIVEVM"))
+				{
+					retrievedText.setText("\ntest:" + test + "\n"); //printing current value of test variable
+					retrievedText.append("From Native: " + nc.nativeVMPlay(passing) + "\n");
+					retrievedText.append("test:" + test + "\n"); //printing new (doubled) value of test variable
 				}
 				else retrievedText.setText("Wrong command\n");
 			}
@@ -105,9 +114,13 @@ public class templateAndroid extends Activity {
         	//outputString=nc.stringFromJNI();
         	FLAG="NDK";
         	return true;
-        case R.id.doubleStack: //interfering with c++ templates in native code
+        case R.id.templates: //interfering with c++ templates in native code
         	showTimeButton.setText("Interfere with templates");
         	FLAG="TEMPLATES";
+        	return true;
+        case R.id.nativeVM:
+        	showTimeButton.setText("Interfere with VM in native code");
+        	FLAG="NATIVEVM";
         	return true;
         case R.id.exit:		//exit the application
             exitApp();
@@ -142,6 +155,14 @@ public class templateAndroid extends Activity {
     		}
     	} 
     	return result; 
+    }
+    
+    /**
+     * Simple method that is called through JNI from native methid nativePlayVM() 
+     */
+    public void testNative()
+    {
+    	this.retrievedText.append("Hello from java method called by native code :P\n");
     }
 
 

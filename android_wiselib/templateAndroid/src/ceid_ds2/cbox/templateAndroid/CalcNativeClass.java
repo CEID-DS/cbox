@@ -23,11 +23,21 @@ public class CalcNativeClass {
      * @return
      */
     public native double playWithTemplateJNI(int in1, int in2, double d1, double d2);
+    
+    /**
+     * Native method that calls and executes the Java method testNative() through JNI
+     * and also doubles the value of templateAndroid class variable "test".
+     * @param c the actual instance(object in java language) of templateAndroid class
+     * @returns a string specifying that it doubled test variable
+     */
+    public native String nativeVMPlay(Object c);
 
     // This method loads as soon as the instance of the class is created
     static {
     	System.loadLibrary("calcsFromJNI");
     }
+    
+
     
 
 
