@@ -1,0 +1,13 @@
+BlueServer - Connect with android phones from PC and send sms
+
+In the two folders there are Eclipse projects for the server application that runs on PC
+and the client application tha runs on Android phones.
+
+
+- At first, run the server application and click the run server button on the GUI.
+- After that, you run the Android app and scan for devices. Select the appropiate device.
+- In server application fill in a phone number in the textbox and write some text in the textarea.
+- Then click the send button.
+
+You will see the text you have entered in the Pc on the phone's screen,
+and an sms with this text is beeing sent to the number that you gave.
