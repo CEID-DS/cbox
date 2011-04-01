@@ -1,0 +1,10 @@
+The plan is to make android services also using a public context providers(which would be helpfull to the squid team)
+
+The android project WifiConnectivity is going to provide the information to the user about his connection the availability
+of connections and plus it's going to provide information about himself via adress structure .
+
+The bluetooth connectivity for android is going to do the same thing the bluetooth way
+
+The Jconnectivity is a java app helping our team in debugging the android apps
+
+In order to avoid problems considering the programming language with other teams a c++ app for debugging would be available 
