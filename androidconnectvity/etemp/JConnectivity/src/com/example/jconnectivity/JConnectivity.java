@@ -10,6 +10,9 @@ public class JConnectivity extends JFrame{
 	private static JMenuBar menu= null;
 	private static JMenu file,scanning,visible=null;
 	private JMenuItem exit,scanwifi,scanbluetooth,visiblewifi,visiblebluetooth=null;
+	private Thread netListener = null;
+	
+	//private NetListener netListener = new NetListener();
 	
 	public static void main(String[] args) throws Exception{
 		JConnectivity myConnectivity = new JConnectivity();
@@ -44,10 +47,16 @@ public class JConnectivity extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				if(scanwifi.getText().equals("ScanWifi"))
+				if(scanwifi.getText().equals("ScanWifi")){
 					scanwifi.setText("Stop wifi Scan");
-				else if(scanwifi.getText().equals("Stop wifi Scan"))
+					netListener = new Thread(new NetListener());
+					netListener.start();
+				}
+				else if(scanwifi.getText().equals("Stop wifi Scan")){
 					scanwifi.setText("ScanWifi");
+					netListener.stop();
+					netListener=null;
+				}
 			}
 		});
 		
@@ -103,4 +112,5 @@ public class JConnectivity extends JFrame{
 		setSize(500, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
+	
 }
