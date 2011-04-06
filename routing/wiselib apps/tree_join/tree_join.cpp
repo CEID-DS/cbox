@@ -1,6 +1,7 @@
 #include "external_interface/external_interface.h"
 #include "algorithms/routing/tree/tree_routing.h"
 #include <string.h>
+#include <stdlib.h>
 
 typedef wiselib::OSMODEL Os;
 
@@ -25,28 +26,19 @@ class TreeApp
 	if (radio_->id()==0)
 		{
 		connectivity_=1;
+		VersionNumber_=rand();
 		debug_->debug("hello\n");
 		hops_=0;
-		/**
-		message[0]=0;			//message type 
-		message[1]=radio_->id();
-		message[2]=hops_+1;
-		radio_->send( Os::Radio::BROADCAST_ADDRESS, 2*sizeof(int), (unsigned char*) message );
-		**/		
+		timer_->set_timer<TreeApp, &TreeApp::self_repair>( 15000, this, 0 );
+		
 		}
 	
-	
-		//debug_->debug("hello\n");
+
 		if (connectivity_==0){
 		timer_->set_timer<TreeApp, &TreeApp::connect>( 2000, this, 0 );
+	
 		}
 	 }
-      // --------------------------------------------------------------------
-      void start( void* )
-      {
-		debug_->debug("hello from start\n");
-		//timer_->set_timer<TreeApp, &TreeApp::start>( 5000, this, 0 );
-      }
 	
 	//-------------------------------------------------------------------
 	void connect( void* )
@@ -63,6 +55,19 @@ class TreeApp
 		timer_->set_timer<TreeApp, &TreeApp::connect>( 2000, this, 0 );
 		}
 	}
+	//-------------------------------------------------------------------
+	void self_repair( void* )
+	{	int *message;
+		message = (int*)malloc(4*sizeof(int));
+		VersionNumber_++;
+		message[0]=2;
+		message[1]=radio_->id();
+		message[2]=hops_;
+		message[3]=VersionNumber_;
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, 4*sizeof(int),(unsigned char*) message);
+		debug_->debug("initiated self repair mechanism\n");
+	}
+	
 	
       // --------------------------------------------------------------------
       void receive_radio_message( Os::Radio::node_id_t from, Os::Radio::size_t len, Os::Radio::block_data_t *buf )
@@ -77,8 +82,9 @@ class TreeApp
 		message[1]=hops_;
 		message[0]=1; 			//message type (1 is for connection answer)
 		message[2]=radio_->id();
+		message[3]=VersionNumber_;
 		radio_->send( Os::Radio::BROADCAST_ADDRESS, 4*sizeof(int),(unsigned char*) message);
-		debug_->debug("process %d received connection ask from %d and replied\n",radio_->id(), mess[1]);
+		debug_->debug("process %d received connection question from %d and replied\n",radio_->id(), mess[1]);
 		}
 	}
 	else if(mess[0]==1){
@@ -86,16 +92,33 @@ class TreeApp
 		parent_=mess[2];
 		hops_=mess[1]+1;
 		connectivity_=1;
-		debug_->debug("process %d just connected to the network with parent %d and hops %d\n", radio_->id(), parent_, hops_);
+		VersionNumber_=mess[3];
+		debug_->debug("process %d just connected to the network with parent %d hops %d and version number %d\n", radio_->id(), parent_, hops_, VersionNumber_);
 		}	
 	}
+	else if(mess[0]==2 && VersionNumber_ < mess[3])
+	{		
+		int *message;
+		message = new(int[4]);
+		hops_=mess[1]+1;
+		parent_=mess[2];
+		VersionNumber_= mess[3];
+		message[1]=hops_;
+		message[0]=2; 			
+		message[2]=radio_->id();
+		message[3]=VersionNumber_;
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, 4*sizeof(int),(unsigned char*) message);
+		debug_->debug("process %d repaired with parent %d hops %d and version number %d\n", radio_->id(), parent_, hops_, VersionNumber_);
+	}
+	
       }
    private:
       Os::Radio::self_pointer_t radio_;
       Os::Debug::self_pointer_t debug_;
 	Os::Timer::self_pointer_t timer_;
-	int parent_;
-	bool connectivity_;
+	int parent_; 
+	unsigned int VersionNumber_;
+	bool connectivity_, init_SR_;
 	int hops_;
 	unsigned char* mes;
      
