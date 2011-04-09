@@ -1,29 +1,26 @@
 package com.gkatziou.wificonnectivity;
 
-import java.security.PublicKey;
-import java.util.Enumeration;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gkatziou.wificonnectivity.provider.MyNodes;
 
 public class WifiConnectivity extends Activity {
     /** Called when the activity is first created. */
-    private TextView mprog;
     private Visible visible = new Visible();
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);               
+        
         
    }
    
@@ -32,6 +29,8 @@ public class WifiConnectivity extends Activity {
 	   menu.add(0,0,0,"Start Server");
 	   menu.add(0,1,0,"End Server");
 	   menu.add(0,2,0,"Send Id");
+	   //menu.add(0,3,0,"pcon");
+	   //menu.add(0,4,0,"scon");
 	   return true;
    }
 
@@ -42,7 +41,7 @@ public class WifiConnectivity extends Activity {
 			startService(new Intent(this,Listener.class));
 			break;
 		case 1:
-			//Log.v("TEST","Stoping Server");
+			Log.v("TEST","Stoping Server");
 			stopService(new Intent(this,Listener.class));
 			break;
 		case 2:
@@ -52,8 +51,25 @@ public class WifiConnectivity extends Activity {
 			Toast.makeText(getBaseContext(), visible.getBroadcastIP(),Toast.LENGTH_SHORT ).show();
 			visible.SetVisible();
 			break;
+		case 3:
+			/*
+			ContentValues values = new ContentValues();
+			values.put(MyNodes.Node.ipv4_addr,"ld");
+			values.put(MyNodes.Node.ipv6_addr,"xcc");
+			values.put(MyNodes.Node.blue_addr,"qw");
+			getContentResolver().insert(MyNodes.Node.CONTENT_URI, values);*/
+			break;
+		case 4:
+			/*
+			String columns[] = new String[]{MyNodes.Node._ID,MyNodes.Node.ipv4_addr};
+			Uri myUri = MyNodes.Node.CONTENT_URI;
+			Cursor cur = managedQuery(myUri, columns, null, null, null);
+			Log.v("TEST",Integer.toString(cur.getColumnCount()));*/
+			break;
 	   }
 	   
 	   return true;
    }
+   
+   
 }

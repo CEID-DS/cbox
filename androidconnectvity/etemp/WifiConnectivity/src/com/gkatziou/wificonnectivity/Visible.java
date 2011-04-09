@@ -29,8 +29,9 @@ public class Visible {
 		try {
 			DatagramSocket visibleSocket = new DatagramSocket();
 			InetAddress IPAddress = InetAddress.getByName(getBroadcastIP());
-			byte[] sendData = new byte[1024];
-			sendData = getLocalIpAddress().getBytes();
+			byte[] sendData ;
+			String addr_string=ipv4_addr+blue_addr+ipv6_addr;
+			sendData = addr_string.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
 		    visibleSocket.send(sendPacket);
 		    visibleSocket.close();

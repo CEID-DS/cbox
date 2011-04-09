@@ -6,14 +6,15 @@ import javax.swing.*;
 
 public class JConnectivity extends JFrame{
 
+	private static JTextField devictext=null;
 	private static JPanel mainPanel=null;
 	private static JMenuBar menu= null;
-	private static JMenu file,scanning,visible=null;
-	private JMenuItem exit,scanwifi,scanbluetooth,visiblewifi,visiblebluetooth=null;
-	private Thread netListener = null;
-	
-	//private NetListener netListener = new NetListener();
-	
+	private static JMenu file,scanning,visible,discovered=null;
+	private JMenuItem exit,scanwifi,scanbluetooth,visiblewifi,visiblebluetooth,showdiscovered=null;
+
+	private NetListener netListener = new NetListener();
+	private Visible mvisible = new Visible();
+		
 	public static void main(String[] args) throws Exception{
 		JConnectivity myConnectivity = new JConnectivity();
 		myConnectivity.Initialize();
@@ -24,6 +25,7 @@ public class JConnectivity extends JFrame{
 		mainPanel=new JPanel();
 		getContentPane().add(mainPanel);
 		mainPanel.setLayout(null);
+		devictext = new JTextField();
 		menu=new JMenuBar();
 		
 		file = new JMenu("File");
@@ -49,13 +51,10 @@ public class JConnectivity extends JFrame{
 				
 				if(scanwifi.getText().equals("ScanWifi")){
 					scanwifi.setText("Stop wifi Scan");
-					netListener = new Thread(new NetListener());
 					netListener.start();
 				}
 				else if(scanwifi.getText().equals("Stop wifi Scan")){
 					scanwifi.setText("ScanWifi");
-					netListener.stop();
-					netListener=null;
 				}
 			}
 		});
@@ -80,8 +79,10 @@ public class JConnectivity extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(visiblewifi.getText().equals("Visble Wifi"))
+				if(visiblewifi.getText().equals("Visble Wifi")){
 					visiblewifi.setText("Invisible wifi");
+					mvisible.broadcast();
+					}
 				else if(visiblewifi.getText().equals("Invisible wifi"))
 					visiblewifi.setText("Visble Wifi");
 			}
@@ -99,6 +100,24 @@ public class JConnectivity extends JFrame{
 			}
 		});
 		
+		discovered = new JMenu("Discovered Devices");
+		discovered.setMnemonic(KeyEvent.VK_F);
+		
+		showdiscovered = new JMenuItem("Show Discovered");
+		showdiscovered.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(showdiscovered.getText().equals("Show Discovered")){
+					//devictext.setText("you have devices");
+					//devictext. 
+					System.out.println(netListener.myaddrs.size());
+					showdiscovered.setText("Hide Discovered");}
+				else if(showdiscovered.getText().equals("Hide Discovered")){
+					showdiscovered.setText("Show Discovered");}
+			}
+		});
+		
 		file.add(exit);
 		menu.add(file);
 		scanning.add(scanwifi);
@@ -107,6 +126,8 @@ public class JConnectivity extends JFrame{
 		visible.add(visiblewifi);
 		visible.add(visiblebluetooth);
 		menu.add(visible);
+		discovered.add(showdiscovered);
+		menu.add(discovered);
 		setJMenuBar(menu);
 		setTitle("Connectivity");
 		setSize(500, 400);
@@ -114,3 +135,4 @@ public class JConnectivity extends JFrame{
 	}
 	
 }
+
