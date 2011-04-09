@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, cBoxTwitterProxy!</string>
+    <string name="app_name">cBox Twitter Proxy</string>
+    <string name="sign_in">Sign in</string>
+    <string name="username">Username or email</string>
+    <string name="password">Password</string>
+    <string name="buttonSignIn">Sign in</string>
+    <string name="twitterAuthentication">Twitter Authentication</string>
+    <string name="tweetText">Give your tweet</string>
+    <string name="updateTextView">Update Status</string>
+</resources>
