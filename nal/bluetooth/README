@@ -2,3 +2,6 @@
 first thoughts about enable.c:
 creating a thread    (ready)
  for listening (UDP-server) (not ready)
+11/4/2011
+enable.c-->thread.c
+udp(server & client) for ipv4 (abstructed bluetooth)
