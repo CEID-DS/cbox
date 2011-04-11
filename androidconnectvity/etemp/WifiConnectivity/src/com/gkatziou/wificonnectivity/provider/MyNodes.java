@@ -13,7 +13,5 @@ public class MyNodes {
 		public static final String ipv4_addr ="ipv4_addr";
 		public static final String blue_addr ="blue_addr";
 		public static final String ipv6_addr ="ipv6_addr";
-		
-		
 	}
 }
