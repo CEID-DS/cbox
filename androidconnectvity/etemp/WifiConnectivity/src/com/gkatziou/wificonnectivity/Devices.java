@@ -4,6 +4,7 @@ import com.gkatziou.wificonnectivity.provider.MyNodes;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,6 +36,11 @@ public class Devices extends ListActivity{
 	}
 	
 	protected void onListItemClick(ListView l,View v,int position,long id){
+		super.onListItemClick(l, v, position, id);
+		Intent dev_id = new Intent(Devices.this,Device.class);
+		dev_id.putExtra("position",String.valueOf(getListView().getItemIdAtPosition(position)));
+		Log.v("TEST",String.valueOf(getListView().getItemIdAtPosition(position)));
+		startActivity(dev_id);
 		
 	}
 }

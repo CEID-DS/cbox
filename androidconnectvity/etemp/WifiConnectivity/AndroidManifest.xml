@@ -12,7 +12,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="Devices" android:label="Devices"/>
+                <activity android:name=".Device" android:label="Device"/>
+        <activity android:name=".Devices" android:label="Devices"/>
 		<service android:enabled="true" android:name=".Listener"/>
     </application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
