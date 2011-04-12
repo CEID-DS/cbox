@@ -1,20 +1,3 @@
-/******************************************************************************
-* This file is part of cbox.
-* 
-* cbox is free software: you can redistribute it and/or modify
-* it under the terms of the GNU LesserGeneral Public License as published
-* by the Free Software Foundation, either version 3 of the License, or
-* any later version.
-* 
-* Cbox is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-* 
-* You should have received a copy of the GNU Lesser General Public License
-* along with cbox.  If not, see <http://www.gnu.org/licenses/>.
-*******************************************************************************/
-
 package com.example.jconnectivity;
 
 import java.awt.image.BufferedImage;
@@ -44,15 +27,15 @@ public class Visible {
 	}
 
 	public void broadcast(){
-		System.out.println(ipv4_addr+"\n"+ipv6_addr+"\n"+blue_addr);
+		String addr_data=ipv4_addr+ipv6_addr+blue_addr;
 		byte[] sendData = new byte[1024];
 		
 		BufferedReader hello = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			DatagramSocket visibleSocket = new DatagramSocket();
-			InetAddress ipAddress= InetAddress.getByName("192.168.1.255");
-			sendData = "asdasd".getBytes();
-			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length,ipAddress,9876);
+			InetAddress ipAddress= InetAddress.getByName("192.168.1.64");
+			sendData = addr_data.getBytes();
+			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length,ipAddress,	9876);
 			visibleSocket.send(sendPacket);
 			visibleSocket.close();
 			

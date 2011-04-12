@@ -1,21 +1,3 @@
-/******************************************************************************
-* This file is part of cbox.
-* 
-* cbox is free software: you can redistribute it and/or modify
-* it under the terms of the GNU LesserGeneral Public License as published
-* by the Free Software Foundation, either version 3 of the License, or
-* any later version.
-* 
-* Cbox is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-* 
-* You should have received a copy of the GNU Lesser General Public License
-* along with cbox.  If not, see <http://www.gnu.org/licenses/>.
-*******************************************************************************/
-
-
 package com.example.jconnectivity;
 
 import java.io.BufferedReader;
@@ -30,7 +12,6 @@ public class NetListener extends Thread {
 	
 	Thread listen=null;
 	ArrayList<Addresses> myaddrs = new ArrayList();
-	Addresses temp = new Addresses();
 	
 	public NetListener() {
 		
@@ -54,9 +35,13 @@ public class NetListener extends Thread {
 			while(true){
 				serverSocket.receive(receivePacket);
 				String sentence = new String(receivePacket.getData());
-				System.out.println(sentence);
+				//System.out.println(sentence);
+			
+				Addresses temp = new Addresses();
 				
-				temp.ipv4_addr=sentence;
+				temp.ipv4_addr=sentence.substring(0,12);
+				temp.blue_addr=sentence.substring(12,30);
+				temp.ipv6_addr=sentence.substring(30,70);
 				
 				myaddrs.add(temp);
 			
@@ -71,10 +56,4 @@ public class NetListener extends Thread {
 		}
 		
 	}
-}
-
-class Addresses{
-	public String ipv4_addr=null;
-	public String ipv6_addr=null;
-	public String blue_addr=null;
 }
