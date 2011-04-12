@@ -1,3 +1,20 @@
+/******************************************************************************
+* This file is part of cbox.
+* 
+* cbox is free software: you can redistribute it and/or modify
+* it under the terms of the GNU LesserGeneral Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* any later version.
+* 
+* Cbox is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+* 
+* You should have received a copy of the GNU Lesser General Public License
+* along with cbox.  If not, see <http://www.gnu.org/licenses/>.
+*******************************************************************************/
+
 /* This program has 2 features.
  * 1.It can run a (mathematical) benchmark using either SDK code (running in delvik VM)
  * or in native code. If you test it you will notice that NDK is .. than SDK.
