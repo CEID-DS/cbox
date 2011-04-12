@@ -15,15 +15,32 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#ifndef NAL_BLUETOOTH_H
-#define NAL_BLUETOOTH_H
 
-#include "../nal_address.h"
-#include "../../bluetooth/enable.c"
+/* This class handles the connection between android code and
+ * native code. Using a static System.loadLibrary("foo"); the
+ * class loads the library libfoo.so in the .apk.
+ * 
+ */
 
-int enable(struct addr address);
-int disable();
-int send(char *address,char *data,int size);
-int receive(char *address,char *data,int size);
-#endif
+package cbox.androidWiselib.debugConc;
 
+public class NativeConnection {
+
+	/** Calls the native(C++) method using JNI
+	 * 
+	 * @return Returns a string containing a hello world message
+	 */
+    public native String  debugConceptJNI(Object c);
+
+    // This method loads as soon as the instance of the class is created
+    static {
+    	System.loadLibrary("debugTest");
+    }
+    
+
+    
+
+    
+
+
+}
