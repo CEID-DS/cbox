@@ -5,8 +5,14 @@
     android:layout_height="fill_parent"
     >
 <TextView  
+    android:id="@+id/dev"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="lala"
+    android:text="hell"
     />
+<Button 
+	android:text="Send Data" 
+	android:id="@+id/button1" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"></Button>
 </LinearLayout>

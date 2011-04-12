@@ -19,9 +19,12 @@ package com.gkatziou.wificonnectivity;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.MulticastLock;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -36,13 +39,17 @@ public class WifiConnectivity extends Activity {
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);                       
-   }
+        setContentView(R.layout.main);         
+
+        MulticastLock _wifiMulticastLock = ((WifiManager) getSystemService(Context.WIFI_SERVICE)).createMulticastLock("multicastLockNameHere");
+        _wifiMulticastLock.acquire();
+        
+    }
    
-   public void onDestroy(){
+   /*public void onDestroy(){
 	   super.onDestroy();
-	   this.finish();
-   }
+	   //this.finish();
+   }*/
     
    public boolean onCreateOptionsMenu(Menu menu) {
 	   super.onCreateOptionsMenu(menu);

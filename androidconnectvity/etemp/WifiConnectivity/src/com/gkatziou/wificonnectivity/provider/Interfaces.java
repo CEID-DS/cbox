@@ -22,6 +22,7 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
@@ -84,7 +85,9 @@ public class Interfaces extends ContentProvider{
 		}
 		return null;
 	}
-
+	
+	
+	
 	@Override
 	public boolean onCreate() {
 		// TODO Auto-generated method stub
@@ -102,6 +105,13 @@ public class Interfaces extends ContentProvider{
 		Cursor c = qb.query(db, projection, selection, null, null, null, sortOrder);
 		c.setNotificationUri(getContext().getContentResolver(),uri);
 		return c;
+	}
+	
+	public Cursor getFrom(String id,String table) throws SQLException {
+		sqlDB = dbHelper.getReadableDatabase();
+		Cursor mCursor = sqlDB.query(true,table,new String[] {"ipv4_addr","blue_addr","ipv6_addr"},
+				"_id"+"=\""+id+"\"",null,null,null,null,null);
+		return mCursor;
 	}
 
 	@Override

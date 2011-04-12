@@ -5,3 +5,6 @@ creating a thread    (ready)
 11/4/2011
 enable.c-->thread.c
 udp(server & client) for ipv4 (abstructed bluetooth)
+12/4/2011
+add enable.c
+changes in lib and organization
