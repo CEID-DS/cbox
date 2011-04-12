@@ -15,15 +15,17 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#ifndef NAL_BLUETOOTH_H
-#define NAL_BLUETOOTH_H
 
-#include "../nal_address.h"
-#include "../../bluetooth/enable.c"
+#include "../lib/bluetooth/nal_bluetooth.h"
+#include <string.h>
 
-int enable(struct addr address);
-int disable();
-int send(char *address,char *data,int size);
-int receive(char *address,char *data,int size);
-#endif
 
+
+int main(){
+struct addr address;
+
+strcpy(address.ipv4_addr,"127.0.0.1\0");
+
+enable(address);
+
+}

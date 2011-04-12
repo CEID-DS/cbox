@@ -21,9 +21,9 @@
 /* address structure for info about connection's establishment */
 struct addr {
 
-	char[16] ipv4_addr;	/* allocated string containing the ipv4 address */
-	char[40] ipv6_addr;	/* allocated string containing the ipv6 address */
-	char[18] mac_addr;	/* allocated string containing the mac (hex) address */
+	char ipv4_addr[16];	/* allocated string containing the ipv4 address */
+	char ipv6_addr[40];	/* allocated string containing the ipv6 address */
+	char mac_addr[18];	/* allocated string containing the mac (hex) address */
 
 	/* possible other info
 	about connection */
