@@ -20,7 +20,7 @@
 #include <jni.h>
 #include "cbox_androidWiselib_debugConc_NativeConnection.h"
 #include "javaEssentials.h"
-#include "PCDebug.h"
+#include "AndrDebug.h"
 using namespace std;
 
 //function that tests the debug concept
