@@ -18,7 +18,10 @@
 #ifndef NAL_BLUETOOTH_H
 #define NAL_BLUETOOTH_H
 
-int enable();
+#include "../nal_address.h"
+#include "../../bluetooth/enable.c"
+
+int enable(struct addr address);
 int disable();
 int send(char *address,char *data,int size);
 int receive(char *address,char *data,int size);

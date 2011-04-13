@@ -1,0 +1,89 @@
+#include "external_interface/external_interface.h"
+#include "algorithms/routing/tree/tree_routing.h"
+#include <string.h>
+#include <stdlib.h>
+#include <iostream>
+#include <vector>
+#include "util/pstl/map_static_vector.h"
+typedef wiselib::OSMODEL Os;
+typedef wiselib::MapStaticVector<Os,int,const char* ,5> map_t;
+class TreeApp
+{
+   public:
+      void init( Os::AppMainParameter& value )
+      {
+         radio_ = &wiselib::FacetProvider<Os, Os::Radio>::get_facet( value );
+         timer_ = &wiselib::FacetProvider<Os, Os::Timer>::get_facet( value );
+         debug_ = &wiselib::FacetProvider<Os, Os::Debug>::get_facet( value );
+         radio_->reg_recv_callback<TreeApp,
+                                   &TreeApp::receive_radio_message>( this );
+	//IP = obtainIP();
+	//askIP(IP);
+	map_t map;
+	map[1]="first";
+	debug_->debug("sending %s\n",map[1]);
+	radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(map),(unsigned char*) &map);
+
+/*	if (radio_->id()==0){
+		
+		char letters[11][10];
+		strcpy(letters[0],"test");
+		strcpy(letters[2],"test1");
+		debug_->debug("sending => %s and %s\n", letters[0], letters[2]);
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(letters),(unsigned char*) letters);
+	}*/
+	
+	debug_->debug("process %d tries to connect\n", radio_->id());
+ }
+	
+	char* obtainIP() {
+		return "123";
+		}
+		
+		void askIP(const char* IP) {
+			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(IP),(unsigned char*) IP);
+		}
+
+	
+	
+      // --------------------------------------------------------------------
+      void receive_radio_message( Os::Radio::node_id_t from, Os::Radio::size_t len, Os::Radio::block_data_t *buf )
+      {
+		  
+		  map_t map;
+		  memcpy (&map,buf,len);
+		  debug_->debug("(%u),(%u)=>%s\n",radio_->id(),from,map[1]);
+
+		  //map=(map_t)buf;
+/*		  char* message;
+		  strcpy(message,(char*)buf);
+		  if (!strcmp(message,IP))
+		  {
+			 debug_->debug("(%u) collision with => (%u)\n",radio_->id(),from);
+			 radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(IP),(unsigned char*) IP);
+
+		  }
+	*/	  
+//		debug_->debug("%u got %s message\n",radio_->id() ,message);
+	
+      }
+   private:
+      Os::Radio::self_pointer_t radio_;
+      Os::Debug::self_pointer_t debug_;
+	Os::Timer::self_pointer_t timer_;
+	int parent_; 
+	unsigned int VersionNumber_;
+	bool connectivity_, init_SR_;
+	int hops_;
+	unsigned char* mes;
+	char* IP;
+     
+};
+// --------------------------------------------------------------------------
+wiselib::WiselibApplication<Os, TreeApp> tree_app;
+// --------------------------------------------------------------------------
+void application_main( Os::AppMainParameter& value )
+{
+   tree_app.init( value );
+}
+

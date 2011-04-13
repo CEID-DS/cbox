@@ -1,38 +1,29 @@
-/******************************************************************************
-* This file is part of cbox.
-* 
-* cbox is free software: you can redistribute it and/or modify
-* it under the terms of the GNU LesserGeneral Public License as published
-* by the Free Software Foundation, either version 3 of the License, or
-* any later version.
-* 
-* Cbox is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-* 
-* You should have received a copy of the GNU Lesser General Public License
-* along with cbox.  If not, see <http://www.gnu.org/licenses/>.
-*******************************************************************************/
-
-
 package com.example.jconnectivity;
 
+import java.awt.Dimension;
 import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class JConnectivity extends JFrame{
 
 	private static JTextField devictext=null;
 	private static JPanel mainPanel=null;
 	private static JMenuBar menu= null;
-	private static JMenu file,scanning,visible,discovered=null;
-	private JMenuItem exit,scanwifi,scanbluetooth,visiblewifi,visiblebluetooth,showdiscovered=null;
-
+	private static JMenu file,scanning,visible,discovered,transferdata=null;
+	private JMenuItem exit,scanwifi,scanbluetooth,visiblewifi,visiblebluetooth,showdiscovered,getdata,sendData=null;
+	private JList devlist=null;
+	private static JButton blist =null;
+	private DefaultListModel model = new DefaultListModel();
+	private JScrollPane pane =null;
+	
 	private NetListener netListener = new NetListener();
 	private Visible mvisible = new Visible();
-		
+	private GetData getData = new GetData();	
+	private Addresses mybuf=null;
+	
 	public static void main(String[] args) throws Exception{
 		JConnectivity myConnectivity = new JConnectivity();
 		myConnectivity.Initialize();
@@ -129,13 +120,59 @@ public class JConnectivity extends JFrame{
 				if(showdiscovered.getText().equals("Show Discovered")){
 					//devictext.setText("you have devices");
 					//devictext. 
-					System.out.println(netListener.myaddrs.size());
+					//System.out.println(netListener.myaddrs.size());
 					showdiscovered.setText("Hide Discovered");}
 				else if(showdiscovered.getText().equals("Hide Discovered")){
 					showdiscovered.setText("Show Discovered");}
 			}
 		});
 		
+		transferdata = new JMenu("Transfer data");
+		transferdata.setMnemonic(KeyEvent.VK_F);
+		
+		sendData = new JMenuItem("Send Data");
+		sendData.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				for(int i=0;i<netListener.myaddrs.size();i++){
+					//System.out.println(netListener.myaddrs.get(i).ipv4_addr);
+					if(!model.contains(netListener.myaddrs.get(i).ipv4_addr)){
+						model.addElement(netListener.myaddrs.get(i).ipv4_addr);
+					}
+					
+				}
+				devlist=new JList(model);
+				pane = new JScrollPane();
+				pane.getViewport().add(devlist);
+				pane.setVisible(false);
+			}
+		});
+		
+		getdata = new JMenuItem("Get Data");
+		getdata.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//System.out.println(netListener.myaddrs.size());
+				if(getdata.getText().equals("Get Data")){
+					getdata.setText("End Transfer");
+					getData.start();}
+				else if(getdata.getText().equals("End Transfer")){
+					getdata.setText("Get Data");
+					getData.stop();}
+
+			}
+		});
+		
+		
+		
+		
+		devlist=new JList(model);
+		devlist.addListSelectionListener(listSelectionListener);
+		
+		pane = new JScrollPane();
+		pane.getViewport().add(devlist);
+		pane.setBounds(10,10,200,30);
 		file.add(exit);
 		menu.add(file);
 		scanning.add(scanwifi);
@@ -146,11 +183,31 @@ public class JConnectivity extends JFrame{
 		menu.add(visible);
 		discovered.add(showdiscovered);
 		menu.add(discovered);
+		transferdata.add(sendData);
+		transferdata.add(getdata);
+		menu.add(transferdata);
 		setJMenuBar(menu);
+		mainPanel.add(pane);
 		setTitle("Connectivity");
 		setSize(500, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
+	ListSelectionListener listSelectionListener = new ListSelectionListener() {
+		
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			// TODO Auto-generated method stub
+			e.getValueIsAdjusting();
+			JList list = (JList) e.getSource();
+			boolean adjust=e.getValueIsAdjusting();
+			if(!adjust){
+				int selections[] = list.getSelectedIndices();
+				Object selectionValues[] = list.getSelectedValues();
+				list.getSelectedValue();
+				System.out.println(list.getSelectedValue());
+			}
+		}
+	};
 }
 
