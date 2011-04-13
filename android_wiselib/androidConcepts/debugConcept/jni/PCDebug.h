@@ -12,6 +12,9 @@ using namespace std;
 
 class AndrDebug{
 	public:
+
+		AndrDebug(){
+		}
 		//function that implements the debug concept
 		void debug(const char* msg, ...)
 		{
