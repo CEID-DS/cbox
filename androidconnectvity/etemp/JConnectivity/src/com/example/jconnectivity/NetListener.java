@@ -6,10 +6,12 @@ import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.util.ArrayList;
 
-public class NetListener implements Runnable {
+public class NetListener extends Thread {
 	
 	Thread listen=null;
+	ArrayList<Addresses> myaddrs = new ArrayList();
 	
 	public NetListener() {
 		
@@ -20,10 +22,11 @@ public class NetListener implements Runnable {
 		waitinfo();
 	}
 	
+	
+	
 	private void waitinfo(){
 		
 		byte[] receiveData = new byte[1024];
-		byte[] sendData = new byte[1024];
 		
 		try {
 			DatagramSocket serverSocket= new DatagramSocket(9876);
@@ -32,7 +35,16 @@ public class NetListener implements Runnable {
 			while(true){
 				serverSocket.receive(receivePacket);
 				String sentence = new String(receivePacket.getData());
-				System.out.println(sentence);
+				//System.out.println(sentence);
+			
+				Addresses temp = new Addresses();
+				
+				temp.ipv4_addr=sentence.substring(0,12);
+				temp.blue_addr=sentence.substring(12,30);
+				temp.ipv6_addr=sentence.substring(30,70);
+				
+				myaddrs.add(temp);
+			
 			}
 			
 		} catch (SocketException e) {
@@ -44,5 +56,4 @@ public class NetListener implements Runnable {
 		}
 		
 	}
-	
 }
