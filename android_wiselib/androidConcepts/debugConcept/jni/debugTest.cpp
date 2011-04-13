@@ -26,7 +26,8 @@ using namespace std;
 //function that tests the debug concept
 void testDebug(void)
 {
-	PCDebug("test test %d\n", 15);
+	AndrDebug testDebug;
+	testDebug.debug("test test %d\n", 15);
 }
 
 

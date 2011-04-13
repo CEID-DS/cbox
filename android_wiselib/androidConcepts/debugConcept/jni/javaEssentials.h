@@ -37,7 +37,6 @@ JNIEnv* getJavaENV(void);
 //method that sets the Java environment to a global variable
 void setJavaENV(JNIEnv *envir);
 
-//#include "javaEssentials.cpp"
 
 
 #endif
