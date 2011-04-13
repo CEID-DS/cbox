@@ -14,7 +14,6 @@
 * You should have received a copy of the GNU Lesser General Public License
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
-
 #ifndef JAVAESSENTIALS_H
 #define JAVAESSENTIALS_H
 
@@ -23,11 +22,11 @@
 using namespace std;
 
 //string that holds the error(not used yet)
-string ERROR;
+extern string myError;
 //global variable that holds the Java environment
-JNIEnv *env;
+extern JNIEnv *myEnv;
 //global variable that holds the Java object
-jobject jthiz;
+extern jobject myJthiz;
 
 //method that sets the Java object to a global variable
 jobject getJavaObject(void);
@@ -38,8 +37,7 @@ JNIEnv* getJavaENV(void);
 //method that sets the Java environment to a global variable
 void setJavaENV(JNIEnv *envir);
 
-#include "javaEssentials.cpp"
-
+//#include "javaEssentials.cpp"
 
 
 #endif

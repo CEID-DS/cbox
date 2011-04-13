@@ -18,23 +18,30 @@
 #include <jni.h>
 #include "javaEssentials.h"
 
+//string that holds the error(not used yet)
+string myError;
+//global variable that holds the Java environment
+JNIEnv *myEnv;
+//global variable that holds the Java object
+jobject myJthiz;
+
 //method that returns the Java object
 jobject getJavaObject(void)
 {
-	return jthiz;
+	return myJthiz;
 }
 //method that sets the Java object to a global variable
 void setJavaObject(jobject thiz)
 {
-	jthiz=thiz;
+	myJthiz=thiz;
 }
 //method that returns the Java environment
 JNIEnv* getJavaENV(void)
 {
-	return env;
+	return myEnv;
 }
 //method that sets the Java environment to a global variable
 void setJavaENV(JNIEnv *envir)
 {
-	env=envir;
+	myEnv=envir;
 }

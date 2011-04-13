@@ -14,7 +14,7 @@
 * You should have received a copy of the GNU Lesser General Public License
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
-
+/*
 #include "PCDebug.h"
 
 //function that implements the debug concept
@@ -32,19 +32,19 @@ void PCDebug(const char* msg, ...)
 
 	//getting the class that represents the java object thiz
 	jclass jcClass = env->GetObjectClass(thiz);
-	if(jcClass==NULL) { ERROR="GetObjectClass error"; goto ABORT; }
+	if(jcClass==NULL) { myError="GetObjectClass error"; goto ABORT; }
 	{
 	//getting the id of method testNative which has no parameters and returns void
 	jmethodID debug = env->GetMethodID(jcClass, "testNative", "(Ljava/lang/String;)V");
 	//calling the method testNative
 
-	if(debug==NULL)	{ ERROR="GetMethodID error"; goto ABORT; }
+	if(debug==NULL)	{ myError="GetMethodID error"; goto ABORT; }
 	jstring _jstring = env->NewStringUTF ((const char *) buffer);
 	env->CallVoidMethod(thiz, debug, _jstring);
-	ERROR="OK";
+	myError="OK";
 	}
 
 	ABORT:;
 
 
-}
+}*/

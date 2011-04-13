@@ -15,19 +15,26 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#include "PCDebug.h"
-#include "javaEssentials.h"
-#include "cbox_androidWiselib_debugConc_NativeConnection.h"
+
+
 #include <jni.h>
+#include "cbox_androidWiselib_debugConc_NativeConnection.h"
+#include "javaEssentials.h"
+#include "PCDebug.h"
+using namespace std;
 
 //function that tests the debug concept
 void testDebug(void)
 {
-	PCDebug("test test test test\n:)\n");
+	PCDebug("test test %d\n", 15);
 }
 
 
-
+/*
+ * Class:     cbox_androidWiselib_debugConc_NativeConnection
+ * Method:    debugConceptJNI
+ * Signature: (Ljava/lang/Object;)Ljava/lang/String;
+ */
 JNIEXPORT jstring JNICALL Java_cbox_androidWiselib_debugConc_NativeConnection_debugConceptJNI
   (JNIEnv *env, jobject nc, jobject thiz)
 {
@@ -37,7 +44,7 @@ JNIEXPORT jstring JNICALL Java_cbox_androidWiselib_debugConc_NativeConnection_de
 
 	//testing the debug feature
 	testDebug();
-	return env->NewStringUTF(ERROR.c_str());
+	return env->NewStringUTF(myError.c_str());
 }
 
 

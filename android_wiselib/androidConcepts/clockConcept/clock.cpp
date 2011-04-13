@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#include "timer.h"
+#include "clock.h"
 
 
 /*
