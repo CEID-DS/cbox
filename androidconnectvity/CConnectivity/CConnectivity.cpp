@@ -15,33 +15,59 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#include <jni.h>
-#include "javaEssentials.h"
+/*
+ * CConnectivity.cpp
+ *
+ *  Created on: Apr 13, 2011
+ *      Author: gkatzioura
+ */
 
-//string that holds the error(not used yet)
-string myError;
-//global variable that holds the Java environment
-JNIEnv *myEnv;
-//global variable that holds the Java object
-jobject myJthiz;
+#include "WifiListener.h"
+#include <cstring>
+#include <iostream>
+#include <strings.h>
+#include <pthread.h>
+#include <unistd.h>
 
-//method that returns the Java object
-jobject getJavaObject(void)
+using namespace cconnectivity;
+
+
+WifiListener* wifiListener = new WifiListener();
+void listener(void);
+
+int main()
 {
-	return myJthiz;
+	char t;
+
+	std::string command;
+
+	std::cout<<"Helper App for android debugging"<<std::endl;
+
+	//WifiListener* wifiListener = new WifiListener();
+
+	//wifiListener->Listener();
+
+	for(;;)
+	{
+		std::cout<<"debugshell$";
+		std::cin>>command;
+
+		if(command.find("listener",0)==0){
+			std::cout<<command<<std::endl;
+			wifiListener->Listener();	
+
+		}
+
+		if(command.find("exit",0)==0){
+			exit(1);
+		}
+
+	}
+	return 0;
 }
-//method that sets the Java object to a global variable
-void setJavaObject(jobject thiz)
+
+
+void listener(void)
 {
-	myJthiz=thiz;
-}
-//method that returns the Java environment
-JNIEnv* getJavaENV(void)
-{
-	return myEnv;
-}
-//method that sets the Java environment to a global variable
-void setJavaENV(JNIEnv *envir)
-{
-	myEnv=envir;
+    wifiListener->Listener();   
 }

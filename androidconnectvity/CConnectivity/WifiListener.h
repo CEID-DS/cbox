@@ -15,33 +15,40 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#include <jni.h>
-#include "javaEssentials.h"
+/*
+ * WifiListener.h
+ *
+ *  Created on: Apr 13, 2011
+ *      Author: gkatzioura
+ */
 
-//string that holds the error(not used yet)
-string myError;
-//global variable that holds the Java environment
-JNIEnv *myEnv;
-//global variable that holds the Java object
-jobject myJthiz;
+#ifndef WIFILISTENER_H_
+#define WIFILISTENER_H_
 
-//method that returns the Java object
-jobject getJavaObject(void)
-{
-	return myJthiz;
+#include <iostream>
+#include <fcntl.h>
+#include <string.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <stdio.h>
+#include <netinet/in.h>
+#include <resolv.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <pthread.h>
+
+namespace cconnectivity{
+class WifiListener {
+protected:
+	pthread_t listen_thread;
+public:
+	WifiListener();
+	virtual ~WifiListener();
+	void Listener();
+private:
+	int status;
+	static void* Working(void* t);
+};
 }
-//method that sets the Java object to a global variable
-void setJavaObject(jobject thiz)
-{
-	myJthiz=thiz;
-}
-//method that returns the Java environment
-JNIEnv* getJavaENV(void)
-{
-	return myEnv;
-}
-//method that sets the Java environment to a global variable
-void setJavaENV(JNIEnv *envir)
-{
-	myEnv=envir;
-}
+#endif /* WIFILISTENER_H_ */
