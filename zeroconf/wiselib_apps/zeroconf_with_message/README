@@ -1,0 +1,6 @@
+displaying a basic join algorith. put the folder "tree_join" under the wiselib/trunk/applications/ directory.
+
+compiling: cd to your wiselib/trunk/applications/tree_join
+and call make.
+
+run a simulation: ./tree_join -f test.conf
