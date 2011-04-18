@@ -79,7 +79,7 @@ public class Device extends Activity{
 			
 			
 			
-			dataSend = new DataSend(ipv4_addr);
+			dataSend = new DataSend(ipv4_addr.replace("/",""),"test.mp3");
 			dataSend.start();
 		}
 	};

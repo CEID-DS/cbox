@@ -46,7 +46,10 @@ public class Visible {
 			DatagramSocket visibleSocket = new DatagramSocket();
 			InetAddress IPAddress = InetAddress.getByName(getBroadcastIP());
 			byte[] sendData ;
-			String addr_string=ipv4_addr+blue_addr+ipv6_addr;
+			String addr_string="<ipv4_addr>"+ipv4_addr+"</ipv4_addr>"+"\n"
+			+"<blue_addr>"+blue_addr+"</blue_addr>"+"\n"
+			+"<ipv6_addr>"+ipv6_addr+"</ipv6_addr>"+"\n";
+			
 			sendData = addr_string.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
 		    visibleSocket.send(sendPacket);
