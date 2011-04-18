@@ -82,8 +82,8 @@ public class Authentication {
                     && consumerProperties.getProperty("oauth.consumerSecret") == null) {
 				
 	    		// Set Consumer Key and Secret
-	    		consumerProperties.setProperty("oauth.consumerKey", "wXYz9UhqIaJbbtY2CyeA");
-	    		consumerProperties.setProperty("oauth.consumerSecret", "nhEs7Ups99gXv6tFfIrpnE2LQ1ukoscurGgvfZljSjw");
+	    		consumerProperties.setProperty("oauth.consumerKey", "********************");
+	    		consumerProperties.setProperty("oauth.consumerSecret", "************************************");
 	    		
 	    		// Write properties to file
 	            output = currentActivity.openFileOutput(PROPERTIES_FILE, Context.MODE_PRIVATE);
@@ -113,8 +113,8 @@ public class Authentication {
 			  consumerProperties.setProperty("oauth.accessToken", accessToken.getToken());
 		  	  consumerProperties.setProperty("oauth.accessTokenSecret", accessToken.getTokenSecret());
           
-			  consumerProperties.setProperty("oauth.accessToken", "276870861-1EHdvbBP9U70q04Hcxf73Bc3a41Sj97lD9aA1896");
-		  	  consumerProperties.setProperty("oauth.accessTokenSecret", "k4AQjYhlDUiGYdZnQBqXtEWo8Rkhlr3ZANKiGX5jXI");
+			  consumerProperties.setProperty("oauth.accessToken", "********************************************");
+		  	  consumerProperties.setProperty("oauth.accessTokenSecret", "**************************************");
 		  	  // Store Access Token
 		  	  consumerProperties.store(output, PROPERTIES_FILE);
 		  	  
