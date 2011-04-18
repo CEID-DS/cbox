@@ -29,15 +29,18 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.Inet4Address;
 import java.net.InetAddress;
+import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
 public class DataSend extends Thread{
 
 	private String ipto;
+	private String data;
 	
-	public DataSend(String ip){
+	public DataSend(String ip,String item){
 		ipto = ip;
+		data = item;
 	}
 	
 	public void run(){
@@ -47,36 +50,75 @@ public class DataSend extends Thread{
 	private void sender(){
 		Log.v("TEST","send thread");
 		
+		int pieces;
+		
 		File sdCard = Environment.getExternalStorageDirectory();
 		sdCard.getPath();
-		String directory = sdCard.getPath()+"/cBox";
+		String path = sdCard.getPath()+"/cBox/"+data;
 		
-		Log.v("TEST",directory);
+		File file = new File(path);
 		
-		File cBoxdir = new File(directory);
+		Log.v("TEST",String.valueOf(file.length()));
 		
-		if(!cBoxdir.exists()){
-			cBoxdir.mkdirs();
-		}else{
+		if(file.length()>=1024){
+            pieces = (int)(file.length()/1024);
+            if (file.length()%1024!=0){
+                pieces++;
+                Log.v("TEST","Extra piece");
+            }
+            else
+                Log.v("TEST","Just pieces");
+        }
+        else{
+            pieces = 1;
+                Log.v("TEST","Only one piece");
+        }
+		
+		String mymess = null;
+		byte[] message = new byte[1024];
+		byte[] mybytes = new byte[1024];
+		
+		try {
 			
-		}
-		
-		File testdata = new File(directory+"/test.mp3");
-		
-		if(testdata.exists()){
+			Socket connectionSocket = new Socket(ipto,9876);
 			
-			testdata.length();
+			OutputStream outputStream = connectionSocket.getOutputStream();
+			InputStream inputStream = connectionSocket.getInputStream();
 			
-			Log.v("TEST",String.valueOf(testdata.length()));
-		
-			int pieces = (int) (testdata.length()/1024);
-			//int left = (int) (testdata.length()%1024);
+			mymess = "<tosent>"+data+"</tosent>"+"\n"
+            +"<data>"+String.valueOf(file.length())+"<data>"+"\n"
+            +"<splits>"+Integer.toString(pieces)+"</splits>"+"\n";
 			
-			if((int) (testdata.length()%1024)!=0){
-				pieces++;
+			message = mymess.getBytes();
+	
+			
+			outputStream.write(message,0,message.length);
+			Log.v("TEST","Send message");
+			
+			FileInputStream fis = new FileInputStream(file);
+			int a = 0;
+			
+			for(int i=0;i<pieces;i++){
+				a = fis.read(mybytes,0,mybytes.length);
+				outputStream.write(mybytes,0,mybytes.length);
 			}
 			
-			Log.v("TEST",Integer.toString(pieces));
+			 
+			
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Log.v("TEST","not a host");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Log.v("TEST","io");
+		}
+		
+		
+		
+		/*Log.v("TEST",Integer.toString(pieces));
 			
 			byte[] sendData = new byte[1024];
 			byte[] receiveData = new byte[1024];
@@ -134,7 +176,7 @@ public class DataSend extends Thread{
 				e.printStackTrace();
 			}
 			
-		}
+		}*/
 		
 		//Log.v("TEST",sdCard.getPath());
 		
