@@ -8,8 +8,6 @@
 #include <stdint.h>
 #include "delegate.hpp"
 
-#define MAX_EVENTS 3
-
 using namespace std;
 
 
@@ -22,7 +20,7 @@ public:
 	typedef delegate1<void, void*> timer_delegate_t;
 
 	//constructor that initializes all the necessary variables
-	AndroidTimerModel();
+	AndroidTimerModel(void);
 
 	//template method that sets a new event in the timer concept
 	template<typename T, void (T::*TMethod)(void*)>
@@ -43,12 +41,44 @@ private:
 	};
 	//declaring an array of 10 Resources structs
 	static struct Resources ResData[10];
-	static int best;
+	static const int MAX_EVENTS=10;
 };
 
-AndroidTimerModel::AndroidTimerModel()
+
+//method for just testing purpose TO BE REMOVED
+int AndroidTimerModel::callFirst(void)
 {
-	signal(SIGALRM,signalHandler);
+	int temp=33;
+
+	for(int i=0; i<MAX_EVENTS; i++)
+	{
+		if(ResData[i].time == 1000)
+		{
+			(ResData[i].membFunct)(ResData[i].data);
+		}
+	}
+
+
+	return temp;
+
+}
+
+void AndroidTimerModel::signalHandler(int signal)
+{
+
+	cout << "signal" << endl;
+
+	//if(signal==SIGALRM)
+	//{
+		callFirst();
+	//}
+
+}
+
+AndroidTimerModel::AndroidTimerModel(void)
+{
+
+	cout << "hellooo" << endl;
 
 	for(int i=0; i<MAX_EVENTS; i++)
 	{
@@ -58,7 +88,6 @@ AndroidTimerModel::AndroidTimerModel()
 	}
 
 }
-
 
 //template method that sets a new event in the timer concept
 template<typename T, void (T::*TMethod)(void*)>
@@ -70,9 +99,12 @@ int AndroidTimerModel:: set_timer(millis_t millis, T* obj, void *userdata)
 	return 0;
 
 }
+
 //private method that is called by set_timer to add an event to the timer
 int AndroidTimerModel::insert(millis_t millis, timer_delegate_t callback, void *userdata)
 {
+
+	signal(SIGALRM,signalHandler);
 	for(int i=0; i<MAX_EVENTS; i++)
 	{
 		if(ResData[i].size == -1)
@@ -91,36 +123,14 @@ int AndroidTimerModel::insert(millis_t millis, timer_delegate_t callback, void *
 	timerval.it_value.tv_usec = (millis % 1000) * 1000000;
 	setitimer(ITIMER_REAL,&timerval,NULL);
 
+	cout << timerval.it_value.tv_sec << "   " << timerval.it_value.tv_usec << "   " << endl;
+
 	return 0;
 
 }
 
-void AndroidTimerModel::signalHandler(int signal)
-{
-	if(signal==SIGALRM)
-	{
-		callFirst();
-	}
-
-}
-
-//method for just testing purpose TO BE REMOVED
-int AndroidTimerModel::callFirst(void)
-{
-	int temp=33;
-
-	for(int i=0; i<MAX_EVENTS; i++)
-	{
-		if(ResData[i].time == 15)
-		{
-			(ResData[i].membFunct)(ResData[i].data);
-		}
-	}
 
 
-	return temp;
-
-}
 
 #endif
 
