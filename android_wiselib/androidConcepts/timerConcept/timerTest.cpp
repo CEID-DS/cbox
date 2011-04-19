@@ -6,6 +6,7 @@
 #include <signal.h>
 #include <string.h>
 #include <string>
+#include <unistd.h>
 #include "timer.h"
 #include "testClass.h"
 
@@ -23,36 +24,32 @@ int main()
 	char *pointer = (char *) malloc(sizeof(50));
 	char *pointer2 = (char *) malloc(sizeof(50));
 	strncpy(pointer,":)", sizeof(":)"));
-	uint32_t timeval=2000303;
 
-	test.charHelloWorld(pointer);
 
-	
+	uint32_t timeval=5000000;
 	strncpy(pointer,"1st Call", sizeof("1st Call"));
-	
 	timer.set_timer<testClass, &testClass::charHelloWorld>(timeval, &test, pointer);
-	
-	timeval=4000303;
-	
+	//sleep(4);
+	cout << "--------------------------------------" << endl;
+
+	timeval=8000000;
 	strncpy(pointer2,"2nd Call", sizeof("2nd Call"));
-
-
-
 	timer.set_timer<testClass, &testClass::charHelloWorld>(timeval, &test, pointer2);
+	
+	//sleep(10);
+
+	cout << "--------------------------------------" << endl;
 
 	string *s1 = new string("3nd Call");
-
-	//cout << *s << endl;
-
-	timeval=2500303;
+	timeval=1000000;
 	timer.set_timer<testClass, &testClass::stringHelloWorld>(timeval, &test, s1);
 
-	string *s2 = new string("4nd Call");
+	cout << "--------------------------------------" << endl;
 
-	timeval=1500303;
+	string *s2 = new string("4nd Call");
+	timeval=12000000;
 	timer.set_timer<testClass, &testClass::stringHelloWorld>(timeval, &test, s2);
 
-	
 
 	while(1) { }
 
