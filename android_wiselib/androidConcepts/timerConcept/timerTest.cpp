@@ -5,11 +5,11 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <string.h>
-#include "delegate.hpp"
 #include "timer.h"
 //#include "timer.cpp"
 #include "testClass.h"
 using namespace std;
+
 
 
 int main()
@@ -20,19 +20,18 @@ int main()
 	testClass test;
 	char *pointer = (char *) malloc(sizeof(50));
 	strncpy(pointer,":)", sizeof(":)"));
-	uint32_t timeval=1000;
+	uint32_t timeval=1500303;
 
 	test.helloWorld(pointer);
-
-	//cout << pointer << endl << endl;
 
 	strncpy(pointer,":) This time the function was called by timer :)", sizeof(":) This time the function was called by timer :)"));
 
 	timer.set_timer<testClass, &testClass::helloWorld>(timeval, &test, pointer);
 
-	//timer.callFirst();
+	timeval=1900303;
 
-	//test();
+	strncpy(pointer,":) This time the function 2 was called by timer :)", sizeof(":) This time the function 2 was called by timer :)"));
+	timer.set_timer<testClass, &testClass::helloWorld>(timeval, &test, pointer);
 
 	while(1) { }
 
