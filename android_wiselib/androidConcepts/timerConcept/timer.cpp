@@ -1,6 +1,5 @@
 #include "timer.h"
-using namespace std;
-
+//initializer of static variable
 AndroidTimerModel::Resources AndroidTimerModel::ResData[];
 
 

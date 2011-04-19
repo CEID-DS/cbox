@@ -5,10 +5,9 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <string.h>
+#include <string>
 #include "timer.h"
-//#include "timer.cpp"
 #include "testClass.h"
-using namespace std;
 
 
 
@@ -16,26 +15,46 @@ int main()
 {
 
 	typedef uint32_t millis_t;
+	//declaring a new AndroidTimerMode object
 	AndroidTimerModel timer;
+	//declaring a new testClass object
 	testClass test;
+	//declaring char pointer to use the as the data to testClass functions
 	char *pointer = (char *) malloc(sizeof(50));
+	char *pointer2 = (char *) malloc(sizeof(50));
 	strncpy(pointer,":)", sizeof(":)"));
-	uint32_t timeval=1500303;
+	uint32_t timeval=2000303;
 
-	test.helloWorld(pointer);
+	test.charHelloWorld(pointer);
 
-	strncpy(pointer,":) This time the function was called by timer :)", sizeof(":) This time the function was called by timer :)"));
+	
+	strncpy(pointer,"1st Call", sizeof("1st Call"));
+	
+	timer.set_timer<testClass, &testClass::charHelloWorld>(timeval, &test, pointer);
+	
+	timeval=4000303;
+	
+	strncpy(pointer2,"2nd Call", sizeof("2nd Call"));
 
-	timer.set_timer<testClass, &testClass::helloWorld>(timeval, &test, pointer);
 
-	timeval=1900303;
 
-	strncpy(pointer,":) This time the function 2 was called by timer :)", sizeof(":) This time the function 2 was called by timer :)"));
-	timer.set_timer<testClass, &testClass::helloWorld>(timeval, &test, pointer);
+	timer.set_timer<testClass, &testClass::charHelloWorld>(timeval, &test, pointer2);
+
+	string *s1 = new string("3nd Call");
+
+	//cout << *s << endl;
+
+	timeval=2500303;
+	timer.set_timer<testClass, &testClass::stringHelloWorld>(timeval, &test, s1);
+
+	string *s2 = new string("4nd Call");
+
+	timeval=1500303;
+	timer.set_timer<testClass, &testClass::stringHelloWorld>(timeval, &test, s2);
+
+	
 
 	while(1) { }
-
-
 
 	return 0;
 }
