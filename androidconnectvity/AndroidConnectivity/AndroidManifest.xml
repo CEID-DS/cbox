@@ -11,10 +11,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<service android:name=".NetListener" android:process=":remote">
-			<intent-filter>
+		<service android:name=".NetListener" >
+			<!-- intent-filter> android:process=":remote"
 				<action android:name="com.cbox.androidconnectivity.NetListener"/>
-			</intent-filter>
+			</intent-filter-->
 		</service>
+		<service android:name=".BlueListener"/>
+		<service android:name=".NetTransfer"/>
+		<service android:name=".BlueTransfer"/>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
 </manifest>

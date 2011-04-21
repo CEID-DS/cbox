@@ -49,9 +49,13 @@ public class AndroidConnectivity extends Activity {
 	
 	public boolean onCreateOptionsMenu(Menu menu){
 		super.onCreateOptionsMenu(menu);
-		menu.add(0,0,0,"Start NetListener Service");
-		menu.add(0,1,0,"Bind NetListener Service");
-		menu.add(0,2,0,"Bind NetListener Interface");
+		menu.add(0,0,0,"NetListener On");
+		menu.add(0,1,0,"BlueListener On");
+		//menu.add(0,1,0,"Bind NetListener Service");
+		menu.add(0,2,0,"NetTransfer On");
+		//menu.add(0,2,0,"Bind NetListener Interface");
+		menu.add(0,3,0,"BlueTransfer On");
+		
 		return true;
 	}
 	
@@ -108,19 +112,6 @@ public class AndroidConnectivity extends Activity {
     	
     }
 	    
-    /*private void sendMessageToService(int intvaluetosend) {
-        if (mIsBound) {
-            if (mService != null) {
-                try {
-                    Message msg = Message.obtain(null, NetListener.MSG_SET_INT_VALUE, intvaluetosend, 0);
-                    msg.replyTo = mMessenger;
-                    mService.send(msg);
-                } catch (RemoteException e) {
-                }
-            }
-        }
-    }*/
-    
     void doBindService() {
         bindService(new Intent(this, NetListener.class), myConnection, Context.BIND_AUTO_CREATE);
         mIsBound = true;
@@ -147,16 +138,44 @@ public class AndroidConnectivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
 			case 0:
-				if(item.getTitle().equals("Start NetListener Service")){
-					item.setTitle("Stop NetListener Service");
+				if(item.getTitle().equals("NetListener On")){
+					item.setTitle("NetListener Off");
 		            startService(new Intent(AndroidConnectivity.this,NetListener.class));
-				}else if(item.getTitle().equals("Stop NetListener Service")){
-					item.setTitle("Start NetListener Service");
-					//doUnbindService();
+				}
+				else if(item.getTitle().equals("NetListener Off")){
+					item.setTitle("NetListener On");
 					stopService(new Intent(AndroidConnectivity.this, NetListener.class));
 				}
 				break;
 			case 1:
+				if(item.getTitle().equals("BlueListener On")){
+					item.setTitle("BlueListener Off");
+					startService(new Intent(AndroidConnectivity.this,NetListener.class));
+				}
+				else if(item.getTitle().equals("BlueListener Off")){
+					item.setTitle("BlueListener On");
+					stopService(new Intent(AndroidConnectivity.this,NetListener.class));
+				}
+				break;
+			case 2:
+				if(item.getTitle().equals("NetTransfer On")){
+					item.setTitle("NetTransfer Off");
+					startService(new Intent(AndroidConnectivity.this,NetTransfer.class));
+				}
+				else if(item.getTitle().equals("NetTransfer Off")){
+					item.setTitle("NetTransfer On");
+					stopService(new Intent(AndroidConnectivity.this,NetTransfer.class));
+				}
+				break;
+			case 3:
+				if(item.getTitle().equals("BlueTransfer On")){
+					item.setTitle("BlueTransfer Off");
+				}
+				else if(item.getTitle().equals("BlueTransfer Off")){
+					item.setTitle("BlueTransfer On");
+				}
+				break;
+			/*case 1:
 				if(item.getTitle().equals("Bind NetListener Service")){
 					item.setTitle("Unbind NetListener Service");
 		            doBindService();
@@ -164,22 +183,25 @@ public class AndroidConnectivity extends Activity {
 					item.setTitle("Bind NetListener Service");
 					doUnbindService();					
 				}
-				break;
-			case 2:
+				break;*/
+			/*case 2:
 				if(item.getTitle().equals("Bind NetListener Interface")){
 					item.setTitle("Unbind NetListener Interface");
 					connection = new MyRemoteConnection();
 					Intent i = new Intent();
-					i.setClassName("com.cbox.androidconnectivity", com.cbox.androidconnectivity.NetListener.class.getName());
+					Log.v("TEST","test help "+com.cbox.androidconnectivity.NetListener.class.getName());
+					
+					i.setClassName("com.cbox.androidconnectivity","com.cbox.androidconnectivity.NetListener");
 				    i.setAction(Remote.class.getName());
-				    boolean ret = bindService(i,connection,Context.BIND_AUTO_CREATE);
+				    bindService(i,connection,Context.BIND_AUTO_CREATE);
+
 				}
 				else if(item.getTitle().equals("Unbind NetListener Interface")){
 					item.setTitle("Bind NetListener Interface");
 					unbindService(connection);
 					connection=null;
 				}
-				break;
+				break;*/
 		}
 		return true;
 	}
