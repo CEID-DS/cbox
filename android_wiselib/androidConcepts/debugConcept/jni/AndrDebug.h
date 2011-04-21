@@ -1,3 +1,20 @@
+/******************************************************************************
+* This file is part of cbox.
+*
+* cbox is free software: you can redistribute it and/or modify
+* it under the terms of the GNU LesserGeneral Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* any later version.
+*
+* Cbox is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public License
+* along with cbox.  If not, see <http://www.gnu.org/licenses/>.
+*******************************************************************************/
+
 #ifndef PCDEBUG_H
 #define PCDEBUG_H
 
@@ -33,7 +50,7 @@ class AndrDebug{
 			if(jcClass==NULL) { myError="GetObjectClass error"; goto ABORT; }
 			{
 			//getting the id of method testNative which has no parameters and returns void
-			jmethodID debug = env->GetMethodID(jcClass, "testNative", "(Ljava/lang/String;)V");
+			jmethodID debug = env->GetMethodID(jcClass, "debugFromNative", "(Ljava/lang/String;)V");
 			//calling the method testNative
 
 			if(debug==NULL)	{ myError="GetMethodID error"; goto ABORT; }
