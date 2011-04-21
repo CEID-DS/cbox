@@ -6,8 +6,8 @@ include $(CLEAR_VARS)
 
 
 
-LOCAL_MODULE    := debugTest
-LOCAL_SRC_FILES := debugTest.cpp javaEssentials.cpp timer.cpp
+LOCAL_MODULE    := timerTest
+LOCAL_SRC_FILES := timerTest.cpp ../../../debugConcept/javaEssentials.cpp ../../timer.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)
 include $(BUILD_SHARED_LIBRARY)

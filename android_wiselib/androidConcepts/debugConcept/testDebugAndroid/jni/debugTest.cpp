@@ -15,9 +15,38 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#include "timer.h"
-//initializer of static variable
-AndroidTimerModel::Resources AndroidTimerModel::ResData[];
+
+
+#include <jni.h>
+#include "cbox_androidWiselib_debugConc_NativeConnection.h"
+#include "../../javaEssentials.h"
+#include "../../AndrDebug.h"
+using namespace std;
+
+//function that tests the debug concept
+void testDebug(void)
+{
+	AndrDebug testDebug;
+	testDebug.debug("test test %d\n", 15);
+}
+
+
+/*
+ * Class:     cbox_androidWiselib_debugConc_NativeConnection
+ * Method:    debugConceptJNI
+ * Signature: (Ljava/lang/Object;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_cbox_androidWiselib_debugConc_NativeConnection_debugConceptJNI
+  (JNIEnv *env, jobject nc, jobject thiz)
+{
+	//setting the global java environment variables
+	setJavaENV(env);
+	setJavaObject(thiz);
+
+	//testing the debug feature
+	testDebug();
+	return env->NewStringUTF(myError.c_str());
+}
 
 
 

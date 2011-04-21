@@ -288,4 +288,3 @@ int inline AndroidTimerModel::callFirst(void)
 
 
 #endif
-

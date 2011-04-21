@@ -34,7 +34,7 @@ public class NativeConnection {
 
     // This method loads as soon as the instance of the class is created
     static {
-    	System.loadLibrary("debugTest");
+    	System.loadLibrary("timerTest");
     }
     
 

@@ -119,7 +119,7 @@ public class Main extends Activity {
     /**
      * Simple method that is called through JNI from native method testDebug()
      */
-    public void testNative(String s)
+    public void debugFromNative(String s)
     {
     	
     	// prepare the alert box
