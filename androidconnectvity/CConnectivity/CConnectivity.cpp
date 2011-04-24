@@ -23,6 +23,7 @@
  */
 
 #include "WifiListener.h"
+#include "NetVisible.h"
 #include <cstring>
 #include <iostream>
 #include <strings.h>
@@ -33,6 +34,8 @@ using namespace cconnectivity;
 
 
 WifiListener* wifiListener = new WifiListener();
+NetVisible* netVisible = new NetVisible();
+
 void listener(void);
 
 int main()
@@ -49,19 +52,23 @@ int main()
 
 	for(;;)
 	{
-		std::cout<<"debugshell$";
+		std::cout<<"debugshell$ ";
 		std::cin>>command;
 
 		if(command.find("listener",0)==0){
-			std::cout<<command<<std::endl;
+			//std::cout<<command<<std::endl;
 			wifiListener->Listener();	
 
 		}
-
-		if(command.find("exit",0)==0){
+		else if(command.find("exit",0)==0){
 			exit(1);
 		}
-
+		else if(command.find("visible",0)==0){
+			//std::cout<<"asd"<<std::endl;
+			netVisible->Broadcast();
+		}
+		else
+			std::cout<<"No such command"<<std::endl;
 	}
 	return 0;
 }

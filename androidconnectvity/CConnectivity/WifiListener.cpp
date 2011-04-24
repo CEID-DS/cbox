@@ -58,13 +58,13 @@ void* WifiListener::Working(void* t){
 
 	std::cout<<"Listening Devices"<<std::endl;
 
-	//while(1){
+	while(1){
 		bytes_read = recvfrom(sock,recv_data,1024,0,(struct sockaddr *)&client_addr,(socklen_t*)&addr_len);
 
 		recv_data[1024]='\0';
 		printf("%s\n",recv_data);
 	pthread_exit(0);
-	//}
+	}
 
 }
 
