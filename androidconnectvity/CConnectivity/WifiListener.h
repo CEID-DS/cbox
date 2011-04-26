@@ -38,7 +38,6 @@
 #include <unistd.h>
 #include <pthread.h>
 
-namespace cconnectivity{
 class WifiListener {
 protected:
 	pthread_t listen_thread;
@@ -50,5 +49,4 @@ private:
 	int status;
 	static void* Working(void* t);
 };
-}
 #endif /* WIFILISTENER_H_ */

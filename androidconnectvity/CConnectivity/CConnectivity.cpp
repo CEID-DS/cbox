@@ -24,19 +24,21 @@
 
 #include "WifiListener.h"
 #include "NetVisible.h"
+#include "NetReceiver.h"
+#include "NetTransmiter.h"
 #include <cstring>
 #include <iostream>
 #include <strings.h>
 #include <pthread.h>
 #include <unistd.h>
 
-using namespace cconnectivity;
-
 
 WifiListener* wifiListener = new WifiListener();
 NetVisible* netVisible = new NetVisible();
+NetReceiver* netReceiver = new NetReceiver();
+NetTransmiter* netTransmiter = new NetTransmiter();
 
-void listener(void);
+//void listener(void);
 
 int main()
 {
@@ -55,7 +57,7 @@ int main()
 		std::cout<<"debugshell$ ";
 		std::cin>>command;
 
-		if(command.find("listener",0)==0){
+		if(command.find("netlistener",0)==0){
 			//std::cout<<command<<std::endl;
 			wifiListener->Listener();	
 
@@ -63,9 +65,15 @@ int main()
 		else if(command.find("exit",0)==0){
 			exit(1);
 		}
-		else if(command.find("visible",0)==0){
+		else if(command.find("netvisible",0)==0){
 			//std::cout<<"asd"<<std::endl;
 			netVisible->Broadcast();
+		}
+		else if(command.find("netreceiver",0)==0){
+			netReceiver->Receiver();
+		}
+		else if(command.find("nettransmiter",0)==0){
+			netTransmiter->Transmiter("a valid ip","a valid file");
 		}
 		else
 			std::cout<<"No such command"<<std::endl;
@@ -74,7 +82,7 @@ int main()
 }
 
 
-void listener(void)
+/*void listener(void)
 {
     wifiListener->Listener();   
-}
+}*/

@@ -25,7 +25,6 @@
 #include "WifiListener.h"
 
 
-namespace cconnectivity{
 WifiListener::WifiListener() {
 	status=-1;	
 }
@@ -74,5 +73,4 @@ void WifiListener::Listener(){
 	status=pthread_create(&listen_thread,NULL,Working,(void*)t);
 	//std::cout<<"status"<<status<<std::endl;
 	//Working();
-}
 }
