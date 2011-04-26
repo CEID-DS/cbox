@@ -57,9 +57,9 @@ void* NetTransmiter::Working(void *t){
 	out << filestatus.st_size;
 
 	buf="<tosent>"+bufb+"</tosent>"+"\n"
-            +"<data>"+out.str()+"<data>"+"\n";
+            +"<data>"+stringtoint(filestatus.st_size)+"</data>"+"\n";
 	out << pieces;
-    buf+="<splits>"+out.str()+"</splits>"+"\n";
+    buf+="<splits>"+stringtoint(pieces)+"</splits>"+"\n";
 
 	
 
@@ -83,6 +83,19 @@ void* NetTransmiter::Working(void *t){
 	connect(sock,(struct sockaddr *) &server_addr,addr_len);
 
 	send(sock,send_data,1024,0);
+
+	std::ifstream old_file (file,std::ios::in|std::ios::binary);
+
+	for(int i=0;i<pieces-1;i++){
+		old_file.read(send_data,1024);
+		send(sock,send_data,1024,0);
+	}
+
+	int left=filestatus.st_size-1024*(pieces-1);
+
+	old_file.read(send_data,left);
+	send(sock,send_data,1024,0);
+	old_file.close();
 
 	close(sock);
 	

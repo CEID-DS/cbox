@@ -16,8 +16,39 @@ NetReceiver::~NetReceiver() {
 	// TODO Auto-generated destructor stub
 }
 
-void* Working(void *t){
+void* NetReceiver::Working(void *t){
 
+	int newsock = (int)t;
+	char recv_data[1024];
+	std::string file;
+	int data,splits;
+
+	std::cout<<"Accepted"<<std::endl;
+
+	recv(newsock,recv_data,1024,0);
+
+	//std::cout<<"Received: "<<recv_data<<std::endl;
+
+	file=getfromtag("tosent>",recv_data);
+	std::cout<<"file "<<file<<std::endl;
+	data=atoi(getfromtag("data>",recv_data).c_str());
+	std::cout<<"data "<<data<<std::endl;	
+	splits=atoi(getfromtag("splits>",recv_data).c_str());
+	std::cout<<"splits "<<splits<<std::endl;
+
+	std::ofstream new_file (file.c_str(),std::ios::out|std::ios::binary);
+
+	for(int i=0;i<splits-1;i++){
+		recv(newsock,recv_data,1024,0);
+		new_file.write(recv_data,1024);
+	}
+
+	int left = data-1024*(splits-1);
+	recv(newsock,recv_data,1024,0);
+	new_file.write(recv_data,left);
+	new_file.close();
+		
+	close(newsock);
 }
 
 void NetReceiver::Receiver(){
@@ -26,7 +57,7 @@ void NetReceiver::Receiver(){
 
 	int sock,newsock;
 	int addr_len,bytes_read;
-	char recv_data[1024];
+	//char recv_data[1024];
 
 	struct sockaddr_in server_addr,client_addr;
 	socklen_t addr_size = 0;
@@ -46,14 +77,11 @@ void NetReceiver::Receiver(){
 	}
 
 	int chilen = sizeof(client_addr);
-	newsock=accept(sock,(struct sockaddr *) &client_addr,(socklen_t*)&chilen);
-	//accept(sock,(),sizeof);
-	std::cout<<"Accepted"<<std::endl;
+	while(1){
+		newsock=accept(sock,(struct sockaddr *) &client_addr,(socklen_t*)&chilen);
 
-	recv(newsock,recv_data,1024,0);
-
-	std::cout<<"Received: "<<recv_data<<std::endl;
+		pthread_create(&receive_thread,NULL,Working,(void*)newsock);
+	}
 	
-	close(newsock);
 	close(sock);
 }

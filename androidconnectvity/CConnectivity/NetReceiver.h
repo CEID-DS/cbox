@@ -9,6 +9,8 @@
 #define NETRECEIVER_H_
 
 #include <iostream>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
 #include <string.h>
 #include <stdlib.h>
@@ -20,6 +22,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <fstream>
+#include "StringFunctions.h"
 
 class NetReceiver {
 protected:

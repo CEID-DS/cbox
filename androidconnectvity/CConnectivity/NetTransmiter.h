@@ -23,6 +23,7 @@
 #include <sstream>
 #include <fstream>
 #include <sys/stat.h>
+#include "StringFunctions.h"
 
 class NetTransmiter {
 protected:
