@@ -51,7 +51,7 @@ public:
 	NetVisible();
 	virtual ~NetVisible();
 	void Broadcast();
-	void Tosent(std::string ip);
+	void Tosent(std::string ip,int action);
 	char my_ip[INET_ADDRSTRLEN];
 private:
     int status;

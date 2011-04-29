@@ -76,7 +76,10 @@ int main()
 			netTransmiter->Transmiter("192.168.1.9","testa.mp3");
 		}
 		else if(command.find("nettosend",0)==0){
-			netVisible->Tosent("192.168.1.9");
+			netVisible->Tosent("192.168.1.9",0);
+		}
+		else if(command.find("netrequest",0)==0){
+			netVisible->Tosent("192.168.1.9",1);
 		}
 		else
 			std::cout<<"No such command"<<std::endl;

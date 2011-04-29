@@ -41,9 +41,11 @@ void* NetReceiver::Working(void *t){
 	for(int i=0;i<splits-1;i++){
 		recv(newsock,recv_data,1024,0);
 		new_file.write(recv_data,1024);
+		std::cout<<i<<std::endl;
 	}
 
 	int left = data-1024*(splits-1);
+	std::cout<<left<<std::endl;
 	recv(newsock,recv_data,1024,0);
 	new_file.write(recv_data,left);
 	new_file.close();
