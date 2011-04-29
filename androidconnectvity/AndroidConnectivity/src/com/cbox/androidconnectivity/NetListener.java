@@ -20,7 +20,6 @@ package com.cbox.androidconnectivity;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.ArrayList;
@@ -135,15 +134,15 @@ public class NetListener extends Service {
     	thread.start();
     }
     
-    private void datamessage(InetAddress inetAddress ){
+    private void datamessage(InetAddress inetAddress,int id){
 
     	Bundle b = new Bundle();
 
-    	b.putString("ip", inetAddress.toString());
+    	msg = Message.obtain(null,id);
+    	
+    	b.putString("ip", inetAddress.toString().replace("/",""));
 
-    	msg = Message.obtain(null,NetTransfer.TO_RECEIVE);
 		msg.setData(b);
-		
     	
     	msg.replyTo = mMessenger;	
     	
@@ -171,9 +170,10 @@ public class NetListener extends Service {
 						 
 						datagramSocket.receive(receivePacket);
 						bufferstring= new String(receivePacket.getData());
-						//Log.v("TEST",bufferstring);
 						if(bufferstring.lastIndexOf("<datamessage/>")!=-1)
-							datamessage(receivePacket.getAddress());
+							datamessage(receivePacket.getAddress(),NetTransfer.TO_RECEIVE);
+						else if(bufferstring.lastIndexOf("<requiredata/>")!=-1)
+							datamessage(receivePacket.getAddress(),NetTransfer.TO_SENT);
 					}
 					
 				} catch (SocketException e) {

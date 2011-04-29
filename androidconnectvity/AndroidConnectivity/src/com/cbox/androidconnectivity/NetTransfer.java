@@ -18,15 +18,13 @@
 package com.cbox.androidconnectivity;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 
 import android.app.Service;
-import android.content.ComponentName;
+//import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
+//import android.content.ServiceConnection;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -50,10 +48,14 @@ public class NetTransfer extends Service {
 	static final int UNREGISTER_CLIENT = 2;
 	static final int SIMPLE_MESSAGE = 3;
 	static final int TO_RECEIVE = 4;
+	static final int TO_SENT = 5;
 	
     class IncomingHandler extends Handler {
         @Override
         public void handleMessage(Message mmsg) {
+        	Runnable runnable;
+        	Thread thread;
+        	
             switch (mmsg.what) {
             	case REGISTER_CLIENT:
             		
@@ -72,17 +74,23 @@ public class NetTransfer extends Service {
             		Log.v("TEST","simple message");
             	case TO_RECEIVE:
             		Log.v("TEST","to receive");
-            			fromaddr = mmsg.getData().getString("ip");
-            			Runnable runnable = new Transfer(serverSocket, fromaddr);
-            			Thread thread = new Thread(runnable);
-            			thread.start();
+            		fromaddr = mmsg.getData().getString("ip");
+            		runnable = new Transfer(serverSocket, fromaddr);
+            		thread = new Thread(runnable);
+            		thread.start();
+            	case TO_SENT:
+            		Log.v("TEST","to sent");
+            		fromaddr = mmsg.getData().getString("ip");
+            		runnable = new Transmit(fromaddr, "test.mp3");
+            		thread = new Thread(runnable);
+            		thread.start();
             	default:
             		super.handleMessage(mmsg);
             }
         }
     }
 	
-	private ServiceConnection mConnection = new ServiceConnection() {
+	/*private ServiceConnection mConnection = new ServiceConnection() {
 		
 		@Override
 		public void onServiceDisconnected(ComponentName name) {
@@ -104,7 +112,7 @@ public class NetTransfer extends Service {
 			}
 			
 		}
-	};
+	};*/
 	
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -117,7 +125,12 @@ public class NetTransfer extends Service {
 	}
 	
 	public void onDestroy(){
-		//Log.v("TEST","Netransfer ondestroy");
+		try {
+			serverSocket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void onStart(Intent intent,int startid){
