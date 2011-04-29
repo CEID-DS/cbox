@@ -1,3 +1,20 @@
+/******************************************************************************
+ * * This file is part of cbox.
+ * *
+ * * cbox is free software: you can redistribute it and/or modify
+ * * it under the terms of the GNU LesserGeneral Public License as published
+ * * by the Free Software Foundation, either version 3 of the License, or
+ * * any later version.
+ * *
+ * * Cbox is distributed in the hope that it will be useful,
+ * * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * * GNU Lesser General Public License for more details.
+ * *
+ * * You should have received a copy of the GNU Lesser General Public License
+ * * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
+ * *******************************************************************************/
+
 /*
  * NetVisible.cpp
  *
@@ -41,8 +58,32 @@ void* NetVisible::Working(void* t){
 		sendto(sock,send_data,1024,0,(struct sockaddr *)&server_addr,addr_len);
 		
 	}
-	std::cout<<"send"<<std::endl;
+	//std::cout<<"send"<<std::endl;
 	
+}
+
+void NetVisible::Tosent(std::string ip){
+
+	char send_data[1024];
+	int sock,addr_len;
+
+	char *t = new char[ip.size()+1];
+	std::copy(ip.begin(),ip.end(),t);
+	t[ip.size()]='\0';
+
+    struct sockaddr_in server_addr,client_addr;
+
+    sock = socket(AF_INET,SOCK_DGRAM,0);
+
+    addr_len = sizeof(struct sockaddr);
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(9876);
+
+    sprintf(send_data,"<datamessage/>");
+
+    server_addr.sin_addr.s_addr = inet_addr(t);
+    sendto(sock,send_data,1024,0,(struct sockaddr *)&server_addr,addr_len);
+
 }
 
 void NetVisible::Broadcast(){

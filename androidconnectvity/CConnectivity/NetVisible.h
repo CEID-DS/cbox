@@ -39,6 +39,10 @@
 #include <pthread.h>
 #include <sys/types.h>
 #include <ifaddrs.h>
+#include <sstream>
+#include <fstream>
+#include <sys/stat.h>
+#include "StringFunctions.h"
 
 class NetVisible {
 protected:
@@ -47,6 +51,7 @@ public:
 	NetVisible();
 	virtual ~NetVisible();
 	void Broadcast();
+	void Tosent(std::string ip);
 	char my_ip[INET_ADDRSTRLEN];
 private:
     int status;
