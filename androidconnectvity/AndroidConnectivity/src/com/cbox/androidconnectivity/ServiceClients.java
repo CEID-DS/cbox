@@ -1,6 +1,5 @@
 package com.cbox.androidconnectivity;
 
-import android.os.Message;
 import android.os.Messenger;
 
 public class ServiceClients {

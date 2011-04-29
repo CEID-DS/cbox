@@ -20,6 +20,8 @@ package com.cbox.androidconnectivity;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.ArrayList;
 
@@ -39,7 +41,6 @@ import android.util.Log;
 public class NetListener extends Service {
 	
 	DatagramSocket datagramSocket;
-	//private Runnable runnable = null;
 	private Thread thread = null;
 	Messenger tonetTransfer = null;
 	Message msg = null;
@@ -50,18 +51,9 @@ public class NetListener extends Service {
 	static final int REGISTER_CLIENT = 1;
     static final int UNREGISTER_CLIENT = 2;
     static final int SIMPLE_MESSAGE = 3;
-	//static final int MSG_SET_INT_VALUE=3;
-	//static final int MSG_SET_STRING_VALUE=4;
 	final Messenger mMessenger = new Messenger(new IncomingHandler());
 	
 	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
-		/*if (Remote.class.getName().equals(intent.getAction())){
-			Log.v("TEST","wut wut");
-			return remote;}
-		else{	
-			Log.v("TEST","not not ");
-		return myMessenger.getBinder();}*/
 		
 		return mMessenger.getBinder();
 	}
@@ -84,15 +76,6 @@ public class NetListener extends Service {
 			
 		}
 	}
-	
-	/*private final Remote.Stub remote = new Remote.Stub() {
-		
-		@Override
-		public int getCounter() throws RemoteException {
-			// TODO Auto-generated method stub
-			return 8;
-		}
-	};*/
 	
 	private ServiceConnection mConnection = new ServiceConnection() {
 		
@@ -152,6 +135,25 @@ public class NetListener extends Service {
     	thread.start();
     }
     
+    private void datamessage(InetAddress inetAddress ){
+
+    	Bundle b = new Bundle();
+
+    	b.putString("ip", inetAddress.toString());
+
+    	msg = Message.obtain(null,NetTransfer.TO_RECEIVE);
+		msg.setData(b);
+		
+    	
+    	msg.replyTo = mMessenger;	
+    	
+    	try {
+    		tonetTransfer.send(msg);
+    	}catch(RemoteException e){
+    		e.printStackTrace();
+    	}
+    }
+    
     private void makelistener(){
     	thread = new Thread() {
     		
@@ -167,24 +169,23 @@ public class NetListener extends Service {
 					while(true){
 						Log.v("TEST","thread");
 						 
-						Addresses temp = new Addresses();
 						datagramSocket.receive(receivePacket);
 						bufferstring= new String(receivePacket.getData());
-						Log.v("TEST",bufferstring);
-						
-						
+						//Log.v("TEST",bufferstring);
+						if(bufferstring.lastIndexOf("<datamessage/>")!=-1)
+							datamessage(receivePacket.getAddress());
 					}
 					
 				} catch (SocketException e) {
-					// TODO Auto-generated catch block
 					Log.v("TEST","problem");
 					e.printStackTrace();
 				} catch (IOException e) {
 					Log.v("TEST","problem");
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		};
     }
+    
+    
 }

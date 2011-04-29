@@ -17,13 +17,16 @@
 
 package com.cbox.androidconnectivity;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -32,10 +35,14 @@ import android.util.Log;
 
 public class NetTransfer extends Service {
 
+	private ServerSocket serverSocket = null;
+	private String fromaddr = null;
+	
 	Messenger tonetListener = null;
 	Message msg = null;
 	
 	ArrayList<ServiceClients> serviceClients = new ArrayList<ServiceClients>();
+	ArrayList<Addresses> senderAddresses = new ArrayList<Addresses>();
 	
 	final Messenger mMessenger = new Messenger(new IncomingHandler());
 	
@@ -64,7 +71,11 @@ public class NetTransfer extends Service {
             	case SIMPLE_MESSAGE:
             		Log.v("TEST","simple message");
             	case TO_RECEIVE:
-            		Log.v("TEST","to recive");
+            		Log.v("TEST","to receive");
+            			fromaddr = mmsg.getData().getString("ip");
+            			Runnable runnable = new Transfer(serverSocket, fromaddr);
+            			Thread thread = new Thread(runnable);
+            			thread.start();
             	default:
             		super.handleMessage(mmsg);
             }
@@ -92,14 +103,6 @@ public class NetTransfer extends Service {
 				// TODO: handle exception
 			}
 			
-			/*msg = Message.obtain(null,NetListener.SIMPLE_MESSAGE);
-			msg.replyTo = mMessenger;
-			
-			try {
-				tonetListener.send(msg);
-			} catch (Exception e) {
-				// TODO: handle exception
-			}*/
 		}
 	};
 	
@@ -118,6 +121,13 @@ public class NetTransfer extends Service {
 	}
 	
 	public void onStart(Intent intent,int startid){
-		//Log.v("TEST","Netransfer onstart");
+		try {
+			serverSocket = new ServerSocket(9876);		
+			Log.v("TEST","Socket initialized");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
