@@ -88,9 +88,14 @@ void* NetTransmiter::Working(void *t){
 	std::ifstream old_file (file,std::ios::in|std::ios::binary);
 
 	for(int i=0;i<pieces-1;i++){
-		old_file.read(send_data,1024);
-		send(sock,send_data,1024,0);
-		std::cout<<"send"<<std::endl;
+		char new_data[1024];
+
+		unsigned int lala;
+		old_file.read(new_data,1024);
+
+		send(sock,new_data,1024,0);
+		recv(sock,&lala,sizeof(lala),0);
+		std::cout<<i<<" checksum "<<lala<<" true checksum "<<std::endl;
 	}
 
 	int left=filestatus.st_size-1024*(pieces-1);
