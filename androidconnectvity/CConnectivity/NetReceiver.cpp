@@ -39,9 +39,14 @@ void* NetReceiver::Working(void *t){
 	std::ofstream new_file (file.c_str(),std::ios::out|std::ios::binary);
 
 	for(int i=0;i<splits-1;i++){
-		recv(newsock,recv_data,1024,0);
-		new_file.write(recv_data,1024);
-		std::cout<<i<<std::endl;
+		char get_data[1024];
+		unsigned int lala;	
+
+		recv(newsock,get_data,sizeof(get_data),0);
+		send(newsock,&lala,sizeof(lala),0);	
+	
+		std::cout<<i<<" checksum "<<getchecksum(get_data,1024)<<std::endl;
+		new_file.write(get_data,1024);
 	}
 
 	int left = data-1024*(splits-1);
@@ -86,4 +91,5 @@ void NetReceiver::Receiver(){
 	}
 	
 	close(sock);
+
 }
