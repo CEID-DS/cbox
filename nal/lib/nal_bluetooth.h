@@ -15,61 +15,27 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
+#ifndef NAL_BLUETOOTH_H
+#define NAL_BLUETOOTH_H
 
-// compile needs lpthread lib
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include "nal_address.h"
 
-#include <pthread.h>
-#include <stdio.h>
+class Ethernet{
 
-
-int main ()
-{
-
-enable();
-
-}
-
-
-void *receiver()
-{
-printf("Receiver is up and running...\n");
-
-/* receiver supposed to open 
-   a UDP socket connection and listen */
-connection();
-
-}
-
-
-// initialize node/machine
-int enable(){
-
-	int status;
-	long t;
-	pthread_t thread;
-
-        status = pthread_create(&thread, NULL, receiver, (void *)t);
-        if (status) return -1;
-
-	printf("Main is up and running...\n");
-
-	pthread_join(thread,NULL);
-}
-
-
-
-/* socket: 
- +parameters
- +create
- +bind
- +listen */
-int connection(){
-
-
-}
-
-
-
-
-
+	public:
+		int enable();
+		int disable();
+		int send(address addr,char *data,int size);
+		
+	private:
+		static int sockfd;//socket's file descriptor
+		static sockaddr_in address;//used for server initialization and they used for communication with others
+		static char data_buffer[1024];//buffer of the data received
+};
+		
+#endif
 

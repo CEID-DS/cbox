@@ -15,12 +15,27 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "../lib/nal_address.h"
+#ifndef NAL_ETHERNET_H
+#define NAL_ETHERNET_H
 
-int enable(struct addr address){
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include "nal_address.h"
 
-	printf("IPv4: %s\n", address.ipv4_addr);
+class Ethernet{
 
-}
+	public:
+		int enable();
+		int disable();
+		int send(address addr,char *data,int size);
+		
+	private:
+		static int sockfd;//socket's file descriptor
+		static sockaddr_in address;//used for server initialization and they used for communication with others
+		static char data_buffer[1024];//buffer of the data received
+};
+		
+#endif
+

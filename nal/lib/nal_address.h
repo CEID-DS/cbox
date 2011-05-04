@@ -15,11 +15,13 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#ifndef NAL_H
-#define NAL_H
+#ifndef NAL_ADDRESS_H
+#define NAL_ADDRESS_H
+
+typedef struct address address;
 
 /* address structure for info about connection's establishment */
-struct addr {
+struct address {
 
 	char ipv4_addr[16];	/* allocated string containing the ipv4 address */
 	char ipv6_addr[40];	/* allocated string containing the ipv6 address */
