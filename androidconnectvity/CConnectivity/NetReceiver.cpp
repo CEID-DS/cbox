@@ -18,7 +18,8 @@ NetReceiver::~NetReceiver() {
 
 void* NetReceiver::Working(void *t){
 
-	int newsock = (int)t;
+	int* datae = reinterpret_cast<int*>(t);
+	int newsock = *datae;
 	char recv_data[1024];
 	std::string file;
 	int data,splits;

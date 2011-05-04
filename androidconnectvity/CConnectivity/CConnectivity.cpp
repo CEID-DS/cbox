@@ -26,6 +26,7 @@
 #include "NetVisible.h"
 #include "NetReceiver.h"
 #include "NetTransmiter.h"
+#include "BlueUnit.h"
 #include <cstring>
 #include <iostream>
 #include <strings.h>
@@ -37,6 +38,7 @@ WifiListener* wifiListener = new WifiListener();
 NetVisible* netVisible = new NetVisible();
 NetReceiver* netReceiver = new NetReceiver();
 NetTransmiter* netTransmiter = new NetTransmiter();
+BlueUnit* blueUnit = new BlueUnit();
 
 //void listener(void);
 
@@ -81,14 +83,16 @@ int main()
 		else if(command.find("netrequest",0)==0){
 			netVisible->Tosent("192.168.1.9",1);
 		}
+		else if(command.find("scanbluetooth",0)==0){
+			//std::cout<<" Sacn bluetooth"<<std::endl;
+			blueUnit->Linker("scanbluetooth");
+		}
+		else if(command.find("bluereceiver")==0){
+			blueUnit->Linker("bluereceiver");	
+		}
 		else
 			std::cout<<"No such command"<<std::endl;
 	}
 	return 0;
 }
 
-
-/*void listener(void)
-{
-    wifiListener->Listener();   
-}*/
