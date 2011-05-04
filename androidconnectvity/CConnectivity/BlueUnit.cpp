@@ -41,7 +41,21 @@ void BlueUnit::Linker(std::string option){
 		pthread_create(&discover_thread,NULL,Discover,(void*)t);
 	else if(option.find("bluereceiver",0)==0)
 		BlueReceiver();
-	
+}
+
+void BlueUnit::BlueTransmiter(std::string mac,std::string file){
+
+	std::cout<<mac<<" "<<file<<std::endl;
+	mac +="\n";
+    mac +=file;
+
+    char *t = new char[mac.size()+1];
+    std::copy(mac.begin(),mac.end(),t);
+    t[mac.size()]='\0';
+
+    std::cout<<t<<std::endl;
+
+    pthread_create(&send_thread,NULL,Transmit,(void*)t);
 
 }
 
@@ -73,6 +87,83 @@ void BlueUnit::BlueReceiver(){
 
     close(s);
 
+}
+
+void* BlueUnit::Transmit(void *t){
+
+	int pieces,connection;
+ 	char send_data[1024];
+	struct sockaddr_rc addr = { 0 };
+ 
+	std::cout<<"Trasmiter Started"<<std::endl;
+    std::string buf = (char *)t;
+
+    int size=buf.find('\n');
+    char* mac=new char[size+1];
+    mac[size]='\0';
+    buf.copy(mac,size,0);
+
+    int sizeb = buf.size()-buf.find('\n');
+    char* file=new char[sizeb];
+    buf.copy(file,sizeb-1,size+1);
+    file[sizeb-1]='\0';
+    std::cout<<"file "<<file<<std::endl;
+
+    struct stat filestatus;
+    stat(file,&filestatus);
+
+    std::cout<<filestatus.st_size<<" "<<filestatus.st_size/1024<<std::endl;
+
+    if(filestatus.st_size>=1024){
+        pieces = filestatus.st_size/1024;
+        if(filestatus.st_size%1024!=0){
+            pieces++;
+        }
+    }
+    else{
+        pieces=1;
+    }
+
+    std::string bufb = file ;
+    std::stringstream out;
+    out << filestatus.st_size;
+
+    buf="<tosent>"+bufb+"</tosent>"+"\n"
+            +"<data>"+stringtoint(filestatus.st_size)+"</data>"+"\n";
+    out << pieces;
+    buf+="<splits>"+stringtoint(pieces)+"</splits>"+"\n";
+
+    buf.copy(send_data,buf.size(),0);
+
+	connection = socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM);
+	addr.rc_family = AF_BLUETOOTH;
+	addr.rc_channel = (uint8_t) 1;
+	str2ba( mac, &addr.rc_bdaddr );
+
+	connect(connection, (struct sockaddr *)&addr, sizeof(addr));
+
+    write(connection, send_data, 1024);
+
+    std::ifstream old_file (file,std::ios::in|std::ios::binary);
+
+    for(int i=0;i<pieces-1;i++){
+        char new_data[1024];
+
+        unsigned int acknowledge;
+        old_file.read(new_data,1024);
+
+        write(connection,new_data,1024);
+        read(connection,&acknowledge,sizeof(acknowledge));
+        std::cout<<i<<" checksum "<<acknowledge<<" true checksum "<<std::endl;
+    }
+
+    int left=filestatus.st_size-1024*(pieces-1);
+
+    old_file.read(send_data,left);
+    write(connection,send_data,1024);
+    old_file.close();	
+	
+	close(connection);
 }
 
 void* BlueUnit::Transfer(void *t){
@@ -121,7 +212,6 @@ void* BlueUnit::Transfer(void *t){
 
 void* BlueUnit::Discover(void *t){
 
-	(std::list <Bluedevice> *)t;
 
 	//char* a = reinterpret_cast<char*>(t);
 	//(char*)t;

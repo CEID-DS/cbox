@@ -90,6 +90,9 @@ int main()
 		else if(command.find("bluereceiver")==0){
 			blueUnit->Linker("bluereceiver");	
 		}
+		else if(command.find("bluetransmiter",0)==0){
+			blueUnit->BlueTransmiter("00:19:0E:0B:6E:15","test.mp3");
+		}
 		else
 			std::cout<<"No such command"<<std::endl;
 	}

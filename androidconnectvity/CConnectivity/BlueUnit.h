@@ -29,7 +29,6 @@
 #include <sys/stat.h>
 #include <fstream>
 #include <iostream>
-#include <boost/thread.hpp>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -51,12 +50,13 @@ public:
 	virtual ~BlueUnit();
 	void Linker(std::string option);
 	void BlueReceiver();
+	void BlueTransmiter(std::string mac,std::string file);
 	struct Bluedevice{
 		char addr[19];
 		char name[248];
 	};
+
 	char* buffer; 	
-	std::list <Bluedevice> *mydevices;
 	
 private:
 	static void* Discover(void *t);
