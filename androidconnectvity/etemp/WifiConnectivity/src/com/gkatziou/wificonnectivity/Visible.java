@@ -1,6 +1,22 @@
+/******************************************************************************
+* This file is part of cbox.
+* 
+* cbox is free software: you can redistribute it and/or modify
+* it under the terms of the GNU LesserGeneral Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* any later version.
+* 
+* Cbox is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+* 
+* You should have received a copy of the GNU Lesser General Public License
+* along with cbox.  If not, see <http://www.gnu.org/licenses/>.
+*******************************************************************************/
+
 package com.gkatziou.wificonnectivity;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -29,8 +45,12 @@ public class Visible {
 		try {
 			DatagramSocket visibleSocket = new DatagramSocket();
 			InetAddress IPAddress = InetAddress.getByName(getBroadcastIP());
-			byte[] sendData = new byte[1024];
-			sendData = getLocalIpAddress().getBytes();
+			byte[] sendData ;
+			String addr_string="<ipv4_addr>"+ipv4_addr+"</ipv4_addr>"+"\n"
+			+"<blue_addr>"+blue_addr+"</blue_addr>"+"\n"
+			+"<ipv6_addr>"+ipv6_addr+"</ipv6_addr>"+"\n";
+			
+			sendData = addr_string.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
 		    visibleSocket.send(sendPacket);
 		    visibleSocket.close();

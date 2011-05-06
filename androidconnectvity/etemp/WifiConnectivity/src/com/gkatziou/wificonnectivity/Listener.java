@@ -1,22 +1,39 @@
+/******************************************************************************
+* This file is part of cbox.
+* 
+* cbox is free software: you can redistribute it and/or modify
+* it under the terms of the GNU LesserGeneral Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* any later version.
+* 
+* Cbox is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+* 
+* You should have received a copy of the GNU Lesser General Public License
+* along with cbox.  If not, see <http://www.gnu.org/licenses/>.
+*******************************************************************************/
+
 package com.gkatziou.wificonnectivity;
 
-import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
-
+import java.util.ArrayList;
 import android.app.Service;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.gkatziou.wificonnectivity.provider.MyNodes;
 
 public class Listener extends Service {
 	
 	DatagramSocket udpsocket;
-	private Thread sthread = null;
-	
+	private Thread sthread ;
+	ArrayList<Addresses> myaddrs = new ArrayList<Addresses>();
 	
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -29,29 +46,49 @@ public class Listener extends Service {
 			public void run(){
 				Log.v("TEST","Server start");
 	            byte[] receiveData = new byte[1024];
-	            byte[] sendData = new byte[1024];
+	            DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
+	            String sentence = null;
 	            
 	            try {
-	            	Log.v("TEST","asd");
-	            	
+	            	//InetAddress servAddr = InetAddress.getByName("0.0.0.0");
+	            	Log.v("TEST","The inet");
+	            		            	
 					udpsocket = new DatagramSocket(9876);
 					
 					while(true){
-						DatagramPacket receivePacket = new DatagramPacket(receiveData,receiveData.length);
+					
+						Addresses temp = new Addresses();
+						
 						udpsocket.receive(receivePacket);
-						String sentence = new String(receivePacket.getData());
+						sentence = new String(receivePacket.getData());
+						//both ok
+						temp.ipv4_addr=receivePacket.getAddress().toString();
+							//sentence.substring(0,12);
+						temp.blue_addr=sentence.substring(12,30);
+						temp.ipv6_addr=sentence.substring(30,70);
+						
+						ContentValues values = new ContentValues();
+						
+						values.put(MyNodes.Node.ipv4_addr,temp.ipv4_addr);
+						values.put(MyNodes.Node.blue_addr,temp.blue_addr);
+						values.put(MyNodes.Node.ipv6_addr,temp.ipv6_addr);
+						getContentResolver().insert(MyNodes.Node.CONTENT_URI, values);
+						
+						myaddrs.add(temp);
+						
 						Log.v("TEST",sentence);
 					}
 					
 					
+					
 				} catch (SocketException e) {
 					// TODO Auto-generated catch block
-					Log.v("TEST","fail");
+					Log.v("TEST","sock fail");
 					e.printStackTrace();
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					Log.v("TEST","fail");
+					Log.v("TEST","exeption fail");
 				}
 
 			}
@@ -67,6 +104,7 @@ public class Listener extends Service {
 	
 	public void onDestroy(){
 		super.onDestroy();
+		udpsocket.close();
 		sthread.stop();
 		Log.v("TEST","Listener Stop");
 	}
@@ -75,6 +113,4 @@ public class Listener extends Service {
 		Log.v("TEST","onstart");
 		sthread.start();
 	}
-	
-	
 }

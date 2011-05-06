@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="fill_parent"
+              android:orientation="vertical" >
+    <TextView android:id="@+id/DefaultText"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/hello" />
+    <Button android:id="@+id/ShowTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dip"
+            android:layout_gravity="right"
+            android:text="Test concepts"/>
+    <TextView android:id="@+id/RetrievedText"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" />
+</TableLayout>
