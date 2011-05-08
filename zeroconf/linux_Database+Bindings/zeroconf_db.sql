@@ -13,14 +13,15 @@ create table DNSTable
 
 create table services
 (
-	hostname char(20) not null,  /*foreign key of DNSTable ?*/
+	hostname char(20) not null,
 	serviceType char(15) not null,
 	protocol char(5) not null,
-	interface char(10),
+	interface char(10) not null,
 	port int(5),
 	TXTDATA char(20),
-	advertised bool,
-	questioned bool,
+	TTL int(10) default '0',
+	advertised bool default '0',
+	questioned bool default '0',
 	primary key(hostname,serviceType),
 	foreign key(hostname) references DNSTable(hostname)
 	on delete cascade on update cascade
@@ -31,11 +32,12 @@ create table myServices
 	hostname char(20) not null,
 	serviceType char(15) not null,
 	protocol char(5) not null,
-	interface char(10),
+	interface char(10) not null,
 	port int(5),
 	TXTDATA char(20),
-	advertised bool,
-	questioned bool,
+	TTL int(10) default '0',
+	advertised bool default '0',
+	questioned bool default '0',
 	primary key(hostname,serviceType)
 )engine=innoDB default character set utf8 collate utf8_general_ci;
 

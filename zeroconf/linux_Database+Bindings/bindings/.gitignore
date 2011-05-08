@@ -1,0 +1,7 @@
+# Lines starting with '#' are considered comments.
+#This file, tells git to ignore certain files(i.e. eclipse generated files)
+
+#ignore .o files
+*.o
+#ignore executable
+bindings
