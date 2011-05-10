@@ -1,0 +1,2631 @@
+init_apps: init_examples(sc); init_external_application(sc); init_topology(sc); init_reading(sc);
+Initialising examples
+Initialising External_Application  Shawn module
+Initialising Wiselib-Shawn-Standalone module
+init_topology_elevation
+init_topology_generator
+init_topology_node_gen
+init_topology_node_mod
+init_topology_point_gen
+init_topology_point_mod
+init_topology_topology
+init_legacyapps: init_wiselib(sc);
+Initialising Wiselib-Shawn module
+Simulation: Running task 'prepare_world'
+DiskGraphModel: Transmission range set to [2]
+Simulation: Task done 'prepare_world'
+Simulation: Running task 'rect_world'
+Simulation: Task done 'rect_world'
+Simulation: Running task 'simulation'
+------------------------------ BEGIN ITERATION 0
+0
+
+setting mode 1 size:255
+
+services we have: 0, (TTL:0.000000)
+ (0 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 323
+1
+(1 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 323
+2
+3
+4
+5
+6
+7
+8
+9
+------------------------------- DONE ITERATION 0
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 1
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+1: resolving hostname alekos.loc
+1: my new hostname is alekos_10.loc
+my new ip is 192.168.1.124receive participate(2) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+0: resolving hostname alekos.loc
+0: my new hostname is alekos_9.loc
+my new ip is 192.168.1.239receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+------------------------------- DONE ITERATION 1
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 2
+receive participate(3) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+------------------------------- DONE ITERATION 2
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 3
+receive participate(8) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 3
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 4
+------------------------------- DONE ITERATION 4
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 5
+(1 - 192.168.1.124 - alekos_10.loc)sending participation message 1
+to megethos einai 323
+(0 - 192.168.1.239 - alekos_9.loc)sending participation message 1
+to megethos einai 323
+------------------------------- DONE ITERATION 5
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 6
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(2) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+found an outsider, i must reply to him
+------------------------------- DONE ITERATION 6
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 7
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(0) from (192.168.1.109)
+eimai o 0:m_data.source_host=alekos_9.loc
+0 === my_host = alekos_9.loc & source_host = alekos_9.loc 
+(0)WOW someone has my hostname.... i must change it?
+0: resolving hostname alekos_9.loc
+0: my new hostname is alekos_9_9.loc
+receive participate(2) from (192.168.1.109)
+receive participate(4) from (192.168.1.109)
+receive participate(8) from (192.168.1.109)
+------------------------------- DONE ITERATION 7
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 8
+receive participate(8) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(3) from (192.168.1.109)
+receive participate(5) from (192.168.1.109)
+receive participate(6) from (192.168.1.109)
+receive participate(7) from (192.168.1.109)
+------------------------------- DONE ITERATION 8
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 9
+receive participate(1) from (192.168.1.109)
+eimai o 0:m_data.source_host=alekos_9.loc
+------------------------------- DONE ITERATION 9
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 10
+(1 - 192.168.1.124 - alekos_10.loc)sending participation message 2
+to megethos einai 323
+(0 - 192.168.1.239 - alekos_9_9.loc)sending participation message 1
+to megethos einai 323
+------------------------------- DONE ITERATION 10
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 11
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(2) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 11
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 12
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 12
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 13
+receive participate(8) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 13
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 14
+------------------------------- DONE ITERATION 14
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 15
+(1 - 192.168.1.124 - alekos_10.loc)sending participation message 3
+to megethos einai 323
+(0 - 192.168.1.239 - alekos_9_9.loc)sending participation message 2
+to megethos einai 323
+------------------------------- DONE ITERATION 15
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 16
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(2) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 16
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 17
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 17
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 18
+receive participate(8) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 18
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 19
+------------------------------- DONE ITERATION 19
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 20
+1:: i'm going in!!
+(1)sending hello to all
+(0 - 192.168.1.239 - alekos_9_9.loc)sending participation message 3
+to megethos einai 323
+------------------------------- DONE ITERATION 20
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 21
+receive hello(0)receive hello(5)receive hello(6)receive hello(7)receive participate(1) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 21
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 22
+receive hello(2)receive hello(4)receive hello(9)receive welcome(1) from (192.168.1.239)
+receive hello(3)receive welcome(1) from (192.168.1.105)
+receive welcome(1) from (192.168.1.106)
+receive welcome(1) from (192.168.1.107)
+receive participate(7) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 22
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 23
+receive hello(8)------------------------------- DONE ITERATION 23
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 24
+receive welcome(1) from (192.168.1.102)
+receive welcome(1) from (192.168.1.104)
+receive welcome(1) from (192.168.1.109)
+receive welcome(1) from (192.168.1.103)
+------------------------------- DONE ITERATION 24
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 25
+0:: i'm going in!!
+(0)sending hello to all
+------------------------------- DONE ITERATION 25
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 26
+receive welcome(1) from (192.168.1.108)
+receive hello(1)receive hello(2)receive hello(4)receive hello(5)receive hello(6)receive hello(9)------------------------------- DONE ITERATION 26
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 27
+receive hello(7)receive welcome(0) from (192.168.1.124)
+receive hello(3)receive hello(8)receive welcome(0) from (192.168.1.102)
+receive welcome(0) from (192.168.1.104)
+receive welcome(0) from (192.168.1.105)
+receive welcome(0) from (192.168.1.106)
+receive welcome(0) from (192.168.1.109)
+------------------------------- DONE ITERATION 27
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 28
+------------------------------- DONE ITERATION 28
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 29
+receive welcome(0) from (192.168.1.107)
+receive welcome(0) from (192.168.1.103)
+receive welcome(0) from (192.168.1.108)
+------------------------------- DONE ITERATION 29
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 30
+file read!(TTL:20000.000000)
+ advertising app: _apt_proxy
+------------------------------- DONE ITERATION 30
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 31
+(1)advertisement(192.168.1.239)(TTL:20000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.239)(TTL:20000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.239)(TTL:20000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.239)(TTL:20000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.239)(TTL:20000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.239)(TTL:20000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 31
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 32
+(7)advertisement(192.168.1.239)(TTL:20000.000000)(_apt_proxy)
+(3)advertisement(192.168.1.239)(TTL:20000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.239)(TTL:20000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 32
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 33
+------------------------------- DONE ITERATION 33
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 34
+------------------------------- DONE ITERATION 34
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 35
+------------------------------- DONE ITERATION 35
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 36
+------------------------------- DONE ITERATION 36
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 37
+------------------------------- DONE ITERATION 37
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 38
+------------------------------- DONE ITERATION 38
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 39
+------------------------------- DONE ITERATION 39
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 40
+------------------------------- DONE ITERATION 40
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 41
+------------------------------- DONE ITERATION 41
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 42
+------------------------------- DONE ITERATION 42
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 43
+------------------------------- DONE ITERATION 43
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 44
+------------------------------- DONE ITERATION 44
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 45
+------------------------------- DONE ITERATION 45
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 46
+------------------------------- DONE ITERATION 46
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 47
+------------------------------- DONE ITERATION 47
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 48
+------------------------------- DONE ITERATION 48
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 49
+file read!(TTL:20000.000000)
+ (0)(192.168.1.239)myService expired 0.000000
+------------------------------- DONE ITERATION 49
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 50
+(5)(192.168.1.239)service expired, sending query 0.000000
+(2)(192.168.1.239)service expired, sending query 0.000000
+(4)(192.168.1.239)service expired, sending query 0.000000
+(9)(192.168.1.239)service expired, sending query 0.000000
+(1)(192.168.1.239)service expired, sending query 0.000000
+(6)(192.168.1.239)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 50
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 51
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 51
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 52
+(1)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 52
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 53
+(7)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(3)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 53
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 54
+------------------------------- DONE ITERATION 54
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 55
+------------------------------- DONE ITERATION 55
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 56
+------------------------------- DONE ITERATION 56
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 57
+------------------------------- DONE ITERATION 57
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 58
+------------------------------- DONE ITERATION 58
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 59
+------------------------------- DONE ITERATION 59
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 60
+------------------------------- DONE ITERATION 60
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 61
+------------------------------- DONE ITERATION 61
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 62
+------------------------------- DONE ITERATION 62
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 63
+------------------------------- DONE ITERATION 63
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 64
+------------------------------- DONE ITERATION 64
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 65
+------------------------------- DONE ITERATION 65
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 66
+------------------------------- DONE ITERATION 66
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 67
+------------------------------- DONE ITERATION 67
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 68
+------------------------------- DONE ITERATION 68
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 69
+file read!(TTL:20000.000000)
+ (0)(192.168.1.239)myService expired 0.000000
+------------------------------- DONE ITERATION 69
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 70
+(5)(192.168.1.239)service expired, sending query 0.000000
+(2)(192.168.1.239)service expired, sending query 0.000000
+(4)(192.168.1.239)service expired, sending query 0.000000
+(6)(192.168.1.239)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 70
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 71
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 71
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 72
+(1)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 72
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 73
+(7)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(3)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 73
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 74
+------------------------------- DONE ITERATION 74
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 75
+------------------------------- DONE ITERATION 75
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 76
+------------------------------- DONE ITERATION 76
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 77
+------------------------------- DONE ITERATION 77
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 78
+------------------------------- DONE ITERATION 78
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 79
+------------------------------- DONE ITERATION 79
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 80
+------------------------------- DONE ITERATION 80
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 81
+------------------------------- DONE ITERATION 81
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 82
+------------------------------- DONE ITERATION 82
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 83
+------------------------------- DONE ITERATION 83
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 84
+------------------------------- DONE ITERATION 84
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 85
+------------------------------- DONE ITERATION 85
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 86
+------------------------------- DONE ITERATION 86
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 87
+------------------------------- DONE ITERATION 87
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 88
+------------------------------- DONE ITERATION 88
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 89
+file read!(TTL:20000.000000)
+ (0)(192.168.1.239)myService expired 0.000000
+------------------------------- DONE ITERATION 89
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 90
+(5)(192.168.1.239)service expired, sending query 0.000000
+(2)(192.168.1.239)service expired, sending query 0.000000
+(4)(192.168.1.239)service expired, sending query 0.000000
+(9)(192.168.1.239)service expired, sending query 0.000000
+(1)(192.168.1.239)service expired, sending query 0.000000
+(6)(192.168.1.239)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 90
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 91
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 91
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 92
+(1)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 92
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 93
+(7)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(3)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 93
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 94
+------------------------------- DONE ITERATION 94
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 95
+------------------------------- DONE ITERATION 95
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 96
+------------------------------- DONE ITERATION 96
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 97
+------------------------------- DONE ITERATION 97
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 98
+------------------------------- DONE ITERATION 98
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 99
+------------------------------- DONE ITERATION 99
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 100
+------------------------------- DONE ITERATION 100
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 101
+------------------------------- DONE ITERATION 101
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 102
+------------------------------- DONE ITERATION 102
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 103
+------------------------------- DONE ITERATION 103
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 104
+------------------------------- DONE ITERATION 104
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 105
+------------------------------- DONE ITERATION 105
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 106
+------------------------------- DONE ITERATION 106
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 107
+------------------------------- DONE ITERATION 107
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 108
+------------------------------- DONE ITERATION 108
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 109
+file read!(TTL:20000.000000)
+ (0)(192.168.1.239)myService expired 0.000000
+------------------------------- DONE ITERATION 109
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 110
+(5)(192.168.1.239)service expired, sending query 0.000000
+(2)(192.168.1.239)service expired, sending query 0.000000
+(4)(192.168.1.239)service expired, sending query 0.000000
+(6)(192.168.1.239)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 110
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 111
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 111
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 112
+(1)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 112
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 113
+(7)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(3)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 113
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 114
+------------------------------- DONE ITERATION 114
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 115
+------------------------------- DONE ITERATION 115
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 116
+------------------------------- DONE ITERATION 116
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 117
+------------------------------- DONE ITERATION 117
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 118
+------------------------------- DONE ITERATION 118
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 119
+------------------------------- DONE ITERATION 119
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 120
+------------------------------- DONE ITERATION 120
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 121
+------------------------------- DONE ITERATION 121
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 122
+------------------------------- DONE ITERATION 122
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 123
+------------------------------- DONE ITERATION 123
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 124
+------------------------------- DONE ITERATION 124
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 125
+------------------------------- DONE ITERATION 125
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 126
+------------------------------- DONE ITERATION 126
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 127
+------------------------------- DONE ITERATION 127
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 128
+------------------------------- DONE ITERATION 128
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 129
+file read!(TTL:20000.000000)
+ (0)(192.168.1.239)myService expired 0.000000
+------------------------------- DONE ITERATION 129
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 130
+(5)(192.168.1.239)service expired, sending query 0.000000
+(2)(192.168.1.239)service expired, sending query 0.000000
+(4)(192.168.1.239)service expired, sending query 0.000000
+(9)(192.168.1.239)service expired, sending query 0.000000
+(1)(192.168.1.239)service expired, sending query 0.000000
+(6)(192.168.1.239)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 130
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 131
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 131
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 132
+(1)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 132
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 133
+(7)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(3)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.239)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 133
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 134
+------------------------------- DONE ITERATION 134
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 135
+------------------------------- DONE ITERATION 135
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 136
+------------------------------- DONE ITERATION 136
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 137
+------------------------------- DONE ITERATION 137
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 138
+------------------------------- DONE ITERATION 138
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 139
+------------------------------- DONE ITERATION 139
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 140
+------------------------------- DONE ITERATION 140
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 141
+------------------------------- DONE ITERATION 141
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 142
+------------------------------- DONE ITERATION 142
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 143
+------------------------------- DONE ITERATION 143
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 144
+------------------------------- DONE ITERATION 144
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 145
+------------------------------- DONE ITERATION 145
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 146
+------------------------------- DONE ITERATION 146
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 147
+------------------------------- DONE ITERATION 147
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 148
+------------------------------- DONE ITERATION 148
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 149
+file read!(TTL:20000.000000)
+ (0)(192.168.1.239)myService expired 0.000000
+------------------------------- DONE ITERATION 149
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+Simulation: Task done 'simulation'
+init_apps: init_examples(sc); init_external_application(sc); init_topology(sc); init_reading(sc);
+Initialising examples
+Initialising External_Application  Shawn module
+Initialising Wiselib-Shawn-Standalone module
+init_topology_elevation
+init_topology_generator
+init_topology_node_gen
+init_topology_node_mod
+init_topology_point_gen
+init_topology_point_mod
+init_topology_topology
+init_legacyapps: init_wiselib(sc);
+Initialising Wiselib-Shawn module
+Simulation: Running task 'prepare_world'
+DiskGraphModel: Transmission range set to [2]
+Simulation: Task done 'prepare_world'
+Simulation: Running task 'rect_world'
+Simulation: Task done 'rect_world'
+Simulation: Running task 'simulation'
+------------------------------ BEGIN ITERATION 0
+0
+
+setting mode 1 size:255
+
+services we have: 0, (TTL:0.000000)
+ (0 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 323
+1
+(1 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 323
+2
+3
+4
+5
+6
+7
+8
+9
+------------------------------- DONE ITERATION 0
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 1
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+1: resolving hostname alekos.loc
+1: my new hostname is alekos_4.loc
+my new ip is 192.168.1.26receive participate(4) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+0: resolving hostname alekos.loc
+0: my new hostname is alekos_3.loc
+my new ip is 192.168.1.38receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+------------------------------- DONE ITERATION 1
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 2
+receive participate(3) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 2
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 3
+------------------------------- DONE ITERATION 3
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 4
+------------------------------- DONE ITERATION 4
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 5
+(1 - 192.168.1.26 - alekos_4.loc)sending participation message 1
+to megethos einai 323
+(0 - 192.168.1.38 - alekos_3.loc)sending participation message 1
+to megethos einai 323
+------------------------------- DONE ITERATION 5
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 6
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+found an outsider, i must reply to him
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(4) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+------------------------------- DONE ITERATION 6
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 7
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(0) from (192.168.1.104)
+eimai o 0:m_data.source_host=alekos_4.loc
+receive participate(1) from (192.168.1.104)
+eimai o 0:m_data.source_host=alekos_4.loc
+1 === my_host = alekos_4.loc & source_host = alekos_4.loc 
+(1)WOW someone has my hostname.... i must change it?
+1: resolving hostname alekos_4.loc
+1: my new hostname is alekos_4_4.loc
+receive participate(3) from (192.168.1.104)
+receive participate(5) from (192.168.1.104)
+receive participate(6) from (192.168.1.104)
+receive participate(7) from (192.168.1.104)
+receive participate(9) from (192.168.1.104)
+receive participate(8) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+found an outsider, i must reply to him
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 7
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 8
+receive participate(8) from (192.168.1.104)
+receive participate(1) from (192.168.1.103)
+eimai o 0:m_data.source_host=alekos_3.loc
+receive participate(4) from (192.168.1.103)
+receive participate(5) from (192.168.1.103)
+receive participate(6) from (192.168.1.103)
+receive participate(7) from (192.168.1.103)
+receive participate(9) from (192.168.1.103)
+------------------------------- DONE ITERATION 8
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 9
+receive participate(0) from (192.168.1.103)
+eimai o 0:m_data.source_host=alekos_3.loc
+0 === my_host = alekos_3.loc & source_host = alekos_3.loc 
+(0)WOW someone has my hostname.... i must change it?
+0: resolving hostname alekos_3.loc
+0: my new hostname is alekos_3_3.loc
+receive participate(8) from (192.168.1.103)
+------------------------------- DONE ITERATION 9
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 10
+(1 - 192.168.1.26 - alekos_4_4.loc)sending participation message 1
+to megethos einai 323
+(0 - 192.168.1.38 - alekos_3_3.loc)sending participation message 1
+to megethos einai 323
+------------------------------- DONE ITERATION 10
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 11
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(4) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+------------------------------- DONE ITERATION 11
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 12
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 12
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 13
+------------------------------- DONE ITERATION 13
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 14
+------------------------------- DONE ITERATION 14
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 15
+(1 - 192.168.1.26 - alekos_4_4.loc)sending participation message 2
+to megethos einai 323
+(0 - 192.168.1.38 - alekos_3_3.loc)sending participation message 2
+to megethos einai 323
+------------------------------- DONE ITERATION 15
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 16
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(4) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+------------------------------- DONE ITERATION 16
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 17
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 17
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 18
+------------------------------- DONE ITERATION 18
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 19
+------------------------------- DONE ITERATION 19
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 20
+(1 - 192.168.1.26 - alekos_4_4.loc)sending participation message 3
+to megethos einai 323
+(0 - 192.168.1.38 - alekos_3_3.loc)sending participation message 3
+to megethos einai 323
+------------------------------- DONE ITERATION 20
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 21
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(4) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+------------------------------- DONE ITERATION 21
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 22
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 22
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 23
+------------------------------- DONE ITERATION 23
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 24
+------------------------------- DONE ITERATION 24
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 25
+1:: i'm going in!!
+(1)sending hello to all
+0:: i'm going in!!
+(0)sending hello to all
+------------------------------- DONE ITERATION 25
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 26
+receive hello(0)receive hello(3)receive hello(4)receive hello(5)receive hello(7)receive hello(1)receive hello(4)receive hello(7)------------------------------- DONE ITERATION 26
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 27
+receive welcome(1) from (192.168.1.38)
+receive hello(6)receive hello(9)receive welcome(1) from (192.168.1.103)
+receive welcome(1) from (192.168.1.104)
+receive welcome(1) from (192.168.1.105)
+receive hello(8)receive welcome(1) from (192.168.1.107)
+receive hello(3)receive hello(5)receive welcome(0) from (192.168.1.26)
+receive hello(6)receive hello(9)receive welcome(0) from (192.168.1.104)
+receive hello(8)receive welcome(0) from (192.168.1.107)
+------------------------------- DONE ITERATION 27
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 28
+------------------------------- DONE ITERATION 28
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 29
+receive welcome(1) from (192.168.1.106)
+receive welcome(1) from (192.168.1.109)
+receive welcome(1) from (192.168.1.108)
+receive welcome(0) from (192.168.1.103)
+receive welcome(0) from (192.168.1.105)
+receive welcome(0) from (192.168.1.106)
+receive welcome(0) from (192.168.1.109)
+receive welcome(0) from (192.168.1.108)
+------------------------------- DONE ITERATION 29
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 30
+file read!(TTL:20000.000000)
+ advertising app: _apt_proxy
+------------------------------- DONE ITERATION 30
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 31
+(1)advertisement(192.168.1.38)(TTL:20000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.38)(TTL:20000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.38)(TTL:20000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 31
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 32
+(3)advertisement(192.168.1.38)(TTL:20000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.38)(TTL:20000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.38)(TTL:20000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.38)(TTL:20000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.38)(TTL:20000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 32
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 33
+------------------------------- DONE ITERATION 33
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 34
+------------------------------- DONE ITERATION 34
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 35
+------------------------------- DONE ITERATION 35
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 36
+------------------------------- DONE ITERATION 36
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 37
+------------------------------- DONE ITERATION 37
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 38
+------------------------------- DONE ITERATION 38
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 39
+------------------------------- DONE ITERATION 39
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 40
+------------------------------- DONE ITERATION 40
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 41
+------------------------------- DONE ITERATION 41
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 42
+------------------------------- DONE ITERATION 42
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 43
+------------------------------- DONE ITERATION 43
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 44
+------------------------------- DONE ITERATION 44
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 45
+------------------------------- DONE ITERATION 45
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 46
+------------------------------- DONE ITERATION 46
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 47
+------------------------------- DONE ITERATION 47
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 48
+------------------------------- DONE ITERATION 48
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 49
+file read!(TTL:20000.000000)
+ (0)(192.168.1.38)myService expired 0.000000
+------------------------------- DONE ITERATION 49
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 50
+(4)(192.168.1.38)service expired, sending query 0.000000
+(1)(192.168.1.38)service expired, sending query 0.000000
+(7)(192.168.1.38)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 50
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 51
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 51
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 52
+(1)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 52
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 53
+(3)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 53
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 54
+------------------------------- DONE ITERATION 54
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 55
+------------------------------- DONE ITERATION 55
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 56
+------------------------------- DONE ITERATION 56
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 57
+------------------------------- DONE ITERATION 57
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 58
+------------------------------- DONE ITERATION 58
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 59
+------------------------------- DONE ITERATION 59
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 60
+------------------------------- DONE ITERATION 60
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 61
+------------------------------- DONE ITERATION 61
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 62
+------------------------------- DONE ITERATION 62
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 63
+------------------------------- DONE ITERATION 63
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 64
+------------------------------- DONE ITERATION 64
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 65
+------------------------------- DONE ITERATION 65
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 66
+------------------------------- DONE ITERATION 66
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 67
+------------------------------- DONE ITERATION 67
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 68
+------------------------------- DONE ITERATION 68
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 69
+file read!(TTL:20000.000000)
+ (0)(192.168.1.38)myService expired 0.000000
+------------------------------- DONE ITERATION 69
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 70
+(4)(192.168.1.38)service expired, sending query 0.000000
+(1)(192.168.1.38)service expired, sending query 0.000000
+(7)(192.168.1.38)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 70
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 71
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 71
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 72
+(1)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 72
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 73
+(3)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 73
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 74
+------------------------------- DONE ITERATION 74
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 75
+------------------------------- DONE ITERATION 75
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 76
+------------------------------- DONE ITERATION 76
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 77
+------------------------------- DONE ITERATION 77
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 78
+------------------------------- DONE ITERATION 78
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 79
+------------------------------- DONE ITERATION 79
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 80
+------------------------------- DONE ITERATION 80
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 81
+------------------------------- DONE ITERATION 81
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 82
+------------------------------- DONE ITERATION 82
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 83
+------------------------------- DONE ITERATION 83
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 84
+------------------------------- DONE ITERATION 84
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 85
+------------------------------- DONE ITERATION 85
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 86
+------------------------------- DONE ITERATION 86
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 87
+------------------------------- DONE ITERATION 87
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 88
+------------------------------- DONE ITERATION 88
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 89
+file read!(TTL:20000.000000)
+ (0)(192.168.1.38)myService expired 0.000000
+------------------------------- DONE ITERATION 89
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 90
+(4)(192.168.1.38)service expired, sending query 0.000000
+(1)(192.168.1.38)service expired, sending query 0.000000
+(7)(192.168.1.38)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 90
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 91
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 91
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 92
+(1)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 92
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 93
+(3)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 93
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 94
+------------------------------- DONE ITERATION 94
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 95
+------------------------------- DONE ITERATION 95
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 96
+------------------------------- DONE ITERATION 96
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 97
+------------------------------- DONE ITERATION 97
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 98
+------------------------------- DONE ITERATION 98
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 99
+------------------------------- DONE ITERATION 99
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 100
+------------------------------- DONE ITERATION 100
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 101
+------------------------------- DONE ITERATION 101
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 102
+------------------------------- DONE ITERATION 102
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 103
+------------------------------- DONE ITERATION 103
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 104
+------------------------------- DONE ITERATION 104
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 105
+------------------------------- DONE ITERATION 105
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 106
+------------------------------- DONE ITERATION 106
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 107
+------------------------------- DONE ITERATION 107
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 108
+------------------------------- DONE ITERATION 108
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 109
+file read!(TTL:20000.000000)
+ (0)(192.168.1.38)myService expired 0.000000
+------------------------------- DONE ITERATION 109
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 110
+(4)(192.168.1.38)service expired, sending query 0.000000
+(1)(192.168.1.38)service expired, sending query 0.000000
+(7)(192.168.1.38)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 110
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 111
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 111
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 112
+(1)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 112
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 113
+(3)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 113
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 114
+------------------------------- DONE ITERATION 114
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 115
+------------------------------- DONE ITERATION 115
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 116
+------------------------------- DONE ITERATION 116
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 117
+------------------------------- DONE ITERATION 117
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 118
+------------------------------- DONE ITERATION 118
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 119
+------------------------------- DONE ITERATION 119
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 120
+------------------------------- DONE ITERATION 120
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 121
+------------------------------- DONE ITERATION 121
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 122
+------------------------------- DONE ITERATION 122
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 123
+------------------------------- DONE ITERATION 123
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 124
+------------------------------- DONE ITERATION 124
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 125
+------------------------------- DONE ITERATION 125
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 126
+------------------------------- DONE ITERATION 126
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 127
+------------------------------- DONE ITERATION 127
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 128
+------------------------------- DONE ITERATION 128
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 129
+file read!(TTL:20000.000000)
+ (0)(192.168.1.38)myService expired 0.000000
+------------------------------- DONE ITERATION 129
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 130
+(4)(192.168.1.38)service expired, sending query 0.000000
+(1)(192.168.1.38)service expired, sending query 0.000000
+(7)(192.168.1.38)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 130
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 131
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 131
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 132
+(1)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 132
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 133
+(3)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.38)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 133
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 134
+------------------------------- DONE ITERATION 134
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 135
+------------------------------- DONE ITERATION 135
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 136
+------------------------------- DONE ITERATION 136
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 137
+------------------------------- DONE ITERATION 137
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 138
+------------------------------- DONE ITERATION 138
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 139
+------------------------------- DONE ITERATION 139
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 140
+------------------------------- DONE ITERATION 140
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 141
+------------------------------- DONE ITERATION 141
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 142
+------------------------------- DONE ITERATION 142
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 143
+------------------------------- DONE ITERATION 143
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 144
+------------------------------- DONE ITERATION 144
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 145
+------------------------------- DONE ITERATION 145
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 146
+------------------------------- DONE ITERATION 146
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 147
+------------------------------- DONE ITERATION 147
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 148
+------------------------------- DONE ITERATION 148
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 149
+file read!(TTL:20000.000000)
+ (0)(192.168.1.38)myService expired 0.000000
+------------------------------- DONE ITERATION 149
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+Simulation: Task done 'simulation'
+init_apps: init_examples(sc); init_external_application(sc); init_topology(sc); init_reading(sc);
+Initialising examples
+Initialising External_Application  Shawn module
+Initialising Wiselib-Shawn-Standalone module
+init_topology_elevation
+init_topology_generator
+init_topology_node_gen
+init_topology_node_mod
+init_topology_point_gen
+init_topology_point_mod
+init_topology_topology
+init_legacyapps: init_wiselib(sc);
+Initialising Wiselib-Shawn module
+Simulation: Running task 'prepare_world'
+DiskGraphModel: Transmission range set to [2]
+Simulation: Task done 'prepare_world'
+Simulation: Running task 'rect_world'
+Simulation: Task done 'rect_world'
+Simulation: Running task 'simulation'
+------------------------------ BEGIN ITERATION 0
+0
+
+setting mode 1 size:255
+
+services we have: 0, (TTL:0.000000)
+ (0 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 323
+1
+(1 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 323
+2
+3
+4
+5
+6
+7
+8
+9
+------------------------------- DONE ITERATION 0
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 1
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+1: resolving hostname alekos.loc
+1: my new hostname is alekos_46.loc
+my new ip is 192.168.1.54receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+0: resolving hostname alekos.loc
+0: my new hostname is alekos_45.loc
+my new ip is 192.168.1.145receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 1
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 2
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 2
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 3
+------------------------------- DONE ITERATION 3
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 4
+------------------------------- DONE ITERATION 4
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 5
+(1 - 192.168.1.54 - alekos_46.loc)sending participation message 1
+to megethos einai 323
+(0 - 192.168.1.145 - alekos_45.loc)sending participation message 1
+to megethos einai 323
+------------------------------- DONE ITERATION 5
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 6
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 6
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 7
+receive participate(2) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 7
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 8
+------------------------------- DONE ITERATION 8
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 9
+------------------------------- DONE ITERATION 9
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 10
+(1 - 192.168.1.54 - alekos_46.loc)sending participation message 2
+to megethos einai 323
+(0 - 192.168.1.145 - alekos_45.loc)sending participation message 2
+to megethos einai 323
+------------------------------- DONE ITERATION 10
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 11
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 11
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 12
+receive participate(2) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 12
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 13
+------------------------------- DONE ITERATION 13
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 14
+------------------------------- DONE ITERATION 14
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 15
+(1 - 192.168.1.54 - alekos_46.loc)sending participation message 3
+to megethos einai 323
+(0 - 192.168.1.145 - alekos_45.loc)sending participation message 3
+to megethos einai 323
+------------------------------- DONE ITERATION 15
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 16
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(4) from (0.0.0.0)
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 16
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 17
+receive participate(2) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+------------------------------- DONE ITERATION 17
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 18
+------------------------------- DONE ITERATION 18
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 19
+------------------------------- DONE ITERATION 19
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 20
+1:: i'm going in!!
+(1)sending hello to all
+0:: i'm going in!!
+(0)sending hello to all
+------------------------------- DONE ITERATION 20
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 21
+receive hello(0)receive hello(3)receive hello(4)receive hello(5)receive hello(6)receive hello(7)receive hello(8)receive hello(1)receive hello(4)receive hello(5)receive hello(7)receive hello(8)------------------------------- DONE ITERATION 21
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 22
+receive welcome(1) from (192.168.1.145)
+receive hello(2)receive welcome(1) from (192.168.1.103)
+receive welcome(1) from (192.168.1.104)
+receive welcome(1) from (192.168.1.105)
+receive hello(9)receive welcome(1) from (192.168.1.106)
+receive welcome(1) from (192.168.1.107)
+receive welcome(1) from (192.168.1.108)
+receive hello(3)receive hello(6)receive welcome(0) from (192.168.1.54)
+receive hello(2)receive welcome(0) from (192.168.1.104)
+receive welcome(0) from (192.168.1.105)
+receive hello(9)receive welcome(0) from (192.168.1.107)
+receive welcome(0) from (192.168.1.108)
+------------------------------- DONE ITERATION 22
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 23
+------------------------------- DONE ITERATION 23
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 24
+receive welcome(1) from (192.168.1.102)
+receive welcome(1) from (192.168.1.109)
+receive welcome(0) from (192.168.1.103)
+receive welcome(0) from (192.168.1.106)
+receive welcome(0) from (192.168.1.102)
+receive welcome(0) from (192.168.1.109)
+------------------------------- DONE ITERATION 24
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 25
+file read!(TTL:20000.000000)
+ advertising app: _apt_proxy
+------------------------------- DONE ITERATION 25
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 26
+(1)advertisement(192.168.1.145)(TTL:20000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.145)(TTL:20000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.145)(TTL:20000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.145)(TTL:20000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.145)(TTL:20000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 26
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 27
+(3)advertisement(192.168.1.145)(TTL:20000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.145)(TTL:20000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.145)(TTL:20000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.145)(TTL:20000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 27
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 28
+------------------------------- DONE ITERATION 28
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 29
+------------------------------- DONE ITERATION 29
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 30
+------------------------------- DONE ITERATION 30
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 31
+------------------------------- DONE ITERATION 31
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 32
+------------------------------- DONE ITERATION 32
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 33
+------------------------------- DONE ITERATION 33
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 34
+------------------------------- DONE ITERATION 34
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 35
+------------------------------- DONE ITERATION 35
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 36
+------------------------------- DONE ITERATION 36
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 37
+------------------------------- DONE ITERATION 37
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 38
+------------------------------- DONE ITERATION 38
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 39
+------------------------------- DONE ITERATION 39
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 40
+------------------------------- DONE ITERATION 40
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 41
+------------------------------- DONE ITERATION 41
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 42
+------------------------------- DONE ITERATION 42
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 43
+------------------------------- DONE ITERATION 43
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 44
+file read!(TTL:20000.000000)
+ (0)(192.168.1.145)myService expired 0.000000
+------------------------------- DONE ITERATION 44
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 45
+(8)(192.168.1.145)service expired, sending query 0.000000
+(7)(192.168.1.145)service expired, sending query 0.000000
+(1)(192.168.1.145)service expired, sending query 0.000000
+(5)(192.168.1.145)service expired, sending query 0.000000
+(4)(192.168.1.145)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 45
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 46
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 46
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 47
+(1)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 47
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 48
+(3)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 48
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 49
+------------------------------- DONE ITERATION 49
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 50
+------------------------------- DONE ITERATION 50
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 51
+------------------------------- DONE ITERATION 51
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 52
+------------------------------- DONE ITERATION 52
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 53
+------------------------------- DONE ITERATION 53
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 54
+------------------------------- DONE ITERATION 54
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 55
+------------------------------- DONE ITERATION 55
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 56
+------------------------------- DONE ITERATION 56
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 57
+------------------------------- DONE ITERATION 57
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 58
+------------------------------- DONE ITERATION 58
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 59
+------------------------------- DONE ITERATION 59
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 60
+------------------------------- DONE ITERATION 60
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 61
+------------------------------- DONE ITERATION 61
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 62
+------------------------------- DONE ITERATION 62
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 63
+------------------------------- DONE ITERATION 63
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 64
+file read!(TTL:20000.000000)
+ (0)(192.168.1.145)myService expired 0.000000
+------------------------------- DONE ITERATION 64
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 65
+(8)(192.168.1.145)service expired, sending query 0.000000
+(7)(192.168.1.145)service expired, sending query 0.000000
+(1)(192.168.1.145)service expired, sending query 0.000000
+(5)(192.168.1.145)service expired, sending query 0.000000
+(4)(192.168.1.145)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 65
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 66
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 66
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 67
+(1)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 67
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 68
+(3)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 68
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 69
+------------------------------- DONE ITERATION 69
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 70
+------------------------------- DONE ITERATION 70
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 71
+------------------------------- DONE ITERATION 71
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 72
+------------------------------- DONE ITERATION 72
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 73
+------------------------------- DONE ITERATION 73
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 74
+------------------------------- DONE ITERATION 74
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 75
+------------------------------- DONE ITERATION 75
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 76
+------------------------------- DONE ITERATION 76
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 77
+------------------------------- DONE ITERATION 77
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 78
+------------------------------- DONE ITERATION 78
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 79
+------------------------------- DONE ITERATION 79
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 80
+------------------------------- DONE ITERATION 80
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 81
+------------------------------- DONE ITERATION 81
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 82
+------------------------------- DONE ITERATION 82
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 83
+------------------------------- DONE ITERATION 83
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 84
+file read!(TTL:20000.000000)
+ (0)(192.168.1.145)myService expired 0.000000
+------------------------------- DONE ITERATION 84
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 85
+(8)(192.168.1.145)service expired, sending query 0.000000
+(7)(192.168.1.145)service expired, sending query 0.000000
+(1)(192.168.1.145)service expired, sending query 0.000000
+(5)(192.168.1.145)service expired, sending query 0.000000
+(4)(192.168.1.145)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 85
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 86
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 86
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 87
+(1)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 87
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 88
+(3)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 88
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 89
+------------------------------- DONE ITERATION 89
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 90
+------------------------------- DONE ITERATION 90
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 91
+------------------------------- DONE ITERATION 91
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 92
+------------------------------- DONE ITERATION 92
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 93
+------------------------------- DONE ITERATION 93
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 94
+------------------------------- DONE ITERATION 94
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 95
+------------------------------- DONE ITERATION 95
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 96
+------------------------------- DONE ITERATION 96
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 97
+------------------------------- DONE ITERATION 97
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 98
+------------------------------- DONE ITERATION 98
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 99
+------------------------------- DONE ITERATION 99
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 100
+------------------------------- DONE ITERATION 100
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 101
+------------------------------- DONE ITERATION 101
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 102
+------------------------------- DONE ITERATION 102
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 103
+------------------------------- DONE ITERATION 103
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 104
+file read!(TTL:20000.000000)
+ (0)(192.168.1.145)myService expired 0.000000
+------------------------------- DONE ITERATION 104
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 105
+(8)(192.168.1.145)service expired, sending query 0.000000
+(7)(192.168.1.145)service expired, sending query 0.000000
+(1)(192.168.1.145)service expired, sending query 0.000000
+(5)(192.168.1.145)service expired, sending query 0.000000
+(4)(192.168.1.145)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 105
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 106
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 106
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 107
+(1)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 107
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 108
+(3)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 108
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 109
+------------------------------- DONE ITERATION 109
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 110
+------------------------------- DONE ITERATION 110
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 111
+------------------------------- DONE ITERATION 111
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 112
+------------------------------- DONE ITERATION 112
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 113
+------------------------------- DONE ITERATION 113
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 114
+------------------------------- DONE ITERATION 114
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 115
+------------------------------- DONE ITERATION 115
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 116
+------------------------------- DONE ITERATION 116
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 117
+------------------------------- DONE ITERATION 117
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 118
+------------------------------- DONE ITERATION 118
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 119
+------------------------------- DONE ITERATION 119
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 120
+------------------------------- DONE ITERATION 120
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 121
+------------------------------- DONE ITERATION 121
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 122
+------------------------------- DONE ITERATION 122
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 123
+------------------------------- DONE ITERATION 123
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 124
+file read!(TTL:20000.000000)
+ (0)(192.168.1.145)myService expired 0.000000
+------------------------------- DONE ITERATION 124
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 125
+(8)(192.168.1.145)service expired, sending query 0.000000
+(7)(192.168.1.145)service expired, sending query 0.000000
+(1)(192.168.1.145)service expired, sending query 0.000000
+(5)(192.168.1.145)service expired, sending query 0.000000
+(4)(192.168.1.145)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 125
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 126
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 126
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 127
+(1)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 127
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 128
+(3)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 128
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 129
+------------------------------- DONE ITERATION 129
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 130
+------------------------------- DONE ITERATION 130
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 131
+------------------------------- DONE ITERATION 131
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 132
+------------------------------- DONE ITERATION 132
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 133
+------------------------------- DONE ITERATION 133
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 134
+------------------------------- DONE ITERATION 134
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 135
+------------------------------- DONE ITERATION 135
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 136
+------------------------------- DONE ITERATION 136
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 137
+------------------------------- DONE ITERATION 137
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 138
+------------------------------- DONE ITERATION 138
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 139
+------------------------------- DONE ITERATION 139
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 140
+------------------------------- DONE ITERATION 140
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 141
+------------------------------- DONE ITERATION 141
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 142
+------------------------------- DONE ITERATION 142
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 143
+------------------------------- DONE ITERATION 143
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 144
+file read!(TTL:20000.000000)
+ (0)(192.168.1.145)myService expired 0.000000
+------------------------------- DONE ITERATION 144
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 145
+(8)(192.168.1.145)service expired, sending query 0.000000
+(7)(192.168.1.145)service expired, sending query 0.000000
+(1)(192.168.1.145)service expired, sending query 0.000000
+(5)(192.168.1.145)service expired, sending query 0.000000
+(4)(192.168.1.145)service expired, sending query 0.000000
+------------------------------- DONE ITERATION 145
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 146
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 146
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 147
+(1)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(4)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(5)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(7)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(8)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 147
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 148
+(3)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(6)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(2)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+(9)advertisement(192.168.1.145)(TTL:19000.000000)(_apt_proxy)
+------------------------------- DONE ITERATION 148
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 149
+------------------------------- DONE ITERATION 149
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+Simulation: Task done 'simulation'

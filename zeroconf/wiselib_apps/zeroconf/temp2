@@ -1,0 +1,1674 @@
+init_apps: init_external_application(sc); init_reading(sc); init_examples(sc); init_topology(sc);
+Initialising External_Application  Shawn module
+Initialising Wiselib-Shawn-Standalone module
+Initialising examples
+init_topology_elevation
+init_topology_generator
+init_topology_node_gen
+init_topology_node_mod
+init_topology_point_gen
+init_topology_point_mod
+init_topology_topology
+init_legacyapps: init_flooding(sc); init_wiselib(sc);
+Initialising Flooding Processor (Flooding)
+Initialising Wiselib-Shawn module
+Simulation: Running task 'prepare_world'
+DiskGraphModel: Transmission range set to [2]
+Simulation: Task done 'prepare_world'
+Simulation: Running task 'load_world'
+Simulation: Task done 'load_world'
+Simulation: Running task 'simulation'
+------------------------------ BEGIN ITERATION 0
+0
+
+setting mode 1 size:255
+
+services we have: 0, (TTL:0.000000)
+ (0) sending ping
+1
+(1) sending ping
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+------------------------------- DONE ITERATION 0
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 1
+(2)receive ping from (0)
+(3)receive ping from (0)
+(4)receive ping from (0)
+(17)receive ping from (0)
+(10)receive ping from (0)
+(11)receive ping from (0)
+(12)receive ping from (0)
+(13)receive ping from (0)
+(15)receive ping from (0)
+(19)receive ping from (0)
+(5)receive ping from (1)
+(6)receive ping from (1)
+(7)receive ping from (1)
+(17)receive ping from (1)
+(18)receive ping from (1)
+(9)receive ping from (1)
+(10)receive ping from (1)
+(11)receive ping from (1)
+(12)receive ping from (1)
+(16)receive ping from (1)
+------------------------------- DONE ITERATION 1
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 2
+(0)receive pong from (2)
+(4)receive pong from (2)
+(17)receive pong from (2)
+(10)receive pong from (2)
+(13)receive pong from (2)
+(19)receive pong from (2)
+(0)receive pong from (3)
+(4)receive pong from (3)
+(6)receive pong from (3)
+(17)receive pong from (3)
+(18)receive pong from (3)
+(10)receive pong from (3)
+(11)receive pong from (3)
+(15)receive pong from (3)
+(0)receive pong from (4)
+(2)receive pong from (4)
+(3)receive pong from (4)
+(17)receive pong from (4)
+(10)receive pong from (4)
+(11)receive pong from (4)
+(13)receive pong from (4)
+(15)receive pong from (4)
+(19)receive pong from (4)
+(0)receive pong from (17)
+(1)receive pong from (17)
+(2)receive pong from (17)
+(3)receive pong from (17)
+(4)receive pong from (17)
+(5)receive pong from (17)
+(6)receive pong from (17)
+(7)receive pong from (17)
+(18)receive pong from (17)
+(9)receive pong from (17)
+(10)receive pong from (17)
+(11)receive pong from (17)
+(12)receive pong from (17)
+(13)receive pong from (17)
+(15)receive pong from (17)
+(19)receive pong from (17)
+(0)receive pong from (10)
+(1)receive pong from (10)
+(2)receive pong from (10)
+(3)receive pong from (10)
+(4)receive pong from (10)
+(5)receive pong from (10)
+(6)receive pong from (10)
+(7)receive pong from (10)
+(17)receive pong from (10)
+(18)receive pong from (10)
+(9)receive pong from (10)
+(11)receive pong from (10)
+(12)receive pong from (10)
+(13)receive pong from (10)
+(15)receive pong from (10)
+(19)receive pong from (10)
+(0)receive pong from (11)
+(1)receive pong from (11)
+(3)receive pong from (11)
+(4)receive pong from (11)
+(5)receive pong from (11)
+(6)receive pong from (11)
+(7)receive pong from (11)
+(17)receive pong from (11)
+(18)receive pong from (11)
+(9)receive pong from (11)
+(10)receive pong from (11)
+(12)receive pong from (11)
+(14)receive pong from (11)
+(15)receive pong from (11)
+(19)receive pong from (11)
+(0)receive pong from (12)
+(1)receive pong from (12)
+(5)receive pong from (12)
+(6)receive pong from (12)
+(7)receive pong from (12)
+(17)receive pong from (12)
+(18)receive pong from (12)
+(9)receive pong from (12)
+(10)receive pong from (12)
+(11)receive pong from (12)
+(14)receive pong from (12)
+(16)receive pong from (12)
+(19)receive pong from (12)
+(0)receive pong from (13)
+(2)receive pong from (13)
+(4)receive pong from (13)
+(17)receive pong from (13)
+(10)receive pong from (13)
+(19)receive pong from (13)
+(0)receive pong from (15)
+(3)receive pong from (15)
+(4)receive pong from (15)
+(6)receive pong from (15)
+(17)receive pong from (15)
+(18)receive pong from (15)
+(10)receive pong from (15)
+(11)receive pong from (15)
+(0)receive pong from (19)
+(2)receive pong from (19)
+(4)receive pong from (19)
+(8)receive pong from (19)
+(17)receive pong from (19)
+(10)receive pong from (19)
+(11)receive pong from (19)
+(12)receive pong from (19)
+(13)receive pong from (19)
+(1)receive pong from (5)
+(6)receive pong from (5)
+(7)receive pong from (5)
+(17)receive pong from (5)
+(18)receive pong from (5)
+(9)receive pong from (5)
+(10)receive pong from (5)
+(11)receive pong from (5)
+(12)receive pong from (5)
+(14)receive pong from (5)
+(16)receive pong from (5)
+(1)receive pong from (6)
+(3)receive pong from (6)
+(5)receive pong from (6)
+(7)receive pong from (6)
+(17)receive pong from (6)
+(18)receive pong from (6)
+(9)receive pong from (6)
+(10)receive pong from (6)
+(11)receive pong from (6)
+(12)receive pong from (6)
+(15)receive pong from (6)
+(16)receive pong from (6)
+(1)receive pong from (7)
+(5)receive pong from (7)
+(6)receive pong from (7)
+(17)receive pong from (7)
+(18)receive pong from (7)
+(9)receive pong from (7)
+(10)receive pong from (7)
+(11)receive pong from (7)
+(12)receive pong from (7)
+(14)receive pong from (7)
+(16)receive pong from (7)
+(0)receive pong from (17)
+(1)receive pong from (17)
+(2)receive pong from (17)
+(3)receive pong from (17)
+(4)receive pong from (17)
+(5)receive pong from (17)
+(6)receive pong from (17)
+(7)receive pong from (17)
+(18)receive pong from (17)
+(9)receive pong from (17)
+(10)receive pong from (17)
+(11)receive pong from (17)
+(12)receive pong from (17)
+(13)receive pong from (17)
+(15)receive pong from (17)
+(19)receive pong from (17)
+(1)receive pong from (18)
+(3)receive pong from (18)
+(5)receive pong from (18)
+(6)receive pong from (18)
+(7)receive pong from (18)
+(17)receive pong from (18)
+(9)receive pong from (18)
+(10)receive pong from (18)
+(11)receive pong from (18)
+(12)receive pong from (18)
+(15)receive pong from (18)
+(16)receive pong from (18)
+(1)receive pong from (9)
+(5)receive pong from (9)
+(6)receive pong from (9)
+(7)receive pong from (9)
+(17)receive pong from (9)
+(18)receive pong from (9)
+(10)receive pong from (9)
+(11)receive pong from (9)
+(12)receive pong from (9)
+(14)receive pong from (9)
+(16)receive pong from (9)
+(0)receive pong from (10)
+(1)receive pong from (10)
+(2)receive pong from (10)
+(3)receive pong from (10)
+(4)receive pong from (10)
+(5)receive pong from (10)
+(6)receive pong from (10)
+(7)receive pong from (10)
+(17)receive pong from (10)
+(18)receive pong from (10)
+(9)receive pong from (10)
+(11)receive pong from (10)
+(12)receive pong from (10)
+(13)receive pong from (10)
+(15)receive pong from (10)
+(19)receive pong from (10)
+(0)receive pong from (11)
+(1)receive pong from (11)
+(3)receive pong from (11)
+(4)receive pong from (11)
+(5)receive pong from (11)
+(6)receive pong from (11)
+(7)receive pong from (11)
+(17)receive pong from (11)
+(18)receive pong from (11)
+(9)receive pong from (11)
+(10)receive pong from (11)
+(12)receive pong from (11)
+(14)receive pong from (11)
+(15)receive pong from (11)
+(19)receive pong from (11)
+(0)receive pong from (12)
+(1)receive pong from (12)
+(5)receive pong from (12)
+(6)receive pong from (12)
+(7)receive pong from (12)
+(17)receive pong from (12)
+(18)receive pong from (12)
+(9)receive pong from (12)
+(10)receive pong from (12)
+(11)receive pong from (12)
+(14)receive pong from (12)
+(16)receive pong from (12)
+(19)receive pong from (12)
+(1)receive pong from (16)
+(5)receive pong from (16)
+(6)receive pong from (16)
+(7)receive pong from (16)
+(18)receive pong from (16)
+(9)receive pong from (16)
+(12)receive pong from (16)
+(14)receive pong from (16)
+------------------------------- DONE ITERATION 2
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 3
+------------------------------- DONE ITERATION 3
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 4
+------------------------------- DONE ITERATION 4
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 5
+(1 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 301
+(0 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 301
+------------------------------- DONE ITERATION 5
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 6
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(17) from (0.0.0.0)
+receive participate(18) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(10) from (0.0.0.0)
+receive participate(11) from (0.0.0.0)
+receive participate(12) from (0.0.0.0)
+receive participate(16) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(17) from (0.0.0.0)
+receive participate(10) from (0.0.0.0)
+receive participate(11) from (0.0.0.0)
+receive participate(12) from (0.0.0.0)
+receive participate(13) from (0.0.0.0)
+receive participate(15) from (0.0.0.0)
+receive participate(19) from (0.0.0.0)
+------------------------------- DONE ITERATION 6
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 7
+receive participate(14) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(15) from (0.0.0.0)
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+0: resolving hostname alekos.loc
+0: my new hostname is alekos_74.loc
+my new ip is 192.168.1.163receive participate(2) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(13) from (0.0.0.0)
+receive participate(19) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(18) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+1: resolving hostname alekos.loc
+1: my new hostname is alekos_75.loc
+my new ip is 192.168.1.110receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(14) from (0.0.0.0)
+receive participate(16) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 7
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 8
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 8
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 9
+------------------------------- DONE ITERATION 9
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 10
+(1 - 192.168.1.110 - alekos_75.loc)sending participation message 1
+to megethos einai 301
+(0 - 192.168.1.163 - alekos_74.loc)sending participation message 1
+to megethos einai 301
+------------------------------- DONE ITERATION 10
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 11
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(17) from (0.0.0.0)
+receive participate(18) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(10) from (0.0.0.0)
+receive participate(11) from (0.0.0.0)
+receive participate(12) from (0.0.0.0)
+receive participate(16) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(17) from (0.0.0.0)
+receive participate(10) from (0.0.0.0)
+receive participate(11) from (0.0.0.0)
+receive participate(12) from (0.0.0.0)
+receive participate(13) from (0.0.0.0)
+receive participate(15) from (0.0.0.0)
+receive participate(19) from (0.0.0.0)
+------------------------------- DONE ITERATION 11
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 12
+receive participate(14) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(15) from (0.0.0.0)
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(2) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(13) from (0.0.0.0)
+receive participate(19) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(18) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(14) from (0.0.0.0)
+receive participate(16) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 12
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 13
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 13
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 14
+------------------------------- DONE ITERATION 14
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 15
+(1 - 192.168.1.110 - alekos_75.loc)sending participation message 2
+to megethos einai 301
+(0 - 192.168.1.163 - alekos_74.loc)sending participation message 2
+to megethos einai 301
+------------------------------- DONE ITERATION 15
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 16
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(17) from (0.0.0.0)
+receive participate(18) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(10) from (0.0.0.0)
+receive participate(11) from (0.0.0.0)
+receive participate(12) from (0.0.0.0)
+receive participate(16) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(17) from (0.0.0.0)
+receive participate(10) from (0.0.0.0)
+receive participate(11) from (0.0.0.0)
+receive participate(12) from (0.0.0.0)
+receive participate(13) from (0.0.0.0)
+receive participate(15) from (0.0.0.0)
+receive participate(19) from (0.0.0.0)
+------------------------------- DONE ITERATION 16
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 17
+receive participate(14) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(15) from (0.0.0.0)
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(2) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(13) from (0.0.0.0)
+receive participate(19) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(18) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(14) from (0.0.0.0)
+receive participate(16) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 17
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 18
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 18
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 19
+------------------------------- DONE ITERATION 19
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 20
+(1 - 192.168.1.110 - alekos_75.loc)sending participation message 3
+to megethos einai 301
+(0 - 192.168.1.163 - alekos_74.loc)sending participation message 3
+to megethos einai 301
+------------------------------- DONE ITERATION 20
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 21
+receive participate(5) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(17) from (0.0.0.0)
+receive participate(18) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(10) from (0.0.0.0)
+receive participate(11) from (0.0.0.0)
+receive participate(12) from (0.0.0.0)
+receive participate(16) from (0.0.0.0)
+receive participate(2) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(17) from (0.0.0.0)
+receive participate(10) from (0.0.0.0)
+receive participate(11) from (0.0.0.0)
+receive participate(12) from (0.0.0.0)
+receive participate(13) from (0.0.0.0)
+receive participate(15) from (0.0.0.0)
+receive participate(19) from (0.0.0.0)
+------------------------------- DONE ITERATION 21
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 22
+receive participate(14) from (0.0.0.0)
+receive participate(3) from (0.0.0.0)
+receive participate(15) from (0.0.0.0)
+receive participate(0) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(2) from (0.0.0.0)
+receive participate(4) from (0.0.0.0)
+receive participate(13) from (0.0.0.0)
+receive participate(19) from (0.0.0.0)
+receive participate(6) from (0.0.0.0)
+receive participate(18) from (0.0.0.0)
+receive participate(1) from (0.0.0.0)
+eimai o 0:m_data.source_host=unregistered
+receive participate(5) from (0.0.0.0)
+receive participate(7) from (0.0.0.0)
+receive participate(9) from (0.0.0.0)
+receive participate(14) from (0.0.0.0)
+receive participate(16) from (0.0.0.0)
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 22
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 23
+receive participate(8) from (0.0.0.0)
+------------------------------- DONE ITERATION 23
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 24
+------------------------------- DONE ITERATION 24
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 25
+1:: i'm going in!!
+(1)sending hello to all
+0:: i'm going in!!
+(0)sending hello to all
+------------------------------- DONE ITERATION 25
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 26
+receive hello(5)receive hello(6)receive hello(7)receive hello(17)receive hello(18)receive hello(9)receive hello(10)receive hello(11)receive hello(12)receive hello(16)receive hello(2)receive hello(3)receive hello(4)receive hello(17)receive hello(10)receive hello(11)receive hello(12)receive hello(13)receive hello(15)receive hello(19)------------------------------- DONE ITERATION 26
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 27
+receive hello(14)receive welcome(1) from (192.168.1.105)
+receive hello(3)receive hello(15)receive welcome(1) from (192.168.1.106)
+receive welcome(1) from (192.168.1.107)
+receive hello(0)receive hello(2)receive hello(4)receive hello(13)receive hello(19)receive welcome(1) from (192.168.1.1017)
+receive welcome(1) from (192.168.1.1018)
+receive welcome(1) from (192.168.1.109)
+receive welcome(1) from (192.168.1.1010)
+receive welcome(1) from (192.168.1.1011)
+receive welcome(1) from (192.168.1.1012)
+receive welcome(1) from (192.168.1.1016)
+receive welcome(0) from (192.168.1.102)
+receive hello(6)receive hello(18)receive welcome(0) from (192.168.1.103)
+receive welcome(0) from (192.168.1.104)
+receive hello(1)receive hello(5)receive hello(7)receive hello(9)receive welcome(0) from (192.168.1.1017)
+receive welcome(0) from (192.168.1.1010)
+receive hello(14)receive welcome(0) from (192.168.1.1011)
+receive hello(16)receive welcome(0) from (192.168.1.1012)
+receive welcome(0) from (192.168.1.1013)
+receive welcome(0) from (192.168.1.1015)
+receive hello(8)receive welcome(0) from (192.168.1.1019)
+------------------------------- DONE ITERATION 27
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 28
+receive hello(8)------------------------------- DONE ITERATION 28
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 29
+receive welcome(1) from (192.168.1.1014)
+receive welcome(1) from (192.168.1.103)
+receive welcome(1) from (192.168.1.1015)
+receive welcome(1) from (192.168.1.163)
+receive welcome(1) from (192.168.1.102)
+receive welcome(1) from (192.168.1.104)
+receive welcome(1) from (192.168.1.1013)
+receive welcome(1) from (192.168.1.1019)
+receive welcome(0) from (192.168.1.106)
+receive welcome(0) from (192.168.1.1018)
+receive welcome(0) from (192.168.1.110)
+receive welcome(0) from (192.168.1.105)
+receive welcome(0) from (192.168.1.107)
+receive welcome(0) from (192.168.1.109)
+receive welcome(0) from (192.168.1.1014)
+receive welcome(0) from (192.168.1.1016)
+receive welcome(0) from (192.168.1.108)
+------------------------------- DONE ITERATION 29
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 30
+file name: input1.service
+ file destination: ./services/input1.service
+ (0)file read(input1.service)!
+(TTL:0.000000)
+ file name: input.service
+ file destination: ./services/input.service
+ (0)file read(input.service)!
+(TTL:0.000000)
+ advertising app: _apt_proxy
+advertising app: _apt_http
+(0)myService_0:_apt_proxy TTL:20000 PORT:3500 
+(0)myService_1:_apt_http TTL:30000 PORT:8080 
+(0)myService2_0:_apt_proxy TTL:20000 PORT:3500 
+(0)myService2_1:_apt_http TTL:30000 PORT:8080 
+file name: input1.service
+ file destination: ./services/input1.service
+ (1)file read(input1.service)!
+(TTL:0.000000)
+ file name: input.service
+ file destination: ./services/input.service
+ (1)file read(input.service)!
+(TTL:0.000000)
+ advertising app: _apt_proxy
+advertising app: _apt_http
+(1)myService_0:_apt_proxy TTL:20000 PORT:3500 
+(1)myService_1:_apt_http TTL:30000 PORT:8080 
+(1)myService2_0:_apt_proxy TTL:20000 PORT:3500 
+(1)myService2_1:_apt_http TTL:30000 PORT:8080 
+------------------------------- DONE ITERATION 30
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 31
+receive welcome(1) from (192.168.1.108)
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(20000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(30000)!!
+------------------------------- DONE ITERATION 31
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 32
+0 received message from 192.168.1.110
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(19000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(29000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(20000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(30000)!!
+------------------------------- DONE ITERATION 32
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 33
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(18000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(28000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(19000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(29000)!!
+------------------------------- DONE ITERATION 33
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 34
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(17000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(27000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(18000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(28000)!!
+------------------------------- DONE ITERATION 34
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 35
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(16000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(26000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(17000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(27000)!!
+------------------------------- DONE ITERATION 35
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 36
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(15000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(25000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(16000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(26000)!!
+------------------------------- DONE ITERATION 36
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 37
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(14000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(24000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(15000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(25000)!!
+------------------------------- DONE ITERATION 37
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 38
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(13000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(23000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(14000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(24000)!!
+------------------------------- DONE ITERATION 38
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 39
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(12000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(22000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(13000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(23000)!!
+------------------------------- DONE ITERATION 39
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 40
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(11000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(21000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(12000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(22000)!!
+------------------------------- DONE ITERATION 40
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 41
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(10000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(20000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(11000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(21000)!!
+------------------------------- DONE ITERATION 41
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 42
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(9000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(19000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(10000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(20000)!!
+------------------------------- DONE ITERATION 42
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 43
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(8000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(18000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(9000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(19000)!!
+------------------------------- DONE ITERATION 43
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 44
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(7000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(17000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(8000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(18000)!!
+------------------------------- DONE ITERATION 44
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 45
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(6000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(16000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(7000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(17000)!!
+------------------------------- DONE ITERATION 45
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 46
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(5000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(15000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(6000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(16000)!!
+------------------------------- DONE ITERATION 46
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 47
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(4000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(14000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(5000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(15000)!!
+------------------------------- DONE ITERATION 47
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 48
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(3000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(13000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(4000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(14000)!!
+------------------------------- DONE ITERATION 48
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 49
+file name: input1.service
+ file destination: ./services/input1.service
+ file read!(TTL:0.000000)
+ file name: input.service
+ file destination: ./services/input.service
+ file read!(TTL:0.000000)
+ (1)meta to upload
+(1) koitaw ta myServices, app_name:(_apt_proxy) kai myServ_ip(192.168.1.110)
+(1) koitaw ta myServices, app_name:(_apt_http) kai myServ_ip(192.168.1.110)
+(1)(192.168.1.110)myService expired 0.000000
+file name: input1.service
+ file destination: ./services/input1.service
+ file read!(TTL:0.000000)
+ file name: input.service
+ file destination: ./services/input.service
+ file read!(TTL:0.000000)
+ (0)meta to upload
+(0) koitaw ta myServices, app_name:(_apt_proxy) kai myServ_ip(192.168.1.163)
+(0) koitaw ta myServices, app_name:(_apt_http) kai myServ_ip(192.168.1.163)
+(0)(192.168.1.163)myService expired 0.000000
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(2000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(12000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(3000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(13000)!!
+------------------------------- DONE ITERATION 49
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 50
+(17)(192.168.1.163)service(_apt_proxy) expired, sending query -0.000000
+(17)(192.168.1.110)service(_apt_proxy) expired, sending query -0.000000
+(17)(192.168.1.163) stelnw service(_apt_proxy) request
+(17)(192.168.1.110) stelnw service(_apt_proxy) request
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(1000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(11000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(2000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(12000)!!
+(16)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(16)(192.168.1.110) stelnw service(_apt_proxy) request
+(15)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(15)(192.168.1.163) stelnw service(_apt_proxy) request
+(13)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(13)(192.168.1.163) stelnw service(_apt_proxy) request
+(12)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(12)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(12)(192.168.1.163) stelnw service(_apt_proxy) request
+(12)(192.168.1.110) stelnw service(_apt_proxy) request
+(11)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(11)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(11)(192.168.1.163) stelnw service(_apt_proxy) request
+(11)(192.168.1.110) stelnw service(_apt_proxy) request
+(2)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(2)(192.168.1.163) stelnw service(_apt_proxy) request
+(3)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(3)(192.168.1.163) stelnw service(_apt_proxy) request
+(9)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(9)(192.168.1.110) stelnw service(_apt_proxy) request
+(6)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(6)(192.168.1.110) stelnw service(_apt_proxy) request
+(7)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(7)(192.168.1.110) stelnw service(_apt_proxy) request
+(5)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(5)(192.168.1.110) stelnw service(_apt_proxy) request
+(4)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(4)(192.168.1.163) stelnw service(_apt_proxy) request
+(19)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(19)(192.168.1.163) stelnw service(_apt_proxy) request
+(10)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(10)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(10)(192.168.1.163) stelnw service(_apt_proxy) request
+(10)(192.168.1.110) stelnw service(_apt_proxy) request
+(18)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(18)(192.168.1.110) stelnw service(_apt_proxy) request
+------------------------------- DONE ITERATION 50
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 51
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 17
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 17
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 16, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 16
+(1) koitaw ta myServices gia ton 16, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 15, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 15
+(0) koitaw ta myServices gia ton 15, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 13, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 13
+(0) koitaw ta myServices gia ton 13, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 12
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 12
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 11
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 11
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 2, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 2
+(0) koitaw ta myServices gia ton 2, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 3, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 3
+(0) koitaw ta myServices gia ton 3, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 9, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 9
+(1) koitaw ta myServices gia ton 9, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 6, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 6
+(1) koitaw ta myServices gia ton 6, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 7, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 7
+(1) koitaw ta myServices gia ton 7, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 5, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 5
+(1) koitaw ta myServices gia ton 5, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 4, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 4
+(0) koitaw ta myServices gia ton 4, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 19, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 19
+(0) koitaw ta myServices gia ton 19, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 10
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 10
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 18, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 18
+(1) koitaw ta myServices gia ton 18, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+advertising app: _apt_proxy
+(1)myService_0:_apt_proxy TTL:19000 PORT:3500 
+(1)myService2_0:_apt_proxy TTL:19000 PORT:3500 
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(0)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(10000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(1000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(11000)!!
+advertising app: _apt_proxy
+(0)myService_0:_apt_proxy TTL:19000 PORT:3500 
+(0)myService2_0:_apt_proxy TTL:19000 PORT:3500 
+------------------------------- DONE ITERATION 51
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 52
+(0) koitaw ta myServices gia ton 16, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 16, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 15, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 15, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 13, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 13, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 2, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 2, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 3, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 3, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 9, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 9, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 6, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 6, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 7, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 7, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 5, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 5, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 4, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 4, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 19, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 19, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 18, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 18, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(19000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(9000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(0)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(10000)!!
+------------------------------- DONE ITERATION 52
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 53
+0 received message from 192.168.1.110
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(18000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(8000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(19000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(9000)!!
+------------------------------- DONE ITERATION 53
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 54
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(17000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(7000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(18000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(8000)!!
+------------------------------- DONE ITERATION 54
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 55
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(16000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(6000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(17000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(7000)!!
+------------------------------- DONE ITERATION 55
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 56
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(15000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(5000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(16000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(6000)!!
+------------------------------- DONE ITERATION 56
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 57
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(14000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(4000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(15000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(5000)!!
+------------------------------- DONE ITERATION 57
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 58
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(13000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(3000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(14000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(4000)!!
+------------------------------- DONE ITERATION 58
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 59
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(12000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(2000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(13000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(3000)!!
+------------------------------- DONE ITERATION 59
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 60
+(9)(192.168.1.110)service(_apt_http) expired, sending query -0.000000
+(9)(192.168.1.110) stelnw service(_apt_http) request
+(6)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(6)(192.168.1.110) stelnw service(_apt_http) request
+(7)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(7)(192.168.1.110) stelnw service(_apt_http) request
+(5)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(5)(192.168.1.110) stelnw service(_apt_http) request
+(4)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(4)(192.168.1.163) stelnw service(_apt_http) request
+(19)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(19)(192.168.1.163) stelnw service(_apt_http) request
+(10)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(10)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(10)(192.168.1.163) stelnw service(_apt_http) request
+(10)(192.168.1.110) stelnw service(_apt_http) request
+(18)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(18)(192.168.1.110) stelnw service(_apt_http) request
+(17)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(17)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(17)(192.168.1.163) stelnw service(_apt_http) request
+(17)(192.168.1.110) stelnw service(_apt_http) request
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(11000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(1000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(12000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(2000)!!
+(16)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(16)(192.168.1.110) stelnw service(_apt_http) request
+(15)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(15)(192.168.1.163) stelnw service(_apt_http) request
+(13)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(13)(192.168.1.163) stelnw service(_apt_http) request
+(12)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(12)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(12)(192.168.1.163) stelnw service(_apt_http) request
+(12)(192.168.1.110) stelnw service(_apt_http) request
+(11)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(11)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(11)(192.168.1.163) stelnw service(_apt_http) request
+(11)(192.168.1.110) stelnw service(_apt_http) request
+(2)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(2)(192.168.1.163) stelnw service(_apt_http) request
+(3)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(3)(192.168.1.163) stelnw service(_apt_http) request
+------------------------------- DONE ITERATION 60
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 61
+(1) koitaw ta myServices gia ton 9, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 9, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 9
+(1) koitaw ta myServices gia ton 6, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 6, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 6
+(1) koitaw ta myServices gia ton 7, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 7, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 7
+(1) koitaw ta myServices gia ton 5, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 5, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 5
+(0) koitaw ta myServices gia ton 4, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 4, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 4
+(0) koitaw ta myServices gia ton 19, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 19, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 19
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 10
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 10
+(1) koitaw ta myServices gia ton 18, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 18, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 18
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 17
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 17
+(1) koitaw ta myServices gia ton 16, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 16, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 16
+(0) koitaw ta myServices gia ton 15, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 15, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 15
+(0) koitaw ta myServices gia ton 13, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 13, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 13
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 12
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 12
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 11
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) i have the answer, lala re 11
+(0) koitaw ta myServices gia ton 2, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 2, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 2
+(0) koitaw ta myServices gia ton 3, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 3, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) i have the answer, lala re 3
+advertising app: _apt_http
+(0)myService_0:_apt_http TTL:18000 PORT:8080 
+(0)myService2_0:_apt_http TTL:18000 PORT:8080 
+advertising app: _apt_http
+(1)myService_0:_apt_http TTL:18000 PORT:8080 
+(1)myService2_0:_apt_http TTL:18000 PORT:8080 
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(10000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(0)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(11000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(1000)!!
+------------------------------- DONE ITERATION 61
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 62
+(0) koitaw ta myServices gia ton 9, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 9, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 6, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 6, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 7, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 7, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 5, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 5, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 4, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 4, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 19, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 19, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 18, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 18, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 16, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 16, m_data:(_apt_http)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 15, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 15, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 13, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 13, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 2, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 2, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 3, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 3, m_data:(_apt_http)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(9000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(18000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(10000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(0)!!
+------------------------------- DONE ITERATION 62
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 63
+0 received message from 192.168.1.110
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(8000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(17000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(9000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(18000)!!
+------------------------------- DONE ITERATION 63
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 64
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(7000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(16000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(8000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(17000)!!
+------------------------------- DONE ITERATION 64
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 65
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(6000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(15000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(7000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(16000)!!
+------------------------------- DONE ITERATION 65
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 66
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(5000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(14000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(6000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(15000)!!
+------------------------------- DONE ITERATION 66
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 67
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(4000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(13000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(5000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(14000)!!
+------------------------------- DONE ITERATION 67
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 68
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(3000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(12000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(4000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(13000)!!
+------------------------------- DONE ITERATION 68
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 69
+file name: input1.service
+ file destination: ./services/input1.service
+ file read!(TTL:0.000000)
+ file name: input.service
+ file destination: ./services/input.service
+ file read!(TTL:0.000000)
+ (1)meta to upload
+(1) koitaw ta myServices, app_name:(_apt_proxy) kai myServ_ip(192.168.1.110)
+(1) koitaw ta myServices, app_name:(_apt_http) kai myServ_ip(192.168.1.110)
+(1)(192.168.1.110)myService expired 0.000000
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(2000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(11000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(3000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(12000)!!
+file name: input1.service
+ file destination: ./services/input1.service
+ file read!(TTL:0.000000)
+ file name: input.service
+ file destination: ./services/input.service
+ file read!(TTL:0.000000)
+ (0)meta to upload
+(0) koitaw ta myServices, app_name:(_apt_proxy) kai myServ_ip(192.168.1.163)
+(0) koitaw ta myServices, app_name:(_apt_http) kai myServ_ip(192.168.1.163)
+(0)(192.168.1.163)myService expired 0.000000
+------------------------------- DONE ITERATION 69
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 70
+(17)(192.168.1.163)service(_apt_proxy) expired, sending query -0.000000
+(17)(192.168.1.110)service(_apt_proxy) expired, sending query -0.000000
+(17)(192.168.1.163) stelnw service(_apt_proxy) request
+(17)(192.168.1.110) stelnw service(_apt_proxy) request
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(1000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(10000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(2000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(11000)!!
+(15)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(15)(192.168.1.163) stelnw service(_apt_proxy) request
+(12)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(12)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(12)(192.168.1.163) stelnw service(_apt_proxy) request
+(12)(192.168.1.110) stelnw service(_apt_proxy) request
+(11)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(11)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(11)(192.168.1.163) stelnw service(_apt_proxy) request
+(11)(192.168.1.110) stelnw service(_apt_proxy) request
+(3)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(3)(192.168.1.163) stelnw service(_apt_proxy) request
+(9)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(9)(192.168.1.110) stelnw service(_apt_proxy) request
+(6)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(6)(192.168.1.110) stelnw service(_apt_proxy) request
+(7)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(7)(192.168.1.110) stelnw service(_apt_proxy) request
+(5)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(5)(192.168.1.110) stelnw service(_apt_proxy) request
+(19)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(19)(192.168.1.163) stelnw service(_apt_proxy) request
+(10)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(10)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(10)(192.168.1.163) stelnw service(_apt_proxy) request
+(10)(192.168.1.110) stelnw service(_apt_proxy) request
+(18)(192.168.1.110)service(_apt_proxy) expired, sending query 0.000000
+(18)(192.168.1.110) stelnw service(_apt_proxy) request
+------------------------------- DONE ITERATION 70
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 71
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 17
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 17
+(1) koitaw ta myServices gia ton 17, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 15, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 15
+(0) koitaw ta myServices gia ton 15, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 12
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 12
+(1) koitaw ta myServices gia ton 12, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 11
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 11
+(1) koitaw ta myServices gia ton 11, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 3, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 3
+(0) koitaw ta myServices gia ton 3, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 9, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 9
+(1) koitaw ta myServices gia ton 9, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 6, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 6
+(1) koitaw ta myServices gia ton 6, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 7, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 7
+(1) koitaw ta myServices gia ton 7, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 5, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 5
+(1) koitaw ta myServices gia ton 5, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 19, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 19
+(0) koitaw ta myServices gia ton 19, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.163)
+(0) i have the answer, lala re 10
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 10
+(1) koitaw ta myServices gia ton 10, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 18, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.110)
+(1) i have the answer, lala re 18
+(1) koitaw ta myServices gia ton 18, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.110)
+advertising app: _apt_proxy
+(1)myService_0:_apt_proxy TTL:19000 PORT:3500 
+(1)myService2_0:_apt_proxy TTL:19000 PORT:3500 
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(0)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(9000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(1000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(10000)!!
+advertising app: _apt_proxy
+(0)myService_0:_apt_proxy TTL:19000 PORT:3500 
+(0)myService2_0:_apt_proxy TTL:19000 PORT:3500 
+------------------------------- DONE ITERATION 71
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 72
+(1) koitaw ta myServices gia ton 15, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 15, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(1) koitaw ta myServices gia ton 3, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 3, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 9, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 9, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 6, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 6, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 7, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 7, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(0) koitaw ta myServices gia ton 5, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 5, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+(1) koitaw ta myServices gia ton 19, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_proxy)(192.168.1.110)
+(1) koitaw ta myServices gia ton 19, m_data:(_apt_proxy)(192.168.1.163) kai myServ(_apt_http)(192.168.1.110)
+(0) koitaw ta myServices gia ton 18, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_proxy)(192.168.1.163)
+(0) koitaw ta myServices gia ton 18, m_data:(_apt_proxy)(192.168.1.110) kai myServ(_apt_http)(192.168.1.163)
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(19000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(8000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(0)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(9000)!!
+------------------------------- DONE ITERATION 72
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 73
+0 received message from 192.168.1.110
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(18000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(7000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(19000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(8000)!!
+------------------------------- DONE ITERATION 73
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 74
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(17000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(6000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(18000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(7000)!!
+------------------------------- DONE ITERATION 74
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 75
+P16:serv_app:(_apt_proxy) from ip(192.168.1.110) TTL:(16000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.110) TTL:(5000)!!
+P16:serv_app:(_apt_proxy) from ip(192.168.1.163) TTL:(17000)!!
+P16:serv_app:(_apt_http) from ip(192.168.1.163) TTL:(6000)!!
+------------------------------- DONE ITERATION 75
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 76
+(5)receive leaving from (192.168.1.110)
+(5)delete ip (192.168.1.110) from 0-th position
+mpainw sto exist
+(5)delete service (192.168.1.110) from 0-th position
+(5)delete service (192.168.1.110) from 1-th position
+(6)receive leaving from (192.168.1.110)
+(6)delete ip (192.168.1.110) from 0-th position
+mpainw sto exist
+(6)delete service (192.168.1.110) from 0-th position
+(6)delete service (192.168.1.110) from 1-th position
+(7)receive leaving from (192.168.1.110)
+(7)delete ip (192.168.1.110) from 0-th position
+mpainw sto exist
+(7)delete service (192.168.1.110) from 0-th position
+(7)delete service (192.168.1.110) from 1-th position
+(17)receive leaving from (192.168.1.110)
+(17)delete ip (192.168.1.110) from 2-th position
+mpainw sto exist
+(17)delete service (192.168.1.110) from 2-th position
+(17)delete service (192.168.1.110) from 3-th position
+(18)receive leaving from (192.168.1.110)
+(18)delete ip (192.168.1.110) from 0-th position
+mpainw sto exist
+(18)delete service (192.168.1.110) from 0-th position
+(18)delete service (192.168.1.110) from 1-th position
+(9)receive leaving from (192.168.1.110)
+(9)delete ip (192.168.1.110) from 0-th position
+mpainw sto exist
+(9)delete service (192.168.1.110) from 0-th position
+(9)delete service (192.168.1.110) from 1-th position
+(10)receive leaving from (192.168.1.110)
+(10)delete ip (192.168.1.110) from 2-th position
+mpainw sto exist
+(10)delete service (192.168.1.110) from 2-th position
+(10)delete service (192.168.1.110) from 3-th position
+(11)receive leaving from (192.168.1.110)
+(11)delete ip (192.168.1.110) from 2-th position
+mpainw sto exist
+(11)delete service (192.168.1.110) from 2-th position
+(11)delete service (192.168.1.110) from 3-th position
+(12)receive leaving from (192.168.1.110)
+(12)delete ip (192.168.1.110) from 2-th position
+mpainw sto exist
+(12)delete service (192.168.1.110) from 2-th position
+(12)delete service (192.168.1.110) from 3-th position
+(16)receive leaving from (192.168.1.110)
+(16)delete ip (192.168.1.110) from 0-th position
+mpainw sto exist
+(16)delete service (192.168.1.110) from 0-th position
+(16)delete service (192.168.1.110) from 1-th position
+(2)receive leaving from (192.168.1.163)
+(2)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(2)delete service (192.168.1.163) from 0-th position
+(2)delete service (192.168.1.163) from 1-th position
+(3)receive leaving from (192.168.1.163)
+(3)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(3)delete service (192.168.1.163) from 0-th position
+(3)delete service (192.168.1.163) from 1-th position
+(4)receive leaving from (192.168.1.163)
+(4)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(4)delete service (192.168.1.163) from 0-th position
+(4)delete service (192.168.1.163) from 1-th position
+(17)receive leaving from (192.168.1.163)
+(17)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(17)delete service (192.168.1.163) from 0-th position
+(17)delete service (192.168.1.163) from 1-th position
+(10)receive leaving from (192.168.1.163)
+(10)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(10)delete service (192.168.1.163) from 0-th position
+(10)delete service (192.168.1.163) from 1-th position
+(11)receive leaving from (192.168.1.163)
+(11)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(11)delete service (192.168.1.163) from 0-th position
+(11)delete service (192.168.1.163) from 1-th position
+(12)receive leaving from (192.168.1.163)
+(12)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(12)delete service (192.168.1.163) from 0-th position
+(12)delete service (192.168.1.163) from 1-th position
+(13)receive leaving from (192.168.1.163)
+(13)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(13)delete service (192.168.1.163) from 0-th position
+(13)delete service (192.168.1.163) from 1-th position
+(15)receive leaving from (192.168.1.163)
+(15)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(15)delete service (192.168.1.163) from 0-th position
+(15)delete service (192.168.1.163) from 1-th position
+(19)receive leaving from (192.168.1.163)
+(19)delete ip (192.168.1.163) from 0-th position
+mpainw sto exist
+(19)delete service (192.168.1.163) from 0-th position
+(19)delete service (192.168.1.163) from 1-th position
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(15000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(4000)!!
+------------------------------- DONE ITERATION 76
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 77
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(14000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(3000)!!
+------------------------------- DONE ITERATION 77
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 78
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(13000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(2000)!!
+------------------------------- DONE ITERATION 78
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 79
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(12000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(1000)!!
+------------------------------- DONE ITERATION 79
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 80
+(8)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(8)(192.168.1.163) stelnw service(_apt_http) request
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(11000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(0)!!
+(14)(192.168.1.163)service(_apt_http) expired, sending query 0.000000
+(14)(192.168.1.110)service(_apt_http) expired, sending query 0.000000
+(14)(192.168.1.163) stelnw service(_apt_http) request
+(14)(192.168.1.110) stelnw service(_apt_http) request
+------------------------------- DONE ITERATION 80
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 81
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(10000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(-1000)!!
+------------------------------- DONE ITERATION 81
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 82
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(9000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(-2000)!!
+------------------------------- DONE ITERATION 82
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 83
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(8000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(-3000)!!
+------------------------------- DONE ITERATION 83
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 84
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(7000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(-4000)!!
+------------------------------- DONE ITERATION 84
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 85
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(6000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(-5000)!!
+------------------------------- DONE ITERATION 85
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 86
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(5000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(-6000)!!
+------------------------------- DONE ITERATION 86
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 87
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(4000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(-7000)!!
+------------------------------- DONE ITERATION 87
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 88
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(3000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(-8000)!!
+------------------------------- DONE ITERATION 88
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 89
+P16:serv_app:(_apt_proxy) from ip(0.0.0.0) TTL:(2000)!!
+P16:serv_app:(_apt_http) from ip(0.0.0.0) TTL:(-9000)!!
+------------------------------- DONE ITERATION 89
+  [ 20 active, 0 sleeping, 0 inactive ]
+
+Simulation: Task done 'simulation'

@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<scenario>
+<snapshot id="0">
+	<node id="v0-7tBNaB-C">
+		<location x="3.53854" y="2.12709" z="0" />
+	</node>
+	<node id="v1-7tBNaB-D">
+		<location x="1.87784" y="0.245677" z="0" />
+	</node>
+	<node id="v2-7tBNaB-E">
+		<location x="3.91112" y="2.50523" z="0" />
+	</node>
+	<node id="v3-7tBNaB-F">
+		<location x="3.90199" y="0.356735" z="0" />
+	</node>
+	<node id="v4-7tBNaB-G">
+		<location x="3.77733" y="2.11123" z="0" />
+	</node>
+	<node id="v5-7tBNaB-H">
+		<location x="0.97917" y="1.10385" z="0" />
+	</node>
+	<node id="v6-7tBNaB-I">
+		<location x="2.338" y="0.468796" z="0" />
+	</node>
+	<node id="v7-7tBNaB-J">
+		<location x="1.45528" y="0.940923" z="0" />
+	</node>
+	<node id="v8-7tBNaB-K">
+		<location x="1.12618" y="3.49871" z="0" />
+	</node>
+	<node id="v9-7tBNaB-L">
+		<location x="1.86363" y="0.665218" z="0" />
+	</node>
+	<node id="v10-7tBNaB-M">
+		<location x="2.62151" y="1.28689" z="0" />
+	</node>
+	<node id="v11-7tBNaB-N">
+		<location x="2.47203" y="1.05018" z="0" />
+	</node>
+	<node id="v12-7tBNaB-O">
+		<location x="1.73256" y="1.33977" z="0" />
+	</node>
+	<node id="v13-7tBNaB-P">
+		<location x="3.9732" y="2.75817" z="0" />
+	</node>
+	<node id="v14-7tBNaB-Q">
+		<location x="0.663621" y="1.85464" z="0" />
+	</node>
+	<node id="v15-7tBNaB-R">
+		<location x="3.98173" y="0.372223" z="0" />
+	</node>
+	<node id="v16-7tBNaB-S">
+		<location x="0.6179" y="0.202157" z="0" />
+	</node>
+	<node id="v17-7tBNaB-T">
+		<location x="2.70739" y="1.85957" z="0" />
+	</node>
+	<node id="v18-7tBNaB-U">
+		<location x="2.2163" y="0.529024" z="0" />
+	</node>
+	<node id="v19-7tBNaB-V">
+		<location x="2.64026" y="2.60938" z="0" />
+	</node>
+</snapshot>
+</scenario>

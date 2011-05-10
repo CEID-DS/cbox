@@ -1,0 +1,842 @@
+init_apps: init_external_application(sc); init_reading(sc); init_examples(sc); init_topology(sc);
+Initialising External_Application  Shawn module
+Initialising Wiselib-Shawn-Standalone module
+Initialising examples
+init_topology_elevation
+init_topology_generator
+init_topology_node_gen
+init_topology_node_mod
+init_topology_point_gen
+init_topology_point_mod
+init_topology_topology
+init_legacyapps: init_flooding(sc); init_wiselib(sc);
+Initialising Flooding Processor (Flooding)
+Initialising Wiselib-Shawn module
+Simulation: Running task 'prepare_world'
+DiskGraphModel: Transmission range set to [200]
+Simulation: Task done 'prepare_world'
+Simulation: Running task 'load_world'
+Simulation: Task done 'load_world'
+Simulation: Running task 'simulation'
+------------------------------ BEGIN ITERATION 0
+0
+
+setting mode 1 size:255
+
+(0) sending ping
+1
+(1) sending ping
+2
+3
+4
+5
+6
+7
+8
+9
+------------------------------- DONE ITERATION 0
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 1
+(1)receive ping from (0)
+(2)receive ping from (0)
+(3)receive ping from (0)
+(4)receive ping from (0)
+(5)receive ping from (0)
+(6)receive ping from (0)
+(7)receive ping from (0)
+(8)receive ping from (0)
+(9)receive ping from (0)
+(0)receive ping from (1)
+(2)receive ping from (1)
+(3)receive ping from (1)
+(4)receive ping from (1)
+(5)receive ping from (1)
+(6)receive ping from (1)
+(7)receive ping from (1)
+(8)receive ping from (1)
+(9)receive ping from (1)
+------------------------------- DONE ITERATION 1
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 2
+(0)receive pong from (1)
+(2)receive pong from (1)
+(3)receive pong from (1)
+(4)receive pong from (1)
+(5)receive pong from (1)
+(6)receive pong from (1)
+(7)receive pong from (1)
+(8)receive pong from (1)
+(9)receive pong from (1)
+(0)receive pong from (2)
+(1)receive pong from (2)
+(3)receive pong from (2)
+(4)receive pong from (2)
+(5)receive pong from (2)
+(6)receive pong from (2)
+(7)receive pong from (2)
+(8)receive pong from (2)
+(9)receive pong from (2)
+(0)receive pong from (3)
+(1)receive pong from (3)
+(2)receive pong from (3)
+(4)receive pong from (3)
+(5)receive pong from (3)
+(6)receive pong from (3)
+(7)receive pong from (3)
+(8)receive pong from (3)
+(9)receive pong from (3)
+(0)receive pong from (4)
+(1)receive pong from (4)
+(2)receive pong from (4)
+(3)receive pong from (4)
+(5)receive pong from (4)
+(6)receive pong from (4)
+(7)receive pong from (4)
+(8)receive pong from (4)
+(9)receive pong from (4)
+(0)receive pong from (5)
+(1)receive pong from (5)
+(2)receive pong from (5)
+(3)receive pong from (5)
+(4)receive pong from (5)
+(6)receive pong from (5)
+(7)receive pong from (5)
+(8)receive pong from (5)
+(9)receive pong from (5)
+(0)receive pong from (6)
+(1)receive pong from (6)
+(2)receive pong from (6)
+(3)receive pong from (6)
+(4)receive pong from (6)
+(5)receive pong from (6)
+(7)receive pong from (6)
+(8)receive pong from (6)
+(9)receive pong from (6)
+(0)receive pong from (7)
+(1)receive pong from (7)
+(2)receive pong from (7)
+(3)receive pong from (7)
+(4)receive pong from (7)
+(5)receive pong from (7)
+(6)receive pong from (7)
+(8)receive pong from (7)
+(9)receive pong from (7)
+(0)receive pong from (8)
+(1)receive pong from (8)
+(2)receive pong from (8)
+(3)receive pong from (8)
+(4)receive pong from (8)
+(5)receive pong from (8)
+(6)receive pong from (8)
+(7)receive pong from (8)
+(9)receive pong from (8)
+(0)receive pong from (9)
+(1)receive pong from (9)
+(2)receive pong from (9)
+(3)receive pong from (9)
+(4)receive pong from (9)
+(5)receive pong from (9)
+(6)receive pong from (9)
+(7)receive pong from (9)
+(8)receive pong from (9)
+(1)receive pong from (0)
+(2)receive pong from (0)
+(3)receive pong from (0)
+(4)receive pong from (0)
+(5)receive pong from (0)
+(6)receive pong from (0)
+(7)receive pong from (0)
+(8)receive pong from (0)
+(9)receive pong from (0)
+(0)receive pong from (2)
+(1)receive pong from (2)
+(3)receive pong from (2)
+(4)receive pong from (2)
+(5)receive pong from (2)
+(6)receive pong from (2)
+(7)receive pong from (2)
+(8)receive pong from (2)
+(9)receive pong from (2)
+(0)receive pong from (3)
+(1)receive pong from (3)
+(2)receive pong from (3)
+(4)receive pong from (3)
+(5)receive pong from (3)
+(6)receive pong from (3)
+(7)receive pong from (3)
+(8)receive pong from (3)
+(9)receive pong from (3)
+(0)receive pong from (4)
+(1)receive pong from (4)
+(2)receive pong from (4)
+(3)receive pong from (4)
+(5)receive pong from (4)
+(6)receive pong from (4)
+(7)receive pong from (4)
+(8)receive pong from (4)
+(9)receive pong from (4)
+(0)receive pong from (5)
+(1)receive pong from (5)
+(2)receive pong from (5)
+(3)receive pong from (5)
+(4)receive pong from (5)
+(6)receive pong from (5)
+(7)receive pong from (5)
+(8)receive pong from (5)
+(9)receive pong from (5)
+(0)receive pong from (6)
+(1)receive pong from (6)
+(2)receive pong from (6)
+(3)receive pong from (6)
+(4)receive pong from (6)
+(5)receive pong from (6)
+(7)receive pong from (6)
+(8)receive pong from (6)
+(9)receive pong from (6)
+(0)receive pong from (7)
+(1)receive pong from (7)
+(2)receive pong from (7)
+(3)receive pong from (7)
+(4)receive pong from (7)
+(5)receive pong from (7)
+(6)receive pong from (7)
+(8)receive pong from (7)
+(9)receive pong from (7)
+(0)receive pong from (8)
+(1)receive pong from (8)
+(2)receive pong from (8)
+(3)receive pong from (8)
+(4)receive pong from (8)
+(5)receive pong from (8)
+(6)receive pong from (8)
+(7)receive pong from (8)
+(9)receive pong from (8)
+(0)receive pong from (9)
+(1)receive pong from (9)
+(2)receive pong from (9)
+(3)receive pong from (9)
+(4)receive pong from (9)
+(5)receive pong from (9)
+(6)receive pong from (9)
+(7)receive pong from (9)
+(8)receive pong from (9)
+------------------------------- DONE ITERATION 2
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 3
+------------------------------- DONE ITERATION 3
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 4
+------------------------------- DONE ITERATION 4
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 5
+(1 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 301
+(0 - 192.168.1.100 - alekos.loc)sending participation message 1
+to megethos einai 301
+------------------------------- DONE ITERATION 5
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 6
+eimai o 0:m_data.source_host=unregistered
+0: resolving hostname alekos.loc
+0: my new hostname is alekos_57.loc
+my new ip is 192.168.1.163eimai o 0:m_data.source_host=unregistered
+1: resolving hostname alekos.loc
+1: my new hostname is alekos_58.loc
+my new ip is 192.168.1.243------------------------------- DONE ITERATION 6
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 7
+------------------------------- DONE ITERATION 7
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 8
+------------------------------- DONE ITERATION 8
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 9
+------------------------------- DONE ITERATION 9
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 10
+(0 - 192.168.1.163 - alekos_57.loc)sending participation message 1
+to megethos einai 301
+(1 - 192.168.1.243 - alekos_58.loc)sending participation message 1
+to megethos einai 301
+------------------------------- DONE ITERATION 10
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 11
+eimai o 0:m_data.source_host=unregistered
+eimai o 0:m_data.source_host=unregistered
+------------------------------- DONE ITERATION 11
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 12
+------------------------------- DONE ITERATION 12
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 13
+------------------------------- DONE ITERATION 13
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 14
+------------------------------- DONE ITERATION 14
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 15
+(0 - 192.168.1.163 - alekos_57.loc)sending participation message 2
+to megethos einai 301
+(1 - 192.168.1.243 - alekos_58.loc)sending participation message 2
+to megethos einai 301
+------------------------------- DONE ITERATION 15
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 16
+eimai o 0:m_data.source_host=unregistered
+eimai o 0:m_data.source_host=unregistered
+------------------------------- DONE ITERATION 16
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 17
+------------------------------- DONE ITERATION 17
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 18
+------------------------------- DONE ITERATION 18
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 19
+------------------------------- DONE ITERATION 19
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 20
+(0 - 192.168.1.163 - alekos_57.loc)sending participation message 3
+to megethos einai 301
+(1 - 192.168.1.243 - alekos_58.loc)sending participation message 3
+to megethos einai 301
+------------------------------- DONE ITERATION 20
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 21
+eimai o 0:m_data.source_host=unregistered
+eimai o 0:m_data.source_host=unregistered
+------------------------------- DONE ITERATION 21
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 22
+------------------------------- DONE ITERATION 22
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 23
+------------------------------- DONE ITERATION 23
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 24
+------------------------------- DONE ITERATION 24
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 25
+0:: i'm going in!!
+(0)sending hello to all
+1:: i'm going in!!
+(1)sending hello to all
+------------------------------- DONE ITERATION 25
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 26
+receive hello(1)receive hello(2)receive hello(3)receive hello(4)receive hello(5)receive hello(6)receive hello(7)receive hello(8)receive hello(9)receive hello(0)receive hello(2)receive hello(3)receive hello(4)receive hello(5)receive hello(6)receive hello(7)receive hello(8)receive hello(9)------------------------------- DONE ITERATION 26
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 27
+receive welcome(0) from (192.168.1.243)
+receive welcome(0) from (192.168.1.102)
+receive welcome(0) from (192.168.1.103)
+receive welcome(0) from (192.168.1.104)
+receive welcome(0) from (192.168.1.105)
+receive welcome(0) from (192.168.1.106)
+receive welcome(0) from (192.168.1.107)
+receive welcome(0) from (192.168.1.108)
+receive welcome(0) from (192.168.1.109)
+receive welcome(1) from (192.168.1.163)
+receive welcome(1) from (192.168.1.102)
+receive welcome(1) from (192.168.1.103)
+receive welcome(1) from (192.168.1.104)
+receive welcome(1) from (192.168.1.105)
+receive welcome(1) from (192.168.1.106)
+receive welcome(1) from (192.168.1.107)
+receive welcome(1) from (192.168.1.108)
+receive welcome(1) from (192.168.1.109)
+------------------------------- DONE ITERATION 27
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 28
+------------------------------- DONE ITERATION 28
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 29
+------------------------------- DONE ITERATION 29
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 30
+file name: input1.service
+ file destination: ./services/input1.service
+ (1)file read(input1.service)!
+(TTL:20000)
+ file name: input.service
+ file destination: ./services/input.service
+ (1)file read(input.service)!
+(TTL:30000)
+ advertising app: _apt_proxy
+advertising app: _apt_http
+file name: input1.service
+ file destination: ./services/input1.service
+ (0)file read(input1.service)!
+(TTL:20000)
+ file name: input.service
+ file destination: ./services/input.service
+ (0)file read(input.service)!
+(TTL:30000)
+ advertising app: _apt_proxy
+advertising app: _apt_http
+------------------------------- DONE ITERATION 30
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 31
+------------------------------- DONE ITERATION 31
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 32
+------------------------------- DONE ITERATION 32
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 33
+------------------------------- DONE ITERATION 33
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 34
+------------------------------- DONE ITERATION 34
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 35
+------------------------------- DONE ITERATION 35
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 36
+------------------------------- DONE ITERATION 36
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 37
+------------------------------- DONE ITERATION 37
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 38
+------------------------------- DONE ITERATION 38
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 39
+------------------------------- DONE ITERATION 39
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 40
+------------------------------- DONE ITERATION 40
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 41
+------------------------------- DONE ITERATION 41
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 42
+------------------------------- DONE ITERATION 42
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 43
+------------------------------- DONE ITERATION 43
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 44
+------------------------------- DONE ITERATION 44
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 45
+------------------------------- DONE ITERATION 45
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 46
+------------------------------- DONE ITERATION 46
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 47
+------------------------------- DONE ITERATION 47
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 48
+------------------------------- DONE ITERATION 48
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 49
+file name: input1.service
+ file destination: ./services/input1.service
+ (1)file read(input1.service)!
+(TTL:20000)
+ file name: input.service
+ file destination: ./services/input.service
+ (1)file read(input.service)!
+(TTL:30000)
+ (1)meta to upload
+(1)(192.168.1.243)myService expired 0.000000
+file name: input1.service
+ file destination: ./services/input1.service
+ (0)file read(input1.service)!
+(TTL:20000)
+ file name: input.service
+ file destination: ./services/input.service
+ (0)file read(input.service)!
+(TTL:30000)
+ (0)meta to upload
+(0)(192.168.1.163)myService expired 0.000000
+------------------------------- DONE ITERATION 49
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 50
+advertising app: _apt_proxy
+advertising app: _apt_http
+(1)(192.168.1.163)service(_apt_proxy) expired, sending query -0.000000
+(1)(192.168.1.163) stelnw service(_apt_proxy) request
+(3)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(3)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(3)(192.168.1.243) stelnw service(_apt_proxy) request
+(3)(192.168.1.163) stelnw service(_apt_proxy) request
+(5)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(5)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(5)(192.168.1.243) stelnw service(_apt_proxy) request
+(5)(192.168.1.163) stelnw service(_apt_proxy) request
+(9)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(9)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(9)(192.168.1.243) stelnw service(_apt_proxy) request
+(9)(192.168.1.163) stelnw service(_apt_proxy) request
+(4)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(4)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(4)(192.168.1.243) stelnw service(_apt_proxy) request
+(4)(192.168.1.163) stelnw service(_apt_proxy) request
+(2)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(2)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(2)(192.168.1.243) stelnw service(_apt_proxy) request
+(2)(192.168.1.163) stelnw service(_apt_proxy) request
+(8)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(8)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(8)(192.168.1.243) stelnw service(_apt_proxy) request
+(8)(192.168.1.163) stelnw service(_apt_proxy) request
+(7)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(7)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(7)(192.168.1.243) stelnw service(_apt_proxy) request
+(7)(192.168.1.163) stelnw service(_apt_proxy) request
+advertising app: _apt_proxy
+advertising app: _apt_http
+(0)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(0)(192.168.1.243) stelnw service(_apt_proxy) request
+(6)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(6)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(6)(192.168.1.243) stelnw service(_apt_proxy) request
+(6)(192.168.1.163) stelnw service(_apt_proxy) request
+------------------------------- DONE ITERATION 50
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 51
+(0) i have the answer, lala re 1
+(0) i have the answer, lala re 3
+(1) i have the answer, lala re 3
+(0) i have the answer, lala re 5
+(1) i have the answer, lala re 5
+(0) i have the answer, lala re 9
+(1) i have the answer, lala re 9
+(0) i have the answer, lala re 4
+(1) i have the answer, lala re 4
+(0) i have the answer, lala re 2
+(1) i have the answer, lala re 2
+(0) i have the answer, lala re 8
+(1) i have the answer, lala re 8
+(0) i have the answer, lala re 7
+(1) i have the answer, lala re 7
+(1) i have the answer, lala re 0
+(0) i have the answer, lala re 6
+(1) i have the answer, lala re 6
+advertising app: _apt_proxy
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 51
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 52
+------------------------------- DONE ITERATION 52
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 53
+------------------------------- DONE ITERATION 53
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 54
+------------------------------- DONE ITERATION 54
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 55
+------------------------------- DONE ITERATION 55
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 56
+------------------------------- DONE ITERATION 56
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 57
+------------------------------- DONE ITERATION 57
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 58
+------------------------------- DONE ITERATION 58
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 59
+------------------------------- DONE ITERATION 59
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 60
+------------------------------- DONE ITERATION 60
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 61
+------------------------------- DONE ITERATION 61
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 62
+------------------------------- DONE ITERATION 62
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 63
+------------------------------- DONE ITERATION 63
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 64
+------------------------------- DONE ITERATION 64
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 65
+------------------------------- DONE ITERATION 65
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 66
+------------------------------- DONE ITERATION 66
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 67
+------------------------------- DONE ITERATION 67
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 68
+------------------------------- DONE ITERATION 68
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 69
+file name: input1.service
+ file destination: ./services/input1.service
+ (1)file read(input1.service)!
+(TTL:20000)
+ file name: input.service
+ file destination: ./services/input.service
+ (1)file read(input.service)!
+(TTL:30000)
+ (1)meta to upload
+(1)(192.168.1.243)myService expired 0.000000
+file name: input1.service
+ file destination: ./services/input1.service
+ (0)file read(input1.service)!
+(TTL:20000)
+ file name: input.service
+ file destination: ./services/input.service
+ (0)file read(input.service)!
+(TTL:30000)
+ (0)meta to upload
+(0)(192.168.1.163)myService expired 0.000000
+------------------------------- DONE ITERATION 69
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 70
+advertising app: _apt_proxy
+advertising app: _apt_http
+(1)(192.168.1.163)service(_apt_proxy) expired, sending query -0.000000
+(1)(192.168.1.163) stelnw service(_apt_proxy) request
+(6)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(6)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(6)(192.168.1.243) stelnw service(_apt_proxy) request
+(6)(192.168.1.163) stelnw service(_apt_proxy) request
+(3)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(3)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(3)(192.168.1.243) stelnw service(_apt_proxy) request
+(3)(192.168.1.163) stelnw service(_apt_proxy) request
+(5)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(5)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(5)(192.168.1.243) stelnw service(_apt_proxy) request
+(5)(192.168.1.163) stelnw service(_apt_proxy) request
+(9)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(9)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(9)(192.168.1.243) stelnw service(_apt_proxy) request
+(9)(192.168.1.163) stelnw service(_apt_proxy) request
+(4)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(4)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(4)(192.168.1.243) stelnw service(_apt_proxy) request
+(4)(192.168.1.163) stelnw service(_apt_proxy) request
+(2)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(2)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(2)(192.168.1.243) stelnw service(_apt_proxy) request
+(2)(192.168.1.163) stelnw service(_apt_proxy) request
+(8)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(8)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(8)(192.168.1.243) stelnw service(_apt_proxy) request
+(8)(192.168.1.163) stelnw service(_apt_proxy) request
+(7)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(7)(192.168.1.163)service(_apt_proxy) expired, sending query 0.000000
+(7)(192.168.1.243) stelnw service(_apt_proxy) request
+(7)(192.168.1.163) stelnw service(_apt_proxy) request
+advertising app: _apt_proxy
+advertising app: _apt_http
+(0)(192.168.1.243)service(_apt_proxy) expired, sending query 0.000000
+(0)(192.168.1.243) stelnw service(_apt_proxy) request
+------------------------------- DONE ITERATION 70
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 71
+(0) i have the answer, lala re 1
+(0) i have the answer, lala re 6
+(1) i have the answer, lala re 6
+(0) i have the answer, lala re 3
+(1) i have the answer, lala re 3
+(0) i have the answer, lala re 5
+(1) i have the answer, lala re 5
+(0) i have the answer, lala re 9
+(1) i have the answer, lala re 9
+(0) i have the answer, lala re 4
+(1) i have the answer, lala re 4
+(0) i have the answer, lala re 2
+(1) i have the answer, lala re 2
+(0) i have the answer, lala re 8
+(1) i have the answer, lala re 8
+(0) i have the answer, lala re 7
+(1) i have the answer, lala re 7
+(1) i have the answer, lala re 0
+advertising app: _apt_proxy
+advertising app: _apt_proxy
+------------------------------- DONE ITERATION 71
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 72
+------------------------------- DONE ITERATION 72
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 73
+------------------------------- DONE ITERATION 73
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 74
+------------------------------- DONE ITERATION 74
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 75
+------------------------------- DONE ITERATION 75
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 76
+(1)receive leaving from (192.168.1.163)
+mpainw sto exist
+(2)receive leaving from (192.168.1.163)
+mpainw sto exist
+(3)receive leaving from (192.168.1.163)
+mpainw sto exist
+(4)receive leaving from (192.168.1.163)
+mpainw sto exist
+(5)receive leaving from (192.168.1.163)
+mpainw sto exist
+(6)receive leaving from (192.168.1.163)
+mpainw sto exist
+(7)receive leaving from (192.168.1.163)
+mpainw sto exist
+(8)receive leaving from (192.168.1.163)
+mpainw sto exist
+(9)receive leaving from (192.168.1.163)
+mpainw sto exist
+(0)receive leaving from (192.168.1.243)
+mpainw sto exist
+(2)receive leaving from (192.168.1.243)
+mpainw sto exist
+(3)receive leaving from (192.168.1.243)
+mpainw sto exist
+(4)receive leaving from (192.168.1.243)
+mpainw sto exist
+(5)receive leaving from (192.168.1.243)
+mpainw sto exist
+(6)receive leaving from (192.168.1.243)
+mpainw sto exist
+(7)receive leaving from (192.168.1.243)
+mpainw sto exist
+(8)receive leaving from (192.168.1.243)
+mpainw sto exist
+(9)receive leaving from (192.168.1.243)
+mpainw sto exist
+------------------------------- DONE ITERATION 76
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 77
+------------------------------- DONE ITERATION 77
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 78
+------------------------------- DONE ITERATION 78
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 79
+------------------------------- DONE ITERATION 79
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 80
+------------------------------- DONE ITERATION 80
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 81
+------------------------------- DONE ITERATION 81
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 82
+------------------------------- DONE ITERATION 82
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 83
+------------------------------- DONE ITERATION 83
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 84
+------------------------------- DONE ITERATION 84
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 85
+------------------------------- DONE ITERATION 85
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 86
+------------------------------- DONE ITERATION 86
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 87
+------------------------------- DONE ITERATION 87
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 88
+------------------------------- DONE ITERATION 88
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+------------------------------ BEGIN ITERATION 89
+------------------------------- DONE ITERATION 89
+  [ 10 active, 0 sleeping, 0 inactive ]
+
+Simulation: Task done 'simulation'

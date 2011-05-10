@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<scenario>
+<snapshot id="-1">
+	<node id="v0-Y3WPaB-C">
+		<location x="2.72642" y="1.48342" z="0" />
+	</node>
+	<node id="v1-Y3WPaB-D">
+		<location x="0.453704" y="2.06745" z="0" />
+	</node>
+	<node id="v2-Y3WPaB-E">
+		<location x="1.65902" y="2.09505" z="0" />
+	</node>
+	<node id="v3-Y3WPaB-F">
+		<location x="3.08425" y="0.491366" z="0" />
+	</node>
+	<node id="v4-Y3WPaB-G">
+		<location x="3.21356" y="1.19946" z="0" />
+	</node>
+	<node id="v5-Y3WPaB-H">
+		<location x="3.96598" y="1.856" z="0" />
+	</node>
+	<node id="v6-Y3WPaB-I">
+		<location x="3.35628" y="3.94391" z="0" />
+	</node>
+	<node id="v7-Y3WPaB-J">
+		<location x="0.0228906" y="1.13828" z="0" />
+	</node>
+	<node id="v8-Y3WPaB-K">
+		<location x="3.06869" y="3.49546" z="0" />
+	</node>
+	<node id="v9-Y3WPaB-L">
+		<location x="2.38351" y="0.577192" z="0" />
+	</node>
+	<node id="v10-Y3WPaB-M">
+		<location x="0.0690926" y="3.18293" z="0" />
+	</node>
+	<node id="v11-Y3WPaB-N">
+		<location x="3.32938" y="2.6708" z="0" />
+	</node>
+	<node id="v12-Y3WPaB-O">
+		<location x="2.98904" y="2.01467" z="0" />
+	</node>
+	<node id="v13-Y3WPaB-P">
+		<location x="2.77865" y="3.04952" z="0" />
+	</node>
+	<node id="v14-Y3WPaB-Q">
+		<location x="1.89472" y="2.60157" z="0" />
+	</node>
+	<node id="v15-Y3WPaB-R">
+		<location x="0.0849879" y="1.69492" z="0" />
+	</node>
+	<node id="v16-Y3WPaB-S">
+		<location x="3.76236" y="0.621136" z="0" />
+	</node>
+	<node id="v17-Y3WPaB-T">
+		<location x="2.71618" y="0.538692" z="0" />
+	</node>
+	<node id="v18-Y3WPaB-U">
+		<location x="1.03006" y="1.42138" z="0" />
+	</node>
+	<node id="v19-Y3WPaB-V">
+		<location x="2.62084" y="1.80043" z="0" />
+	</node>
+</snapshot>
+</scenario>

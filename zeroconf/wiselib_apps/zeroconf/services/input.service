@@ -1,0 +1,6 @@
+app_name _apt_http
+protocol _tcp
+interface eth0_ipv6
+port 8080
+TXT_DATA html_page
+TTL 30000

@@ -1,0 +1,44 @@
+<scenario>
+<snapshot id="0">
+	<node id="v0-56cHXB-C">
+		<location x="2.9574" y="0.246308" z="0" />
+		<tag type="int" name="input_value" value="4690" />
+	</node>
+	<node id="v1-56cHXB-D">
+		<location x="1.62044" y="3.4183" z="0" />
+		<tag type="int" name="input_value" value="537" />
+	</node>
+	<node id="v2-56cHXB-E">
+		<location x="0.463158" y="3.20546" z="0" />
+		<tag type="int" name="input_value" value="2569" />
+	</node>
+	<node id="v3-56cHXB-F">
+		<location x="3.63095" y="2.51168" z="0" />
+		<tag type="int" name="input_value" value="7239" />
+	</node>
+	<node id="v4-56cHXB-G">
+		<location x="3.17153" y="2.93666" z="0" />
+		<tag type="int" name="input_value" value="5281" />
+	</node>
+	<node id="v5-56cHXB-H">
+		<location x="3.43665" y="2.68168" z="0" />
+		<tag type="int" name="input_value" value="7739" />
+	</node>
+	<node id="v6-56cHXB-I">
+		<location x="2.85198" y="1.94842" z="0" />
+		<tag type="int" name="input_value" value="3546" />
+	</node>
+	<node id="v7-56cHXB-J">
+		<location x="2.89937" y="0.454189" z="0" />
+		<tag type="int" name="input_value" value="3761" />
+	</node>
+	<node id="v8-56cHXB-K">
+		<location x="0.195424" y="1.33036" z="0" />
+		<tag type="int" name="input_value" value="4271" />
+	</node>
+	<node id="v9-56cHXB-L">
+		<location x="1.9887" y="3.72772" z="0" />
+		<tag type="int" name="input_value" value="30" />
+	</node>
+</snapshot>
+</scenario>
