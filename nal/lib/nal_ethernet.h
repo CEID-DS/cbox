@@ -23,18 +23,22 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include "nal_address.h"
+#include "nal_delegate.h"
 
 class Ethernet{
 
 	public:
+		Ethernet();
 		int enable();
 		int disable();
 		int send(address addr,char *data,int size);
 		
 	private:
 		static int sockfd;//socket's file descriptor
-		static sockaddr_in address;//used for server initialization and they used for communication with others
+		static address addr;//used for server initialization
 		static char data_buffer[1024];//buffer of the data received
+		static int instances;//count of instances
+		static const int max_instances;//max number of instances that can be created
 };
 		
 #endif
