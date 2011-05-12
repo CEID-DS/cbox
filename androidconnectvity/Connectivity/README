@@ -1,0 +1,4 @@
+I use netbeans but since everyone uses a different ide a made a makefile
+You can just type Make -f Makefile
+and the excecutable is on the Debug forlder
+You need to have the boost library installed
