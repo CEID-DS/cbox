@@ -30,10 +30,16 @@ public:
 	struct ZcDbBindings::service* getServices(int &size);
 	//returns a pointer to an array of structs of type service that contains the contents of table myServices
 	struct ZcDbBindings::service* getMyServices(int &size);
-	//accepts an argument of type struct service and adds its contents to the table Services
+	//accepts an argument of type struct service and adds or updates its contents to the table services
 	int addService(service s);
-	//removes a service record from the database
+	//accepts an argument of type struct service and adds or updates its contents to the table myServices
+	int addMyService(service s);
+	//updates TTL times
+	void refreshTTL(int t);
+	//removes one or more services records from the database table services
 	bool removeService(string hostname, string serviceType);
+	//removes one or more services records from the database table myServices
+	bool removeMyService(string serviceType);
 	//returns an array that holds every requestedService
 	char** getRequestedService(int &size);
 	//returns the number of services the user has in its disposition
@@ -170,8 +176,9 @@ struct ZcDbBindings::service* ZcDbBindings::getMyServices(int &size)
 }
 
 /* Accepts an argument of type struct service and adds its contents to
-*  the table Services. If a mysql error appears during the insert, the
-*  error is printed in the cli.
+*  the table services. If the entry already exists then it updates its
+*  contents. If a mysql error appears during the insert, the error is
+*  printed in the cli.
 */
 int ZcDbBindings::addService(ZcDbBindings::service s)
 {
@@ -182,50 +189,262 @@ int ZcDbBindings::addService(ZcDbBindings::service s)
 	QString Qinterface(s.interface.c_str());
 	QString QTXTDATA(s.TXTDATA.c_str());
 
-	//constructing the mysql query
-	QSqlQuery query;
-
-	query.prepare("INSERT INTO services (hostname, serviceType, protocol, interface, port, TXTDATA, TTL, advertised, questioned) VALUES "
-					"(:hostname, :serviceType, :protocol, :interface, :port, :TXTDATA, :TTL, :advertised, :questioned)");
-	query.bindValue(":hostname", Qhostname);
-	query.bindValue(":serviceType", QserviceType);
-	query.bindValue(":protocol", Qprotocol);
-	query.bindValue(":interface", Qinterface);
-	query.bindValue(":port", s.port);
-	query.bindValue(":TXTDATA", QTXTDATA);
-	query.bindValue(":TTL", s.TTL);
-	query.bindValue(":advertised", s.advertised);
-	query.bindValue(":questioned", s.questioned);
-
-    if(!query.exec())
+	//creating a QSqlTableModel to handle the select statement in order to see if we have
+	//to update the value or we need to insert a new row
+	QSqlTableModel model;
+	model.setTable("services");
+	//all changes to the model will be applied immediately to the database.
+	model.setEditStrategy(QSqlTableModel::OnFieldChange);
+	model.setFilter(QString("hostname='%1' AND serviceType='%2'").arg(Qhostname).arg(QserviceType));
+	//executing the query
+    if(!model.select())
 	{
-		qDebug() << "> Query exec() error." << query.lastError();
+		qDebug() << "> Query model.select() error." << model.lastError();
 	}
-    //else qDebug() << ">Query exec() success.";
+	//checking the number of rows that were returned
+	if(model.rowCount()==1)
+	{
+		QSqlRecord record = model.record(0);
+		record.setValue("hostname", Qhostname);
+		record.setValue("serviceType", QserviceType);
+		record.setValue("protocol", Qprotocol);
+		record.setValue("interface", Qinterface);
+		record.setValue("port", s.port);
+		record.setValue("TXTDATA", QTXTDATA);
+		record.setValue("TTL", s.TTL);
+		record.setValue("advertised", s.advertised);
+		record.setValue("questioned", s.questioned);
+		model.setRecord(0, record);
+	}
+	//if no rows were returned then this means that no such value exists..
+	else if(model.rowCount()==0)
+	{
+		//constructing the mysql query
+		QSqlQuery insQuery;
+
+		insQuery.prepare("INSERT INTO services (hostname, serviceType, protocol, interface, port, TXTDATA, TTL, advertised, questioned) VALUES "
+						"(:hostname, :serviceType, :protocol, :interface, :port, :TXTDATA, :TTL, :advertised, :questioned)");
+		insQuery.bindValue(":hostname", Qhostname);
+		insQuery.bindValue(":serviceType", QserviceType);
+		insQuery.bindValue(":protocol", Qprotocol);
+		insQuery.bindValue(":interface", Qinterface);
+		insQuery.bindValue(":port", s.port);
+		insQuery.bindValue(":TXTDATA", QTXTDATA);
+		insQuery.bindValue(":TTL", s.TTL);
+		insQuery.bindValue(":advertised", s.advertised);
+		insQuery.bindValue(":questioned", s.questioned);
+
+		if(!insQuery.exec())
+		{
+			qDebug() << "> Query exec() error." << insQuery.lastError();
+		}
+		//else qDebug() << ">Query exec() success.";
+	}
+	//normally this should never be executed!
+	else qDebug() << "> Error: Duplicate entry in database.";
 
 	return 0;
 }
 
+/* Accepts an argument of type struct service and adds its contents to
+*  the table myServices. If the entry already exists then it updates its
+*  contents. If a mysql error appears during the insert, the error is
+*  printed in the cli.
+*/
+int ZcDbBindings::addMyService(ZcDbBindings::service s)
+{
+	//declaring Qt strings
+	QString Qhostname(s.hostname.c_str());
+	QString QserviceType(s.serviceType.c_str());
+	QString Qprotocol(s.protocol.c_str());
+	QString Qinterface(s.interface.c_str());
+	QString QTXTDATA(s.TXTDATA.c_str());
 
-/* Removes a record from services table.
-   The method accepts string arguments but eventually uses QStrings
+	//creating a QSqlTableModel to handle the select statement in order to see if we have
+	//to update the value or we need to insert a new row
+	QSqlTableModel model;
+	model.setTable("myServices");
+	//all changes to the model will be applied immediately to the database.
+	model.setEditStrategy(QSqlTableModel::OnFieldChange);
+	model.setFilter(QString("hostname='%1' AND serviceType='%2'").arg(Qhostname).arg(QserviceType));
+	//executing the query
+    if(!model.select())
+	{
+		qDebug() << "> Query model.select() error." << model.lastError();
+	}
+	//checking the number of rows that were returned
+	if(model.rowCount()==1)
+	{
+		QSqlRecord record = model.record(0);
+		record.setValue("hostname", Qhostname);
+		record.setValue("serviceType", QserviceType);
+		record.setValue("protocol", Qprotocol);
+		record.setValue("interface", Qinterface);
+		record.setValue("port", s.port);
+		record.setValue("TXTDATA", QTXTDATA);
+		record.setValue("TTL", s.TTL);
+		record.setValue("advertised", s.advertised);
+		record.setValue("questioned", s.questioned);
+		model.setRecord(0, record);
+	}
+	//if no rows were returned then this means that no such value exists..
+	else if(model.rowCount()==0)
+	{
+		//constructing the mysql query
+		QSqlQuery insQuery;
+
+		insQuery.prepare("INSERT INTO myServices (hostname, serviceType, protocol, interface, port, TXTDATA, TTL, advertised, questioned) VALUES "
+						"(:hostname, :serviceType, :protocol, :interface, :port, :TXTDATA, :TTL, :advertised, :questioned)");
+		insQuery.bindValue(":hostname", Qhostname);
+		insQuery.bindValue(":serviceType", QserviceType);
+		insQuery.bindValue(":protocol", Qprotocol);
+		insQuery.bindValue(":interface", Qinterface);
+		insQuery.bindValue(":port", s.port);
+		insQuery.bindValue(":TXTDATA", QTXTDATA);
+		insQuery.bindValue(":TTL", s.TTL);
+		insQuery.bindValue(":advertised", s.advertised);
+		insQuery.bindValue(":questioned", s.questioned);
+
+		if(!insQuery.exec())
+		{
+			qDebug() << "> Query exec() error." << insQuery.lastError();
+		}
+		//else qDebug() << ">Query exec() success.";
+	}
+	//normally this should never be executed!
+	else qDebug() << "> Error: Duplicate entry in database.";
+
+	return 0;
+}
+
+/* Updates TTL times from both tables services and myServices for all services
+*  (TTL = TTL – t , where t is a specific value)
+*/
+void ZcDbBindings::refreshTTL(int t)
+{
+	//creating a QSqlTableModel to handle the select statement
+	QSqlTableModel model;
+	//setting the database table
+	model.setTable("services");
+	//all changes to the model will be applied immediately to the database.
+	model.setEditStrategy(QSqlTableModel::OnFieldChange);
+	//executing the query
+    if(!model.select())
+	{
+		qDebug() << "> Query model.select() error." << model.lastError();
+	}
+	//updating all the TTL values
+	for(int i=0; i<model.rowCount(); i++)
+	{
+		QSqlRecord record = model.record(i);
+		int TTL = record.value("TTL").toInt();
+		if(TTL>=t)
+		{
+			record.setValue("TTL", TTL-t);
+			model.setRecord(i, record);
+		}
+	}
+	//resetting the database table
+	model.setTable("myServices");
+	//re-executing the query
+    if(!model.select())
+	{
+		qDebug() << "> Query model.select() error." << model.lastError();
+	}
+	//updating all the TTL values
+	for(int i=0; i<model.rowCount(); i++)
+	{
+		QSqlRecord record = model.record(i);
+		int TTL = record.value("TTL").toInt();
+		if(TTL>=t)
+		{
+			record.setValue("TTL", TTL-t);
+			model.setRecord(i, record);
+		}
+	}
+}
+
+/* Removes a record from services table. The method accepts string arguments
+*  but eventually uses QStrings. It does also a cheking in hostname and serviceType.
+*  More specifically, if a hostname is ANY, it removes the services of ALL hostnames.
+*  The same stands for the service types.
 */
 bool ZcDbBindings::removeService(string hostname, string serviceType)
 {
 	//declaring Qt strings
 	QString Qhostname(hostname.c_str());
 	QString QserviceType(serviceType.c_str());
-	//constructing and executing the mysql query
-	QString mesQuery = QString("DELETE FROM services WHERE hostname='%1' AND serviceType='%2'").arg(Qhostname).arg(QserviceType);
-	QSqlQuery query;
-    if(!query.exec(mesQuery))
-	{
-		qDebug() << "> Query exec() error." << query.lastError();
-	}
-    //else qDebug() << ">Query exec() success.";
 
+	//checking hostname string to see if we must delete all hostnames with service serviceType
+	if(QString::compare(Qhostname, "ANY", Qt::CaseSensitive)==0)
+	{
+		QString delQuery = QString("DELETE FROM services where serviceType='%1'").arg(QserviceType);
+		QSqlQuery query;
+    	if(!query.exec(delQuery))
+		{
+			qDebug() << "> Query exec() error." << query.lastError();
+		}
+	}
+	//checking serviceType string to see if we must delete all services of user hostname
+	//(actually removes the user hostname from table services
+	else if(QString::compare(QserviceType, "ANY", Qt::CaseSensitive)==0)
+	{
+		QString delQuery = QString("DELETE FROM services WHERE hostname='%1'").arg(Qhostname);
+		QSqlQuery query;
+    	if(!query.exec(delQuery))
+		{
+			qDebug() << "> Query exec() error." << query.lastError();
+		}
+	}
+	else
+	{
+		//constructing and executing the mysql query
+		QString mesQuery = QString("DELETE FROM services WHERE hostname='%1' AND serviceType='%2'").arg(Qhostname).arg(QserviceType);
+		QSqlQuery query;
+    	if(!query.exec(mesQuery))
+		{
+			qDebug() << "> Query exec() error." << query.lastError();
+		}
+    	//else qDebug() << ">Query exec() success.";
+	}
 	return true;
 }
+
+/* Removes a record from services table. The method accepts string arguments
+*  but eventually uses QStrings. It does also a cheking in serviceType. More
+*  specifically, if a service type is ANY, it should remove ALL services.
+*/
+bool ZcDbBindings::removeMyService(string serviceType)
+{
+	//declaring Qt strings
+	QString QserviceType(serviceType.c_str());
+
+
+	//checking serviceType string to see if we must delete all services the user
+	if(QString::compare(QserviceType, "ANY", Qt::CaseSensitive)==0)
+	{
+		QString delQuery = QString("DELETE FROM myServices");
+		QSqlQuery query;
+    	if(!query.exec(delQuery))
+		{
+			qDebug() << "> Query exec() error." << query.lastError();
+		}
+	}
+	else
+	{
+		//constructing and executing the mysql query
+		QString mesQuery = QString("DELETE FROM myServices where serviceType='%1'").arg(QserviceType);
+		QSqlQuery query;
+    	if(!query.exec(mesQuery))
+		{
+			qDebug() << "> Query exec() error." << query.lastError();
+		}
+    	//else qDebug() << ">Query exec() success.";
+	}
+	return true;
+}
+
+
 /* Returns a c-like array of all the requested services.
 */
 char** ZcDbBindings::getRequestedService(int &size)
@@ -268,7 +487,7 @@ int ZcDbBindings::getServicesNum(void)
 }
 
 /* Adds a record in DNSTable.
-   The method accepts string arguments but eventually uses QStrings
+*  The method accepts string arguments but eventually uses QStrings
 */
 bool ZcDbBindings::addDnsRecord(string hostname, string interface, string ip)
 {
@@ -293,7 +512,7 @@ bool ZcDbBindings::addDnsRecord(string hostname, string interface, string ip)
 	return true;
 }
 /* Removes a record from DNSTable.
-   The method accepts string arguments but eventually uses QStrings
+*  The method accepts string arguments but eventually uses QStrings
 */
 bool ZcDbBindings::removeDnsRecord(string hostname, string interface)
 {
@@ -312,7 +531,7 @@ bool ZcDbBindings::removeDnsRecord(string hostname, string interface)
 	return true;
 }
 /* Updates a record in DNSTable.
-   The method accepts string arguments but eventually uses QStrings
+*  The method accepts string arguments but eventually uses QStrings
 */
 bool ZcDbBindings::updateDnsRecord(string hostname, string interface, string ip)
 {
