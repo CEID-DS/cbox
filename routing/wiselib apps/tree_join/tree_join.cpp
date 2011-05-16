@@ -143,7 +143,13 @@ class TreeApp
 		if(inbox->type==JOIN_REQ)
 			{mess->type=JOIN_ACK;}
 		else if (inbox->type==REJOIN_REQ)
-			{mess->type=REJOIN_ACK;}			
+			{
+			if(strlen(inbox->from)<strlen(RoutN_) && strncmp(inbox->from,RoutN_,strlen(inbox->from))==0)
+				{return;}
+			else			
+				{mess->type=REJOIN_ACK;}
+			}
+					
 		mess->hops=hops_;
 		mess->id=radio_->id();
 		mess->version=VersionNumber_;
@@ -321,7 +327,7 @@ class TreeApp
 
 	void pingToFather(void *)
 	{
-		if(isActive_)
+		if(isActive_ && connectivity_)
 			{
 			mess->type=PING;
 			ponged_=false;
@@ -374,6 +380,7 @@ class TreeApp
 		debug_->debug("process %d tries to reconnect\n", radio_->id());
 		mess->type=REJOIN_REQ;
 		mess->id=radio_->id();
+		strcpy(mess->from,RoutN_);
 		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
 		timer_->set_timer<TreeApp, &TreeApp::reJoin_request>( 2000, this, 0 );
 		}
