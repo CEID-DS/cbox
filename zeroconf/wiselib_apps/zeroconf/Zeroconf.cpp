@@ -126,6 +126,7 @@ class Zeroconf
 
    void insert_my_service (struct service& serv)
    {
+      debug_->debug("in insert my service\n");
       int index=-1;
 
       for (int i=0; i<NUM_STRUCTS; i++)
@@ -164,16 +165,16 @@ class Zeroconf
          }
       }
 
-	  if (index==-1)
-	  {
-		  for (int i=0; i<NUM_STRUCTS; i++)
-		  {
-			 if (!strcmp(services[i].ip, "null"))
-			 {
-				index = i;
-				break;
-			 }
-		  }
+      if (index == -1)
+      {
+         for (int i=0; i<NUM_STRUCTS; i++)
+         {
+            if (!strcmp(services[i].ip, "null"))
+            {
+               index = i;
+               break;
+            }
+         }
       }
 
       if (index == -1)
@@ -192,7 +193,7 @@ class Zeroconf
       services[index].TOTAL_TTL = answer._TTL;
       services[index].advertised = true;
       services[index].questioned = false;
-      debug_->debug("(%u)Mesa stin insert_service:I answer einai ip:(%s), service_type(%s) mpike stin %d\n",radio_->id(),answer._ip,answer._service_type,index);
+//      debug_->debug("(%u)Mesa stin insert_service:I answer einai ip:(%s), service_type(%s) mpike stin %d\n",radio_->id(),answer._ip,answer._service_type,index);
    }
 
    void remove_services (char *ip_serv)
@@ -220,9 +221,9 @@ class Zeroconf
    //remove a single service known for a spesific ip
    void remove_service (char *ip_serv,int index)
    {
-	   debug_->debug("(%u)i am removing service %s from %s\n",radio_->id(),services[index].service_type,ip_serv);
-	   //under construction.
-	   struct service *array_serv = NULL;
+//    debug_->debug("(%u)i am removing service %s from %s\n",radio_->id(),services[index].service_type,ip_serv);
+      //under construction.
+      struct service *array_serv = NULL;
       if (!strcmp(ip_serv, my_ip))
       {
          array_serv = myServices;
@@ -231,8 +232,7 @@ class Zeroconf
       {
          array_serv = services;
       }
-		strcpy(array_serv[index].ip,"null");
-	   
+      strcpy(array_serv[index].ip, "null");	   
    }
 	
    //get the message_id from the input ip
@@ -459,6 +459,7 @@ class Zeroconf
       //TODO : this will have to change.... load services from database...
       void update_myServices() 
       {
+         debug_->debug("%u in update my services\n", radio_->id());
          FILE *fs ;
          char command[50];
          char input[50];
@@ -471,13 +472,20 @@ class Zeroconf
          DIR *pDIR;
          struct dirent *entry;
 
+         bool check[NUM_STRUCTS];
+         for (int i=0; i<NUM_STRUCTS; i++)
+         {
+            check[i] = false;
+         }
+
          if (radio_->id()==0 || radio_->id()==1)
          {
             if ( (pDIR=opendir("./services")) )
             {
                for(int i=0; i<NUM_STRUCTS; i++)
                {
-                  strcpy(myServices[i].ip, "null");	
+                  if (strcmp(myServices[i].ip, "null"))
+                     printf("first %u: service %d = %s\n", radio_->id(), i, myServices[i].service_type); 	
                }	
                //number_of_myServices = 0;
                while ((entry = readdir(pDIR)))
@@ -498,62 +506,136 @@ class Zeroconf
                      }
                      else
                      {
-                        //number_of_myServices = 0;
-
-                        //here the for loop for the number of .service files
-				
-                        struct service temp;		
-                        //debug_->debug ( "(%u)file read(%s)!\n", radio_->id(), entry->d_name) ;
-                        //number_of_myServices++;
-
-                        for (int i=0; i<NUMBER_OF_ROWS; i++)
+                        bool added = false;
+                        fscanf(fs, "%s", command);
+                        fscanf(fs, "%s", input);
+                        for (int i=0; i<NUM_STRUCTS; i++)
                         {
-                           fscanf(fs, "%s", command);
-                           fscanf(fs, "%s", input);		
-                           if (!strcmp(command, "service_type"))
+                           if (!strcmp(myServices[i].service_type, input) && (!strcmp(myServices[i].ip, my_ip)))
                            {
-                              strcpy(temp.service_type, input);
-                           }
-                           else if (!strcmp(command, "protocol"))
-                           {
-                              strcpy(temp.protocol, input);
-                           }
-                           else if (!strcmp(command, "interface"))
-                           {
-                              strcpy(temp.interface, input);
-                           }
-                           else if (!strcmp(command, "port"))
-                           {
-                              temp.port = atoi(input);
-                           } 
-                           else if (!strcmp(command, "TXT_DATA"))
-                           {
-                              strcpy(temp.TXT_DATA, input);
-                           } 
-                           else if (!strcmp(command, "TTL"))
-                           {
-                              temp.TTL = atoi(input);
-                              temp.TOTAL_TTL = atoi(input);
-                              //debug_->debug("(TTL:%d)\n ", temp.TTL);
+                              for (int j=0; j<NUMBER_OF_ROWS-1; j++)
+                              {
+                                 fscanf(fs, "%s", command);
+                                 fscanf(fs, "%s", input);		
+                            
+                                 if (!strcmp(command, "TTL"))
+                                 {
+                                    myServices[i].TTL = atoi(input);
+                                    myServices[i].TOTAL_TTL = atoi(input);
+                                 }
+                              }
+                              check[i] = true;
+                              added = true;
                            }
                         }
-                        temp.advertised = false;
-                        strcpy(temp.ip, my_ip);
-                        strcpy(temp.hostname, my_host);
-                        fclose(fs); 
-                        insert_my_service(temp);
+                        for (int i=0; i<NUM_STRUCTS; i++)
+                        {
+                           if (!strcmp(myServices[i].ip, "null") && (added == false))
+                           {
+                              printf("adding in %d\n", i);
+                              printf("ip = %s\n added = %s\n", myServices[i].ip, (added)?"true":"false");
+                              for (int m=0; m<NUMBER_OF_ROWS-1; m++)
+                              {
+                                 if (!strcmp(command, "service_type"))
+                                 {
+                                    strcpy(myServices[i].service_type, input);
+                                 }
+                                 else if (!strcmp(command, "protocol"))
+                                 {
+                                    strcpy(myServices[i].protocol, input);
+                                 }
+                                 else if (!strcmp(command, "interface"))
+                                 {
+                                    strcpy(myServices[i].interface, input);
+                                 }
+                                 else if (!strcmp(command, "port"))
+                                 {
+                                    myServices[i].port = atoi(input);
+                                 } 
+                                 else if (!strcmp(command, "TXT_DATA"))
+                                 {
+                                    strcpy(myServices[i].TXT_DATA, input);
+                                 } 
+                                 else if (!strcmp(command, "TTL"))
+                                 {
+                                    myServices[i].TTL = atoi(input);
+                                    myServices[i].TOTAL_TTL = atoi(input);
+                                 }
+                                 fscanf(fs, "%s", command);
+                                 fscanf(fs, "%s", input);
+                              }
+                              myServices[i].advertised = false;
+                              strcpy(myServices[i].ip, my_ip);
+                              strcpy(myServices[i].hostname, my_host);
+                              check[i] = true;
+                              added = true;
+                           }
+                        }
+                        fclose(fs);
                      }
                   }
                }
-               closedir(pDIR);			
+               for (int l=0; l<NUM_STRUCTS; l++)
+               {
+                  if ((check[l]==false) && (strcmp(myServices[l].ip, "null")))
+                  {
+                     unregister_service(l);
+                  }
+               }
             }
-         }//end if radio
+            closedir(pDIR);			
+         }
+         
+         /*
+         if (radio_->id() == 0 || radio_->id() == 1)
+         { 
+            for(int i=0; i<NUM_STRUCTS; i++)
+            {
+               if (strcmp(services[i].ip, "null"))
+                  printf("check 1 %u: service %d = %s ip = %s\n", radio_->id(), i, services[i].service_type, services[i].ip); 	
+            }
+         }
+         if (radio_->id() == 0)
+         { 
+            printf("calling unregister\n");
+            unregister_service(1);
+            for(int i=0; i<NUM_STRUCTS; i++)
+            {
+               if (strcmp(myServices[i].ip, "null"))
+                  printf("sec %u: service %d = %s ip = %s\n", radio_->id(), i, myServices[i].service_type, myServices[i].ip); 	
+            }
+         }
+         if (radio_->id() == 0 || radio_->id() == 1)
+         { 
+            for(int i=0; i<NUM_STRUCTS; i++)
+            {
+               if (strcmp(services[i].ip, "null"))
+                  printf("check 2 %u: service %d = %s ip = %s\n", radio_->id(), i, services[i].service_type, services[i].ip); 	
+            }
+         }
+         */
+         
       }
     
       //if a service is not available unregister it
-      void unregister_service() 
+      void unregister_service(int i) 
       {
-         //under construction
+         debug_->debug("(%u) unregister service \n", radio_->id());       
+         msg_data unregister_data;
+         strcpy(unregister_data.source_host, my_host);
+         strcpy(unregister_data.answers[0]._service_type, myServices[i].service_type);
+         strcpy(myServices[i].ip, "null");
+               
+         set_node_message_id(my_MACC, ++msgID);
+         zeroconf_msg unregister;
+         memset(&unregister, 0, sizeof(unregister));
+         unregister.set_type(TYPE_LEN * sizeof(char), (Os::Radio::block_data_t *) &(UNREGISTER));
+         unregister.set_source(IP_LEN * sizeof(char), (Os::Radio::block_data_t *) &my_ip);
+         unregister.set_destination(IP_LEN * sizeof(char), (Os::Radio::block_data_t *) &("ANY"));
+         unregister.set_source_mac(MAC_LEN * sizeof(char), (Os::Radio::block_data_t *) &my_MACC );
+         unregister.set_msg_id(msgID);
+         unregister.set_payload(sizeof(msg_data), (Os::Radio::block_data_t *) &unregister_data);
+         radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(zeroconf_msg), (Os::Radio::block_data_t *)&unregister);  
       }
       
       //check TTL for your services and other services you know
@@ -569,16 +651,14 @@ class Zeroconf
                continue;
             }
             services[i].TTL = services[i].TTL - recallTime; //update TTL
-            debug_->debug("(%u)TTL for %s -> %d\n",radio_->id(),services[i].service_type,services[i].TTL);
+//          debug_->debug("(%u)TTL for %s -> %d\n",radio_->id(),services[i].service_type,services[i].TTL);
             if (services[i].TOTAL_TTL - services[i].TTL >=3*services[i].TOTAL_TTL/4)//if TTL is equal or less than zero
             {
                if (strcmp(services[i].ip, my_ip) && !services[i].questioned) //if query has not been sent yet
                {	
                   if (num_queries < NUM_ANSWERS)
                   {
-					  
-                     
-					 //debug_->debug("(%u)(%s)service(%s) expired, sending query %f\n", radio_->id(), services[i].ip, services[i].service_type, services[i].TTL);
+                     //debug_->debug("(%u)(%s)service(%s) expired, sending query %f\n", radio_->id(), services[i].ip, services[i].service_type, services[i].TTL);
                      strcpy(queries[num_queries].about, "service"); //fill query parameters with the given
                      strcpy(queries[num_queries]._service_type, services[i].service_type);
                      strcpy(queries[num_queries]._ip, services[i].ip);
@@ -592,11 +672,11 @@ class Zeroconf
                   }
                }
             }
-            if ((float)services[i].TOTAL_TTL - (float)services[i].TTL ==(float)services[i].TOTAL_TTL) {
-				debug_->debug("(removing) TTL for %s -> %d",services[i].service_type,services[i].TTL);
-				remove_service(services[i].ip, i);
-			}
-            
+            if ((float)services[i].TOTAL_TTL - (float)services[i].TTL ==(float)services[i].TOTAL_TTL) 
+            {
+//             debug_->debug("(removing) TTL for %s -> %d",services[i].service_type,services[i].TTL);
+               remove_service(services[i].ip, i);
+            }    
          }
 
          if (num_queries)
@@ -629,7 +709,7 @@ class Zeroconf
 
       void send_ping_message()
       {
-         debug_->debug("(%u) sending ping\n", radio_->id());
+//         debug_->debug("(%u) sending ping\n", radio_->id());
          set_node_message_id(my_MACC, ++msgID);
          zeroconf_msg ping;
          memset(&ping, 0, sizeof(ping));
@@ -705,7 +785,7 @@ class Zeroconf
             {//fill the service struct
                if (services_to_advertise<NUM_ANSWERS)
                {
-                  debug_->debug("(%s)advertising app: %s\n", my_ip,myServices[i].service_type);
+//                  debug_->debug("(%s)advertising app: %s\n", my_ip,myServices[i].service_type);
                   strcpy(advertise_data.answers[services_to_advertise]._service_type, myServices[i].service_type);
                   strcpy(advertise_data.answers[services_to_advertise]._protocol, myServices[i].protocol);
                   advertise_data.answers[services_to_advertise]._port = myServices[i].port;
@@ -744,7 +824,7 @@ class Zeroconf
 		
       void send_hello_message() 
       {//send hello message to tell everybody you are in the network
-         debug_->debug("(%u)sending hello to all\n", radio_->id());
+//         debug_->debug("(%u)sending hello to all\n", radio_->id());
          set_node_message_id(my_MACC, ++msgID);
          zeroconf_msg hello;
          memset(&hello, 0, sizeof(hello));
@@ -831,8 +911,8 @@ class Zeroconf
          {
             set_node_message_id((char *)msg_p->source_mac(), msg_p->msg_id());
 
-			if (!strcmp((char *)msg_p->type(), PING))
-			{//if it is a ping message then a device is nearby and searches for network
+            if (!strcmp((char *)msg_p->type(), PING))
+            {//if it is a ping message then a device is nearby and searches for network
                handle_ping_message(*msg_p);
             }
             else if (!strcmp((char *)msg_p->type(), HELLO))
@@ -861,41 +941,45 @@ class Zeroconf
             {//if it is a participate message
                handle_leaving_message(*msg_p);
             }
-			else if (!strcmp((char *)msg_p->type(),PONG))
+            else if (!strcmp((char *)msg_p->type(),PONG))
             {//if it is a pong message
                handle_pong_message(*msg_p);
+            }
+            else if (!strcmp((char *)msg_p->type(), UNREGISTER))
+            {//if it is an unregister service message
+               handle_unregister_service_message(*msg_p);
             }
          }
       }
 
       void handle_ping_message(zeroconf_msg& message)
-      {
-         debug_->debug("(%u)receive ping from (%s)\n", radio_->id(), (char *)message.source_mac());
+      {   
+//         debug_->debug("(%u)receive ping from (%s)\n", radio_->id(), (char *)message.source_mac());
 			//TODO: THIS IS NOT ABSOLUTELY CLEAR RIGHT NOW...
 //         if (mode==1 && counter==-1) //if I search for network too, i found one (another node)
 //         {
 //            counter = 0;
 //         }
 		//send pong only if you belong in a network... we will see about this...
-		if (mode==0)
-		{
-         set_node_message_id(my_MACC, ++msgID);
-         zeroconf_msg pong;
-         memset(&pong, 0, sizeof(pong));
-         pong.set_type(TYPE_LEN * sizeof(char), (Os::Radio::block_data_t *) &(PONG));
-         pong.set_source(IP_LEN * sizeof(char), (Os::Radio::block_data_t *) &("0.0.0.0"));
-         pong.set_destination(IP_LEN * sizeof(char), (Os::Radio::block_data_t *) &("ANY"));
-         pong.set_source_mac(MAC_LEN * sizeof(char), (Os::Radio::block_data_t *) &my_MACC );
-         pong.set_msg_id(msgID);
-         radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(zeroconf_msg), (Os::Radio::block_data_t *)&pong);
-		}
+         if (mode == 0)
+	 {
+            set_node_message_id(my_MACC, ++msgID);
+            zeroconf_msg pong;
+            memset(&pong, 0, sizeof(pong));
+            pong.set_type(TYPE_LEN * sizeof(char), (Os::Radio::block_data_t *) &(PONG));
+            pong.set_source(IP_LEN * sizeof(char), (Os::Radio::block_data_t *) &("0.0.0.0"));
+            pong.set_destination(IP_LEN * sizeof(char), (Os::Radio::block_data_t *) &("ANY"));
+            pong.set_source_mac(MAC_LEN * sizeof(char), (Os::Radio::block_data_t *) &my_MACC );
+            pong.set_msg_id(msgID);
+            radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(zeroconf_msg), (Os::Radio::block_data_t *)&pong);
+         }
       }
 
       void handle_pong_message(zeroconf_msg& message) 
       {
          if(mode==1 && counter==-1) //i am waiting for a pong
          {
-			debug_->debug("(%u)receive pong from (%s)\n", radio_->id(),(char *)message.source_mac());
+//			debug_->debug("(%u)receive pong from (%s)\n", radio_->id(),(char *)message.source_mac());
             counter = 0;
          }
       }
@@ -906,7 +990,7 @@ class Zeroconf
         **/
       void handle_leaving_message(zeroconf_msg& message)
       {
-         debug_->debug("(%u)receive leaving from (%s)\n", radio_->id(), (char *)message.source());
+//         debug_->debug("(%u)receive leaving from (%s)\n", radio_->id(), (char *)message.source());
          
          /*
          for(int i=0; i<number_of_services; i++)
@@ -1001,7 +1085,7 @@ class Zeroconf
                      myServices[j].advertised = false;
                      //advertise_services();
                      //send_response_message(myServices[i]);
-                     debug_->debug("(%u)(%s) i have the answer(%s)(%s)\n", radio_->id(),my_ip, (char *) message.source_mac(),myServices[j].service_type);
+//                     debug_->debug("(%u)(%s) i have the answer(%s)(%s)\n", radio_->id(),my_ip, (char *) message.source_mac(),myServices[j].service_type);
                      not_author_services--;
                   }
                }
@@ -1020,7 +1104,7 @@ class Zeroconf
          //debug_->debug("(%u)advertisement(%s)(TTL:%d)(PORT:%d)\n", radio_->id(), (char *)message.source(), m_data.answers[0]._TTL, m_data.answers[0]._port);
          //for (int i=0; i<NUM_ANSWERS && strcmp(m_data.answers[i]._service_type, "null"); i++)
             //debug_->debug("(%u)Service_%d:%s TTL:%f \n", radio_->id(), i, m_data.answers[i]._service_type, m_data.answers[i]._TTL);
-		debug_->debug("(%u)(%s)receive advertise message(%s)",radio_->id(),my_ip,(char *)message.source());
+//		debug_->debug("(%u)(%s)receive advertise message(%s)",radio_->id(),my_ip,(char *)message.source());
 	 for(int i=0; i<NUM_ANSWERS && strcmp(m_data.answers[i]._service_type, "null"); i++)
 	 {
             insert_service(m_data.answers[i], (char *)message.source());
@@ -1058,7 +1142,7 @@ class Zeroconf
       {
          if (strcmp((char *)message.source(), my_ip))
          {
-            debug_->debug("(%u)(%s) receive hello (%s)\n", radio_->id(),my_ip,(char *)message.source());
+//            debug_->debug("(%u)(%s) receive hello (%s)\n", radio_->id(),my_ip,(char *)message.source());
             radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(zeroconf_msg), (Os::Radio::block_data_t *)&message); //forward the message
             send_welcome_message((char *)message.source()); //and send welcome message
          }
@@ -1068,7 +1152,7 @@ class Zeroconf
       {
          if (!strcmp((char *)message.destination(), my_ip))
          {//and you are the destintation, accept it.
-            debug_->debug("receive welcome(%u) from (%s)\n", radio_->id(), (char *)message.source());
+//            debug_->debug("receive welcome(%u) from (%s)\n", radio_->id(), (char *)message.source());
          }
          else 
          {//else forward it
@@ -1085,7 +1169,7 @@ class Zeroconf
 
          if (mode == 0) //if node is in the network
          {//if you receive an other message
-         debug_->debug("(%s)receive participate from (%s)\n",my_ip,(char *)message.source());
+//         debug_->debug("(%s)receive participate from (%s)\n",my_ip,(char *)message.source());
             if (!strcmp((char *)message.destination(), my_ip) || !strcmp(m_data.dest_host, my_host))
             {//you are the destination
                //debug_->debug("%s got a message wow!:)(%s)\n", my_ip,message.source_ip);
@@ -1116,7 +1200,7 @@ class Zeroconf
          } 
          else if (mode == 1) 
          {
-         debug_->debug("(%s)(%s)receive participate from (%s)(%s)\n",my_ip,my_host,(char *)message.source(),m_data.source_host);
+//         debug_->debug("(%s)(%s)receive participate from (%s)(%s)\n",my_ip,my_host,(char *)message.source(),m_data.source_host);
 
 		//if node is not in the network
             //debug_->debug("eimai o 0:m_data.source_host=%s\n", m_data.source_host);	
@@ -1156,6 +1240,23 @@ class Zeroconf
          }
       }
 
+      void handle_unregister_service_message(zeroconf_msg& message)
+      {
+         debug_->debug("(%u) in handle unregister message\n",radio_->id());
+         msg_data m_data;
+         memcpy(&m_data, message.payload(), message.payload_size() );
+         
+         for (int i=0; i<NUM_STRUCTS; i++)
+         {
+            if (!strcmp(services[i].service_type, m_data.answers[0]._service_type) && (!strcmp(services[i].ip, ((char *)message.source()))))
+            {
+               strcpy(services[i].ip, "null");
+               debug_->debug("%u service %s from %s deleted\n", radio_->id(), services[i].service_type, (char *)message.source()); 
+               break;
+            }
+         }
+      }
+
       //generate new ip
       void generate_ip()
       {
@@ -1163,13 +1264,13 @@ class Zeroconf
          int rm = rand() % 255;
          bzero(&my_ip,sizeof(my_ip));
          sprintf(my_ip,"192.168.1.%d",rm);
-         debug_->debug("(%u)my new ip is %s\n",radio_->id(),my_ip);
+//         debug_->debug("(%u)my new ip is %s\n",radio_->id(),my_ip);
       }
 		 
       //resolve hostname conflict
       void resolve_hostname(char my_host[HOSTNAME_LEN], int trial)
       {
-         debug_ ->debug("%u: resolving hostname %s\n", radio_->id(), my_host);
+//         debug_ ->debug("%u: resolving hostname %s\n", radio_->id(), my_host);
          char temp_host[HOSTNAME_LEN];
          char *n;
          char tr[3];
@@ -1195,9 +1296,9 @@ class Zeroconf
          }
          else
          {
-            
+
          }
-         debug_ ->debug("%u: my new hostname is %s\n", radio_->id(), my_host);
+//         debug_ ->debug("%u: my new hostname is %s\n", radio_->id(), my_host);
       }
       
       private:
