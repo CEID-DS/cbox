@@ -14,13 +14,12 @@
 * You should have received a copy of the GNU Lesser General Public License
 * along with cbox. If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
+
 #include "external_interface/external_interface.h"
 #include "algorithms/routing/tree/tree_routing.h"
 #include <string.h>
 #include <stdlib.h>
 #include <limits.h>
-#include <string>
-#include <sstream>
 #define JOIN_REQ 0
 #define JOIN_ACK 1
 #define REPAIR 2
@@ -29,8 +28,12 @@
 #define UP 6
 #define DOWN 7
 #define JOIN_ME 8
+#define PING 9
+#define PONG 10
+#define ALL 11
+#define REJOIN_REQ 12
+#define REJOIN_ACK 13
 
-#define HEADER 9
 
 
 
@@ -67,16 +70,16 @@ class TreeApp
 	hops_=INT_MAX;
 	isActive_=true;
 	connectivity_=false;
+	ponged_=false;
 	for (int i=0;i<100;i++)
 		{
 		given[i]=false;
 		pending[i]=false;
 		}
-	if (radio_->id()==2)
-		{
-		timer_->set_timer<TreeApp, &TreeApp::test_mes>( 16000, this, 0 );
-		debug_->debug("Test forwarding\n");
-		}
+	//if (radio_->id()==2)
+	//	{
+	//	timer_->set_timer<TreeApp, &TreeApp::sendToAll>( 16000, this, 0 );
+	//	}
 	if (radio_->id()==0)
 		{
 		connectivity_=true;
@@ -87,8 +90,15 @@ class TreeApp
 		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
 		}
 		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
+		if(radio_->id()!=0)
+			timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 12000, this, 0 );
+		if(radio_->id()==4)
+			timer_->set_timer<TreeApp, &TreeApp::deactivate>( 15000, this, 0 );
 	
 	}
+
+
+
 
 	/*Join_request broadcasts a request*/
 	void join_request( void *)
@@ -130,7 +140,10 @@ class TreeApp
 	{
 		if (connectivity_==true)
 		{
-		mess->type=JOIN_ACK; 			//message type (1 is for connection answer)
+		if(inbox->type==JOIN_REQ)
+			{mess->type=JOIN_ACK;}
+		else if (inbox->type==REJOIN_REQ)
+			{mess->type=REJOIN_ACK;}			
 		mess->hops=hops_;
 		mess->id=radio_->id();
 		mess->version=VersionNumber_;
@@ -163,8 +176,6 @@ class TreeApp
 			connectivity_=true;
 			VersionNumber_=inbox->version;
 			debug_->debug("process %d just connected to the network with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
-            int *message;
-            message = new(int[5]);
             mess->type=JOINED;
             mess->dest=parent_;
             mess->given=inbox->given;
@@ -245,20 +256,48 @@ class TreeApp
 			}
 	}
 
+	void sendToAll(void *)
+	{
+		mess->type=ALL;
+		strcpy(mess->from,RoutN_);
+		strcpy(mess->Routing,"_");
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+		debug_->debug("message sent from %s\n",RoutN_);
+	}
+
+	void forwardToAll(struct message *inbox)
+	{
+		if((strlen(inbox->from)==strlen(RoutN_)-2 && strncmp(inbox->from,RoutN_,strlen(RoutN_)-2)==0) || 
+		   (strlen(inbox->from)==strlen(RoutN_)+2 && strncmp(inbox->from,RoutN_,strlen(RoutN_))==0))
+			{			
+			if(strcmp(RoutN_,inbox->Routing)!=0)
+				{
+				mess->type=ALL;
+				strcpy(mess->from,RoutN_);
+				strcpy(mess->Routing,inbox->from);
+				radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+				debug_->debug("message passed from %s\n",RoutN_);
+				}
+			}
+	}
+
+
 
       /* This method is the message handler.*/
-      void receive_radio_message( Os::Radio::node_id_t from, Os::Radio::size_t len, Os::Radio::block_data_t *buf )
-      {
+	void receive_radio_message( Os::Radio::node_id_t from, Os::Radio::size_t len, Os::Radio::block_data_t *buf )
+	{
 		if(isActive_)
 			{
 			struct message *mess;
 			mess = (struct message *) buf;
 			if (mess->type==JOIN_ME)
 				timer_->set_timer<TreeApp, &TreeApp::join_request>( 0, this, 0 );
-			else if (mess->type==JOIN_REQ)
+			else if (mess->type==JOIN_REQ || mess->type==REJOIN_REQ)
 				join_response(from, mess);
 			else if(mess->type==JOIN_ACK && mess->dest==radio_->id())
               			 do_join(mess);
+			else if(mess->type==REJOIN_ACK && mess->dest==radio_->id())
+              			 do_rejoin(mess);
             		else if(mess->type==JOINED && mess->dest==radio_->id())
             			{
                 		given[mess->given]=true;
@@ -268,9 +307,124 @@ class TreeApp
 				handle_up(mess);
 			else if(mess->type==DOWN)
 				handle_down(mess);
+			else if(mess->type==ALL)
+				forwardToAll(mess);
+			else if(mess->type==PING)
+				pongToSon(mess);
+			else if(mess->type==PONG)
+				getPonged(mess);
+			else if(mess->type==REPAIR)
+				repair(mess);
 
-      	}
-      }
+			}
+	}
+
+	void pingToFather(void *)
+	{
+		if(isActive_)
+			{
+			mess->type=PING;
+			ponged_=false;
+			strcpy(mess->from,RoutN_);
+			strncpy(mess->Routing,RoutN_,(strlen(RoutN_)-2));
+			mess->Routing[strlen(RoutN_)-2]='\0';
+			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+			timer_->set_timer<TreeApp, &TreeApp::checkIfPonged>( 2000, this, 0 );
+			debug_->debug("Sent ping from %s to %s\n",RoutN_,mess->Routing);
+			}
+	}
+	void pongToSon(struct message *inbox)
+	{
+		if(strcmp(inbox->Routing,RoutN_)==0)
+			{
+			mess->type=PONG;
+			strcpy(mess->from,RoutN_);
+			strcpy(mess->Routing,inbox->from);
+			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+			debug_->debug("Pong back from %s to %s\n",RoutN_, mess->Routing);
+			}
+	}
+	void getPonged(struct message *inbox)
+	{
+		if(strcmp(inbox->Routing,RoutN_)==0)
+			ponged_=true;
+	}
+	void checkIfPonged(void *)
+	{
+		if(ponged_)
+			{
+			ponged_=false;
+			debug_->debug("Ping-pong ok at %s\n",RoutN_);
+			if(radio_->id()!=0)
+				timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
+			
+			}
+		else
+			{
+			debug_->debug("Ping-pong error at %s\n",RoutN_);
+			connectivity_=false;
+			reJoin_request(NULL);
+			}
+	}
+
+	void reJoin_request( void *)
+	{
+		if (connectivity_==false && isActive_)
+		{
+		debug_->debug("process %d tries to reconnect\n", radio_->id());
+		mess->type=REJOIN_REQ;
+		mess->id=radio_->id();
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
+		timer_->set_timer<TreeApp, &TreeApp::reJoin_request>( 2000, this, 0 );
+		}
+	}
+
+	void do_rejoin(struct message *inbox)
+	{
+
+		if(connectivity_==false)
+		{
+			parent_=inbox->id;
+			hops_=inbox->hops+1;
+			strcpy(mess->from,RoutN_);
+			strcpy(mess->Routing,inbox->Routing);
+			mess->hops=hops_; 
+			strcpy(RoutN_,inbox->Routing);
+			connectivity_=true;
+			VersionNumber_=inbox->version;
+			debug_->debug("process %d just connected to the network with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
+			mess->type=JOINED;
+			mess->dest=parent_;
+			mess->given=inbox->given;
+			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+			mess->type=REPAIR;
+			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+			timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
+
+		}
+	}
+
+	void repair(struct message *inbox)
+	{
+		if(strlen(inbox->from)==strlen(RoutN_)-2 && strncmp(inbox->from,RoutN_,strlen(inbox->from))==0)
+			{
+			char temp[3];
+			temp[0]=RoutN_[strlen(RoutN_-2)];
+			temp[1]=RoutN_[strlen(RoutN_-1)];
+			temp[2]='\0';
+			strcpy(mess->from,RoutN_);
+			strcpy(RoutN_,inbox->Routing);
+			strcat(RoutN_,temp);
+			strcpy(mess->Routing,RoutN_);
+			hops_=inbox->hops+1;
+			mess->hops=hops_; 
+			debug_->debug("process %d repaired with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
+			mess->type=REPAIR;
+			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+			timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
+			}
+	}
+	
    private:
         Os::Radio::self_pointer_t radio_;
         Os::Debug::self_pointer_t debug_;
@@ -278,7 +432,7 @@ class TreeApp
 	int parent_;
 	unsigned int VersionNumber_;
 	char RoutN_[32];
-	bool connectivity_, isActive_, given[256], pending[256];
+	bool connectivity_, isActive_, given[256], pending[256], ponged_;
 	int hops_;
 
 
