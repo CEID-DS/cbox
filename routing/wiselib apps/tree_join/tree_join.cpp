@@ -19,101 +19,166 @@
 #include <string.h>
 #include <stdlib.h>
 #include <limits.h>
-#define JOIN_REQ  0
-#define JOIN_ACK  1
-#define REPAIR    2
-#define TREE_INIT 3
-#define LEAVE     4
-#define JOIN_ACK_ACK 5
-#define FORWARD 6
-#define DELIVER 7
+#include <string>
+#include <sstream>
+#define JOIN_REQ 0
+#define JOIN_ACK 1
+#define REPAIR 2
+#define JOINED 3
+#define LEAVE 4
+#define UP 6
+#define DOWN 7
+#define JOIN_ME 8
 
 #define HEADER 9
 
+
+
 typedef wiselib::OSMODEL Os;
+using namespace std;
 
 class TreeApp
 {
    public:
 
-      void init( Os::AppMainParameter& value )
-      {
-         radio_ = &wiselib::FacetProvider<Os, Os::Radio>::get_facet( value );
-         timer_ = &wiselib::FacetProvider<Os, Os::Timer>::get_facet( value );
-         debug_ = &wiselib::FacetProvider<Os, Os::Debug>::get_facet( value );
-         radio_->reg_recv_callback<TreeApp,
+	struct message
+	{
+		short int parent;
+		short int type;
+		short int hops;
+		short int id;
+		short int version;
+		short int dest;
+		short int given;
+		char from[32];
+		char Routing[32];
+	} *mess;
+
+	void init( Os::AppMainParameter& value )
+	{
+	radio_ = &wiselib::FacetProvider<Os, Os::Radio>::get_facet( value );
+	timer_ = &wiselib::FacetProvider<Os, Os::Timer>::get_facet( value );
+	debug_ = &wiselib::FacetProvider<Os, Os::Debug>::get_facet( value );
+	radio_->reg_recv_callback<TreeApp,
                                    &TreeApp::receive_radio_message>( this );
 
-	int *message,i;
-	message = (int*)malloc(4*sizeof(int));
+	mess = (struct message *)malloc(sizeof(struct message));
 	parent_=-1;
 	hops_=INT_MAX;
 	isActive_=true;
 	connectivity_=false;
-
-    for (i=0;i<100;i++)
-    {
-        given[i]=false;
-        pending[i]=false;
-    }
-	/**
-        if(radio_->id()==4)
+	for (int i=0;i<100;i++)
 		{
-		deactivate((void *) message);
-		timer_->set_timer<TreeApp, &TreeApp::activate>( 6000,this,0);
+		given[i]=false;
+		pending[i]=false;
 		}
-    **/
-	 if (radio_->id()==0)
+	if (radio_->id()==2)
+		{
+		timer_->set_timer<TreeApp, &TreeApp::test_mes>( 16000, this, 0 );
+		debug_->debug("Test forwarding\n");
+		}
+	if (radio_->id()==0)
 		{
 		connectivity_=true;
 		VersionNumber_=9;
-		debug_->debug("hello\n");
 		hops_=0;
-        	RoutingNumber_[hops_]=hops_;
-		
+		sprintf(RoutN_,"%.2x",0);
+		mess->type=JOIN_ME;
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
 		}
 		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
-    /**
-	if(radio_->id()==1)
-		{
-		timer_->set_timer<TreeApp, &TreeApp::deactivate>(10000,this,0);
-		}
-	**/
+	
+	}
 
-	if (radio_->id()==6)
+	/*Join_request broadcasts a request*/
+	void join_request( void *)
 	{
-        timer_->set_timer<TreeApp, &TreeApp::example_message_forwarding>(10000,this,0);
-
+		if (connectivity_==false && isActive_)
+		{
+		debug_->debug("process %d tries to connect\n", radio_->id());
+		mess->type=JOIN_REQ;
+		mess->id=radio_->id();
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
+		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
+		}
 	}
+	
+	int RoutingNumGenerator (void)
+	{
+	    int i;
+	    for (i=0;i<256;i++)
+	    {
+	        if(given[i]==false && pending[i]==false)
+	        {
+	        pending[i]=true;
+	        return(i);
+
+	        }
+	    }
+	return (-1);
+	}
+	
+	void RemovePending(int which)
+		{
+		pending[which]=false;
+		}
+
+	/*Join_response sends a response to a node previously sent a request. It actually gives the other node the freedom to
+	  use the object that calls the method as a parent.*/
+
+	void join_response(Os::Radio::node_id_t from, struct message *inbox)
+	{
+		if (connectivity_==true)
+		{
+		mess->type=JOIN_ACK; 			//message type (1 is for connection answer)
+		mess->hops=hops_;
+		mess->id=radio_->id();
+		mess->version=VersionNumber_;
+		mess->dest=inbox->id;
+		int temp = RoutingNumGenerator();
+		if(temp!=-1)
+			{
+			mess->given=temp;
+			char next[5];
+			sprintf(next,"%.2x",temp);
+			strcpy(mess->Routing,RoutN_);
+			strcat(mess->Routing,next);
+			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+			debug_->debug("process %d with %s received connection question from %d and replied %s\n",radio_->id(), RoutN_, from, mess->Routing);
+			}
+		}
+		
 	}
 
 
+	/*The object enters the tree by setting the node that send the ACK as parent.*/
+	void do_join(struct message *inbox)
+	{
 
-    void example_message_forwarding(void *)
-    {
-        int *message;
-        int i, temp=HEADER+100;
-        message=new(int[temp]);
-        message[0]=FORWARD;
-        message[1]=parent_;
-       // debug_->debug("message[1] = %d\n",RoutingNumber_[hops_-1]);
-        message[HEADER+0]=0;
-        message[HEADER+1]=2;
-        message[HEADER+2]=0;
-        message[HEADER+3]=-1;
-        radio_->send( Os::Radio::BROADCAST_ADDRESS, temp*sizeof(int), (unsigned char*) message );
-        debug_->debug("process %d send a message with receiver 0 2 0\n", radio_->id());
+		if(inbox->hops+1 <hops_  && connectivity_==false)
+		{
+			parent_=inbox->id;
+			hops_=inbox->hops+1;
+			strcpy(RoutN_,inbox->Routing);
+			connectivity_=true;
+			VersionNumber_=inbox->version;
+			debug_->debug("process %d just connected to the network with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
+            int *message;
+            message = new(int[5]);
+            mess->type=JOINED;
+            mess->dest=parent_;
+            mess->given=inbox->given;
+            radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
 
-    }
+		}
+	}
+
 	/*Deactivate method deactivates the object, by setting isActive_=false, and sending a LEAVE message.*/
 	void deactivate(void *)
 	{
-		int *message;
-		message = new(int[4]);
-		message[0]=LEAVE;
-		message[2]=radio_->id();
-		radio_->send( Os::Radio::BROADCAST_ADDRESS, 4*sizeof(int), (unsigned char*) message );
-		free(message);
+		mess->type=LEAVE;
+		mess->id=radio_->id();
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*) mess );
 		isActive_=false;
 	}
 	/*Activate method activates the object, and calls join_request, so that the object joins a tree.*/
@@ -126,257 +191,84 @@ class TreeApp
 		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
 	}
 
-	/*Join_request broadcasts a request*/
-	void join_request( void* )
+	void test_mes(void *)
 	{
-		if (connectivity_==false && isActive_)
-		{
-		int *message;
-		message = (int*)malloc(4*sizeof(int));
-		debug_->debug("process %d tries to connect\n", radio_->id());
-		message[0]=0;			//message type (0 is for connection question)
-		message[2]=radio_->id();
-		radio_->send( Os::Radio::BROADCAST_ADDRESS, 4*sizeof(int), (unsigned char*) message );
-		free(message);
-		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
-
-		}
+		send_message("00010000");
 	}
-	
-	  void Routing_no_gen (void)
+	void send_message(char *dest)
 	{
-	    int i;
-	    for (i=0;i<100;i++)
-	    {
-	        if(given[i]==false && pending[i]==false)
-	        {
-
-	        pending[i]=true;
-	        RoutingNumber_[hops_+1]=i;
-	        //debug_->debug("selected number %d\n", RoutingNumber_[hops_+1]=i);
-	        break;
-	        }
-	    }
+		if(strlen(dest)<strlen(RoutN_))
+			{debug_->debug("Going up from %s\n",RoutN_);
+			strcpy(mess->Routing,dest);
+			strcpy(mess->from,RoutN_);
+			mess->type=UP;
+			}
+		else if(strncmp(RoutN_,dest,strlen(RoutN_))==0)
+			{debug_->debug("Going down from %s\n",RoutN_);
+			strcpy(mess->Routing,dest);
+			strcpy(mess->from,RoutN_);
+			mess->type=DOWN;
+			}			
+		else 
+			{debug_->debug("Going up from %s\n",RoutN_);
+			strcpy(mess->Routing,dest);
+			strcpy(mess->from,RoutN_);
+			mess->type=UP;
+			}
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
 	}
 
-	/*Join_response sends a response to a node previously sent a request. It actually gives the other node the freedom to
-	  use the object that calls the method as a parent.*/
-
-	void join_response(Os::Radio::node_id_t from, int *mess)
+	void handle_up(struct message *inbox)
 	{
-		if (connectivity_==true)
-		{
-		     RoutingNumber_[hops_+1]=-1;
-		int *message, i, temp=HEADER+100;
-		message = new(int[temp]);
-		message[0]=JOIN_ACK; 			//message type (1 is for connection answer)
-		message[1]=hops_;
-		message[2]=radio_->id();
-		message[3]=VersionNumber_;
-		message[4]=mess[2];
-		Routing_no_gen();
-		if(RoutingNumber_[hops_+1]!=-1)
-		{
-		for(i=0;i<hops_+2;i++)
-        {
-            message[HEADER+i]=RoutingNumber_[i];
-            //debug_->debug("%d ", message[5+i]);
-        }
-        radio_->send( Os::Radio::BROADCAST_ADDRESS, temp*sizeof(int),(unsigned char*) message);
-		debug_->debug("process %d received connection question from %d and replied\n",radio_->id(), from);
-		}
-		free(message);
-		}
-	}
-
-
-	/*The object enters the tree by setting the node that send the ACK as parent.*/
-	void do_join(int *mess)
-	{
-	    int i;
-		if((mess[1]+1) <hops_  && connectivity_==false)
-		{
-			parent_=mess[2];
-			hops_=mess[1]+1;
-			for(i=0;i<hops_+1;i++)
+		if(strlen(inbox->from)==strlen(RoutN_)+2)
 			{
-			    RoutingNumber_[i]=mess[HEADER+i];
-            }
-			connectivity_=true;
-			VersionNumber_=mess[3];
-			debug_->debug("process %d just connected to the network with parent %d hops %d and version number %d and RoutingNumber ", radio_->id(), parent_, hops_, VersionNumber_);
-			for(i=0;i<hops_+1;i++)
-            {
-                debug_->debug("%d ", RoutingNumber_[i]);
-            }
-            debug_->debug("\n");
-            int *message;
-            message = new(int[5]);
-            message[0]=JOIN_ACK_ACK;
-            message[1]=parent_;
-            message[2]=RoutingNumber_[hops_];
-            //debug_->debug
-            radio_->send( Os::Radio::BROADCAST_ADDRESS, 5*sizeof(int),(unsigned char*) message);
-
-		}
-	}
-
-    void forward_upward (int *mess)
-    {
-        int *message, i;
-        int temp=HEADER+100;
-        message=new(int[temp]);
-
-        message[0]=FORWARD;
-        message[1]=parent_;
-        for(i=0;i<100;i++)
-        {
-            message[HEADER+i]=mess[HEADER+i];
-
-        }
-        radio_->send( Os::Radio::BROADCAST_ADDRESS, temp*sizeof(int), (unsigned char*) message );
-        debug_->debug("process %d forwarded up the message\n", radio_->id());
-    }
-
-    void forward_downward (int *mess)
-    {
-        int *message, i;
-        int temp=HEADER+100;
-        message=new(int[temp]);
-
-        message[0]=DELIVER;
-        message[1]=radio_->id();
-        message[2]=mess[HEADER+hops_+1];
-        for(i=0;i<100;i++)
-        {
-            message[HEADER+i]=mess[HEADER+i];
-
-        }
-        radio_->send( Os::Radio::BROADCAST_ADDRESS, temp*sizeof(int), (unsigned char*) message );
-        debug_->debug("process %d forwarded downward the message\n", radio_->id());
-    }
-
-	void forward_msg(int *mess)
-	{
-	     int i;
-         bool forward_up;
-         forward_up=false;
-         for (i=0;i<hops_+1;i++)
-         {
-            if(RoutingNumber_[i]!=mess[HEADER+i])
-            {
-                forward_up=true;
-                forward_upward(mess);
-                break;
-            }
-	    }
-	    if(!forward_up)
-	    {
-	        if(mess[HEADER+hops_+1]==-1)
-	        {
-	            debug_->debug("process %d got the message\n", radio_->id());
-	        }
-	       else
-	      {
-	          forward_downward(mess);
-	      }
-
-        }
-	}
-
-	//------------------------------------------------------------------
-
-	void self_repair_init( void*)
-	{
-		int *message;
-		message = (int*)malloc(4*sizeof(int));
-		VersionNumber_++;
-		message[0]=2;
-		message[1]=hops_;
-		message[2]=radio_->id();
-		message[3]=VersionNumber_;
-		radio_->send( Os::Radio::BROADCAST_ADDRESS, 4*sizeof(int),(unsigned char*) message);
-		debug_->debug("initiated self repair mechanism\n");
-		timer_->set_timer<TreeApp, &TreeApp::self_repair_init>( 15000, this, 0 );
-		free(message);
-	}
-
-
-	/*This method is called by an object that receives a TREE_INIT message. What it does is that allowes the node that sent the
-	  message to be the parent, and forwards a similar one.*/
-	void tree_init( int *mess)
-	{
-		if(mess[1] +1 <hops_)
-			{
-			int *message;
-			connectivity_=true;
-			message = new(int[4]);
-			hops_=mess[1]+1;
-			parent_=mess[2];
-			VersionNumber_= mess[3];
-			message[0]=TREE_INIT;
-			message[1]=hops_;
-			message[2]=radio_->id();
-			message[3]=VersionNumber_;
-			radio_->send( Os::Radio::BROADCAST_ADDRESS, 4*sizeof(int),(unsigned char*) message);
-			debug_->debug("process %d connected to  %d with %d hops and version number %d\n", radio_->id(), parent_, hops_, VersionNumber_);
-			free(message);
+			if (strcmp(RoutN_,inbox->Routing)==0)
+				debug_->debug("Message delievered to %s!\n",RoutN_);
+			else if (strncmp (inbox->from,RoutN_,strlen(RoutN_))==0)
+				send_message(inbox->Routing);
 			}
 	}
+
+	void handle_down(struct message *inbox)
+	{
+		if(strlen(inbox->from)==strlen(RoutN_)-2)
+			{
+			if (strcmp(RoutN_,inbox->Routing)==0)
+				debug_->debug("Message delievered! to %s\n",RoutN_);
+			else if (strncmp(RoutN_,inbox->Routing,strlen(RoutN_))==0)
+				{debug_->debug("Down from %s\n",RoutN_);
+				strcpy(mess->Routing,inbox->Routing);
+				strcpy(mess->from,RoutN_);
+				mess->type=DOWN;
+				radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+				}
+			}
+	}
+
 
       /* This method is the message handler.*/
       void receive_radio_message( Os::Radio::node_id_t from, Os::Radio::size_t len, Os::Radio::block_data_t *buf )
       {
 		if(isActive_)
 			{
-			int *mess;
-			mess = (int*) buf;
-			if (mess[0]==JOIN_REQ)
+			struct message *mess;
+			mess = (struct message *) buf;
+			if (mess->type==JOIN_ME)
+				timer_->set_timer<TreeApp, &TreeApp::join_request>( 0, this, 0 );
+			else if (mess->type==JOIN_REQ)
 				join_response(from, mess);
+			else if(mess->type==JOIN_ACK && mess->dest==radio_->id())
+              			 do_join(mess);
+            		else if(mess->type==JOINED && mess->dest==radio_->id())
+            			{
+                		given[mess->given]=true;
+                		pending[mess->given]=false;
+				}
+			else if(mess->type==UP)
+				handle_up(mess);
+			else if(mess->type==DOWN)
+				handle_down(mess);
 
-			else if(mess[0]==JOIN_ACK && mess[4]==radio_->id())
-               do_join(mess);
-
-
-			else if(mess[0]==REPAIR && VersionNumber_ < mess[3])
-			{
-				int *message;
-				message = new(int[4]);
-				hops_=mess[1]+1;
-				parent_=mess[2];
-				VersionNumber_= mess[3];
-				message[0]=2;
-				message[1]=hops_;
-				message[2]=radio_->id();
-				message[3]=VersionNumber_;
-				radio_->send( Os::Radio::BROADCAST_ADDRESS, 4*sizeof(int),(unsigned char*) message);
-				debug_->debug("process %d repaired with parent %d hops %d and version number %d\n", radio_->id(), parent_, hops_, VersionNumber_);
-				free(message);
-
-			}
-			else if(mess[0]==TREE_INIT && hops_>mess[1])
-				tree_init(mess);
-
-			else if(mess[0]==LEAVE && mess[2]==parent_ )
-				{
-				connectivity_=false;
-				hops_=INT_MAX;
-				parent_=-1;
-				timer_->set_timer<TreeApp, &TreeApp::join_request>( 1000, this, 0 );}
-            else if(mess[0]==JOIN_ACK_ACK && mess[1]==radio_->id())
-            {
-                given[mess[2]]=true;
-                pending[mess[2]]=false;
-              //  debug_->debug("process %d gave RoutingNumber %d\n", radio_->id(), mess[2]);
-            }
-            else if(mess[0]==FORWARD && mess[1]==radio_->id())
-            {
-                forward_msg(mess);
-            }
-            else if(mess[0]==DELIVER && mess[1]==parent_ && mess[2]==RoutingNumber_[hops_])
-            {
-                forward_msg(mess);
-            }
       	}
       }
    private:
@@ -385,8 +277,8 @@ class TreeApp
 	Os::Timer::self_pointer_t timer_;
 	int parent_;
 	unsigned int VersionNumber_;
-	int RoutingNumber_[100];
-	bool connectivity_, isActive_, given[100], pending[100];
+	char RoutN_[32];
+	bool connectivity_, isActive_, given[256], pending[256];
 	int hops_;
 
 
