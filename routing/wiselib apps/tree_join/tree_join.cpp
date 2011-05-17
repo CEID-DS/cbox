@@ -415,9 +415,9 @@ class TreeApp
 	{
 		if(strlen(inbox->from)==strlen(RoutN_)-2 && strncmp(inbox->from,RoutN_,strlen(inbox->from))==0)
 			{
-			char temp[3];
-			temp[0]=RoutN_[strlen(RoutN_-2)];
-			temp[1]=RoutN_[strlen(RoutN_-1)];
+			char temp[2];
+			temp[0]=RoutN_[strlen(RoutN_)-2];
+			temp[1]=RoutN_[strlen(RoutN_)-1];
 			temp[2]='\0';
 			strcpy(mess->from,RoutN_);
 			strcpy(RoutN_,inbox->Routing);
