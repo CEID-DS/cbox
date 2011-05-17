@@ -17,9 +17,8 @@
 
 #include "../lib/nal_ethernet.h"
 
-Ethernet::sockfd=-2;
-Ethernet::instances=0;
-Ethernet::max_instances=20;
+int Ethernet::sockfd=-2;
+int Ethernet::instances=0;
 
 //note: some operations must use mutexes. for example changing instances_values;
 
@@ -30,7 +29,7 @@ Ethernet::Ethernet(){
 
 int Ethernet::enable(){
 	
-	if (instances<max_instances){
+	if (instances < MAX_INSTANCES){
 		//socket is initialized the first time an instance of the class is created
 		if (sockfd == -2){
 			sockfd = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
@@ -39,7 +38,27 @@ int Ethernet::enable(){
 		      		return -1;
 		    	}
 		    	
-		    	//spawn thread that will wait for data and call delegates when data is available
+			struct sockaddr_in sa; 
+			
+			memset(&sa, 0, sizeof sa);
+			
+			sa.sin_family = AF_INET;
+			sa.sin_addr.s_addr = INADDR_ANY;
+			sa.sin_port = htons(9876);
+
+			if (bind(sockfd,(struct sockaddr *)&sa, sizeof(sa) == -1) ){
+				close(sockfd);
+				return -1;
+			}
+			
+			pthread_t tid;
+			
+			if(pthread_create(&tid,NULL,&receive_routine,(void*) sockfd)!=0){//create receive thread
+				close(sockfd);
+				return -1;
+			}
+			
+			pthread_detach(tid);
 		}
 		
 		instances++;
@@ -60,10 +79,28 @@ int Ethernet::disable(){
 	
 	if (instances==0){//when there are no instances of the class close socket
 		
-		//mutex should be used to "communicate" with receiver thread
-		
 		close(sockfd);
-		sockfd=-2;	
+		sockfd=-2;//back to startup state
 	}
+}
+
+void *receive_routine(void *socket){
+
+	struct sockaddr_in sa;
+	socklen_t fromlen;
+	
+	for (;;){
+
+		if ( recvfrom((int) &socket, (void *)data_buffer, 1024, 0, (struct sockaddr *)&sa, &fromlen) < 0) {
+			pthread_exit(NULL);
+		}
+		
+		//call delegates using data buffer
+	}
+}
+
+//just for debugging
+main(){
+	
 }
 

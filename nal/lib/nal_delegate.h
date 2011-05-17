@@ -18,24 +18,26 @@
 #ifndef NAL_DELEGATE_H
 #define NAL_DELEGATE_H
 
+#include <iostream>
+
 class delegate{
 
-	typedef void (*stub_type)(void* object_ptr, int);
+	typedef void (*stub_type)(void* object_ptr,char *, int);
 	
 	stub_type stub_ptr;
 	
 	//calls the function
-	template <class T, void (T::*TMethod)(int)>
-	inline static void method_stub(void* object_ptr,int a1){
+	template <class T, void (T::*TMethod)(char *,int)>
+	inline static void method_stub(void* object_ptr,char *pointer,int a1){
 		T* p= static_cast<T*>(object_ptr);
-		return (p->*TMethod)(a1);
+		return (p->*TMethod)(pointer,a1);
 	}	
 public:
 
 	void* object_ptr;
 	
 	//creates a new delegate and sets object pointer and the stub pointer
-	template <class T, void (T::*TMethod)(int)>
+	template <class T, void (T::*TMethod)(char *,int)>
 	inline static delegate from_method(T* object_ptr){
 		delegate d;
 		d.object_ptr = object_ptr;
@@ -46,8 +48,8 @@ public:
 	}
 	
 	//overloaded operator () to call the function using the delegate like this d_object(interger_number)
-	inline void operator()(int a1) const{
-	      return (*stub_ptr)(object_ptr, a1);
+	inline void operator()(char *pointer, int a1) const{
+	      return (*stub_ptr)(object_ptr, pointer, a1);
    	}
 };
 

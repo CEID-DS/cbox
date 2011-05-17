@@ -24,6 +24,10 @@
 #include <unistd.h>
 #include "nal_address.h"
 #include "nal_delegate.h"
+#include <pthread.h>
+#include <string.h>
+
+#define MAX_INSTANCES 10
 
 class Ethernet{
 
@@ -33,13 +37,17 @@ class Ethernet{
 		int disable();
 		int send(address addr,char *data,int size);
 		
+		//static void call_delegates();
+		//static void set_data_buffer(char *);
+		
 	private:
 		static int sockfd;//socket's file descriptor
 		static address addr;//used for server initialization
-		static char data_buffer[1024];//buffer of the data received
 		static int instances;//count of instances
-		static const int max_instances;//max number of instances that can be created
 };
+
+void *receive_routine(void *);//routine of receiver thread
+char data_buffer[1024];//buffer of the data received
 		
 #endif
 
