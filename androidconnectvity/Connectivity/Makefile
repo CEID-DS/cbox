@@ -19,4 +19,4 @@ main.o: main.cpp NetUnit/NetUnit.h GeneralFunctions.h
 	g++ -c main.cpp
 
 clean:
-	rm -rf main.o NetUnit/ReceiveThread.o NetUnit/NetUnit.o GeneralFunctions.o
+	rm -rf main.o NetUnit/ReceiveThread.o NetUnit/NetUnit.o NetUnit/TransmitThread.o GeneralFunctions.o

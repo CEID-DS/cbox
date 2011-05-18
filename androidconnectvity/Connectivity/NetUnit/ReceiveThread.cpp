@@ -21,7 +21,9 @@ void ReceiveThread::Run(){
     long size;
     long checks;
     long left=0;
-    
+
+
+	/*  
     recv(newsock,&size,sizeof(size),0);
 
     cout<<"recv "<<size<<endl;
@@ -46,11 +48,12 @@ void ReceiveThread::Run(){
 
     if(size%512!=0){
         cout<<"receiving "<<size-left<<endl;
-        ///recv(newsock,get_data,sizeof(get_data),0);
-        //memcpy(data+left,get_data,size-left);
-        //send(newsock,&checks,sizeof(checks),0);
-        //cout<<"end "+left<<endl;
-    }
+        recv(newsock,get_data,sizeof(get_data),0);
+		cout<<get_data;
+        memcpy(data+left,get_data,size-left);
+        send(newsock,&checks,sizeof(checks),0);
+        cout<<"end "+left<<endl;
+    }*/
 
 
     close(newsock);

@@ -9,4 +9,8 @@
     android:layout_height="wrap_content" 
     android:text="@string/hello"
     />
+<Button android:text="Button" 
+		android:id="@+id/jnibutton" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"></Button>
 </LinearLayout>
