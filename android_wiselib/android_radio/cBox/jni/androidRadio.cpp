@@ -26,6 +26,7 @@ using namespace std;
 void testSend(void)
 {
 	AndroidSend myAndroidSend;
+	myAndroidSend.udpSend("testingSend");
 
 }
 
