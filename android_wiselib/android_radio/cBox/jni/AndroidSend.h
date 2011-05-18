@@ -30,7 +30,7 @@ class AndroidSend{
 		AndroidSend(){
 		}
 		//function that implements the send concept
-		int UdpSend(string s)
+		int udpSend(string s)
 		{
 			jobject thiz = getJavaObject();
 			JNIEnv *env;
@@ -41,7 +41,7 @@ class AndroidSend{
 			if(jcClass==NULL) { myError="GetObjectClass error"; goto ABORT; }
 			{
 				//getting the id of method testNative which has one string parameter and returns void
-				jmethodID debug = env->GetMethodID(jcClass, "UdpSend", "(Ljava/lang/String;)V");
+				jmethodID debug = env->GetMethodID(jcClass, "UdpSendNative", "(Ljava/lang/String;)V");
 				//calling the method UdpSend
 				if(debug==NULL)	{ myError="GetMethodID error"; goto ABORT; }
 				jstring _jstring = env->NewStringUTF (s.c_str());
