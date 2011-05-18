@@ -44,5 +44,5 @@ JNIEXPORT jstring JNICALL Java_com_cbox_WiseLib_androidSend
 
 	//testing the debug feature
 	testSend();
-	return 0;
+	return env->NewStringUTF(myError.c_str());
 }
