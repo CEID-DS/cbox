@@ -2,6 +2,7 @@ package com.cbox;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class cBox extends Activity {
@@ -11,6 +12,16 @@ public class cBox extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        //Toast.makeText(getBaseContext(),Integer.toString(wiseLib.add(1,2)),Toast.LENGTH_SHORT).show();
+        
+        
+        
+        
+        
+        UdpSend udpSend = new UdpSend();
+        udpSend.start();
+        
+        UdpReceive udpReceive = new UdpReceive();
+        udpReceive.start();
+        
     }
 }
