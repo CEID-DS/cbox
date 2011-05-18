@@ -6,6 +6,6 @@ public class WiseLib {
 		System.loadLibrary("wiselib");
 	}
 
-	public native int add(int v1,int v2);
+	public native String androidSend(Object c);
 
 }

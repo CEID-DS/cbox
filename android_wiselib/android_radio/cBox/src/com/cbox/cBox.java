@@ -11,6 +11,6 @@ public class cBox extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Toast.makeText(getBaseContext(),Integer.toString(wiseLib.add(1,2)),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getBaseContext(),Integer.toString(wiseLib.add(1,2)),Toast.LENGTH_SHORT).show();
     }
 }

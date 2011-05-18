@@ -9,11 +9,11 @@ extern "C" {
 #endif
 /*
  * Class:     com_cbox_WiseLib
- * Method:    add
- * Signature: (II)I
+ * Method:    androidSend
+ * Signature: (Ljava/lang/Object;)Ljava/lang/String;
  */
-JNIEXPORT jint JNICALL Java_com_cbox_WiseLib_add
-  (JNIEnv *, jobject, jint, jint);
+JNIEXPORT jstring JNICALL Java_com_cbox_WiseLib_androidSend
+  (JNIEnv *, jobject, jobject);
 
 #ifdef __cplusplus
 }
