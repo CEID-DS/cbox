@@ -13,18 +13,25 @@ import java.util.StringTokenizer;
 import android.bluetooth.BluetoothAdapter;
 import android.util.Log;
 
-public class UdpSend extends Thread{
+public class UdpSend implements Runnable{
 
-	private String ipv4_addr=null;
-	private String ipv6_addr=null;
-	private String blue_addr=null;
+	private String destination;
+	private Thread thread = null;
+	private String data = null;
 	
-	Thread send = null;
-	
-	public UdpSend(){
-		ipv4_addr=getLocalIpAddress();
-		ipv6_addr="________________________________________";
-		blue_addr=getBluetoothMac();
+	public UdpSend(String gdata,String dest){
+		
+		data = gdata;
+		if(dest.equals("broadcast")){
+			destination=getBroadcastIP();
+		}
+		else{
+			destination = dest;
+		}
+		
+		thread = new Thread(this);
+		thread.start();
+		
 	}
 	
 	public void run(){
@@ -36,13 +43,9 @@ public class UdpSend extends Thread{
 			Log.v("TEST","sending");
 			
 			DatagramSocket visibleSocket = new DatagramSocket();
-			InetAddress IPAddress = InetAddress.getByName(getBroadcastIP());
-			byte[] sendData ;
-			String addr_string="<ipv4_addr>"+ipv4_addr+"</ipv4_addr>"+"\n"
-			+"<blue_addr>"+blue_addr+"</blue_addr>"+"\n"
-			+"<ipv6_addr>"+ipv6_addr+"</ipv6_addr>"+"\n";
-			
-			sendData = addr_string.getBytes();
+			InetAddress IPAddress = InetAddress.getByName(destination);
+			byte[] sendData = new byte[512];
+			sendData = data.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
 		    visibleSocket.send(sendPacket);
 		    visibleSocket.close();
