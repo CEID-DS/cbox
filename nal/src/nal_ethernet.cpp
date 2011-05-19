@@ -19,12 +19,26 @@
 
 int Ethernet::sockfd=-2;
 int Ethernet::instances=0;
-
-//note: some operations must use mutexes. for example changing instances_values;
+delegate Ethernet::dels[MAX_INSTANCES];
+char Ethernet::data_buffer[8192];
+int Ethernet::valid_data=0;
+bool Ethernet::valid_dels[MAX_INSTANCES];
 
 Ethernet::Ethernet(){
-	//do some standard initialization
-	//for example initialize mutex
+	if (instances==0){
+		//initialize valid_dels boolean array
+		for (int i=0;i<MAX_INSTANCES;i++){
+			valid_dels[i]=false;
+		}
+	}
+}
+
+void Ethernet::call_delegates(){
+	for (int i=0;i<MAX_INSTANCES;i++){
+		if (valid_dels[i]){
+			dels[i](data_buffer,valid_data);
+		}
+	}
 }
 
 int Ethernet::enable(){
@@ -67,7 +81,7 @@ int Ethernet::enable(){
 	}
 }
 
-int Ethernet::send(address addr,char *data,int size){
+int Ethernet::send(char *data,int size){
 	
 	
 
@@ -91,11 +105,11 @@ void *receive_routine(void *socket){
 	
 	for (;;){
 
-		if ( recvfrom((int) &socket, (void *)data_buffer, 1024, 0, (struct sockaddr *)&sa, &fromlen) < 0) {
+		if ( (Ethernet::valid_data=recvfrom((int) &socket, (void *)Ethernet::data_buffer, 8192, 0, (struct sockaddr *)&sa, &fromlen) ) <= 0) {
 			pthread_exit(NULL);
 		}
 		
-		//call delegates using data buffer
+		Ethernet::call_delegates();
 	}
 }
 

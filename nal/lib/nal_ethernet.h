@@ -27,7 +27,7 @@
 #include <pthread.h>
 #include <string.h>
 
-#define MAX_INSTANCES 10
+#define MAX_INSTANCES 20
 
 class Ethernet{
 
@@ -35,19 +35,23 @@ class Ethernet{
 		Ethernet();
 		int enable();
 		int disable();
-		int send(address addr,char *data,int size);
+		int send(char *data,int size);
 		
-		//static void call_delegates();
-		//static void set_data_buffer(char *);
+		static void call_delegates();
+		static delegate dels[MAX_INSTANCES];
+		
+		static char data_buffer[8192];
+		static int valid_data;
 		
 	private:
 		static int sockfd;//socket's file descriptor
 		static address addr;//used for server initialization
 		static int instances;//count of instances
+		
+		static bool valid_dels[MAX_INSTANCES];//which delegates are valid in dels array (true for valid)
 };
 
 void *receive_routine(void *);//routine of receiver thread
-char data_buffer[1024];//buffer of the data received
 		
 #endif
 
