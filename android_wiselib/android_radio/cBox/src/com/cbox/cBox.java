@@ -26,12 +26,6 @@ public class cBox extends Activity {
         jnicall.setOnClickListener(jnilisten);        
         
         
-        //UdpSend udpSend = new UdpSend();
-        //udpSend.start();
-        
-        //UdpReceive udpReceive = new UdpReceive();
-        //udpReceive.start();
-        
     }
     
     OnClickListener jnilisten = new OnClickListener() {
@@ -47,7 +41,22 @@ public class cBox extends Activity {
 	
 	
 	public void UdpSendNative(String s){
-		Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
+
+		final String k =s ;
+		// prepare the alert box
+        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+        // set the message to display
+        alertbox.setMessage(s);
+        // add a neutral button to the alert box and assign a click listener
+        alertbox.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+            // click listener on the alert box
+            public void onClick(DialogInterface arg0, int arg1) {
+            	UdpSend udpSend = new UdpSend(k,"broadcast");
+            	//udpSend.start();
+            }
+        });
+        // show it
+        alertbox.show();
 	}
 	
     public void debugFromNative(String s)
@@ -63,6 +72,8 @@ public class cBox extends Activity {
             public void onClick(DialogInterface arg0, int arg1) {
                 // the button was clicked
                 //Toast.makeText(getApplicationContext(), "OK button clicked", Toast.LENGTH_LONG).show();
+            	//UdpSend udpSend = new UdpSend();
+            	//udpSend.start();
             }
         });
         // show it
