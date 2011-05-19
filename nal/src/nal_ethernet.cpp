@@ -46,22 +46,28 @@ int Ethernet::enable(){
 	if (instances < MAX_INSTANCES){
 		//socket is initialized the first time an instance of the class is created
 		if (sockfd == -2){
-			sockfd = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
-		  	if (sockfd==-1){ //if socket failed to initialize
+		  	if ((sockfd = socket(PF_INET, SOCK_DGRAM, 0) ) < 0){ //if socket failed to initialize
 				sockfd=-2;
 		      		return -1;
 		    	}
 		    	
-			struct sockaddr_in sa; 
+		    	int on=1;
+		    	if (setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST,  &on, sizeof(on)) < 0){
+		    		sockfd=-2;
+		    		return -1;
+		    	}
+		    	struct sockaddr_in sin;
 			
-			memset(&sa, 0, sizeof sa);
+			memset(&sin, 0, sizeof sin);
 			
-			sa.sin_family = AF_INET;
-			sa.sin_addr.s_addr = INADDR_ANY;
-			sa.sin_port = htons(9876);
-
-			if (bind(sockfd,(struct sockaddr *)&sa, sizeof(sa) == -1) ){
+			sin.sin_family = PF_INET;
+			sin.sin_addr.s_addr = INADDR_BROADCAST;
+			sin.sin_port = htons(9876);
+			
+			if (bind(sockfd,(struct sockaddr *)&sin, sizeof(sin)) < 0 ){
 				close(sockfd);
+				sockfd=-2;
+
 				return -1;
 			}
 			
@@ -69,6 +75,7 @@ int Ethernet::enable(){
 			
 			if(pthread_create(&tid,NULL,&receive_routine,(void*) sockfd)!=0){//create receive thread
 				close(sockfd);
+				sockfd=-2;
 				return -1;
 			}
 			
@@ -76,6 +83,7 @@ int Ethernet::enable(){
 		}
 		
 		instances++;
+		return 0;
 	}else{
 		return -1;
 	}
@@ -83,8 +91,15 @@ int Ethernet::enable(){
 
 int Ethernet::send(char *data,int size){
 	
+	struct sockaddr_in sin;
+			
+	memset(&sin, 0, sizeof sin);
 	
-
+	sin.sin_family = PF_INET;
+	sin.sin_addr.s_addr = INADDR_BROADCAST;
+	sin.sin_port = htons(9876);
+	
+	return sendto(sockfd, data, size, 0,(struct sockaddr*)&sin, sizeof sin);
 }
 
 int Ethernet::disable(){
@@ -98,23 +113,21 @@ int Ethernet::disable(){
 	}
 }
 
+void Ethernet::unregister_receiver(){
+	valid_dels[del_id] = false;
+}
+
 void *receive_routine(void *socket){
 
 	struct sockaddr_in sa;
 	socklen_t fromlen;
 	
 	for (;;){
-
-		if ( (Ethernet::valid_data=recvfrom((int) &socket, (void *)Ethernet::data_buffer, 8192, 0, (struct sockaddr *)&sa, &fromlen) ) <= 0) {
+		if ( (Ethernet::valid_data=recvfrom((int) socket, (void *)Ethernet::data_buffer, 8192, 0, (struct sockaddr *)&sa, &fromlen) ) <= 0) {
 			pthread_exit(NULL);
 		}
 		
 		Ethernet::call_delegates();
 	}
-}
-
-//just for debugging
-main(){
-	
 }
 

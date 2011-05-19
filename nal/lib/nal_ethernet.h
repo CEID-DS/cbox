@@ -37,12 +37,34 @@ class Ethernet{
 		int disable();
 		int send(char *data,int size);
 		
+		template <class T,void (T::*TMethod)(char *,int)>
+		void register_receiver(T* object){
+
+			bool found=false;
+			int i=0;
+	
+			do{
+				if (valid_dels[i]==false){
+					dels[i]=delegate::from_method<T,TMethod>(object);
+					found=true;
+					valid_dels[i]=true;
+					del_id=i;
+				}
+				i++;
+			}while (!found);
+		}
+		void unregister_receiver();
+				
+		int del_id;
+		
+		//static members following
+		
 		static void call_delegates();
+		
 		static delegate dels[MAX_INSTANCES];
 		
 		static char data_buffer[8192];
 		static int valid_data;
-		
 	private:
 		static int sockfd;//socket's file descriptor
 		static address addr;//used for server initialization
