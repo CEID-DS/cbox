@@ -55,8 +55,16 @@ class TreeApp
 		short int given;
 		char from[32];
 		char Routing[32];
+		char payload[1202];
 	} *mess;
 
+	/** under review
+	struct universal_message
+	{
+	    char routing[78];
+	    char payload[1202];
+	}
+    **/
 	void init( Os::AppMainParameter& value )
 	{
 	radio_ = &wiselib::FacetProvider<Os, Os::Radio>::get_facet( value );
@@ -66,6 +74,9 @@ class TreeApp
                                    &TreeApp::receive_radio_message>( this );
 
 	mess = (struct message *)malloc(sizeof(struct message));
+	/** revision 1 **/
+	bzero(mess, sizeof(struct message));
+
 	parent_=-1;
 	hops_=INT_MAX;
 	isActive_=true;
@@ -88,17 +99,24 @@ class TreeApp
 		sprintf(RoutN_,"%.2x",0);
 		mess->type=JOIN_ME;
 		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
+		timer_->set_timer<TreeApp, &TreeApp::test_mes>( 20000, this, 0 );
 		}
 		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
+		/**
 		if(radio_->id()!=0)
 			timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 12000, this, 0 );
 		if(radio_->id()==4)
 			timer_->set_timer<TreeApp, &TreeApp::deactivate>( 15000, this, 0 );
-	
-	}
+        **/
+         //timer_->set_timer<TreeApp, &TreeApp::messagedebug>( 1000, this, 0 );
+     }
 
+ /** under review
+    void send_message (int k, char* mess )
+    {
 
-
+    }
+**/
 
 	/*Join_request broadcasts a request*/
 	void join_request( void *)
@@ -112,7 +130,7 @@ class TreeApp
 		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
 		}
 	}
-	
+
 	int RoutingNumGenerator (void)
 	{
 	    int i;
@@ -127,7 +145,7 @@ class TreeApp
 	    }
 	return (-1);
 	}
-	
+
 	void RemovePending(int which)
 		{
 		pending[which]=false;
@@ -146,10 +164,10 @@ class TreeApp
 			{
 			if(strlen(inbox->from)<strlen(RoutN_) && strncmp(inbox->from,RoutN_,strlen(inbox->from))==0)
 				{return;}
-			else			
+			else
 				{mess->type=REJOIN_ACK;}
 			}
-					
+
 		mess->hops=hops_;
 		mess->id=radio_->id();
 		mess->version=VersionNumber_;
@@ -166,7 +184,7 @@ class TreeApp
 			debug_->debug("process %d with %s received connection question from %d and replied %s\n",radio_->id(), RoutN_, from, mess->Routing);
 			}
 		}
-		
+
 	}
 
 
@@ -210,10 +228,12 @@ class TreeApp
 
 	void test_mes(void *)
 	{
-		send_message("00010000");
+		send_message("0000", "\0");
 	}
-	void send_message(char *dest)
+
+	void send_message(char *dest, char *payload)
 	{
+
 		if(strlen(dest)<strlen(RoutN_))
 			{debug_->debug("Going up from %s\n",RoutN_);
 			strcpy(mess->Routing,dest);
@@ -225,14 +245,28 @@ class TreeApp
 			strcpy(mess->Routing,dest);
 			strcpy(mess->from,RoutN_);
 			mess->type=DOWN;
-			}			
-		else 
+			}
+		else
 			{debug_->debug("Going up from %s\n",RoutN_);
 			strcpy(mess->Routing,dest);
 			strcpy(mess->from,RoutN_);
 			mess->type=UP;
 			}
-		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+
+			if(payload==NULL)
+			{
+			    /** revision 1 **/
+
+			radio_->send(Os::Radio::BROADCAST_ADDRESS, 78,(unsigned char*) mess);
+			}
+			else
+			{
+			    strcpy(mess->payload, payload);
+			    radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+			}
+
+
+
 	}
 
 	void handle_up(struct message *inbox)
@@ -240,9 +274,22 @@ class TreeApp
 		if(strlen(inbox->from)==strlen(RoutN_)+2)
 			{
 			if (strcmp(RoutN_,inbox->Routing)==0)
-				debug_->debug("Message delievered to %s!\n",RoutN_);
+			{
+			    debug_->debug("Message delievered to %s!\n",RoutN_);
+				/** revision 1 **/
+				payload_handler(inbox);
+			}
 			else if (strncmp (inbox->from,RoutN_,strlen(RoutN_))==0)
-				send_message(inbox->Routing);
+			    {
+                    if (inbox->payload==NULL)
+                    {
+                        send_message(inbox->Routing, NULL);
+                    }
+                    else
+                    {
+                        send_message(inbox->Routing, inbox->payload);
+                    }
+			    }
 			}
 	}
 
@@ -251,17 +298,39 @@ class TreeApp
 		if(strlen(inbox->from)==strlen(RoutN_)-2)
 			{
 			if (strcmp(RoutN_,inbox->Routing)==0)
-				debug_->debug("Message delievered! to %s\n",RoutN_);
+			{
+			    debug_->debug("Message delievered! to %s\n",RoutN_);
+				/** revision 1 **/
+				payload_handler(inbox);
+			}
 			else if (strncmp(RoutN_,inbox->Routing,strlen(RoutN_))==0)
 				{debug_->debug("Down from %s\n",RoutN_);
 				strcpy(mess->Routing,inbox->Routing);
 				strcpy(mess->from,RoutN_);
 				mess->type=DOWN;
-				radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-				}
+
+                    if(inbox->payload==NULL)
+                    {
+                        /** revision 1 **/
+
+                        radio_->send(Os::Radio::BROADCAST_ADDRESS, 78,(unsigned char*) mess);
+                    }
+                    else
+                    {
+                        strcpy(mess->payload, inbox->payload);
+                        radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+                    }
 			}
 	}
+	}
 
+    void payload_handler(struct message *mess)
+    {
+        if(mess->payload!=NULL)
+        {
+        debug_->debug("Message payload: %s\n", mess->payload);
+        }
+    }
 	void sendToAll(void *)
 	{
 		mess->type=ALL;
@@ -273,14 +342,17 @@ class TreeApp
 
 	void forwardToAll(struct message *inbox)
 	{
-		if((strlen(inbox->from)==strlen(RoutN_)-2 && strncmp(inbox->from,RoutN_,strlen(RoutN_)-2)==0) || 
+		if((strlen(inbox->from)==strlen(RoutN_)-2 && strncmp(inbox->from,RoutN_,strlen(RoutN_)-2)==0) ||
 		   (strlen(inbox->from)==strlen(RoutN_)+2 && strncmp(inbox->from,RoutN_,strlen(RoutN_))==0))
-			{			
+			{
 			if(strcmp(RoutN_,inbox->Routing)!=0)
 				{
 				mess->type=ALL;
 				strcpy(mess->from,RoutN_);
 				strcpy(mess->Routing,inbox->from);
+				/**revision 1 **/
+                strcpy(mess->payload, inbox->payload);
+
 				radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
 				debug_->debug("message passed from %s\n",RoutN_);
 				}
@@ -292,6 +364,7 @@ class TreeApp
       /* This method is the message handler.*/
 	void receive_radio_message( Os::Radio::node_id_t from, Os::Radio::size_t len, Os::Radio::block_data_t *buf )
 	{
+
 		if(isActive_)
 			{
 			struct message *mess;
@@ -322,6 +395,20 @@ class TreeApp
 			else if(mess->type==REPAIR)
 				repair(mess);
 
+            {   /**
+                debug_->debug("parent: %d\n", mess->parent);
+                debug_->debug("type: %d\n", mess->type);
+                debug_->debug("hops: %d\n", mess->hops);
+                debug_->debug("id: %d\n", mess->id);
+                debug_->debug("version: %d\n", mess->version);
+                debug_->debug("dest: %d\n", mess->dest);
+                debug_->debug("given: %d\n", mess->given);
+                debug_->debug("from: %s\n", mess->from);
+                debug_->debug("Routing: %s\n", mess->Routing);
+                debug_->debug("payload: %s\n", mess->payload);
+                debug_->debug("---\n");
+                **/
+                }
 			}
 	}
 
@@ -363,7 +450,7 @@ class TreeApp
 			debug_->debug("Ping-pong ok at %s\n",RoutN_);
 			if(radio_->id()!=0)
 				timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
-			
+
 			}
 		else
 			{
@@ -395,7 +482,7 @@ class TreeApp
 			hops_=inbox->hops+1;
 			strcpy(mess->from,RoutN_);
 			strcpy(mess->Routing,inbox->Routing);
-			mess->hops=hops_; 
+			mess->hops=hops_;
 			strcpy(RoutN_,inbox->Routing);
 			connectivity_=true;
 			VersionNumber_=inbox->version;
@@ -424,14 +511,14 @@ class TreeApp
 			strcat(RoutN_,temp);
 			strcpy(mess->Routing,RoutN_);
 			hops_=inbox->hops+1;
-			mess->hops=hops_; 
+			mess->hops=hops_;
 			debug_->debug("process %d repaired with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
 			mess->type=REPAIR;
 			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
 			timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
 			}
 	}
-	
+
    private:
         Os::Radio::self_pointer_t radio_;
         Os::Debug::self_pointer_t debug_;
