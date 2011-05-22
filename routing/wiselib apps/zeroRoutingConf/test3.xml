@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<scenario>
+<snapshot id="0">
+	<node id="v0-RI8IaB-C">
+		<location x="3.23764" y="1.37588" z="0" />
+	</node>
+	<node id="v1-RI8IaB-D">
+		<location x="1.11281" y="2.1695" z="0" />
+	</node>
+	<node id="v2-RI8IaB-E">
+		<location x="1.14647" y="0.502253" z="0" />
+	</node>
+	<node id="v3-RI8IaB-F">
+		<location x="3.08735" y="1.57775" z="0" />
+	</node>
+	<node id="v4-RI8IaB-G">
+		<location x="2.2398" y="2.32436" z="0" />
+	</node>
+	<node id="v5-RI8IaB-H">
+		<location x="0.600142" y="2.02329" z="0" />
+	</node>
+	<node id="v6-RI8IaB-I">
+		<location x="0.319845" y="3.23768" z="0" />
+	</node>
+	<node id="v7-RI8IaB-J">
+		<location x="0.725475" y="2.43928" z="0" />
+	</node>
+	<node id="v8-RI8IaB-K">
+		<location x="1.92218" y="0.137881" z="0" />
+	</node>
+	<node id="v9-RI8IaB-L">
+		<location x="0.818847" y="2.68828" z="0" />
+	</node>
+</snapshot>
+</scenario>
