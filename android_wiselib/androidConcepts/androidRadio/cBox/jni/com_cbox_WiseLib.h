@@ -18,10 +18,10 @@ JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidSend
 /*
  * Class:     com_cbox_WiseLib
  * Method:    androidReceive
- * Signature: (Ljava/lang/Object;)V
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidReceive
-  (JNIEnv *, jobject, jobject);
+  (JNIEnv *, jobject, jobject, jstring);
 
 #ifdef __cplusplus
 }

@@ -16,6 +16,7 @@
 *******************************************************************************/
 
 #include <iostream>
+#include <string>
 #include "com_cbox_WiseLib.h"
 #include "../../../debugConcept/javaEssentials.h"
 #include "../../../debugConcept/AndrDebug.h"
@@ -29,10 +30,10 @@ void testSend(void)
 	myAndroidSend.udpSend("testingSend");
 
 }
-void testReceive(void)
+void testReceive(const char *nativeString)
 {
 	AndrDebug testDebug;
-	testDebug.debug("hell%d", 0);
+	testDebug.debug(nativeString);
 }
 
 /*
@@ -49,22 +50,28 @@ JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidSend
 
 	//testing the debug feature
 	testSend();
-
 }
 
 
 /*
  * Class:     com_cbox_WiseLib
  * Method:    androidReceive
- * Signature: (Ljava/lang/Object;)V
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidReceive
-  (JNIEnv * env, jobject jc, jobject thiz)
+  (JNIEnv *env, jobject nc, jobject thiz, jstring javaString)
 {
 	//setting the global java environment variables
 	setJavaENV(env);
 	setJavaObject(thiz);
 
-	testReceive();
+    //Get the native string from javaString
+	//when receiving from jni a string
+    const char *nativeString = env->GetStringUTFChars(javaString, 0);
 
+	testReceive(nativeString);
+
+
+    //RELEASING THE ALLOCATED MEMORY!!!
+    env->ReleaseStringUTFChars(javaString, nativeString);
 }

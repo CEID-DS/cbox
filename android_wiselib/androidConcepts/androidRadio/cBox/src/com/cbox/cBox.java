@@ -36,7 +36,7 @@ public class cBox extends Activity {
 			
 			//wiseLib.androidSend(passing);
 			//Toast.makeText(getBaseContext(), nativeget,Toast.LENGTH_SHORT).show();
-			wiseLib.androidReceive(passing);
+			wiseLib.androidReceive(passing,"hellooo");
 		}
 	};
 	
