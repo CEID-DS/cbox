@@ -16,12 +16,12 @@
 *******************************************************************************/
 
 #include <iostream>
-#include <jni.h>
 #include "com_cbox_WiseLib.h"
-#include "../../../androidConcepts/debugConcept/javaEssentials.h"
-#include "../../../androidConcepts/debugConcept/javaEssentials.cpp"
-#include "AndroidSend.h"
+#include "../../../debugConcept/javaEssentials.h"
+#include "../../../debugConcept/AndrDebug.h"
+#include "../../AndroidSend.h"
 using namespace std;
+
 
 void testSend(void)
 {
@@ -29,13 +29,18 @@ void testSend(void)
 	myAndroidSend.udpSend("testingSend");
 
 }
+void testReceive(void)
+{
+	AndrDebug testDebug;
+	testDebug.debug("hell%d", 0);
+}
 
 /*
  * Class:     com_cbox_WiseLib
  * Method:    androidSend
- * Signature: (Ljava/lang/Object;)Ljava/lang/String;
+ * Signature: (Ljava/lang/Object;)V
  */
-JNIEXPORT jstring JNICALL Java_com_cbox_WiseLib_androidSend
+JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidSend
   (JNIEnv *env, jobject nc, jobject thiz)
 {
 	//setting the global java environment variables
@@ -44,5 +49,22 @@ JNIEXPORT jstring JNICALL Java_com_cbox_WiseLib_androidSend
 
 	//testing the debug feature
 	testSend();
-	return env->NewStringUTF(myError.c_str());
+
+}
+
+
+/*
+ * Class:     com_cbox_WiseLib
+ * Method:    androidReceive
+ * Signature: (Ljava/lang/Object;)V
+ */
+JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidReceive
+  (JNIEnv * env, jobject jc, jobject thiz)
+{
+	//setting the global java environment variables
+	setJavaENV(env);
+	setJavaObject(thiz);
+
+	testReceive();
+
 }

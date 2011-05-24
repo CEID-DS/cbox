@@ -34,8 +34,9 @@ public class cBox extends Activity {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			
-			nativeget=wiseLib.androidSend(passing);
-			Toast.makeText(getBaseContext(), nativeget,Toast.LENGTH_SHORT).show();
+			//wiseLib.androidSend(passing);
+			//Toast.makeText(getBaseContext(), nativeget,Toast.LENGTH_SHORT).show();
+			wiseLib.androidReceive(passing);
 		}
 	};
 	

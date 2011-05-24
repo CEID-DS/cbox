@@ -10,9 +10,17 @@ extern "C" {
 /*
  * Class:     com_cbox_WiseLib
  * Method:    androidSend
- * Signature: (Ljava/lang/Object;)Ljava/lang/String;
+ * Signature: (Ljava/lang/Object;)V
  */
-JNIEXPORT jstring JNICALL Java_com_cbox_WiseLib_androidSend
+JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidSend
+  (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     com_cbox_WiseLib
+ * Method:    androidReceive
+ * Signature: (Ljava/lang/Object;)V
+ */
+JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidReceive
   (JNIEnv *, jobject, jobject);
 
 #ifdef __cplusplus

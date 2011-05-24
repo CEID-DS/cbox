@@ -21,7 +21,7 @@
 #include <jni.h>
 #include <iostream>
 #include <string>
-#include "../../../androidConcepts/debugConcept/javaEssentials.h"
+#include "../../../debugConcept/javaEssentials.h"
 using namespace std;
 
 class AndroidSend{
