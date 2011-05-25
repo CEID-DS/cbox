@@ -110,7 +110,7 @@ public class cBox extends Activity {
 			// TODO Auto-generated method stub
 			
 			UdpSend udpSend = new UdpSend("asdds","192.168.1.255");
-			//wiseLib.androidSend(passing);
+			wiseLib.androidSend(passing);
 			//Toast.makeText(getBaseContext(), nativeget,Toast.LENGTH_SHORT).show();
 			//wiseLib.androidReceive(passing,"hellooo");
 		}
