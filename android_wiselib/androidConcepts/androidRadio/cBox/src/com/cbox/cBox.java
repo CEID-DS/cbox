@@ -22,6 +22,8 @@ public class cBox extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        UdpReceive udpReceive = new UdpReceive(wiseLib,passing);
+        
         jnicall = (Button) findViewById(R.id.jnicall);
         jnicall.setOnClickListener(jnilisten);        
         
@@ -34,9 +36,10 @@ public class cBox extends Activity {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			
+			UdpSend udpSend = new UdpSend("asdds","192.168.1.255");
 			//wiseLib.androidSend(passing);
 			//Toast.makeText(getBaseContext(), nativeget,Toast.LENGTH_SHORT).show();
-			wiseLib.androidReceive(passing,"hellooo");
+			//wiseLib.androidReceive(passing,"hellooo");
 		}
 	};
 	
