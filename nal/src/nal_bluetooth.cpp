@@ -15,16 +15,17 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#include "../lib/nal_ethernet.h"
+#include "../lib/nal_bluetooth.h"
 
-int Ethernet::sockfd=-2;
-int Ethernet::instances=0;
-delegate Ethernet::dels[MAX_INSTANCES];
-char Ethernet::data_buffer[8192];
-int Ethernet::valid_data=0;
-bool Ethernet::valid_dels[MAX_INSTANCES];
 
-Ethernet::Ethernet(){
+int Bluetooth::sockfd=-2;
+int Bluetooth::instances=0;
+delegate Bluetooth::dels[MAX_INSTANCES];
+char Bluetooth::data_buffer[SIZE];
+int Bluetooth::valid_data=0;
+bool Bluetooth::valid_dels[MAX_INSTANCES];
+
+Ethernet::Bluetooth(){
 	if (instances==0){
 		//initialize valid_dels boolean array
 		for (int i=0;i<MAX_INSTANCES;i++){
@@ -33,7 +34,7 @@ Ethernet::Ethernet(){
 	}
 }
 
-void Ethernet::call_delegates(){
+void Bluetooth::call_delegates(){
 	for (int i=0;i<MAX_INSTANCES;i++){
 		if (valid_dels[i]){
 			dels[i](data_buffer,valid_data);
@@ -41,35 +42,39 @@ void Ethernet::call_delegates(){
 	}
 }
 
-int Ethernet::enable(){
+int Bluetooth::enable(){
 	
 	if (instances < MAX_INSTANCES){
 		//socket is initialized the first time an instance of the class is created
 		if (sockfd == -2){
-		  	if ((sockfd = socket(PF_INET, SOCK_DGRAM, 0) ) < 0){ //if socket failed to initialize
+		  	if ((sockfd = socket(AF_BLUETOOTH, SOCK_DGRAM, BTPROTO_RFCOMM) ) < 0){ //if socket failed to initialize
 				sockfd=-2;
 		      		return -1;
 		    	}
 		    	
-		    	int on=1;
-		    	if (setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST,  &on, sizeof(on)) < 0){
+		    int on=1;
+		    	
+		    /*	if (setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST,  &on, sizeof(on)) < 0){
 		    		sockfd=-2;
 		    		return -1;
-		    	}
-		    	struct sockaddr_in sin;
+		    	} */
+		    	
+		    struct sockaddr_rc rc;
 			
-			memset(&sin, 0, sizeof sin);
+			memset(&rc, 0, sizeof rc);
 			
-			sin.sin_family = PF_INET;
-			sin.sin_addr.s_addr = INADDR_BROADCAST;
-			sin.sin_port = htons(9876);
+			rc.rc_family = AF_BLUETOOTH;
+			rc.rc_bdaddr = *BDADDR_ANY;
+			rc.rc_channel = (uint8_t) PORT;
 			
-			if (bind(sockfd,(struct sockaddr *)&sin, sizeof(sin)) < 0 ){
+			if (bind(sockfd,(struct sockaddr *)&rc, sizeof(rc)) < 0 ){
 				close(sockfd);
 				sockfd=-2;
 
 				return -1;
 			}
+			
+			//POSSIBLE ADD-ON pthread --> scan function !!
 			
 			pthread_t tid;
 			
@@ -91,18 +96,18 @@ int Ethernet::enable(){
 
 int Ethernet::send(char *data,int size){
 	
-	struct sockaddr_in sin;
+	struct sockaddr_rc rc;
 			
-	memset(&sin, 0, sizeof sin);
+	memset(&rc, 0, sizeof rc);
 	
-	sin.sin_family = PF_INET;
-	sin.sin_addr.s_addr = INADDR_BROADCAST;
-	sin.sin_port = htons(9876);
+	rc.rc_family = AF_BLUETOOTH;
+	rc.rc_bdaddr = *BDADDR_ANY;
+	rc.rc_channel = (uint8_t) PORT;
 	
-	return sendto(sockfd, data, size, 0,(struct sockaddr*)&sin, sizeof sin);
+	return sendto(sockfd, data, size, 0,(struct sockaddr*)&rc, sizeof rc);
 }
 
-int Ethernet::disable(){
+int Bluetooth::disable(){
 
 	instances--;
 	
@@ -113,7 +118,7 @@ int Ethernet::disable(){
 	}
 }
 
-void Ethernet::unregister_receiver(){
+void Bluetooth::unregister_receiver(){
 	valid_dels[del_id] = false;
 }
 
@@ -123,11 +128,11 @@ void *receive_routine(void *socket){
 	socklen_t fromlen;
 	
 	for (;;){
-		if ( (Ethernet::valid_data=recvfrom((int) socket, (void *)Ethernet::data_buffer, 8192, 0, (struct sockaddr *)&sa, &fromlen) ) <= 0) {
+		if ( (Bluetooth::valid_data=recvfrom((int) socket, (void *)Bluetooth::data_buffer, SIZE, 0, (struct sockaddr *)&sa, &fromlen) ) <= 0) {
 			pthread_exit(NULL);
 		}
 		
-		Ethernet::call_delegates();
+		Bluetooth::call_delegates();
 	}
 }
 
