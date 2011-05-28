@@ -15,34 +15,37 @@
 * along with cbox.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
+#ifndef TEST_CLASS_H
+#define TEST_CLASS_H
+
 #include <iostream>
-#include <jni.h>
-#include "com_cbox_WiseLib.h"
-#include "../../../androidConcepts/debugConcept/javaEssentials.h"
-#include "../../../androidConcepts/debugConcept/javaEssentials.cpp"
-#include "AndroidSend.h"
+#include <string.h>
+#include "../../../../debugConcept/AndrDebug.h"
 using namespace std;
 
-void testSend(void)
-{
-	AndroidSend myAndroidSend;
-	myAndroidSend.udpSend("testingSend");
 
+class testClass
+{
+	public:
+		void receive1(int len, void *pointer);
+		void receive2(int len, void *pointer);
+	private:
+		AndrDebug testDebug;
+};
+
+void testClass::receive1(int len, void *pointer)
+{
+
+	testDebug.debug("1: %s", (char *)pointer);
 }
 
-/*
- * Class:     com_cbox_WiseLib
- * Method:    androidSend
- * Signature: (Ljava/lang/Object;)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_cbox_WiseLib_androidSend
-  (JNIEnv *env, jobject nc, jobject thiz)
+void testClass::receive2(int len, void *pointer)
 {
-	//setting the global java environment variables
-	setJavaENV(env);
-	setJavaObject(thiz);
 
-	//testing the debug feature
-	testSend();
-	return env->NewStringUTF(myError.c_str());
+	testDebug.debug("2: %s \n", (char *)pointer);
 }
+
+
+
+#endif
+
