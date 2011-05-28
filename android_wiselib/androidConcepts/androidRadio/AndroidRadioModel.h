@@ -18,11 +18,11 @@
 #ifndef ANDROIDRADIOMODEL_H
 #define ANDROIDRADIOMODEL_H
 
-//#include <jni.h>
+#include <jni.h>
 #include <iostream>
 #include <string>
 #include "delegate.hpp"
-//#include "../debugConcept/javaEssentials.h"
+#include "../debugConcept/javaEssentials.h"
 using namespace std;
 
 class AndroidRadioModel{
@@ -58,6 +58,12 @@ private:
 
 };
 
+//constructor that initializes all the necessary variables
+inline AndroidRadioModel::AndroidRadioModel(void)
+{
+
+}
+
 inline AndroidRadioModel::~AndroidRadioModel()
 {
 
@@ -65,23 +71,19 @@ inline AndroidRadioModel::~AndroidRadioModel()
 
 inline int AndroidRadioModel::enable_radio()
 {
-	return true;
-}
-
-//constructor that initializes all the necessary variables
-inline AndroidRadioModel::AndroidRadioModel(void)
-{
 	//initializing the struct that holds all the necessary info
 	for(int i=0; i<MAX_EVENTS; i++)
 	{
 		ResData[i].registered=false;
 	}
+	
+	return true;
 }
 
 //function that implements the send concept
 inline int AndroidRadioModel::send(string s)
 {
-/*		jobject thiz = getJavaObject();
+	jobject thiz = getJavaObject();
 	JNIEnv *env;
 	env=getJavaENV();
 
@@ -99,7 +101,7 @@ inline int AndroidRadioModel::send(string s)
 	}
 
 	ABORT:;
-*/
+
 }
 
 template<class T, void (T::*TMethod)(int, void*)>

@@ -18,22 +18,40 @@
 #include <iostream>
 #include <string>
 #include "com_cbox_WiseLib.h"
-#include "../../../debugConcept/javaEssentials.h"
-#include "../../../debugConcept/AndrDebug.h"
-#include "../../AndroidSend.h"
+#include "../../../../debugConcept/javaEssentials.h"
+#include "../../../../debugConcept/AndrDebug.h"
+#include "../../../AndroidRadioModel.h"
+#include "testClass.h"
 using namespace std;
 
+AndroidRadioModel *myRadio;
+testClass *newTest;
 
 void testSend(void)
 {
-	AndroidSend myAndroidSend;
-	myAndroidSend.udpSend("testingSend");
+	myRadio->send("testingSend");
 
 }
+/*
 void testReceive(const char *nativeString)
 {
-	AndrDebug testDebug;
-	testDebug.debug(nativeString);
+	myRadio->send(nativeString);
+}
+*/
+
+/*
+ * Class:     com_cbox_WiseLib
+ * Method:    androidInitModel
+ * Signature: (Ljava/lang/Object;)V
+ */
+JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidInitModel
+  (JNIEnv *env, jobject nc, jobject thiz)
+{
+	myRadio = new AndroidRadioModel;
+	newTest = new testClass;
+	myRadio->enable_radio();
+	myRadio->reg_recv_callback<testClass, &testClass::receive1>(newTest);
+
 }
 
 /*
@@ -64,12 +82,19 @@ JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidReceive
 	//setting the global java environment variables
 	setJavaENV(env);
 	setJavaObject(thiz);
+	int size;
 
     //Get the native string from javaString
 	//when receiving from jni a string
     const char *nativeString = env->GetStringUTFChars(javaString, 0);
+    //size=(int)env->GetStringUTFLength(javaString);
+	//size--;
+    char *newNativeString = (char *) malloc(size*sizeof(char));
 
-	testReceive(nativeString);
+	strcpy(newNativeString,nativeString);
+	//testReceive(nativeString);
+
+    myRadio->receive_message(1,size,(void *) newNativeString);
 
 
     //RELEASING THE ALLOCATED MEMORY!!!

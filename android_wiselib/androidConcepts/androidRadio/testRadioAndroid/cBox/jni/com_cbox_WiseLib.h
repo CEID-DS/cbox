@@ -9,6 +9,14 @@ extern "C" {
 #endif
 /*
  * Class:     com_cbox_WiseLib
+ * Method:    androidInitModel
+ * Signature: (Ljava/lang/Object;)V
+ */
+JNIEXPORT void JNICALL Java_com_cbox_WiseLib_androidInitModel
+  (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     com_cbox_WiseLib
  * Method:    androidSend
  * Signature: (Ljava/lang/Object;)V
  */

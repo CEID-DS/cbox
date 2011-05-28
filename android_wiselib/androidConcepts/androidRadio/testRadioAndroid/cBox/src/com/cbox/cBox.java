@@ -32,6 +32,7 @@ public class cBox extends Activity {
     Messenger mService = null;
     final Messenger messenger = new Messenger(new IncomingHandler());
     
+    
     class IncomingHandler extends Handler {
     	public void handleMessage(Message msg){
     		switch (msg.what) {
@@ -70,7 +71,7 @@ public class cBox extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+        wiseLib.androidInitModel(passing);
         //UdpReceive udpReceive = new UdpReceive(wiseLib,passing);
         
         jnicall = (Button) findViewById(R.id.jnicall);
@@ -109,8 +110,10 @@ public class cBox extends Activity {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			
-			UdpSend udpSend = new UdpSend("asdds","192.168.1.255");
+			//UdpSend udpSend = new UdpSend("asdds","192.168.1.255");
+
 			wiseLib.androidSend(passing);
+			wiseLib.androidReceive(passing, "testingReceiveFromJava\0");
 			//Toast.makeText(getBaseContext(), nativeget,Toast.LENGTH_SHORT).show();
 			//wiseLib.androidReceive(passing,"hellooo");
 		}
