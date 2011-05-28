@@ -15,8 +15,8 @@
 * along with cbox. If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************/
 
-#ifndef NAL_ETHERNET_H
-#define NAL_ETHERNET_H
+#ifndef NAL_BLUETOOTH_H
+#define NAL_BLUETOOTH_H
 
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -28,11 +28,13 @@
 #include <string.h>
 
 #define MAX_INSTANCES 20
+#define SIZE 1024
+#define PORT 1
 
-class Ethernet{
+class Bluetooth{
 
 public:
-Ethernet();
+Bluetooth();
 int enable();
 int disable();
 int send(char *data,int size);
@@ -63,7 +65,7 @@ static void call_delegates();
 
 static delegate dels[MAX_INSTANCES];
 
-static char data_buffer[8192];
+static char data_buffer[SIZE];
 static int valid_data;
 private:
 static int sockfd;//socket's file descriptor
