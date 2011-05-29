@@ -38,6 +38,8 @@
 
 
 
+
+
 typedef wiselib::OSMODEL Os;
 using namespace std;
 
@@ -45,19 +47,28 @@ class TreeApp
 {
    public:
 
-	struct message
-	{
-		short int parent;
-		short int type;
-		short int hops;
-		short int id;
-		short int version;
-		short int dest;
-		short int given;
-		char from[32];
-		char Routing[32];
-		char payload[1202];
-	} *mess;
+struct message
+{
+short int parent;
+short int type;
+short int hops;
+short int id;
+short int version;
+short int dest;
+short int given;
+char from[32];
+char Routing[32];
+} *mess;
+
+//char *payload;
+char *message;
+
+
+
+
+
+
+
 
 
 	/**
@@ -130,8 +141,9 @@ class TreeApp
          //free_service_index.push_front(i);
       }
    }
-
-   /**
+   
+   
+      /**
     * Insert a service that i have in the services table.
     **/
    void insert_my_service (struct service& serv)
@@ -213,11 +225,11 @@ class TreeApp
     * Remove a service from my services or services
     * because it cannot be trusted as valid
     **/
-   void remove_services (char *ip_host)
+   void remove_services (char *host_serv)
    {
       struct service *array_serv = NULL;
 
-      if (!strcmp(ip_host, my_host))
+      if (!strcmp(host_serv, my_host))
       {
          array_serv = myServices;
       }
@@ -228,7 +240,7 @@ class TreeApp
 
       for (int i=0; i<NUM_STRUCTS; i++)
       {
-         if (!strcmp(array_serv[i].hostname, ip_host))
+         if (!strcmp(array_serv[i].hostname, host_serv))
          {
             strcpy(array_serv[i].hostname, "null");
          }
@@ -256,25 +268,21 @@ class TreeApp
        //if a service is not available unregister it
       void unregister_service(int i)
       {
-/*         debug_->debug("(%u) unregister service \n", radio_->id());
-         msg_data unregister_data;
-         strcpy(unregister_data.source_host, my_host);
-         strcpy(unregister_data.answers[0]._service_type, myServices[i].service_type);
-         strcpy(myServices[i].hostname, "null");
+	 //int *i=(int *)pos;
+         debug_->debug("(%u) unregister service sti thesi %d \n", radio_->id(),i);
 
-         //set_node_message_id(my_MACC, ++msgID);
-         zeroconf_msg unregister;
-         memset(&unregister, 0, sizeof(unregister));
-         unregister.set_type(TYPE_LEN * sizeof(char), (Os::Radio::block_data_t *) &(UNREGISTER));
-         unregister.set_source(IP_LEN * sizeof(char), (Os::Radio::block_data_t *) &my_ip);
-         unregister.set_destination(IP_LEN * sizeof(char), (Os::Radio::block_data_t *) &("ANY"));
-         unregister.set_source_mac(MAC_LEN * sizeof(char), (Os::Radio::block_data_t *) &my_MACC );
-         unregister.set_msg_id(msgID);
-         unregister.set_payload(sizeof(msg_data), (Os::Radio::block_data_t *) &unregister_data);
-         radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(zeroconf_msg), (Os::Radio::block_data_t *)&unregister);
-*/      }
+	 ZeroMessage unreg;
+     	 //strcpy(unregister_data.source_host, my_host);
+         strcpy(unreg.answers[0]._service_type, myServices[i].service_type);
 
+	 strcpy(unreg.type,(char *)UNREGISTER);
+	 strcpy(unreg.source_host,my_host);
+	 strcpy(unreg.source_ip,RoutN_);
 
+	sendToAll((char *)&unreg,sizeof(unreg));
+      }
+
+void unregister_service2(void *){unregister_service(1);}
 
 //TODO: this should change so we load services from the database.
 	/**
@@ -539,6 +547,8 @@ void print_known_services() {
 	}
 }
 
+
+
 		/**
 		 * Check the TTL value of known services
 		 * if it is too low then take action
@@ -557,7 +567,7 @@ void print_known_services() {
             }
             services[i].TTL = services[i].TTL - recallTime; //update TTL
             
-            debug_->debug("(%u)(%s)service(%s) expired, sending query %d , %f >= %f ?\n", radio_->id(), services[i].hostname, services[i].service_type, services[i].TTL,(float)services[i].TOTAL_TTL - (float)services[i].TTL,3*(float)services[i].TOTAL_TTL/4);
+            //debug_->debug("(%u)(%s)service(%s) expired, sending query %d , %f >= %f ?\n", radio_->id(), services[i].hostname, services[i].service_type, services[i].TTL,(float)services[i].TOTAL_TTL - (float)services[i].TTL,3*(float)services[i].TOTAL_TTL/4);
 
             if ((float)services[i].TOTAL_TTL - (float)services[i].TTL >=3*(float)services[i].TOTAL_TTL/4)//if TTL is equal or less than 1/4 of original TTL
             {
@@ -702,7 +712,7 @@ void print_known_services() {
 	     if (services_to_advertise > 0) //if you have services to advertise, advertise them
          {
 			debug_->debug("%s advertising its services , %u\n",my_host,radio_->id());
-            sendToAll((char *)&advertise);
+            sendToAll((char *)&advertise,sizeof(advertise));
          }
       }
 
@@ -718,13 +728,14 @@ void print_known_services() {
 	   **/
 	  void send_participate_message() 
       {
+		  debug_->debug("send participate message %u\n",radio_->id());
         ZeroMessage partic;
 	    memset(&partic, 0, sizeof(partic));
         strcpy(partic.type,(char *) &(PARTICIPATE));
         strcpy(partic.source_host,(char *)"unregistered");
         strcpy(partic.dest_host,(char *)my_host);
         debug_->debug("\nsending %s , %s, %s\n",partic.type,partic.source_host,partic.dest_host);
-        sendToAll((char *)&partic);
+        sendToAll((char *)&partic,sizeof(partic));
       }
 
 	void send_hello_message() 
@@ -736,7 +747,7 @@ void print_known_services() {
 			strcpy(hello.type,(char *)HELLO);
 			strcpy(hello.source_MAC,my_MACC);
 			strcpy(hello.source_host,my_host);
-			sendToAll((char *)&hello);
+			sendToAll((char *)&hello,sizeof(hello));
     }	
     
     void send_welcome_message(char* dest_ip) 
@@ -745,7 +756,7 @@ void print_known_services() {
          
          strcpy(welcome.type,(char *)WELCOME);
          strcpy(welcome.source_host,my_host);
-         send_message(dest_ip, (char *)&welcome);
+         send_message(dest_ip, (char *)&welcome,sizeof(welcome));
     }
 
 
@@ -771,19 +782,47 @@ void print_known_services() {
             strcpy(query.answers[i]._hostname, piggy_questions[i]._hostname);
          }
          strcpy(query.source_host, my_host);
-         sendToAll((char *)&query);
+         sendToAll((char *)&query,sizeof(query));
          //radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(zeroconf_msg), (Os::Radio::block_data_t *)&queryMessage);
       }
 
 
+	void send_leaving_message(void *)
+      {
 
+	 //set_node_message_id(my_MACC,++msgID);
+         ZeroMessage leaving;
+         //memset(&leaving,0,sizeof(leaving));
+	 strcpy(leaving.type,(char *)LEAVING);
+	 strcpy(leaving.source_host,my_host);
+	 strcpy(leaving.source_ip,RoutN_);
+	 //leaving.set_type(TYPE_LEN * sizeof(char), (Os::Radio::block_data_t *) &LEAVING);
+	 //leaving.set_source(IP_LEN * sizeof(char),(Os::Radio::block_data_t *) &my_ip);
+	 //leaving.set_destination(IP_LEN * sizeof(char),(Os::Radio::block_data_t *) &("ANY"));
+         //leaving.set_source_mac(MAC_LEN * sizeof(char),(Os::Radio::block_data_t *) &my_MACC );
+	 //leaving.set_msg_id(msgID);
 
+	 //msg_data leaving_data;
+	 //strcpy(leaving_data.source_host,my_host);
+	 //strcpy(hello.dest_host,my_host);
 
+	 //leaving.set_payload(sizeof(msg_data),(Os::Radio::block_data_t *) &leaving_data);
 
+	 //radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(zeroconf_msg), (Os::Radio::block_data_t *)&leaving);
+	sendToAll((char *)&leaving,sizeof(leaving));
 
+	init_service_arrays();
+	//number_of_myServices=0;
+	//number_of_services=0;
+	//mode=1;
+	//counter=0;
 
-
-
+      }
+      
+      
+      
+      
+      
 
 /**
  * handlers
@@ -792,6 +831,8 @@ void print_known_services() {
 
       void handle_participate_message(ZeroMessage* message)
       {
+		  if (radio_->id()==0)
+			debug_->debug("handle participate message\n");
 		if (mode == 0) //if node is in the network
         {//if you receive an other message
 		if (radio_->id()==0)
@@ -802,7 +843,7 @@ void print_known_services() {
 			      memset(&reply, 0, sizeof(reply));
 				  strcpy(reply.type,(char *)PARTICIPATE);
 				  strcpy(reply.source_host,my_host);
-				  sendToAll((char *)&reply);
+				  sendToAll((char *)&reply,sizeof(reply));
 				  debug_->debug("sending reply\n");
 			} 
         } else {
@@ -878,6 +919,38 @@ void print_known_services() {
       }
 
 
+	void handle_leaving_message(ZeroMessage* message)
+	{
+		debug_->debug("(%u)receive leaving from (%s)\n", radio_->id(),message->source_host);
+		 
+		//debug_->debug("mpainw sto exist\n");
+		remove_services(message->source_host);
+
+	}
+
+
+	void handle_unregister_service_message(ZeroMessage* message)
+      {
+         debug_->debug("(%u) in handle unregister message\n",radio_->id());
+        // msg_data m_data;
+         //memcpy(&m_data, message.payload(), message.payload_size() );
+         
+         for (int i=0; i<NUM_STRUCTS; i++)
+         {
+            if (!strcmp(services[i].service_type, (message->answers[0])._service_type) && (!strcmp(services[i].hostname, message->source_host)) )
+            {
+               strcpy(services[i].hostname, "null");
+               debug_->debug("%u service %s from %s deleted\n", radio_->id(), services[i].service_type, message->source_host); 
+               break;
+            }
+         }
+      }
+
+
+
+
+
+
     /**
      * handler for zeroconf messages.
      **/
@@ -897,11 +970,19 @@ void print_known_services() {
         } 
         else if (!strcmp(zeroMessage->type, ADVERTISE))
         {//if it is an advertisement message
-               handle_advertise_message(zeroMessage);
+               		handle_advertise_message(zeroMessage);
         }//advertise
         else if (!strcmp(zeroMessage->type, QUERY))
         {//if it is a participate message
 			handle_query_message(zeroMessage);
+        }
+		else if (!strcmp(zeroMessage->type,LEAVING))
+        { //if it is a leaving message
+			handle_leaving_message(zeroMessage);
+        }
+		else if (!strcmp(zeroMessage->type, UNREGISTER))
+        {//if it is an unregister service message
+               		handle_unregister_service_message(zeroMessage);
         }
 	}
 
@@ -918,6 +999,8 @@ void print_known_services() {
 	int trial_num; //if we have already tried to get in the network and failed, so we now have a name in the format alekos_xx.loc
 	bool sent;
 
+   
+   
 
 
 
@@ -929,22 +1012,33 @@ void print_known_services() {
 
 
 
-	/** under review
-	struct universal_message
-	{
-	    char routing[78];
-	    char payload[1202];
-	}
-    **/
-	void init( Os::AppMainParameter& value )
-	{
+
+
+
+void init( Os::AppMainParameter& value )
+{
 	radio_ = &wiselib::FacetProvider<Os, Os::Radio>::get_facet( value );
 	timer_ = &wiselib::FacetProvider<Os, Os::Timer>::get_facet( value );
 	debug_ = &wiselib::FacetProvider<Os, Os::Debug>::get_facet( value );
 	radio_->reg_recv_callback<TreeApp,
-                                   &TreeApp::receive_radio_message>( this );
-	sent=false;
+									   &TreeApp::receive_radio_message>( this );
 
+	mess = (struct message *)malloc(sizeof(struct message));
+	/** revision 1 **/
+	bzero(mess, sizeof(struct message));
+
+	parent_=-1;
+	hops_=INT_MAX;
+	isActive_=true;
+	connectivity_=false;
+	ponged_=false;
+	for (int i=0;i<100;i++)
+	{
+	given[i]=false;
+	pending[i]=false;
+	}
+	
+	
 /**
  * ZeroConf variables initialization
  **/
@@ -958,78 +1052,84 @@ void print_known_services() {
     sprintf(my_MACC, "%u", radio_->id());
     services_loaded = false;
     haveToAdvertise = false;
-    if (radio_->id()==0 || radio_->id()==1)
-    {
+    //if (radio_->id()==0 || radio_->id()==1)
+    //{
         mode = 1;
         strcpy(my_host, "alekos.loc");
-	}
-    else
-    {
+	//}
+    //else
+    //{
 		//sprintf(my_ip, "192.168.1.10%u", radio_->id());
-        sprintf(my_host, "alekos_%u.loc", radio_->id());
-    }
-	if (radio_->id() == 0)
-    {
+      //  sprintf(my_host, "alekos_%u.loc", radio_->id());
+    //}
+	//if (radio_->id() == 0)
+   // {
 		//debug_->debug("\nsetting mode 1 size:%u\n\n", Os::Radio::MAX_MESSAGE_LENGTH);
-        mode = 0; //if mode = 1 then node is not in the network, if 0 then it is.
+    //    mode = 0; //if mode = 1 then node is not in the network, if 0 then it is.
         //debug_->debug("services we have: %i, %s(TTL:%f)\n ",number_of_services,services[0].service_type,services[0].TTL);
 
-    }
+   // }
 ////////////////////////////////////////////////
 
-
-	mess = (struct message *)malloc(sizeof(struct message));
-	/** revision 1 **/
-	bzero(mess, sizeof(struct message));
-
-	parent_=-1;
-	hops_=INT_MAX;
-	isActive_=true;
-	connectivity_=false;
-	ponged_=false;
-
-	for (int i=0;i<100;i++)
-		{
-		given[i]=false;
-		pending[i]=false;
-		}
+	
+	
+	
 	//if (radio_->id()==2)
-	//	{
-	//	timer_->set_timer<TreeApp, &TreeApp::sendToAll>( 16000, this, 0 );
-	//	}
+	// {
+	// timer_->set_timer<TreeApp, &TreeApp::sendToAll>( 16000, this, 0 );
+	// }
 	if (radio_->id()==0)
-		{
-		connectivity_=true;
-		VersionNumber_=9;
-		hops_=0;
-		sprintf(RoutN_,"%.2x",0);
-		mess->type=JOIN_ME;
-		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
-		//timer_->set_timer<TreeApp, &TreeApp::test_mes>( 20000, this, 0 );
-		}
-		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
-		/**
-		if(radio_->id()!=0)
-			timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 12000, this, 0 );
-		if(radio_->id()==4)
-			timer_->set_timer<TreeApp, &TreeApp::deactivate>( 15000, this, 0 );
-        **/
-         //timer_->set_timer<TreeApp, &TreeApp::messagedebug>( 1000, this, 0 );
-         run(this);
-     }
+	{
+	connectivity_=true;
+	VersionNumber_=9;
+	hops_=0;
+	sprintf(RoutN_,"%.2x",0);
+	mess->type=JOIN_ME;
+	radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
+	//timer_->set_timer<TreeApp, &TreeApp::test_mes>( 20000, this, 0 );
+	}
+	timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
+	
+	
+	
+	
+	
+	
+	
+	run(this);
+	
+	
+	
+	
+	
+	/**
+	if(radio_->id()!=0)
+	timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 12000, this, 0 );
+	if(radio_->id()==4)
+	timer_->set_timer<TreeApp, &TreeApp::deactivate>( 15000, this, 0 );
+	**/
+			 //timer_->set_timer<TreeApp, &TreeApp::messagedebug>( 1000, this, 0 );
+}
 
  /** under review
-    void send_message (int k, char* mess )
-    {
+void send_message (int k, char* mess )
+{
 
-    }
+}
 **/
+
+void ZeroMessageToString(ZeroMessage *zero)
+{
+	debug_->debug("type: %s",zero->type);
+	debug_->debug("source_host: %s",zero->source_host);
+}
+
+
 /**
  * runnable function for zeroconf needs
  **/
 	void run(void*)
 	{
-		
 		if (connectivity_)
 		{
 	     if (mode == 1)
@@ -1039,6 +1139,7 @@ void print_known_services() {
                counter++;
                if (counter < 4)
                {
+				   	debug_->debug("send part %u\n",radio_->id());
 					send_participate_message();				  
                }
                else if (counter == 4)
@@ -1046,6 +1147,10 @@ void print_known_services() {
 				   debug_->debug("im going in with hostname %s\n",my_host);
                   send_hello_message();   //send hello message
                   mode = 0; //change your mode, now you can participate in the network
+		 if (radio_->id()==0 || radio_->id()==1)
+		  timer_->set_timer<TreeApp, &TreeApp::send_leaving_message>( 50000, this, 0 );
+		// if (radio_->id()==0)
+		  timer_->set_timer<TreeApp, &TreeApp::unregister_service2>( 50000, this, 0 );
                }
                
             }
@@ -1074,474 +1179,487 @@ void print_known_services() {
 		}
 		timer_->set_timer<TreeApp, &TreeApp::run>( recallTime, this, 0 ); //recall run function after 5000miliseconds
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 
-	/*Join_request broadcasts a request*/
-	void join_request( void *)
+
+
+
+/*Join_request broadcasts a request*/
+void join_request( void *)
+{
+if (connectivity_==false && isActive_)
+{
+debug_->debug("process %d tries to connect\n", radio_->id());
+mess->type=JOIN_REQ;
+mess->id=radio_->id();
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
+timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
+}
+}
+
+int RoutingNumGenerator (void)
+{
+int i;
+for (i=0;i<256;i++)
+{
+if(given[i]==false && pending[i]==false)
+{
+pending[i]=true;
+return(i);
+
+}
+}
+return (-1);
+}
+
+void RemovePending(int which)
+{
+pending[which]=false;
+}
+
+/*Join_response sends a response to a node previously sent a request. It actually gives the other node the freedom to
+use the object that calls the method as a parent.*/
+
+void join_response(Os::Radio::node_id_t from, struct message *inbox)
+{
+	if (connectivity_==true)
 	{
-		if (connectivity_==false && isActive_)
-		{
-		debug_->debug("process %d tries to connect\n", radio_->id());
-		mess->type=JOIN_REQ;
-		mess->id=radio_->id();
-		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
-		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
-		}
+	if(inbox->type==JOIN_REQ)
+	{mess->type=JOIN_ACK;}
+	else if (inbox->type==REJOIN_REQ)
+	{
+	if(strlen(inbox->from)<strlen(RoutN_) && strncmp(inbox->from,RoutN_,strlen(inbox->from))==0)
+	{return;}
+	else
+	{mess->type=REJOIN_ACK;}
 	}
 
-	int RoutingNumGenerator (void)
+	mess->hops=hops_;
+	mess->id=radio_->id();
+	mess->version=VersionNumber_;
+	mess->dest=inbox->id;
+	int temp = RoutingNumGenerator();
+	if(temp!=-1)
 	{
-	    int i;
-	    for (i=0;i<256;i++)
-	    {
-	        if(given[i]==false && pending[i]==false)
-	        {
-	        pending[i]=true;
-	        return(i);
-
-	        }
-	    }
-	return (-1);
+		mess->given=temp;
+		char next[5];
+		sprintf(next,"%.2x",temp);
+		strcpy(mess->Routing,RoutN_);
+		strcat(mess->Routing,next);
+		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+	//	debug_->debug("process %d with %s received connection question from %d and replied %s\n",radio_->id(), RoutN_, from, mess->Routing);
+	}
 	}
 
-	void RemovePending(int which)
-		{
-		pending[which]=false;
-		}
-
-	/*Join_response sends a response to a node previously sent a request. It actually gives the other node the freedom to
-	  use the object that calls the method as a parent.*/
-
-	void join_response(Os::Radio::node_id_t from, struct message *inbox)
-	{
-		if (connectivity_==true)
-		{
-		if(inbox->type==JOIN_REQ)
-			{mess->type=JOIN_ACK;}
-		else if (inbox->type==REJOIN_REQ)
-			{
-			if(strlen(inbox->from)<strlen(RoutN_) && strncmp(inbox->from,RoutN_,strlen(inbox->from))==0)
-				{return;}
-			else
-				{mess->type=REJOIN_ACK;}
-			}
-
-		mess->hops=hops_;
-		mess->id=radio_->id();
-		mess->version=VersionNumber_;
-		mess->dest=inbox->id;
-		int temp = RoutingNumGenerator();
-		if(temp!=-1)
-			{
-			mess->given=temp;
-			char next[5];
-			sprintf(next,"%.2x",temp);
-			strcpy(mess->Routing,RoutN_);
-			strcat(mess->Routing,next);
-			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-			debug_->debug("process %d with %s received connection question from %d and replied %s\n",radio_->id(), RoutN_, from, mess->Routing);
-			}
-		}
-
-	}
+}
 
 
-	/*The object enters the tree by setting the node that send the ACK as parent.*/
-	void do_join(struct message *inbox)
-	{
+/*The object enters the tree by setting the node that send the ACK as parent.*/
+void do_join(struct message *inbox)
+{
 
-		if(inbox->hops+1 <hops_  && connectivity_==false)
-		{
-			parent_=inbox->id;
-			hops_=inbox->hops+1;
-			strcpy(RoutN_,inbox->Routing);
-			connectivity_=true;
-			VersionNumber_=inbox->version;
-			debug_->debug("process %d just connected to the network with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
+if(inbox->hops+1 <hops_ && connectivity_==false)
+{
+parent_=inbox->id;
+hops_=inbox->hops+1;
+strcpy(RoutN_,inbox->Routing);
+connectivity_=true;
+VersionNumber_=inbox->version;
+//debug_->debug("process %d just connected to the network with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
             mess->type=JOINED;
             mess->dest=parent_;
             mess->given=inbox->given;
             radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
 
-		}
-	}
+}
+}
 
-	/*Deactivate method deactivates the object, by setting isActive_=false, and sending a LEAVE message.*/
-	void deactivate(void *)
-	{
-		mess->type=LEAVE;
-		mess->id=radio_->id();
-		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*) mess );
-		isActive_=false;
-	}
-	/*Activate method activates the object, and calls join_request, so that the object joins a tree.*/
-	void activate(void*)
-	{
-		isActive_=true;
-		parent_=-1;
-		hops_=INT_MAX;
-		connectivity_=false;
-		timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
-	}
+/*Deactivate method deactivates the object, by setting isActive_=false, and sending a LEAVE message.*/
+void deactivate(void *)
+{
+mess->type=LEAVE;
+mess->id=radio_->id();
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*) mess );
+isActive_=false;
+}
+/*Activate method activates the object, and calls join_request, so that the object joins a tree.*/
+void activate(void*)
+{
+isActive_=true;
+parent_=-1;
+hops_=INT_MAX;
+connectivity_=false;
+timer_->set_timer<TreeApp, &TreeApp::join_request>( 2000, this, 0 );
+}
 
-	void test_mes(void *)
-	{
-		send_message("0000", "\0");
-	}
+void test_mes(void *)
+{
+//send_message("0000", "kaos", sizeof("kaos"));
+}
 
-	void send_message(char *dest, char *payload)
-	{
+void send_message(char *dest, char *payload, int len)
+{
 
-		if(strlen(dest)<strlen(RoutN_))
-			{//debug_->debug("Going up from %s\n",RoutN_);
-			strcpy(mess->Routing,dest);
-			strcpy(mess->from,RoutN_);
-			mess->type=UP;
-			}
-		else if(strncmp(RoutN_,dest,strlen(RoutN_))==0)
-			{//debug_->debug("Going down from %s\n",RoutN_);
-			strcpy(mess->Routing,dest);
-			strcpy(mess->from,RoutN_);
-			mess->type=DOWN;
-			}
-		else
-			{//debug_->debug("Going up from %s\n",RoutN_);
-			strcpy(mess->Routing,dest);
-			strcpy(mess->from,RoutN_);
-			mess->type=UP;
-			}
+if(strlen(dest)<strlen(RoutN_))
+{//debug_->debug("Going up from %s\n",RoutN_);
+strcpy(mess->Routing,dest);
+strcpy(mess->from,RoutN_);
+mess->type=UP;
+}
+else if(strncmp(RoutN_,dest,strlen(RoutN_))==0)
+{//debug_->debug("Going down from %s\n",RoutN_);
+strcpy(mess->Routing,dest);
+strcpy(mess->from,RoutN_);
+mess->type=DOWN;
+}
+else
+{//debug_->debug("Going up from %s\n",RoutN_);
+strcpy(mess->Routing,dest);
+strcpy(mess->from,RoutN_);
+mess->type=UP;
+}
 
-			if(payload==NULL)
-			{
-			    /** revision 1 **/
+if(payload==NULL)
+{
+/** revision 1 **/
 
-			radio_->send(Os::Radio::BROADCAST_ADDRESS, 78,(unsigned char*) mess);
-			}
-			else
-			{
-			    //strcpy(mess->payload, payload);
-			    memcpy(mess->payload,payload,sizeof(mess->payload));
-			    radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-			}
+radio_->send(Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+}
+else
+{
+message = (char *)malloc(sizeof(struct  message)+len);
+memcpy(message, mess, sizeof(struct message));
+memcpy(message+sizeof(struct message), payload, len);
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message)+len,(unsigned char*) message);
+free(message);
+}
 
 
 
-	}
+}
 
-	void handle_up(struct message *inbox)
-	{
-		if(strlen(inbox->from)==strlen(RoutN_)+2)
-			{
-			if (strcmp(RoutN_,inbox->Routing)==0)
-			{
-			    //debug_->debug("Message delievered to %s!\n",RoutN_);
-				/** revision 1 **/
-				payload_handler(inbox);
-			}
-			else if (strncmp (inbox->from,RoutN_,strlen(RoutN_))==0)
-			    {
-                    if (inbox->payload==NULL)
+void handle_up(struct message *inbox , char *buf, int len)
+{
+if(strlen(inbox->from)==strlen(RoutN_)+2)
+{
+if (strcmp(RoutN_,inbox->Routing)==0)
+{
+//debug_->debug("Message delievered to %s!\n",RoutN_);
+/** revision 1 **/
+payload_handler(buf);
+}
+else if (strncmp (inbox->from,RoutN_,strlen(RoutN_))==0)
+{
+                    if (len == 0)
                     {
-                        send_message(inbox->Routing, NULL);
+                        send_message(inbox->Routing, NULL, 0);
                     }
                     else
                     {
-                        send_message(inbox->Routing, inbox->payload);
+                        send_message(inbox->Routing, buf, len);
                     }
-			    }
-			}
-	}
+}
+}
+}
 
-	void handle_down(struct message *inbox)
-	{
-		if(strlen(inbox->from)==strlen(RoutN_)-2)
-		{
-			if (strcmp(RoutN_,inbox->Routing)==0)
-			{
-			    //debug_->debug("Message delievered! to %s\n",RoutN_);
-				/** revision 1 **/
-				payload_handler(inbox);
-			}
-			else if (strncmp(RoutN_,inbox->Routing,strlen(RoutN_))==0)
-				{//debug_->debug("Down from %s\n",RoutN_);
-				strcpy(mess->Routing,inbox->Routing);
-				strcpy(mess->from,RoutN_);
-				mess->type=DOWN;
+void handle_down(struct message *inbox, char *buf, int len )
+{
+if(strlen(inbox->from)==strlen(RoutN_)-2)
+{
+if (strcmp(RoutN_,inbox->Routing)==0)
+{
+//debug_->debug("Message delievered! to %s\n",RoutN_);
+payload_handler(buf);
+}
+else if (strncmp(RoutN_,inbox->Routing,strlen(RoutN_))==0)
+{//debug_->debug("Down from %s\n",RoutN_);
+strcpy(mess->Routing,inbox->Routing);
+strcpy(mess->from,RoutN_);
+mess->type=DOWN;
 
-                    if(inbox->payload==NULL)
+                    if(len==0)
                     {
-                        /** revision 1 **/
-
-                        radio_->send(Os::Radio::BROADCAST_ADDRESS, 78,(unsigned char*) mess);
+                      
+                        radio_->send(Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
                     }
                     else
                     {
-						memcpy(mess->payload,inbox->payload,sizeof(mess->payload));
-                        //strcpy(mess->payload, inbox->payload);
-                        radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+                       	message = (char *)malloc(sizeof(struct  message)+len);
+			memcpy(message, mess, sizeof(struct message));
+			memcpy(message+sizeof(struct message), buf, len);
+			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message)+len,(unsigned char*) message);
+free(message);
                     }
-			}
-		}
-	}
+}
+}
+}
 
-    void payload_handler(struct message *mess)
+    void payload_handler(char *payload)
     {
-        if(mess->payload!=NULL)
+        if(payload!=NULL)
         {
 			ZeroMessage zeroMessage;
-			memcpy(&zeroMessage,mess->payload,sizeof(zeroMessage));
+			memcpy(&zeroMessage,payload,sizeof(zeroMessage));
 			handle_ZeroMessage(&zeroMessage);
- 			
-			//debug_->debug("Message payload: %s\n", mess->payload);
+
+       // debug_->debug("Message payload: %s\n",payload);
         }
     }
-    
-    
-    
 
-    
-    
-    
-    
-    //changes happen here so the payload can be read correctly when someone receives it.
-	void sendToAll(char *payload)
-	{
-		mess->type=ALL;
-		strcpy(mess->from,RoutN_);
-		strcpy(mess->Routing,"_");
-		//ZeroMessage *zeroMessage = (struct ZeroMessage *)payload;
-		//debug_->debug("\nsending to all!!!!!!! %s , %s, %s\n",zeroMessage->type,zeroMessage->source_host,zeroMessage->dest_host);
 
-		if(payload==NULL)
-		{
-			    /** revision 1 **/
-			radio_->send(Os::Radio::BROADCAST_ADDRESS, 78,(unsigned char*) mess);
-		}
-		else
-		{
-			//payload must copy sizeof the data sent (or maximum mess->payload size)
-			memcpy(mess->payload,payload,sizeof(mess->payload));			//what happened earlier was that it was sent only the first value of the payload "struct"
-			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-		}
-		//debug_->debug("message sent from %s\n",RoutN_);
-	}
+void sendToAll(char *payload, int len)
+{
+mess->type=ALL;
+strcpy(mess->from,RoutN_);
+strcpy(mess->Routing,"_");
+//debug_->debug("message sent from %s\n",RoutN_);
 
-	void forwardToAll(struct message *inbox)
-	{
-		
-		if((strlen(inbox->from)==strlen(RoutN_)-2 && strncmp(inbox->from,RoutN_,strlen(RoutN_)-2)==0) ||
-		   (strlen(inbox->from)==strlen(RoutN_)+2 && strncmp(inbox->from,RoutN_,strlen(RoutN_))==0))
-			{
-			if(strcmp(RoutN_,inbox->Routing)!=0)
-			{
-				payload_handler(inbox);
-				mess->type=ALL;
-				strcpy(mess->from,RoutN_);
-				strcpy(mess->Routing,inbox->from);
-				/**revision 1 **/
-                memcpy(mess->payload, inbox->payload,sizeof(mess->payload));
-					if(inbox->payload==NULL)
-                    {
-                        /** revision 1 **/
-						radio_->send(Os::Radio::BROADCAST_ADDRESS, 78,(unsigned char*) mess);
-                    }
-                    else
-                    {
-                        strcpy(mess->payload, inbox->payload);
-                        radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-                    }
-                    
-                    
-				//radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-				//debug_->debug("message passed from %s\n",RoutN_);
-				}
-			}
-	}
+if(payload==NULL)
+{
+/** revision 2 **/
+
+radio_->send(Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+}
+else
+{
+message = (char *)malloc(sizeof(struct  message)+len);
+memcpy(message, mess, sizeof(struct message));
+memcpy(message+sizeof(struct message), payload, len);
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message)+len,(unsigned char*) message);
+free(message);
+}
+
+}
 
 
 
-      /* This method is the message handler.*/
-	void receive_radio_message( Os::Radio::node_id_t from, Os::Radio::size_t len, Os::Radio::block_data_t *buf )
-	{
 
-		if(isActive_)
-			{
-			struct message *mess;
-			mess = (struct message *) buf;
-			if (mess->type==JOIN_ME)
-				timer_->set_timer<TreeApp, &TreeApp::join_request>( 0, this, 0 );
-			else if (mess->type==JOIN_REQ || mess->type==REJOIN_REQ)
-				join_response(from, mess);
-			else if(mess->type==JOIN_ACK && mess->dest==radio_->id())
-              			 do_join(mess);
-			else if(mess->type==REJOIN_ACK && mess->dest==radio_->id())
-              			 do_rejoin(mess);
-            		else if(mess->type==JOINED && mess->dest==radio_->id())
-            			{
-                		given[mess->given]=true;
-                		pending[mess->given]=false;
-				}
-			else if(mess->type==UP)
-				handle_up(mess);
-			else if(mess->type==DOWN)
-				handle_down(mess);
-			else if(mess->type==ALL)
-				forwardToAll(mess);
-			else if(mess->type==PING)
-				pongToSon(mess);
-			else if(mess->type==PONG)
-				getPonged(mess);
-			else if(mess->type==REPAIR)
-				repair(mess);
+void forwardToAll(struct message *inbox, char *payload, int len)
+{
+if((strlen(inbox->from)==strlen(RoutN_)-2 && strncmp(inbox->from,RoutN_,strlen(RoutN_)-2)==0) ||
+(strlen(inbox->from)==strlen(RoutN_)+2 && strncmp(inbox->from,RoutN_,strlen(RoutN_))==0))
+{
+if(strcmp(RoutN_,inbox->Routing)!=0)
+{
+mess->type=ALL;
+strcpy(mess->from,RoutN_);
+strcpy(mess->Routing,inbox->from);
 
-            {   /**
-                debug_->debug("parent: %d\n", mess->parent);
-                debug_->debug("type: %d\n", mess->type);
-                debug_->debug("hops: %d\n", mess->hops);
-                debug_->debug("id: %d\n", mess->id);
-                debug_->debug("version: %d\n", mess->version);
-                debug_->debug("dest: %d\n", mess->dest);
-                debug_->debug("given: %d\n", mess->given);
-                debug_->debug("from: %s\n", mess->from);
-                debug_->debug("Routing: %s\n", mess->Routing);
-                debug_->debug("payload: %s\n", mess->payload);
-                debug_->debug("---\n");
-                **/
+if(len==0)
+{
+/** revision 2 **/
+
+radio_->send(Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+}
+else
+{
+payload_handler(payload);
+message = (char *)malloc(sizeof(struct  message)+len);
+memcpy(message, mess, sizeof(struct message));
+memcpy(message+sizeof(struct message), payload, len);
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message)+len,(unsigned char*) message);
+free(message);
+}
+
+//debug_->debug("message passed from %s\n",RoutN_);
+}
+}
+}
+
+
+
+ 
+       /* This method is the message handler.*/
+void receive_radio_message( Os::Radio::node_id_t from, Os::Radio::size_t len, Os::Radio::block_data_t *buf )
+{
+
+if(isActive_)
+{
+struct message *mess;
+char *temp;
+mess=(struct message *)malloc(sizeof(struct message));
+if(len > sizeof(struct message))
+{
+temp=(char *)malloc(len-sizeof(struct message));
+memcpy(mess, buf, sizeof(struct message));
+memcpy(temp, buf+sizeof(struct message), len-sizeof(struct message));
+}
+else
+{
+mess = (struct message *) buf;
+}
+
+if (mess->type==JOIN_ME)
+timer_->set_timer<TreeApp, &TreeApp::join_request>( 0, this, 0 );
+else if (mess->type==JOIN_REQ || mess->type==REJOIN_REQ)
+join_response(from, mess);
+else if(mess->type==JOIN_ACK && mess->dest==radio_->id())
+               do_join(mess);
+else if(mess->type==REJOIN_ACK && mess->dest==radio_->id())
+               do_rejoin(mess);
+             else if(mess->type==JOINED && mess->dest==radio_->id())
+             {
+                 given[mess->given]=true;
+                 pending[mess->given]=false;
+}
+else if(mess->type==UP)
+handle_up(mess, temp, len-sizeof(struct message));
+else if(mess->type==DOWN)
+handle_down(mess, temp, len-sizeof(struct message));
+else if(mess->type==ALL)
+forwardToAll(mess, temp, len-sizeof(struct message));
+else if(mess->type==PING)
+pongToSon(mess);
+else if(mess->type==PONG)
+getPonged(mess);
+else if(mess->type==REPAIR)
+repair(mess);
+
+            { /*
+debug_->debug("parent: %d\n", mess->parent);
+debug_->debug("type: %d\n", mess->type);
+debug_->debug("hops: %d\n", mess->hops);
+debug_->debug("id: %d\n", mess->id);
+debug_->debug("version: %d\n", mess->version);
+debug_->debug("dest: %d\n", mess->dest);
+debug_->debug("given: %d\n", mess->given);
+debug_->debug("from: %s\n", mess->from);
+debug_->debug("Routing: %s\n", mess->Routing);
+debug_->debug("payload: %s\n", buf+sizeof(struct message));
+debug_->debug("len: %d\n", len);
+debug_->debug("---\n");
+*/
                 }
-			}
-	}
+}
+}
+ 
+ 
 
-	void pingToFather(void *)
-	{
-		if(isActive_ && connectivity_)
-			{
-			mess->type=PING;
-			ponged_=false;
-			strcpy(mess->from,RoutN_);
-			strncpy(mess->Routing,RoutN_,(strlen(RoutN_)-2));
-			mess->Routing[strlen(RoutN_)-2]='\0';
-			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-			timer_->set_timer<TreeApp, &TreeApp::checkIfPonged>( 2000, this, 0 );
-			debug_->debug("Sent ping from %s to %s\n",RoutN_,mess->Routing);
-			}
-	}
-	void pongToSon(struct message *inbox)
-	{
-		if(strcmp(inbox->Routing,RoutN_)==0)
-			{
-			mess->type=PONG;
-			strcpy(mess->from,RoutN_);
-			strcpy(mess->Routing,inbox->from);
-			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-			debug_->debug("Pong back from %s to %s\n",RoutN_, mess->Routing);
-			}
-	}
-	void getPonged(struct message *inbox)
-	{
-		if(strcmp(inbox->Routing,RoutN_)==0)
-			ponged_=true;
-	}
-	void checkIfPonged(void *)
-	{
-		if(ponged_)
-			{
-			ponged_=false;
-			debug_->debug("Ping-pong ok at %s\n",RoutN_);
-			if(radio_->id()!=0)
-				timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
+void pingToFather(void *)
+{
+if(isActive_ && connectivity_)
+{
+mess->type=PING;
+ponged_=false;
+strcpy(mess->from,RoutN_);
+strncpy(mess->Routing,RoutN_,(strlen(RoutN_)-2));
+mess->Routing[strlen(RoutN_)-2]='\0';
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+timer_->set_timer<TreeApp, &TreeApp::checkIfPonged>( 2000, this, 0 );
+debug_->debug("Sent ping from %s to %s\n",RoutN_,mess->Routing);
+}
+}
+void pongToSon(struct message *inbox)
+{
+if(strcmp(inbox->Routing,RoutN_)==0)
+{
+mess->type=PONG;
+strcpy(mess->from,RoutN_);
+strcpy(mess->Routing,inbox->from);
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+debug_->debug("Pong back from %s to %s\n",RoutN_, mess->Routing);
+}
+}
+void getPonged(struct message *inbox)
+{
+if(strcmp(inbox->Routing,RoutN_)==0)
+ponged_=true;
+}
+void checkIfPonged(void *)
+{
+if(ponged_)
+{
+ponged_=false;
+debug_->debug("Ping-pong ok at %s\n",RoutN_);
+if(radio_->id()!=0)
+timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
 
-			}
-		else
-			{
-			debug_->debug("Ping-pong error at %s\n",RoutN_);
-			connectivity_=false;
-			reJoin_request(NULL);
-			}
-	}
+}
+else
+{
+debug_->debug("Ping-pong error at %s\n",RoutN_);
+connectivity_=false;
+reJoin_request(NULL);
+}
+}
 
-	void reJoin_request( void *)
-	{
-		if (connectivity_==false && isActive_)
-		{
-		debug_->debug("process %d tries to reconnect\n", radio_->id());
-		mess->type=REJOIN_REQ;
-		mess->id=radio_->id();
-		strcpy(mess->from,RoutN_);
-		radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
-		timer_->set_timer<TreeApp, &TreeApp::reJoin_request>( 2000, this, 0 );
-		}
-	}
+void reJoin_request( void *)
+{
+if (connectivity_==false && isActive_)
+{
+debug_->debug("process %d tries to reconnect\n", radio_->id());
+mess->type=REJOIN_REQ;
+mess->id=radio_->id();
+strcpy(mess->from,RoutN_);
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message), (unsigned char*)mess );
+timer_->set_timer<TreeApp, &TreeApp::reJoin_request>( 2000, this, 0 );
+}
+}
 
-	void do_rejoin(struct message *inbox)
-	{
+void do_rejoin(struct message *inbox)
+{
 
-		if(connectivity_==false)
-		{
-			parent_=inbox->id;
-			hops_=inbox->hops+1;
-			strcpy(mess->from,RoutN_);
-			strcpy(mess->Routing,inbox->Routing);
-			mess->hops=hops_;
-			strcpy(RoutN_,inbox->Routing);
-			connectivity_=true;
-			VersionNumber_=inbox->version;
-			debug_->debug("process %d just connected to the network with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
-			mess->type=JOINED;
-			mess->dest=parent_;
-			mess->given=inbox->given;
-			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-			mess->type=REPAIR;
-			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-			timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
+if(connectivity_==false)
+{
+parent_=inbox->id;
+hops_=inbox->hops+1;
+strcpy(mess->from,RoutN_);
+strcpy(mess->Routing,inbox->Routing);
+mess->hops=hops_;
+strcpy(RoutN_,inbox->Routing);
+connectivity_=true;
+VersionNumber_=inbox->version;
+debug_->debug("process %d just connected to the network with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
+mess->type=JOINED;
+mess->dest=parent_;
+mess->given=inbox->given;
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+mess->type=REPAIR;
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
 
-		}
-	}
+}
+}
 
-	void repair(struct message *inbox)
-	{
-		if(strlen(inbox->from)==strlen(RoutN_)-2 && strncmp(inbox->from,RoutN_,strlen(inbox->from))==0)
-			{
-			char temp[2];
-			temp[0]=RoutN_[strlen(RoutN_)-2];
-			temp[1]=RoutN_[strlen(RoutN_)-1];
-			temp[2]='\0';
-			strcpy(mess->from,RoutN_);
-			strcpy(RoutN_,inbox->Routing);
-			strcat(RoutN_,temp);
-			strcpy(mess->Routing,RoutN_);
-			hops_=inbox->hops+1;
-			mess->hops=hops_;
-			debug_->debug("process %d repaired with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
-			mess->type=REPAIR;
-			radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
-			timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
-			}
-	}
+void repair(struct message *inbox)
+{
+if(strlen(inbox->from)==strlen(RoutN_)-2 && strncmp(inbox->from,RoutN_,strlen(inbox->from))==0)
+{
+char temp[2];
+temp[0]=RoutN_[strlen(RoutN_)-2];
+temp[1]=RoutN_[strlen(RoutN_)-1];
+temp[2]='\0';
+strcpy(mess->from,RoutN_);
+strcpy(RoutN_,inbox->Routing);
+strcat(RoutN_,temp);
+strcpy(mess->Routing,RoutN_);
+hops_=inbox->hops+1;
+mess->hops=hops_;
+debug_->debug("process %d repaired with parent %d hops %d and version number %d and RoutingNumber %s\n", radio_->id(), parent_, hops_, VersionNumber_,RoutN_);
+mess->type=REPAIR;
+radio_->send( Os::Radio::BROADCAST_ADDRESS, sizeof(struct message),(unsigned char*) mess);
+timer_->set_timer<TreeApp, &TreeApp::pingToFather>( 5000, this, 0 );
+}
+}
 
    private:
         Os::Radio::self_pointer_t radio_;
         Os::Debug::self_pointer_t debug_;
-	Os::Timer::self_pointer_t timer_;
-	int parent_;
-	unsigned int VersionNumber_;
-	char RoutN_[32];
-	bool connectivity_, isActive_, given[256], pending[256], ponged_;
-	int hops_;
-	//zeroconf implementation
+Os::Timer::self_pointer_t timer_;
+int parent_;
+unsigned int VersionNumber_;
+char RoutN_[32];
+bool connectivity_, isActive_, given[256], pending[256], ponged_;
+int hops_;
+//zeroconf implementation
 	char my_host[40];
 	char my_MACC[20];
 	bool services_loaded;
 	bool haveToAdvertise;
 	int recallTime;
 	char dnsTable[25][255];
+
+
 
 };
 // --------------------------------------------------------------------------

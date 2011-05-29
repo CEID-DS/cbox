@@ -17,7 +17,6 @@
 #define LEAVING "leav"
 #define zeroPING "ping"
 #define zeroPONG "pong"
-#define UNREGISTER "unre"
 #define QUERY_LEN 10
 #define NUM_ANSWERS 2
 #define TYPE_LEN 5
