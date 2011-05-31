@@ -26,54 +26,63 @@
 #include "nal_delegate.h"
 #include <pthread.h>
 #include <string.h>
+#include <bluetooth/bluetooth.h>
+#include <bluetooth/rfcomm.h>
+#include <bluetooth/hci.h>
+#include <bluetooth/hci_lib.h>
+#include <cstdlib>
 
 #define MAX_INSTANCES 20
 #define SIZE 1024
 #define PORT 1
+#define TIME 8
+#define MAX_DEV 255
 
 class Bluetooth{
 
-public:
-Bluetooth();
-int enable();
-int disable();
-int send(char *data,int size);
+	public:
+		Bluetooth();
+		int enable();
+		int disable();
+		int send(char *data,int size);
 
-template <class T,void (T::*TMethod)(char *,int)>
-void register_receiver(T* object){
+		template <class T,void (T::*TMethod)(char *,int)>
+		void register_receiver(T* object){
 
-bool found=false;
-int i=0;
+			bool found=false;
+			int i=0;
 
-do{
-if (valid_dels[i]==false){
-dels[i]=delegate::from_method<T,TMethod>(object);
-found=true;
-valid_dels[i]=true;
-del_id=i;
-}
-i++;
-}while (!found);
-}
-void unregister_receiver();
+			do{
+   				if (valid_dels[i]==false){
+					dels[i]=delegate::from_method<T,TMethod>(object);
+					found=true;
+					valid_dels[i]=true;
+					del_id=i;
+				}
+   				i++;
+   			}while (!found);
+		}
 
-int del_id;
+		void unregister_receiver();
+		int del_id;
 
-//static members following
+		//static members following
 
-static void call_delegates();
+		static void call_delegates();
+		static delegate dels[MAX_INSTANCES];
+		static char data_buffer[SIZE];
+		static int valid_data;
 
-static delegate dels[MAX_INSTANCES];
+		static int dev_num; //current number of scanned devices
+		static address devices[MAX_DEV]; //array that scanned addresses are being saved
 
-static char data_buffer[SIZE];
-static int valid_data;
-private:
-static int sockfd;//socket's file descriptor
-static address addr;//used for server initialization
-static int instances;//count of instances
-
-static bool valid_dels[MAX_INSTANCES];//which delegates are valid in dels array (true for valid)
+	private:
+		static int sockfd;//socket's file descriptor
+		static address addr;//used for server initialization
+		static int instances;//count of instances
+		static bool valid_dels[MAX_INSTANCES];//which delegates are valid in dels array (true for valid)
 };
 
 void *receive_routine(void *);//routine of receiver thread
+void *scan_routine(void *);//routine of scan thread
 #endif

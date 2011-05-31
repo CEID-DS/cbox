@@ -24,8 +24,11 @@ delegate Bluetooth::dels[MAX_INSTANCES];
 char Bluetooth::data_buffer[SIZE];
 int Bluetooth::valid_data=0;
 bool Bluetooth::valid_dels[MAX_INSTANCES];
+address Bluetooth::devices[MAX_DEV];
+int Bluetooth::dev_num=-1;
+int scan(address* array);
 
-Ethernet::Bluetooth(){
+Bluetooth::Bluetooth(){
 	if (instances==0){
 		//initialize valid_dels boolean array
 		for (int i=0;i<MAX_INSTANCES;i++){
@@ -64,7 +67,7 @@ int Bluetooth::enable(){
 			memset(&rc, 0, sizeof rc);
 			
 			rc.rc_family = AF_BLUETOOTH;
-			rc.rc_bdaddr = *BDADDR_ANY;
+			rc.rc_bdaddr = *BDADDR_ANY; //test!! (?)
 			rc.rc_channel = (uint8_t) PORT;
 			
 			if (bind(sockfd,(struct sockaddr *)&rc, sizeof(rc)) < 0 ){
@@ -73,8 +76,6 @@ int Bluetooth::enable(){
 
 				return -1;
 			}
-			
-			//POSSIBLE ADD-ON pthread --> scan function !!
 			
 			pthread_t tid;
 			
@@ -85,6 +86,16 @@ int Bluetooth::enable(){
 			}
 			
 			pthread_detach(tid);
+			
+			pthread_t scan;
+			
+			if(pthread_create(&scan,NULL,&scan_routine,(void*) sockfd)!=0){//create receive thread
+				close(sockfd);
+				sockfd=-2;
+				return -1;
+			}
+			
+			pthread_detach(scan);
 		}
 		
 		instances++;
@@ -94,17 +105,22 @@ int Bluetooth::enable(){
 	}
 }
 
-int Ethernet::send(char *data,int size){
+int Bluetooth::send(char *data,int size){
 	
 	struct sockaddr_rc rc;
-			
-	memset(&rc, 0, sizeof rc);
+	int i;
 	
-	rc.rc_family = AF_BLUETOOTH;
-	rc.rc_bdaddr = *BDADDR_ANY;
-	rc.rc_channel = (uint8_t) PORT;
+	//send to all available devices
+	for (i=0;i<dev_num;i++){
+					
+		memset(&rc, 0, sizeof rc);
 	
-	return sendto(sockfd, data, size, 0,(struct sockaddr*)&rc, sizeof rc);
+		rc.rc_family = AF_BLUETOOTH;
+		str2ba(devices[i].mac_addr, &rc.rc_bdaddr); //test!! (?)
+		rc.rc_channel = (uint8_t) PORT;
+	
+		sendto(sockfd, data, size, 0,(struct sockaddr*)&rc, sizeof rc);
+		}
 }
 
 int Bluetooth::disable(){
@@ -136,3 +152,68 @@ void *receive_routine(void *socket){
 	}
 }
 
+void *scan_routine(void *socket){
+
+	struct sockaddr_rc rc;
+	socklen_t fromlen;
+	
+	for (;;){
+		if ( (Bluetooth::valid_data=recvfrom((int) socket, (void *)Bluetooth::data_buffer, SIZE, 0, (struct sockaddr *)&rc, &fromlen) ) <= 0) {
+			pthread_exit(NULL);
+		}
+		
+		//	Bluetooth::call_delegates();
+		Bluetooth::dev_num=scan(Bluetooth::devices);
+		sleep(60); //stops for 60 secs
+	}
+}
+
+//inner function (scan)
+int scan(address* array){
+	
+int int_id=-1; //id of device-interface
+int num_dev=-1; //# of returned devices
+int flag,i,socket;
+inquiry_info *table= NULL;
+
+int_id=hci_get_route(NULL); //first available adapter
+
+socket=hci_open_dev(int_id);  //opens a socket
+
+if(int_id<0 || socket<0){
+	
+	perror("Opening the Socket");
+	return -1;
+}
+
+flag=IREQ_CACHE_FLUSH; //flush from previous use
+
+//allocate the max size
+table=(inquiry_info*)malloc(MAX_DEV * sizeof(inquiry_info));
+
+if (table==NULL){
+	 perror("Memory allocation");
+	 return -1;
+ }
+
+//scanning for devices
+num_dev=hci_inquiry(int_id, TIME, MAX_DEV, NULL, &table, flag);
+
+if(num_dev<0){
+	 perror("scanning problem");
+	 free(table);
+	 return -1;
+	 }
+
+//for every possible device
+for(i=0;i<num_dev;i++){
+	
+	ba2str(&(table+i)->bdaddr, array[i].mac_addr); //get the hex address
+
+	}
+	
+free(table);
+close(socket);
+
+return num_dev;
+}
