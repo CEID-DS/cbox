@@ -15,7 +15,7 @@ public class CboxProvider extends ContentProvider{
   private DatabaseHelper dbHelper;
   private static final String DATABASE_NAME = "cBox.db";
   private static final int DATABASE_VERSION = 1;
-  private static final String SERVICE_TABLE = "Service";
+  private static final String SERVICE_TABLE = "Services";
   
   private static class DatabaseHelper extends SQLiteOpenHelper{
 
