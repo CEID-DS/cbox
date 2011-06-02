@@ -1,9 +1,8 @@
 #include <iostream>
-#include <vector>
+#include <sstream>
 #include <string>
-#include <QString>
-#include <QtSql>
-#include <QSqlTableModel>
+#include "../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h"
+
 using namespace std;
 
 /*The class contains all the binding functions to zeroconf database*/
@@ -54,14 +53,12 @@ public:
 	void printArrayOfServices(struct ZcDbBindings::service *s, int &size);
 
 private:
+	string createStructXmlString(struct ZcDbBindings::service *s, string str);
+	void sendStringToJava(string s);
 	//creates a connection to zeroconf database.It is called from every binding function
 	bool createConnection();
 	//destroys the connection.It is called from every binding function
 	bool closeConnection();
-	//variable that holds database descriptor
-	QSqlDatabase db;
-	//variable that holds the database connection name(may be different from the actual database name)
-	QString conName;
 };
 
 /* Constructor that creates a connection to zeroconf database
@@ -97,13 +94,55 @@ bool ZcDbBindings::closeConnection()
 	return true;
 }
 
+string ZcDbBindings::createStructXmlString(struct ZcDbBindings::service *s, string str)
+{
+	stringstream port, TTL, advertised, questioned;
+	port << s->port;
+	TTL << s->TTL;
+	advertised << s->advertised;
+	questioned << s->questioned;
+	string xmlString="";
+	xmlString.append(
+	"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>""\n"
+		"<database>\n"
+			"<"+str+">\n"
+			"<hostname>"+s->hostname+"</hostname>\n"
+			"<serviceType>"+s->serviceType+"</serviceType>\n"
+			"<protocol>"+s->protocol+"</protocol>\n"
+			"<interface>"+s->interface+"</interface>\n"
+			"<port>"+port.str()+"</port>\n"
+			"<TXTDATA>"+s->TXTDATA+"</TXTDATA>\n"
+			"<TTL>"+TTL.str()+"</TTL>\n"
+			"<advertised>"+advertised.str()+"</advertised>\n"
+			"<questioned>"+questioned.str()+"</questioned>\n"
+			"</"+str+">\n"
+		"</database>");
+	return xmlString;
+
+}
+void ZcDbBindings::sendStringToJava(string s)
+{
+	jobject thiz = getJavaObject();
+	JNIEnv *env;
+	env=getJavaENV();
+
+	//getting the class that represents the java object thiz
+	jclass jcClass = env->GetObjectClass(thiz);
+	//getting the id of method testNative which has no parameters and returns void
+	jmethodID debug = env->GetMethodID(jcClass, "databaseFromNative", "(Ljava/lang/String;)V");
+	//calling the method testNative
+	jstring _jstring = env->NewStringUTF ((const char *) s.c_str());
+	env->CallVoidMethod(thiz, debug, _jstring);
+
+}
+
 /* 	Returns a pointer to an array of structs of type service that contains
 *   the contents of table services.
 */
 struct ZcDbBindings::service* ZcDbBindings::getServices(int &size)
 {
 
-	return s;
+
 }
 
 /* 	Returns a pointer to an array of structs of type service that contains
@@ -112,7 +151,7 @@ struct ZcDbBindings::service* ZcDbBindings::getServices(int &size)
 struct ZcDbBindings::service* ZcDbBindings::getMyServices(int &size)
 {
 
-	return s;
+
 }
 
 /* Accepts an argument of type struct service and adds its contents to
@@ -121,6 +160,9 @@ struct ZcDbBindings::service* ZcDbBindings::getMyServices(int &size)
 */
 int ZcDbBindings::addService(ZcDbBindings::service s)
 {
+	string xmlString;
+	xmlString=ZcDbBindings::createStructXmlString(&s,"addService");
+	ZcDbBindings::sendStringToJava(xmlString);
 
 	return 0;
 }
@@ -131,7 +173,9 @@ int ZcDbBindings::addService(ZcDbBindings::service s)
 */
 int ZcDbBindings::addMyService(ZcDbBindings::service s)
 {
-
+	string xmlString;
+	xmlString=ZcDbBindings::createStructXmlString(&s,"addMyService");
+	ZcDbBindings::sendStringToJava(xmlString);
 
 	return 0;
 }
@@ -141,6 +185,15 @@ int ZcDbBindings::addMyService(ZcDbBindings::service s)
 */
 void ZcDbBindings::refreshTTL(int t)
 {
+	stringstream time;
+	time << t;
+	string xmlString="";
+	xmlString.append(
+	"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>""\n"
+		"<database>\n"
+			"<refreshTTL>"+t.str()+"</refreshTTL>"
+		"</database>\n");
+	ZcDbBindings::sendStringToJava(xmlString);
 
 }
 
@@ -170,7 +223,7 @@ bool ZcDbBindings::removeMyService(string serviceType)
 char** ZcDbBindings::getRequestedService(int &size)
 {
 
-	return services;
+
 }
 
 /* Returns the number of services the user has in its disposition
@@ -180,7 +233,7 @@ char** ZcDbBindings::getRequestedService(int &size)
 int ZcDbBindings::getServicesNum(void)
 {
 
-	return model.rowCount();
+
 }
 
 /* Adds a record in DNSTable.

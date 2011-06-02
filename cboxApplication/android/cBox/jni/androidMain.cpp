@@ -23,14 +23,33 @@
 #include "../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h"
 #include "../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.h"
 #include "headers/testClass.h"
+#include "headers/ZcDbBindings.h"
 using namespace std;
 
 AndroidRadioModel *myRadio;
 testClass *newTest;
 
-void testSend(void)
+void testDatabase(void)
 {
-	myRadio->send("testingSend");
+	AndrDebug test;
+	test.debug("testing database connection");
+
+	ZcDbBindings *db = new ZcDbBindings;
+	//service struct that will hold the new entries we want to enter to service table
+	struct ZcDbBindings::service s;
+
+	s.hostname="user1@cbox";
+	s.serviceType="liveStream";
+	s.protocol="UDP";
+	s.interface="wifi";
+	s.port=7650;
+	s.TXTDATA="streaming a live video";
+	s.TTL=13;
+	s.advertised=false;
+	s.questioned=true;
+	//adding the service
+	db->addService(s);
+
 
 }
 
@@ -65,9 +84,7 @@ JNIEXPORT void JNICALL Java_com_cbox_MainLib_testMethod
 	setJavaObject(thiz);
 
 	//testing something
-	AndrDebug test;
-	test.debug("testing database connection");
-
+	testDatabase();
 }
 
 

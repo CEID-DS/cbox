@@ -155,7 +155,12 @@
  /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_template.hpp \
  /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/../debugConcept/javaEssentials.h \
  /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/testClass.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/../../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/../../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/ZcDbBindings.h \
+ /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/sstream \
+ /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.h \
+ /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.c \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/iostream:
 
@@ -468,3 +473,13 @@
 /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/testClass.h:
 
 /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/../../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h:
+
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/ZcDbBindings.h:
+
+/home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/sstream:
+
+/home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.h:
+
+/home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.c:
+
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:

@@ -8,5 +8,5 @@ LOCAL_SRC_FILES := androidMain.cpp
 LOCAL_SRC_FILES += $(MY_CONCEPTS)/androidRadio/AndroidRadioModel.cpp
 LOCAL_SRC_FILES += $(MY_CONCEPTS)/debugConcept/javaEssentials.cpp
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/headers/
 include $(BUILD_SHARED_LIBRARY)
