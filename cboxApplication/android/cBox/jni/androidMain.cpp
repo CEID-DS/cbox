@@ -48,8 +48,15 @@ void testDatabase(void)
 	s.advertised=false;
 	s.questioned=true;
 	//adding the service
-	//db->addService(s);
-	db->refreshTTL(15);
+//	db->addService(s);
+	s.protocol="TCP";
+//	db->addMyService(s);
+//	db->refreshTTL(15);
+	db->removeService("ceid15@cbox.com", "IRC");
+//	db->removeMyService("IRC");
+//	db->addDnsRecord("ceid21@cbox.com","ethernet","192.168.0.1");
+//	db->updateDnsRecord("ceid21@cbox.com", "ethernet", "192.168.0.12");
+//	db->removeDnsRecord("ceid15@cbox.com", "WiFi");
 
 
 }

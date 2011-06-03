@@ -230,17 +230,6 @@ int ZcDbBindings::addMyService(ZcDbBindings::service s)
 */
 void ZcDbBindings::refreshTTL(int t)
 {
-	/*
-	stringstream time;
-	time << t;
-	string xmlString="";
-	xmlString.append(
-	"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>""\n"
-		"<database>\n"
-			"<refreshTTL>"+time.str()+"</refreshTTL>"
-		"</database>\n");
-	ZcDbBindings::sendStringToJava(xmlString);
-	*/
 	stringstream time;
 	time << t;
 	TiXmlDocument doc;
@@ -275,6 +264,32 @@ void ZcDbBindings::refreshTTL(int t)
 */
 bool ZcDbBindings::removeService(string hostname, string serviceType)
 {
+	TiXmlDocument doc;
+ 	TiXmlDeclaration* decl = new TiXmlDeclaration("1.0","","");
+	doc.LinkEndChild(decl);
+
+	TiXmlElement *database = new TiXmlElement("Database");
+	doc.LinkEndChild(database);
+	database->SetAttribute("function","removeService");
+
+		TiXmlElement *hostnameXml = new TiXmlElement("hostname");
+		hostnameXml->LinkEndChild( new TiXmlText(hostname.c_str()));
+		database->LinkEndChild(hostnameXml);
+
+		TiXmlElement *serviceTypeXml = new TiXmlElement("serviceType");
+		serviceTypeXml->LinkEndChild( new TiXmlText(serviceType.c_str()));
+		database->LinkEndChild(serviceTypeXml);
+
+	// Declare a printer
+	TiXmlPrinter printer;
+
+	// attach it to the document you want to convert in to a std::string
+	doc.Accept(&printer);
+
+	// Create a std::string and copy your document data in to the string
+	string xmlString = printer.CStr();
+
+	ZcDbBindings::sendStringToJava(xmlString);
 
 	return true;
 }
@@ -285,6 +300,28 @@ bool ZcDbBindings::removeService(string hostname, string serviceType)
 */
 bool ZcDbBindings::removeMyService(string serviceType)
 {
+	TiXmlDocument doc;
+ 	TiXmlDeclaration* decl = new TiXmlDeclaration("1.0","","");
+	doc.LinkEndChild(decl);
+
+	TiXmlElement *database = new TiXmlElement("Database");
+	doc.LinkEndChild(database);
+	database->SetAttribute("function","removeMyService");
+
+		TiXmlElement *serviceTypeXml = new TiXmlElement("serviceType");
+		serviceTypeXml->LinkEndChild( new TiXmlText(serviceType.c_str()));
+		database->LinkEndChild(serviceTypeXml);
+
+	// Declare a printer
+	TiXmlPrinter printer;
+
+	// attach it to the document you want to convert in to a std::string
+	doc.Accept(&printer);
+
+	// Create a std::string and copy your document data in to the string
+	string xmlString = printer.CStr();
+
+	ZcDbBindings::sendStringToJava(xmlString);
 
 	return true;
 }
@@ -313,18 +350,105 @@ int ZcDbBindings::getServicesNum(void)
 bool ZcDbBindings::addDnsRecord(string hostname, string interface, string ip)
 {
 
+	TiXmlDocument doc;
+ 	TiXmlDeclaration* decl = new TiXmlDeclaration("1.0","","");
+	doc.LinkEndChild(decl);
+
+	TiXmlElement *database = new TiXmlElement("Database");
+	doc.LinkEndChild(database);
+	database->SetAttribute("function","addDnsRecord");
+
+		TiXmlElement *hostnameXml = new TiXmlElement("hostname");
+		hostnameXml->LinkEndChild( new TiXmlText(hostname.c_str()));
+		database->LinkEndChild(hostnameXml);
+
+		TiXmlElement *interfaceXml = new TiXmlElement("interface");
+		interfaceXml->LinkEndChild( new TiXmlText(interface.c_str()));
+		database->LinkEndChild(interfaceXml);
+
+		TiXmlElement *ipXml = new TiXmlElement("ip");
+		ipXml->LinkEndChild( new TiXmlText(ip.c_str()));
+		database->LinkEndChild(ipXml);
+
+	// Declare a printer
+	TiXmlPrinter printer;
+
+	// attach it to the document you want to convert in to a std::string
+	doc.Accept(&printer);
+
+	// Create a std::string and copy your document data in to the string
+	string xmlString = printer.CStr();
+
+	ZcDbBindings::sendStringToJava(xmlString);
+
 	return true;
 }
 /* Removes a record from DNSTable.
 */
 bool ZcDbBindings::removeDnsRecord(string hostname, string interface)
 {
+	TiXmlDocument doc;
+ 	TiXmlDeclaration* decl = new TiXmlDeclaration("1.0","","");
+	doc.LinkEndChild(decl);
+
+	TiXmlElement *database = new TiXmlElement("Database");
+	doc.LinkEndChild(database);
+	database->SetAttribute("function","removeDnsRecord");
+
+		TiXmlElement *hostnameXml = new TiXmlElement("hostname");
+		hostnameXml->LinkEndChild( new TiXmlText(hostname.c_str()));
+		database->LinkEndChild(hostnameXml);
+
+		TiXmlElement *interfaceXml = new TiXmlElement("interface");
+		interfaceXml->LinkEndChild( new TiXmlText(interface.c_str()));
+		database->LinkEndChild(interfaceXml);
+
+	// Declare a printer
+	TiXmlPrinter printer;
+
+	// attach it to the document you want to convert in to a std::string
+	doc.Accept(&printer);
+
+	// Create a std::string and copy your document data in to the string
+	string xmlString = printer.CStr();
+
+	ZcDbBindings::sendStringToJava(xmlString);
 	return true;
 }
 /* Updates a record in DNSTable.
 */
 bool ZcDbBindings::updateDnsRecord(string hostname, string interface, string ip)
 {
+	TiXmlDocument doc;
+ 	TiXmlDeclaration* decl = new TiXmlDeclaration("1.0","","");
+	doc.LinkEndChild(decl);
+
+	TiXmlElement *database = new TiXmlElement("Database");
+	doc.LinkEndChild(database);
+	database->SetAttribute("function","updateDnsRecord");
+
+		TiXmlElement *hostnameXml = new TiXmlElement("hostname");
+		hostnameXml->LinkEndChild( new TiXmlText(hostname.c_str()));
+		database->LinkEndChild(hostnameXml);
+
+		TiXmlElement *interfaceXml = new TiXmlElement("interface");
+		interfaceXml->LinkEndChild( new TiXmlText(interface.c_str()));
+		database->LinkEndChild(interfaceXml);
+
+		TiXmlElement *ipXml = new TiXmlElement("ip");
+		ipXml->LinkEndChild( new TiXmlText(ip.c_str()));
+		database->LinkEndChild(ipXml);
+
+	// Declare a printer
+	TiXmlPrinter printer;
+
+	// attach it to the document you want to convert in to a std::string
+	doc.Accept(&printer);
+
+	// Create a std::string and copy your document data in to the string
+	string xmlString = printer.CStr();
+
+	ZcDbBindings::sendStringToJava(xmlString);
 
 	return true;
 }
