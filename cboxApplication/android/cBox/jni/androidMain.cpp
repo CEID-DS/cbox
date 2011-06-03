@@ -48,7 +48,8 @@ void testDatabase(void)
 	s.advertised=false;
 	s.questioned=true;
 	//adding the service
-	db->addService(s);
+	//db->addService(s);
+	db->refreshTTL(15);
 
 
 }

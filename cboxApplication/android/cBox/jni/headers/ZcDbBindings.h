@@ -1,6 +1,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "../tinyXml/tinystr.h"
+#include "../tinyXml/tinyxml.h"
 #include "../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h"
 
 using namespace std;
@@ -96,27 +98,70 @@ bool ZcDbBindings::closeConnection()
 
 string ZcDbBindings::createStructXmlString(struct ZcDbBindings::service *s, string str)
 {
-	stringstream port, TTL, advertised, questioned;
-	port << s->port;
-	TTL << s->TTL;
-	advertised << s->advertised;
-	questioned << s->questioned;
-	string xmlString="";
-	xmlString.append(
-	"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>""\n"
-		"<database>\n"
-			"<"+str+">\n"
-			"<hostname>"+s->hostname+"</hostname>\n"
-			"<serviceType>"+s->serviceType+"</serviceType>\n"
-			"<protocol>"+s->protocol+"</protocol>\n"
-			"<interface>"+s->interface+"</interface>\n"
-			"<port>"+port.str()+"</port>\n"
-			"<TXTDATA>"+s->TXTDATA+"</TXTDATA>\n"
-			"<TTL>"+TTL.str()+"</TTL>\n"
-			"<advertised>"+advertised.str()+"</advertised>\n"
-			"<questioned>"+questioned.str()+"</questioned>\n"
-			"</"+str+">\n"
-		"</database>");
+
+	TiXmlDocument doc;
+
+	stringstream portStr, TTLStr, advertisedStr, questionedStr;
+	portStr << s->port;
+	TTLStr << s->TTL;
+	advertisedStr << s->advertised;
+	questionedStr << s->questioned;
+
+ 	TiXmlDeclaration* decl = new TiXmlDeclaration("1.0","","");
+	doc.LinkEndChild(decl);
+
+	TiXmlElement *database = new TiXmlElement("Database");
+	doc.LinkEndChild(database);
+	database->SetAttribute("function",str.c_str());
+
+			TiXmlElement *hostname = new TiXmlElement("hostname");
+			hostname->LinkEndChild( new TiXmlText(s->hostname.c_str()));
+			database->LinkEndChild(hostname);
+
+			TiXmlElement *serviceType = new TiXmlElement("serviceType");
+			serviceType->LinkEndChild(new TiXmlText(s->serviceType.c_str()));
+			database->LinkEndChild(serviceType);
+
+			TiXmlElement *protocol = new TiXmlElement("protocol");
+			protocol->LinkEndChild( new TiXmlText(s->protocol.c_str()));
+			database->LinkEndChild(protocol);
+
+			TiXmlElement *interface = new TiXmlElement("interface");
+			interface->LinkEndChild(new TiXmlText(s->interface.c_str()));
+			database->LinkEndChild(interface);
+
+			TiXmlElement *port = new TiXmlElement("port");
+			port->LinkEndChild( new TiXmlText(portStr.str().c_str()));
+			database->LinkEndChild(port);
+
+			TiXmlElement *TXTDATA = new TiXmlElement("TXTDATA");
+			TXTDATA->LinkEndChild(new TiXmlText(s->TXTDATA.c_str()));
+			database->LinkEndChild(TXTDATA);
+
+			TiXmlElement *TTL = new TiXmlElement("TTL");
+			TTL->LinkEndChild( new TiXmlText(TTLStr.str().c_str()));
+			database->LinkEndChild(TTL);
+
+			TiXmlElement *advertised = new TiXmlElement("advertised");
+			advertised->LinkEndChild(new TiXmlText(advertisedStr.str().c_str()));
+			database->LinkEndChild(advertised);
+
+			TiXmlElement *questioned = new TiXmlElement("questioned");
+			questioned->LinkEndChild(new TiXmlText(questionedStr.str().c_str()));
+			database->LinkEndChild(questioned);
+
+
+
+
+	// Declare a printer
+	TiXmlPrinter printer;
+
+	// attach it to the document you want to convert in to a std::string
+	doc.Accept(&printer);
+
+	// Create a std::string and copy your document data in to the string
+	string xmlString = printer.CStr();
+
 	return xmlString;
 
 }
@@ -185,15 +230,42 @@ int ZcDbBindings::addMyService(ZcDbBindings::service s)
 */
 void ZcDbBindings::refreshTTL(int t)
 {
+	/*
 	stringstream time;
 	time << t;
 	string xmlString="";
 	xmlString.append(
 	"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>""\n"
 		"<database>\n"
-			"<refreshTTL>"+t.str()+"</refreshTTL>"
+			"<refreshTTL>"+time.str()+"</refreshTTL>"
 		"</database>\n");
 	ZcDbBindings::sendStringToJava(xmlString);
+	*/
+	stringstream time;
+	time << t;
+	TiXmlDocument doc;
+ 	TiXmlDeclaration* decl = new TiXmlDeclaration("1.0","","");
+	doc.LinkEndChild(decl);
+
+	TiXmlElement *database = new TiXmlElement("Database");
+	doc.LinkEndChild(database);
+	database->SetAttribute("function","refreshTTL");
+
+		TiXmlElement *newTTL = new TiXmlElement("newTTL");
+		newTTL->LinkEndChild( new TiXmlText(time.str().c_str()));
+		database->LinkEndChild(newTTL);
+
+	// Declare a printer
+	TiXmlPrinter printer;
+
+	// attach it to the document you want to convert in to a std::string
+	doc.Accept(&printer);
+
+	// Create a std::string and copy your document data in to the string
+	string xmlString = printer.CStr();
+
+	ZcDbBindings::sendStringToJava(xmlString);
+
 
 }
 
