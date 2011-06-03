@@ -1,5 +1,5 @@
 /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/obj/local/armeabi/objs/mainLib/../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.o: \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.cpp \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.cpp \
  /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/jni.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stdarg.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_cprolog.h \
@@ -15,7 +15,7 @@
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/config/_native_headers.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_epilog.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/string \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_prolog.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/debug/_debug.h \
@@ -171,7 +171,7 @@
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/string:
 

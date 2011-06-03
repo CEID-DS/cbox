@@ -1,6 +1,6 @@
 /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/obj/local/armeabi/objs/mainLib/../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.o: \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.cpp \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.cpp \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.h \
  /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/jni.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stdarg.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_cprolog.h \
@@ -142,12 +142,12 @@
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_hash_fun.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_string_io.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_string_io.c \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/delegate.hpp \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_list.hpp \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_template.hpp \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/../debugConcept/javaEssentials.h
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/delegate.hpp \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_list.hpp \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_template.hpp \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/../debugConcept/javaEssentials.h
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.h:
 
 /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/jni.h:
 
@@ -431,10 +431,10 @@
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_string_io.c:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/delegate.hpp:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/delegate.hpp:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_list.hpp:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_list.hpp:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_template.hpp:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_template.hpp:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/../debugConcept/javaEssentials.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/../debugConcept/javaEssentials.h:

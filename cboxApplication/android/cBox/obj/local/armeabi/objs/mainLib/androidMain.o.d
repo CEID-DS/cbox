@@ -1,5 +1,5 @@
 /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/obj/local/armeabi/objs/mainLib/androidMain.o: \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/androidMain.cpp \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../androidMain.cpp \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/iostream \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_prolog.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_cprolog.h \
@@ -140,27 +140,34 @@
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_hash_fun.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_string_io.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_string_io.c \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/com_cbox_MainLib.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/com_cbox_MainLib.h \
  /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/jni.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/cstdio \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/cstdlib \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/cstdarg \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_cstdarg.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/delegate.hpp \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_list.hpp \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_template.hpp \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/../debugConcept/javaEssentials.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/testClass.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/../../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/ZcDbBindings.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/delegate.hpp \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_list.hpp \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_template.hpp \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/../debugConcept/javaEssentials.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/testClass.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/ZcDbBindings.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/sstream \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.c \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinystr.h \
+ /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/assert.h \
+ /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/../include/assert.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinyxml.h \
+ /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/ctype.h \
+ /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/../include/ctype.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinystr.h \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/iostream:
 
@@ -442,13 +449,13 @@
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_string_io.c:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/com_cbox_MainLib.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/com_cbox_MainLib.h:
 
 /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/jni.h:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h:
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/cstdio:
 
@@ -458,23 +465,23 @@
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_cstdarg.h:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/AndroidRadioModel.h:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/delegate.hpp:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/delegate.hpp:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_list.hpp:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_list.hpp:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_template.hpp:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/detail/delegate_template.hpp:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/../../../../android_wiselib/androidConcepts/androidRadio/../debugConcept/javaEssentials.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../../../../../android_wiselib/androidConcepts/androidRadio/../debugConcept/javaEssentials.h:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/testClass.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/testClass.h:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/../../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../../../../../android_wiselib/androidConcepts/debugConcept/AndrDebug.h:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/ZcDbBindings.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/ZcDbBindings.h:
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/sstream:
 
@@ -482,4 +489,18 @@
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.c:
 
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinystr.h:
+
+/home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/assert.h:
+
+/home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/../include/assert.h:
+
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinyxml.h:
+
+/home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/ctype.h:
+
+/home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/../include/ctype.h:
+
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinystr.h:
+
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
