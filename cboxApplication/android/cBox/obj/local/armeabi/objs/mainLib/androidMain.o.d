@@ -160,14 +160,14 @@
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/sstream \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.c \
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h \
  /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinystr.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/assert.h \
  /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/../include/assert.h \
  /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinyxml.h \
  /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/ctype.h \
  /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/../include/ctype.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinystr.h \
- /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h
+ /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinystr.h
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/iostream:
 
@@ -489,6 +489,8 @@
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/stl/_sstream.c:
 
+/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
+
 /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinystr.h:
 
 /home/vasilakis/android-ndk-r5b/sources/cxx-stl/stlport/stlport/assert.h:
@@ -502,5 +504,3 @@
 /home/vasilakis/android-ndk-r5b/platforms/android-8/arch-arm/usr/include/../include/ctype.h:
 
 /home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../tinyXml/tinystr.h:
-
-/home/vasilakis/Dropbox/Sources/DS2/cbox/cboxApplication/android/cBox/jni/tinyXml/../headers/../../../../../android_wiselib/androidConcepts/debugConcept/javaEssentials.h:
