@@ -144,7 +144,7 @@ void *receive_routine(void *socket){
 	socklen_t fromlen;
 	
 	for (;;){
-		if ( (Bluetooth::valid_data=recvfrom((int) socket, (void *)Bluetooth::data_buffer, SIZE, 0, (struct sockaddr *)&sa, &fromlen) ) <= 0) {
+		if ( (Bluetooth::valid_data=recvfrom((long int) socket, (void *)Bluetooth::data_buffer, SIZE, 0, (struct sockaddr *)&sa, &fromlen) ) <= 0) {
 			pthread_exit(NULL);
 		}
 		
@@ -158,7 +158,7 @@ void *scan_routine(void *socket){
 	socklen_t fromlen;
 	
 	for (;;){
-		if ( (Bluetooth::valid_data=recvfrom((int) socket, (void *)Bluetooth::data_buffer, SIZE, 0, (struct sockaddr *)&rc, &fromlen) ) <= 0) {
+		if ( (Bluetooth::valid_data=recvfrom((long int) socket, (void *)Bluetooth::data_buffer, SIZE, 0, (struct sockaddr *)&rc, &fromlen) ) <= 0) {
 			pthread_exit(NULL);
 		}
 		
