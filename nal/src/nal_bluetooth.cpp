@@ -50,7 +50,7 @@ int Bluetooth::enable(){
 	if (instances < MAX_INSTANCES){
 		//socket is initialized the first time an instance of the class is created
 		if (sockfd == -2){
-		  	if ((sockfd = socket(AF_BLUETOOTH, SOCK_DGRAM, BTPROTO_RFCOMM) ) < 0){ //if socket failed to initialize
+		  	if ((sockfd = socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM) ) < 0){ //if socket failed to initialize
 				sockfd=-2;
 		      		return -1;
 		    	}
